@@ -4,10 +4,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.DeviceInfo;
 import entity.SignalList;
+import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
 
-import java.util.List;
 
 public class Sensor extends DataSource {
+
 
     @Override
     public void updateFromJson(JsonNode jsonNode) {
@@ -22,12 +23,16 @@ public class Sensor extends DataSource {
     public Sensor() {
     }
 
-    public Sensor(String node_id, String device_id, DeviceInfo deviceInfo) {
-        super(node_id, device_id, deviceInfo);
+    public Sensor(String node_id, String device_id) {
+        super(node_id,device_id);
     }
 
-    public Sensor(String node_id, String device_id, DeviceInfo deviceInfo, SignalList signalList) {
-        super(node_id, device_id, deviceInfo, signalList);
+    public Sensor(String node_id, String device_id, String device_type, DeviceInfo deviceInfo) {
+        super(node_id, device_id, device_type, deviceInfo);
+    }
+
+    public Sensor(String node_id, String device_id, String device_type, DeviceInfo deviceInfo, SignalList signalList) {
+        super(node_id, device_id, device_type, deviceInfo, signalList);
     }
 
     @Override
@@ -41,15 +46,21 @@ public class Sensor extends DataSource {
     }
 
     @Override
-    public void start() {
-        super.start();
-        System.out.println("Sensor-specific initialization...");
-    }
-
-    @Override
-    public void shutdown() {
-        super.shutdown();
-        System.out.println("Sensor-specific cleanup...");
+    public String executeCommand(NodeControlServiceApi.NodeControlType type, String detail) {
+        switch (type) {
+            case REBOOT_NODE:
+                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 正在重启...";
+            case SHUTDOWN_NODE:
+                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 正在关闭...";
+            case ABORT_ALL:
+                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 正在停止所有任务...";
+            case SELF_TEST:
+                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 正在自检...";
+            case RENAME:
+                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 被更名为: " + detail;
+            default:
+                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 不支持此操作";
+        }
     }
 }
 

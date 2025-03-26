@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
+
+// 选项配置
+option java_outer_classname = "NodeControlServiceApi";
+option java_package = "proto_compile.cetc41.nodecontrol";
+
+//节点控制指令类型
+enum NodeControlType
+{
+  REBOOT_NODE = 0;        //重启节点系统
+  SHUTDOWN_NODE = 1;      //关闭节点系统
+  ABORT_ALL = 2;          //停止所有任务
+  SELF_TEST = 3;          //自检
+  RENAME = 4;             //更名
+}
+
+message NodeId
+{
+  string value = 1;
+}
+
+message DeviceId
+{
+  string value = 1;
+}
+
+//节点控制请求与响应
+message NodeControl
+{
+  NodeId node_id = 1;
+  DeviceId device_id = 2;
+  NodeControlType control_type = 3;
+  string detail = 4;
+}
+
+// 节点控制响应
+message NodeControlResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// 通用管理的API
+service NodeControlService
+{
+  rpc PostNodeControl(NodeControl) returns (NodeControlResponse) {}// 节点控制
+}

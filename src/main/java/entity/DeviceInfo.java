@@ -1,8 +1,12 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import common.Physical;
 import common.Position;
 import common.Posture;
+import datasource.InfoSystem;
+import datasource.Sensor;
 
 import java.util.List;
 
