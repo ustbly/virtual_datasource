@@ -18,29 +18,91 @@ public final class NodeControlServiceGrpc {
   public static final String SERVICE_NAME = "NodeControlService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<NodeControlServiceApi.NodeControl,
-      NodeControlServiceApi.NodeControlResponse> getPostNodeControlMethod;
+  private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo> getListAllNodesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ListAllNodes",
+      requestType = com.google.protobuf.Empty.class,
+      responseType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo> getListAllNodesMethod() {
+    io.grpc.MethodDescriptor<com.google.protobuf.Empty, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo> getListAllNodesMethod;
+    if ((getListAllNodesMethod = NodeControlServiceGrpc.getListAllNodesMethod) == null) {
+      synchronized (NodeControlServiceGrpc.class) {
+        if ((getListAllNodesMethod = NodeControlServiceGrpc.getListAllNodesMethod) == null) {
+          NodeControlServiceGrpc.getListAllNodesMethod = getListAllNodesMethod =
+              io.grpc.MethodDescriptor.<com.google.protobuf.Empty, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListAllNodes"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo.getDefaultInstance()))
+              .setSchemaDescriptor(new NodeControlServiceMethodDescriptorSupplier("ListAllNodes"))
+              .build();
+        }
+      }
+    }
+    return getListAllNodesMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId,
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> getGetNodeInfoMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetNodeInfo",
+      requestType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.class,
+      responseType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId,
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> getGetNodeInfoMethod() {
+    io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> getGetNodeInfoMethod;
+    if ((getGetNodeInfoMethod = NodeControlServiceGrpc.getGetNodeInfoMethod) == null) {
+      synchronized (NodeControlServiceGrpc.class) {
+        if ((getGetNodeInfoMethod = NodeControlServiceGrpc.getGetNodeInfoMethod) == null) {
+          NodeControlServiceGrpc.getGetNodeInfoMethod = getGetNodeInfoMethod =
+              io.grpc.MethodDescriptor.<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetNodeInfo"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.getDefaultInstance()))
+              .setSchemaDescriptor(new NodeControlServiceMethodDescriptorSupplier("GetNodeInfo"))
+              .build();
+        }
+      }
+    }
+    return getGetNodeInfoMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl,
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> getPostNodeControlMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "PostNodeControl",
-      requestType = NodeControlServiceApi.NodeControl.class,
-      responseType = NodeControlServiceApi.NodeControlResponse.class,
+      requestType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl.class,
+      responseType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<NodeControlServiceApi.NodeControl,
-      NodeControlServiceApi.NodeControlResponse> getPostNodeControlMethod() {
-    io.grpc.MethodDescriptor<NodeControlServiceApi.NodeControl, NodeControlServiceApi.NodeControlResponse> getPostNodeControlMethod;
+  public static io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl,
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> getPostNodeControlMethod() {
+    io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> getPostNodeControlMethod;
     if ((getPostNodeControlMethod = NodeControlServiceGrpc.getPostNodeControlMethod) == null) {
       synchronized (NodeControlServiceGrpc.class) {
         if ((getPostNodeControlMethod = NodeControlServiceGrpc.getPostNodeControlMethod) == null) {
           NodeControlServiceGrpc.getPostNodeControlMethod = getPostNodeControlMethod =
-              io.grpc.MethodDescriptor.<NodeControlServiceApi.NodeControl, NodeControlServiceApi.NodeControlResponse>newBuilder()
+              io.grpc.MethodDescriptor.<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "PostNodeControl"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  NodeControlServiceApi.NodeControl.getDefaultInstance()))
+                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  NodeControlServiceApi.NodeControlResponse.getDefaultInstance()))
+                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse.getDefaultInstance()))
               .setSchemaDescriptor(new NodeControlServiceMethodDescriptorSupplier("PostNodeControl"))
               .build();
         }
@@ -55,7 +117,7 @@ public final class NodeControlServiceGrpc {
   public static NodeControlServiceStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<NodeControlServiceStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<NodeControlServiceStub>() {
-        @Override
+        @java.lang.Override
         public NodeControlServiceStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new NodeControlServiceStub(channel, callOptions);
         }
@@ -70,7 +132,7 @@ public final class NodeControlServiceGrpc {
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<NodeControlServiceBlockingStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<NodeControlServiceBlockingStub>() {
-        @Override
+        @java.lang.Override
         public NodeControlServiceBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new NodeControlServiceBlockingStub(channel, callOptions);
         }
@@ -85,7 +147,7 @@ public final class NodeControlServiceGrpc {
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<NodeControlServiceFutureStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<NodeControlServiceFutureStub>() {
-        @Override
+        @java.lang.Override
         public NodeControlServiceFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new NodeControlServiceFutureStub(channel, callOptions);
         }
@@ -102,19 +164,47 @@ public final class NodeControlServiceGrpc {
 
     /**
      */
-    public void postNodeControl(NodeControlServiceApi.NodeControl request,
-                                io.grpc.stub.StreamObserver<NodeControlServiceApi.NodeControlResponse> responseObserver) {
+    public void listAllNodes(com.google.protobuf.Empty request,
+        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListAllNodesMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void getNodeInfo(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId request,
+        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetNodeInfoMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void postNodeControl(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl request,
+        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPostNodeControlMethod(), responseObserver);
     }
 
-    @Override public final io.grpc.ServerServiceDefinition bindService() {
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getListAllNodesMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                com.google.protobuf.Empty,
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo>(
+                  this, METHODID_LIST_ALL_NODES)))
+          .addMethod(
+            getGetNodeInfoMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId,
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo>(
+                  this, METHODID_GET_NODE_INFO)))
           .addMethod(
             getPostNodeControlMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                NodeControlServiceApi.NodeControl,
-                NodeControlServiceApi.NodeControlResponse>(
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl,
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse>(
                   this, METHODID_POST_NODE_CONTROL)))
           .build();
     }
@@ -131,7 +221,7 @@ public final class NodeControlServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected NodeControlServiceStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new NodeControlServiceStub(channel, callOptions);
@@ -139,8 +229,24 @@ public final class NodeControlServiceGrpc {
 
     /**
      */
-    public void postNodeControl(NodeControlServiceApi.NodeControl request,
-                                io.grpc.stub.StreamObserver<NodeControlServiceApi.NodeControlResponse> responseObserver) {
+    public void listAllNodes(com.google.protobuf.Empty request,
+        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getListAllNodesMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getNodeInfo(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId request,
+        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetNodeInfoMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void postNodeControl(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl request,
+        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getPostNodeControlMethod(), getCallOptions()), request, responseObserver);
     }
@@ -157,7 +263,7 @@ public final class NodeControlServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected NodeControlServiceBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new NodeControlServiceBlockingStub(channel, callOptions);
@@ -165,7 +271,21 @@ public final class NodeControlServiceGrpc {
 
     /**
      */
-    public NodeControlServiceApi.NodeControlResponse postNodeControl(NodeControlServiceApi.NodeControl request) {
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo listAllNodes(com.google.protobuf.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getListAllNodesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo getNodeInfo(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetNodeInfoMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse postNodeControl(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getPostNodeControlMethod(), getCallOptions(), request);
     }
@@ -182,7 +302,7 @@ public final class NodeControlServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected NodeControlServiceFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new NodeControlServiceFutureStub(channel, callOptions);
@@ -190,14 +310,32 @@ public final class NodeControlServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<NodeControlServiceApi.NodeControlResponse> postNodeControl(
-        NodeControlServiceApi.NodeControl request) {
+    public com.google.common.util.concurrent.ListenableFuture<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo> listAllNodes(
+        com.google.protobuf.Empty request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getListAllNodesMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> getNodeInfo(
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetNodeInfoMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> postNodeControl(
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getPostNodeControlMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_POST_NODE_CONTROL = 0;
+  private static final int METHODID_LIST_ALL_NODES = 0;
+  private static final int METHODID_GET_NODE_INFO = 1;
+  private static final int METHODID_POST_NODE_CONTROL = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -212,21 +350,29 @@ public final class NodeControlServiceGrpc {
       this.methodId = methodId;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_LIST_ALL_NODES:
+          serviceImpl.listAllNodes((com.google.protobuf.Empty) request,
+              (io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo>) responseObserver);
+          break;
+        case METHODID_GET_NODE_INFO:
+          serviceImpl.getNodeInfo((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId) request,
+              (io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo>) responseObserver);
+          break;
         case METHODID_POST_NODE_CONTROL:
-          serviceImpl.postNodeControl((NodeControlServiceApi.NodeControl) request,
-              (io.grpc.stub.StreamObserver<NodeControlServiceApi.NodeControlResponse>) responseObserver);
+          serviceImpl.postNodeControl((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl) request,
+              (io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
       }
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
@@ -240,12 +386,12 @@ public final class NodeControlServiceGrpc {
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     NodeControlServiceBaseDescriptorSupplier() {}
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return NodeControlServiceApi.getDescriptor();
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.getDescriptor();
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
       return getFileDescriptor().findServiceByName("NodeControlService");
     }
@@ -265,7 +411,7 @@ public final class NodeControlServiceGrpc {
       this.methodName = methodName;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
       return getServiceDescriptor().findMethodByName(methodName);
     }
@@ -281,6 +427,8 @@ public final class NodeControlServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new NodeControlServiceFileDescriptorSupplier())
+              .addMethod(getListAllNodesMethod())
+              .addMethod(getGetNodeInfoMethod())
               .addMethod(getPostNodeControlMethod())
               .build();
         }

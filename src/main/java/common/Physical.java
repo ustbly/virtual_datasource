@@ -1,24 +1,24 @@
 package common;
 
 public class Physical {
-    private String type;
+    private int type;
     private double value;
     private String unit;
 
     public Physical() {
     }
 
-    public Physical(String type, double value, String unit) {
+    public Physical(int type, double value, String unit) {
         this.type = type;
         this.value = value;
         this.unit = unit;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 

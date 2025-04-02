@@ -12,6 +12,7 @@ public class DeviceManager {
     private final Map<String, DataSource> deviceMap = new ConcurrentHashMap<>();
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
+
     private DeviceManager() {}
 
     public static DeviceManager getInstance() {
@@ -40,7 +41,7 @@ public class DeviceManager {
 
         if (deviceMap.containsKey(key)) {
             DataSource existingDevice = deviceMap.get(key);
-            existingDevice.updateFromJson(jsonNode);
+//            existingDevice.updateFromJson(jsonNode);
         } else {
             DataSource newDevice = createDeviceFromJson(type, jsonNode);
             if (newDevice != null) {

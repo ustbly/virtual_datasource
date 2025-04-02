@@ -1,50 +1,38 @@
 package datasource;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import entity.DeviceInfo;
+import common.Physical;
+import common.Position;
+import common.Posture;
+import entity.SignalList;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
+
+import java.util.List;
 
 public class ReconStation extends DataSource {
 
     public ReconStation() {
     }
 
-    public ReconStation(String nodeId, String deviceId, String device_type, DeviceInfo deviceInfo) {
-        super(nodeId,deviceId,device_type,deviceInfo);
+    public ReconStation(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, SignalList signalList) {
+        super(device_id, device_name, device_type, status, position, posture, physicalList, signalList);
     }
 
-
-    @Override
-    public void updateFromJson(JsonNode jsonNode) {
-
-    }
-
-    @Override
-    public String toString() {
-        return "ReconStation{" +
-                "node_id='" + node_id + '\'' +
-                ", device_id='" + device_id + '\'' +
-                ", device_type='" + device_type + '\'' +
-                ", deviceInfo=" + deviceInfo +
-                ", signalList=" + signalList +
-                '}';
-    }
 
     @Override
     public String executeCommand(NodeControlServiceApi.NodeControlType type, String detail) {
         switch (type) {
             case REBOOT_NODE:
-                return "侦察站 " + this.getNode_id() + " 正在重启...";
+                return "侦察站 " + this.getDevice_id() + " 正在重启...";
             case SHUTDOWN_NODE:
-                return "侦察站 " + this.getNode_id() + " 正在关闭...";
+                return "侦察站 " + this.getDevice_id() + " 正在关闭...";
             case ABORT_ALL:
-                return "侦察站 " + this.getNode_id() + " 正在停止所有任务...";
+                return "侦察站 " + this.getDevice_id() + " 正在停止所有任务...";
             case SELF_TEST:
-                return "侦察站 " + this.getNode_id() + " 正在自检...";
+                return "侦察站 " + this.getDevice_id() + " 正在自检...";
             case RENAME:
-                return "侦察站 " + this.getNode_id() + " 被更名为: " + detail;
+                return "侦察站 " + this.getDevice_id() + " 被更名为: " + detail;
             default:
-                return "侦察站 " + this.getNode_id() + " 不支持此操作";
+                return "侦察站 " + this.getDevice_id() + " 不支持此操作";
         }
     }
 }

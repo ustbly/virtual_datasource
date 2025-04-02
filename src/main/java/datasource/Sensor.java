@@ -1,65 +1,56 @@
 package datasource;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import entity.DeviceInfo;
+import common.Physical;
+import common.Position;
+import common.Posture;
 import entity.SignalList;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
+import utils.DeviceMapUtils;
+
+import java.util.List;
 
 
 public class Sensor extends DataSource {
-
-
-    @Override
-    public void updateFromJson(JsonNode jsonNode) {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            this.deviceInfo = objectMapper.treeToValue(jsonNode.get("deviceInfo"), DeviceInfo.class);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public Sensor() {
     }
 
-    public Sensor(String node_id, String device_id) {
-        super(node_id,device_id);
-    }
 
-    public Sensor(String node_id, String device_id, String device_type, DeviceInfo deviceInfo) {
-        super(node_id, device_id, device_type, deviceInfo);
-    }
-
-    public Sensor(String node_id, String device_id, String device_type, DeviceInfo deviceInfo, SignalList signalList) {
-        super(node_id, device_id, device_type, deviceInfo, signalList);
+    public Sensor(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, SignalList signalList) {
+        super(device_id, device_name, device_type, status, position, posture, physicalList, signalList);
     }
 
     @Override
     public String toString() {
         return "Sensor{" +
-                "node_id='" + node_id + '\'' +
-                ", device_id='" + device_id + '\'' +
-                ", deviceInfo=" + deviceInfo +
+                "device_id='" + device_id + '\'' +
+                ", device_name='" + device_name + '\'' +
+                ", device_type='" + device_type + '\'' +
+                ", status='" + status + '\'' +
+                ", position=" + position +
+                ", posture=" + posture +
+                ", physicalList=" + physicalList +
                 ", signalList=" + signalList +
                 '}';
     }
+
+
 
     @Override
     public String executeCommand(NodeControlServiceApi.NodeControlType type, String detail) {
         switch (type) {
             case REBOOT_NODE:
-                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 正在重启...";
+                return "device_id: " + this.getDevice_id() + " 正在重启...";
             case SHUTDOWN_NODE:
-                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 正在关闭...";
+                return "device_id: " + this.getDevice_id() + " 正在关闭...";
             case ABORT_ALL:
-                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 正在停止所有任务...";
+                return "device_id: " + this.getDevice_id() + " 正在停止所有任务...";
             case SELF_TEST:
-                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 正在自检...";
+                return "device_id: " + this.getDevice_id() + " 正在自检...";
             case RENAME:
-                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 被更名为: " + detail;
+                String message = DeviceMapUtils.updateDevice(device_id, detail);
+                return message;
             default:
-                return "node_id: " + this.getNode_id() + " device_id: " + this.getDevice_id() + " 不支持此操作";
+                return "device_id: " + this.getDevice_id() + " 不支持此操作";
         }
     }
 }

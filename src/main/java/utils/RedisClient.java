@@ -4,6 +4,8 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import java.time.Duration;
+
 public class RedisClient {
     private static final JedisPool pool;
 
@@ -12,6 +14,7 @@ public class RedisClient {
         config.setMaxTotal(10);  // 最大连接数
         config.setMaxIdle(5);    // 最大空闲连接数
         config.setMinIdle(1);    // 最小空闲连接数
+        config.setMaxWait(Duration.ofDays(-1));
         pool = new JedisPool(config, "node1", 6379, 2000,"123456");
     }
 

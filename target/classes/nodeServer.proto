@@ -2,6 +2,7 @@ syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/any.proto";
+import "dcts.proto";
 
 // 选项配置
 option java_outer_classname = "NodeControlServiceApi";
@@ -42,8 +43,37 @@ message NodeControlResponse {
   string message = 2;
 }
 
+//设备信息
+message DeviceInfo
+{
+  DeviceId device_id = 1;        //节点id
+  string device_name = 2;
+  string device_type = 3;
+  string status = 4;
+  Position position = 5;  //节点位置, wgs-84坐标系，弧度单位
+  Posture posture = 6;
+  repeated Physical physicalList = 7;
+}
+
+message NodeInfo
+{
+  NodeId node_id = 1;                         //节点id
+  string node_name = 2;                       //节点名字
+  string node_type = 3;                       //节点类型
+  Timestamp last_heard = 4;                   //从最近一次收到节点心跳起逝去的秒值
+  repeated DeviceInfo dataSourceList = 5;     //隶属于节点设备信息列表
+  optional bool is_physical = 6;              //节点设备是物理/虚拟的
+}
+
+//所有节点的信息
+message NodesInfo
+{
+  repeated NodeInfo node_infos = 1;
+}
 // 通用管理的API
 service NodeControlService
 {
+  rpc ListAllNodes(google.protobuf.Empty) returns (NodesInfo) {}// 枚举所有节点
+  rpc GetNodeInfo(NodeId) returns (NodeInfo) {}// 根据id获得节点信息
   rpc PostNodeControl(NodeControl) returns (NodeControlResponse) {}// 节点控制
 }

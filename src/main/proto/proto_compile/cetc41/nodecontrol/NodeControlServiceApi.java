@@ -110,7 +110,7 @@ public final class NodeControlServiceApi {
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
-        throw new IllegalArgumentException(
+        throw new java.lang.IllegalArgumentException(
             "Can't get the number of an unknown enum value.");
       }
       return value;
@@ -121,7 +121,7 @@ public final class NodeControlServiceApi {
      * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
-    @Deprecated
+    @java.lang.Deprecated
     public static NodeControlType valueOf(int value) {
       return forNumber(value);
     }
@@ -156,7 +156,7 @@ public final class NodeControlServiceApi {
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       if (this == UNRECOGNIZED) {
-        throw new IllegalStateException(
+        throw new java.lang.IllegalStateException(
             "Can't get the descriptor of an unrecognized enum value.");
       }
       return getDescriptor().getValues().get(ordinal());
@@ -167,7 +167,7 @@ public final class NodeControlServiceApi {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return NodeControlServiceApi.getDescriptor().getEnumTypes().get(0);
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final NodeControlType[] VALUES = values();
@@ -175,7 +175,7 @@ public final class NodeControlServiceApi {
     public static NodeControlType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new IllegalArgumentException(
+        throw new java.lang.IllegalArgumentException(
           "EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
@@ -201,7 +201,7 @@ public final class NodeControlServiceApi {
      * <code>string value = 1;</code>
      * @return The value.
      */
-    String getValue();
+    java.lang.String getValue();
     /**
      * <code>string value = 1;</code>
      * @return The bytes for value.
@@ -225,14 +225,14 @@ public final class NodeControlServiceApi {
       value_ = "";
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
+    protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
       return new NodeId();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -243,7 +243,7 @@ public final class NodeControlServiceApi {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -256,7 +256,7 @@ public final class NodeControlServiceApi {
               done = true;
               break;
             case 10: {
-              String s = input.readStringRequireUtf8();
+              java.lang.String s = input.readStringRequireUtf8();
 
               value_ = s;
               break;
@@ -282,32 +282,32 @@ public final class NodeControlServiceApi {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return NodeControlServiceApi.internal_static_NodeId_descriptor;
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeId_descriptor;
     }
 
-    @Override
-    protected FieldAccessorTable
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return NodeControlServiceApi.internal_static_NodeId_fieldAccessorTable
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeId_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              NodeId.class, Builder.class);
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder.class);
     }
 
     public static final int VALUE_FIELD_NUMBER = 1;
-    private volatile Object value_;
+    private volatile java.lang.Object value_;
     /**
      * <code>string value = 1;</code>
      * @return The value.
      */
-    @Override
-    public String getValue() {
-      Object ref = value_;
-      if (ref instanceof String) {
-        return (String) ref;
+    @java.lang.Override
+    public java.lang.String getValue() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         value_ = s;
         return s;
       }
@@ -316,14 +316,14 @@ public final class NodeControlServiceApi {
      * <code>string value = 1;</code>
      * @return The bytes for value.
      */
-    @Override
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getValueBytes() {
-      Object ref = value_;
-      if (ref instanceof String) {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         value_ = b;
         return b;
       } else {
@@ -332,7 +332,7 @@ public final class NodeControlServiceApi {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -342,7 +342,7 @@ public final class NodeControlServiceApi {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getValueBytes().isEmpty()) {
@@ -351,7 +351,7 @@ public final class NodeControlServiceApi {
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -365,15 +365,15 @@ public final class NodeControlServiceApi {
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof NodeId)) {
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId)) {
         return super.equals(obj);
       }
-      NodeId other = (NodeId) obj;
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId) obj;
 
       if (!getValue()
           .equals(other.getValue())) return false;
@@ -381,7 +381,7 @@ public final class NodeControlServiceApi {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -395,69 +395,69 @@ public final class NodeControlServiceApi {
       return hash;
     }
 
-    public static NodeId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static NodeId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static NodeId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static NodeId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static NodeId parseFrom(byte[] data)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static NodeId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static NodeId parseFrom(java.io.InputStream input)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static NodeId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static NodeId parseDelimitedFrom(java.io.InputStream input)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static NodeId parseDelimitedFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static NodeId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static NodeId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -465,23 +465,23 @@ public final class NodeControlServiceApi {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(NodeId prototype) {
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -491,18 +491,18 @@ public final class NodeControlServiceApi {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:NodeId)
-        NodeIdOrBuilder {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return NodeControlServiceApi.internal_static_NodeId_descriptor;
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeId_descriptor;
       }
 
-      @Override
-      protected FieldAccessorTable
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return NodeControlServiceApi.internal_static_NodeId_fieldAccessorTable
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeId_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                NodeId.class, Builder.class);
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder.class);
       }
 
       // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.newBuilder()
@@ -511,7 +511,7 @@ public final class NodeControlServiceApi {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -520,7 +520,7 @@ public final class NodeControlServiceApi {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         value_ = "";
@@ -528,78 +528,78 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return NodeControlServiceApi.internal_static_NodeId_descriptor;
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeId_descriptor;
       }
 
-      @Override
-      public NodeId getDefaultInstanceForType() {
-        return NodeId.getDefaultInstance();
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.getDefaultInstance();
       }
 
-      @Override
-      public NodeId build() {
-        NodeId result = buildPartial();
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public NodeId buildPartial() {
-        NodeId result = new NodeId(this);
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId(this);
         result.value_ = value_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof NodeId) {
-          return mergeFrom((NodeId)other);
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(NodeId other) {
-        if (other == NodeId.getDefaultInstance()) return this;
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.getDefaultInstance()) return this;
         if (!other.getValue().isEmpty()) {
           value_ = other.value_;
           onChanged();
@@ -609,21 +609,21 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        NodeId parsedMessage = null;
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (NodeId) e.getUnfinishedMessage();
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -633,21 +633,21 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      private Object value_ = "";
+      private java.lang.Object value_ = "";
       /**
        * <code>string value = 1;</code>
        * @return The value.
        */
-      public String getValue() {
-        Object ref = value_;
-        if (!(ref instanceof String)) {
+      public java.lang.String getValue() {
+        java.lang.Object ref = value_;
+        if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          java.lang.String s = bs.toStringUtf8();
           value_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -656,11 +656,11 @@ public final class NodeControlServiceApi {
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
-        Object ref = value_;
+        java.lang.Object ref = value_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           value_ = b;
           return b;
         } else {
@@ -673,7 +673,7 @@ public final class NodeControlServiceApi {
        * @return This builder for chaining.
        */
       public Builder setValue(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -708,13 +708,13 @@ public final class NodeControlServiceApi {
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -725,18 +725,18 @@ public final class NodeControlServiceApi {
     }
 
     // @@protoc_insertion_point(class_scope:NodeId)
-    private static final NodeId DEFAULT_INSTANCE;
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new NodeId();
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId();
     }
 
-    public static NodeId getDefaultInstance() {
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<NodeId>
         PARSER = new com.google.protobuf.AbstractParser<NodeId>() {
-      @Override
+      @java.lang.Override
       public NodeId parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -749,13 +749,13 @@ public final class NodeControlServiceApi {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<NodeId> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public NodeId getDefaultInstanceForType() {
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -769,7 +769,7 @@ public final class NodeControlServiceApi {
      * <code>string value = 1;</code>
      * @return The value.
      */
-    String getValue();
+    java.lang.String getValue();
     /**
      * <code>string value = 1;</code>
      * @return The bytes for value.
@@ -793,14 +793,14 @@ public final class NodeControlServiceApi {
       value_ = "";
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
+    protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
       return new DeviceId();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -811,7 +811,7 @@ public final class NodeControlServiceApi {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -824,7 +824,7 @@ public final class NodeControlServiceApi {
               done = true;
               break;
             case 10: {
-              String s = input.readStringRequireUtf8();
+              java.lang.String s = input.readStringRequireUtf8();
 
               value_ = s;
               break;
@@ -850,32 +850,32 @@ public final class NodeControlServiceApi {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return NodeControlServiceApi.internal_static_DeviceId_descriptor;
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_DeviceId_descriptor;
     }
 
-    @Override
-    protected FieldAccessorTable
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return NodeControlServiceApi.internal_static_DeviceId_fieldAccessorTable
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_DeviceId_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              DeviceId.class, Builder.class);
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder.class);
     }
 
     public static final int VALUE_FIELD_NUMBER = 1;
-    private volatile Object value_;
+    private volatile java.lang.Object value_;
     /**
      * <code>string value = 1;</code>
      * @return The value.
      */
-    @Override
-    public String getValue() {
-      Object ref = value_;
-      if (ref instanceof String) {
-        return (String) ref;
+    @java.lang.Override
+    public java.lang.String getValue() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         value_ = s;
         return s;
       }
@@ -884,14 +884,14 @@ public final class NodeControlServiceApi {
      * <code>string value = 1;</code>
      * @return The bytes for value.
      */
-    @Override
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getValueBytes() {
-      Object ref = value_;
-      if (ref instanceof String) {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         value_ = b;
         return b;
       } else {
@@ -900,7 +900,7 @@ public final class NodeControlServiceApi {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -910,7 +910,7 @@ public final class NodeControlServiceApi {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getValueBytes().isEmpty()) {
@@ -919,7 +919,7 @@ public final class NodeControlServiceApi {
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -933,15 +933,15 @@ public final class NodeControlServiceApi {
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof DeviceId)) {
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId)) {
         return super.equals(obj);
       }
-      DeviceId other = (DeviceId) obj;
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId) obj;
 
       if (!getValue()
           .equals(other.getValue())) return false;
@@ -949,7 +949,7 @@ public final class NodeControlServiceApi {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -963,69 +963,69 @@ public final class NodeControlServiceApi {
       return hash;
     }
 
-    public static DeviceId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static DeviceId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static DeviceId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static DeviceId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static DeviceId parseFrom(byte[] data)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static DeviceId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static DeviceId parseFrom(java.io.InputStream input)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static DeviceId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static DeviceId parseDelimitedFrom(java.io.InputStream input)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static DeviceId parseDelimitedFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static DeviceId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static DeviceId parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1033,23 +1033,23 @@ public final class NodeControlServiceApi {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(DeviceId prototype) {
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1059,18 +1059,18 @@ public final class NodeControlServiceApi {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:DeviceId)
-        DeviceIdOrBuilder {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return NodeControlServiceApi.internal_static_DeviceId_descriptor;
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_DeviceId_descriptor;
       }
 
-      @Override
-      protected FieldAccessorTable
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return NodeControlServiceApi.internal_static_DeviceId_fieldAccessorTable
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_DeviceId_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                DeviceId.class, Builder.class);
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder.class);
       }
 
       // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.newBuilder()
@@ -1079,7 +1079,7 @@ public final class NodeControlServiceApi {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1088,7 +1088,7 @@ public final class NodeControlServiceApi {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         value_ = "";
@@ -1096,78 +1096,78 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return NodeControlServiceApi.internal_static_DeviceId_descriptor;
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_DeviceId_descriptor;
       }
 
-      @Override
-      public DeviceId getDefaultInstanceForType() {
-        return DeviceId.getDefaultInstance();
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance();
       }
 
-      @Override
-      public DeviceId build() {
-        DeviceId result = buildPartial();
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public DeviceId buildPartial() {
-        DeviceId result = new DeviceId(this);
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId(this);
         result.value_ = value_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof DeviceId) {
-          return mergeFrom((DeviceId)other);
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(DeviceId other) {
-        if (other == DeviceId.getDefaultInstance()) return this;
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance()) return this;
         if (!other.getValue().isEmpty()) {
           value_ = other.value_;
           onChanged();
@@ -1177,21 +1177,21 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        DeviceId parsedMessage = null;
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (DeviceId) e.getUnfinishedMessage();
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1201,21 +1201,21 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      private Object value_ = "";
+      private java.lang.Object value_ = "";
       /**
        * <code>string value = 1;</code>
        * @return The value.
        */
-      public String getValue() {
-        Object ref = value_;
-        if (!(ref instanceof String)) {
+      public java.lang.String getValue() {
+        java.lang.Object ref = value_;
+        if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          java.lang.String s = bs.toStringUtf8();
           value_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -1224,11 +1224,11 @@ public final class NodeControlServiceApi {
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
-        Object ref = value_;
+        java.lang.Object ref = value_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           value_ = b;
           return b;
         } else {
@@ -1241,7 +1241,7 @@ public final class NodeControlServiceApi {
        * @return This builder for chaining.
        */
       public Builder setValue(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1276,13 +1276,13 @@ public final class NodeControlServiceApi {
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -1293,18 +1293,18 @@ public final class NodeControlServiceApi {
     }
 
     // @@protoc_insertion_point(class_scope:DeviceId)
-    private static final DeviceId DEFAULT_INSTANCE;
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new DeviceId();
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId();
     }
 
-    public static DeviceId getDefaultInstance() {
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<DeviceId>
         PARSER = new com.google.protobuf.AbstractParser<DeviceId>() {
-      @Override
+      @java.lang.Override
       public DeviceId parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1317,13 +1317,13 @@ public final class NodeControlServiceApi {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<DeviceId> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public DeviceId getDefaultInstanceForType() {
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1342,11 +1342,11 @@ public final class NodeControlServiceApi {
      * <code>.NodeId node_id = 1;</code>
      * @return The nodeId.
      */
-    NodeId getNodeId();
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId getNodeId();
     /**
      * <code>.NodeId node_id = 1;</code>
      */
-    NodeIdOrBuilder getNodeIdOrBuilder();
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder getNodeIdOrBuilder();
 
     /**
      * <code>.DeviceId device_id = 2;</code>
@@ -1357,11 +1357,11 @@ public final class NodeControlServiceApi {
      * <code>.DeviceId device_id = 2;</code>
      * @return The deviceId.
      */
-    DeviceId getDeviceId();
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId();
     /**
      * <code>.DeviceId device_id = 2;</code>
      */
-    DeviceIdOrBuilder getDeviceIdOrBuilder();
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder();
 
     /**
      * <code>.NodeControlType control_type = 3;</code>
@@ -1372,13 +1372,13 @@ public final class NodeControlServiceApi {
      * <code>.NodeControlType control_type = 3;</code>
      * @return The controlType.
      */
-    NodeControlType getControlType();
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType getControlType();
 
     /**
      * <code>string detail = 4;</code>
      * @return The detail.
      */
-    String getDetail();
+    java.lang.String getDetail();
     /**
      * <code>string detail = 4;</code>
      * @return The bytes for detail.
@@ -1407,14 +1407,14 @@ public final class NodeControlServiceApi {
       detail_ = "";
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
+    protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
       return new NodeControl();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1425,7 +1425,7 @@ public final class NodeControlServiceApi {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -1438,11 +1438,11 @@ public final class NodeControlServiceApi {
               done = true;
               break;
             case 10: {
-              NodeId.Builder subBuilder = null;
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder subBuilder = null;
               if (nodeId_ != null) {
                 subBuilder = nodeId_.toBuilder();
               }
-              nodeId_ = input.readMessage(NodeId.parser(), extensionRegistry);
+              nodeId_ = input.readMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(nodeId_);
                 nodeId_ = subBuilder.buildPartial();
@@ -1451,11 +1451,11 @@ public final class NodeControlServiceApi {
               break;
             }
             case 18: {
-              DeviceId.Builder subBuilder = null;
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder subBuilder = null;
               if (deviceId_ != null) {
                 subBuilder = deviceId_.toBuilder();
               }
-              deviceId_ = input.readMessage(DeviceId.parser(), extensionRegistry);
+              deviceId_ = input.readMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(deviceId_);
                 deviceId_ = subBuilder.buildPartial();
@@ -1470,7 +1470,7 @@ public final class NodeControlServiceApi {
               break;
             }
             case 34: {
-              String s = input.readStringRequireUtf8();
+              java.lang.String s = input.readStringRequireUtf8();
 
               detail_ = s;
               break;
@@ -1496,24 +1496,24 @@ public final class NodeControlServiceApi {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return NodeControlServiceApi.internal_static_NodeControl_descriptor;
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeControl_descriptor;
     }
 
-    @Override
-    protected FieldAccessorTable
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return NodeControlServiceApi.internal_static_NodeControl_fieldAccessorTable
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeControl_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              NodeControl.class, Builder.class);
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl.Builder.class);
     }
 
     public static final int NODE_ID_FIELD_NUMBER = 1;
-    private NodeId nodeId_;
+    private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId nodeId_;
     /**
      * <code>.NodeId node_id = 1;</code>
      * @return Whether the nodeId field is set.
      */
-    @Override
+    @java.lang.Override
     public boolean hasNodeId() {
       return nodeId_ != null;
     }
@@ -1521,25 +1521,25 @@ public final class NodeControlServiceApi {
      * <code>.NodeId node_id = 1;</code>
      * @return The nodeId.
      */
-    @Override
-    public NodeId getNodeId() {
-      return nodeId_ == null ? NodeId.getDefaultInstance() : nodeId_;
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId getNodeId() {
+      return nodeId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.getDefaultInstance() : nodeId_;
     }
     /**
      * <code>.NodeId node_id = 1;</code>
      */
-    @Override
-    public NodeIdOrBuilder getNodeIdOrBuilder() {
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder getNodeIdOrBuilder() {
       return getNodeId();
     }
 
     public static final int DEVICE_ID_FIELD_NUMBER = 2;
-    private DeviceId deviceId_;
+    private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId deviceId_;
     /**
      * <code>.DeviceId device_id = 2;</code>
      * @return Whether the deviceId field is set.
      */
-    @Override
+    @java.lang.Override
     public boolean hasDeviceId() {
       return deviceId_ != null;
     }
@@ -1547,15 +1547,15 @@ public final class NodeControlServiceApi {
      * <code>.DeviceId device_id = 2;</code>
      * @return The deviceId.
      */
-    @Override
-    public DeviceId getDeviceId() {
-      return deviceId_ == null ? DeviceId.getDefaultInstance() : deviceId_;
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId() {
+      return deviceId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
     }
     /**
      * <code>.DeviceId device_id = 2;</code>
      */
-    @Override
-    public DeviceIdOrBuilder getDeviceIdOrBuilder() {
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder() {
       return getDeviceId();
     }
 
@@ -1565,34 +1565,34 @@ public final class NodeControlServiceApi {
      * <code>.NodeControlType control_type = 3;</code>
      * @return The enum numeric value on the wire for controlType.
      */
-    @Override public int getControlTypeValue() {
+    @java.lang.Override public int getControlTypeValue() {
       return controlType_;
     }
     /**
      * <code>.NodeControlType control_type = 3;</code>
      * @return The controlType.
      */
-    @Override public NodeControlType getControlType() {
+    @java.lang.Override public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType getControlType() {
       @SuppressWarnings("deprecation")
-      NodeControlType result = NodeControlType.valueOf(controlType_);
-      return result == null ? NodeControlType.UNRECOGNIZED : result;
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType result = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType.valueOf(controlType_);
+      return result == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType.UNRECOGNIZED : result;
     }
 
     public static final int DETAIL_FIELD_NUMBER = 4;
-    private volatile Object detail_;
+    private volatile java.lang.Object detail_;
     /**
      * <code>string detail = 4;</code>
      * @return The detail.
      */
-    @Override
-    public String getDetail() {
-      Object ref = detail_;
-      if (ref instanceof String) {
-        return (String) ref;
+    @java.lang.Override
+    public java.lang.String getDetail() {
+      java.lang.Object ref = detail_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         detail_ = s;
         return s;
       }
@@ -1601,14 +1601,14 @@ public final class NodeControlServiceApi {
      * <code>string detail = 4;</code>
      * @return The bytes for detail.
      */
-    @Override
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getDetailBytes() {
-      Object ref = detail_;
-      if (ref instanceof String) {
+      java.lang.Object ref = detail_;
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         detail_ = b;
         return b;
       } else {
@@ -1617,7 +1617,7 @@ public final class NodeControlServiceApi {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -1627,7 +1627,7 @@ public final class NodeControlServiceApi {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (nodeId_ != null) {
@@ -1636,7 +1636,7 @@ public final class NodeControlServiceApi {
       if (deviceId_ != null) {
         output.writeMessage(2, getDeviceId());
       }
-      if (controlType_ != NodeControlType.REBOOT_NODE.getNumber()) {
+      if (controlType_ != proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType.REBOOT_NODE.getNumber()) {
         output.writeEnum(3, controlType_);
       }
       if (!getDetailBytes().isEmpty()) {
@@ -1645,7 +1645,7 @@ public final class NodeControlServiceApi {
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -1659,7 +1659,7 @@ public final class NodeControlServiceApi {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getDeviceId());
       }
-      if (controlType_ != NodeControlType.REBOOT_NODE.getNumber()) {
+      if (controlType_ != proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType.REBOOT_NODE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, controlType_);
       }
@@ -1671,15 +1671,15 @@ public final class NodeControlServiceApi {
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof NodeControl)) {
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl)) {
         return super.equals(obj);
       }
-      NodeControl other = (NodeControl) obj;
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl) obj;
 
       if (hasNodeId() != other.hasNodeId()) return false;
       if (hasNodeId()) {
@@ -1698,7 +1698,7 @@ public final class NodeControlServiceApi {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -1722,69 +1722,69 @@ public final class NodeControlServiceApi {
       return hash;
     }
 
-    public static NodeControl parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static NodeControl parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static NodeControl parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static NodeControl parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static NodeControl parseFrom(byte[] data)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static NodeControl parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static NodeControl parseFrom(java.io.InputStream input)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static NodeControl parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static NodeControl parseDelimitedFrom(java.io.InputStream input)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static NodeControl parseDelimitedFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static NodeControl parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static NodeControl parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1792,23 +1792,23 @@ public final class NodeControlServiceApi {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(NodeControl prototype) {
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1822,18 +1822,18 @@ public final class NodeControlServiceApi {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:NodeControl)
-        NodeControlOrBuilder {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return NodeControlServiceApi.internal_static_NodeControl_descriptor;
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeControl_descriptor;
       }
 
-      @Override
-      protected FieldAccessorTable
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return NodeControlServiceApi.internal_static_NodeControl_fieldAccessorTable
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeControl_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                NodeControl.class, Builder.class);
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl.Builder.class);
       }
 
       // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl.newBuilder()
@@ -1842,7 +1842,7 @@ public final class NodeControlServiceApi {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1851,7 +1851,7 @@ public final class NodeControlServiceApi {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         if (nodeIdBuilder_ == null) {
@@ -1873,29 +1873,29 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return NodeControlServiceApi.internal_static_NodeControl_descriptor;
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeControl_descriptor;
       }
 
-      @Override
-      public NodeControl getDefaultInstanceForType() {
-        return NodeControl.getDefaultInstance();
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl.getDefaultInstance();
       }
 
-      @Override
-      public NodeControl build() {
-        NodeControl result = buildPartial();
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public NodeControl buildPartial() {
-        NodeControl result = new NodeControl(this);
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl(this);
         if (nodeIdBuilder_ == null) {
           result.nodeId_ = nodeId_;
         } else {
@@ -1912,50 +1912,50 @@ public final class NodeControlServiceApi {
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof NodeControl) {
-          return mergeFrom((NodeControl)other);
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(NodeControl other) {
-        if (other == NodeControl.getDefaultInstance()) return this;
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl.getDefaultInstance()) return this;
         if (other.hasNodeId()) {
           mergeNodeId(other.getNodeId());
         }
@@ -1974,21 +1974,21 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        NodeControl parsedMessage = null;
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (NodeControl) e.getUnfinishedMessage();
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1998,9 +1998,9 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      private NodeId nodeId_;
+      private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId nodeId_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          NodeId, NodeId.Builder, NodeIdOrBuilder> nodeIdBuilder_;
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder> nodeIdBuilder_;
       /**
        * <code>.NodeId node_id = 1;</code>
        * @return Whether the nodeId field is set.
@@ -2012,9 +2012,9 @@ public final class NodeControlServiceApi {
        * <code>.NodeId node_id = 1;</code>
        * @return The nodeId.
        */
-      public NodeId getNodeId() {
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId getNodeId() {
         if (nodeIdBuilder_ == null) {
-          return nodeId_ == null ? NodeId.getDefaultInstance() : nodeId_;
+          return nodeId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.getDefaultInstance() : nodeId_;
         } else {
           return nodeIdBuilder_.getMessage();
         }
@@ -2022,7 +2022,7 @@ public final class NodeControlServiceApi {
       /**
        * <code>.NodeId node_id = 1;</code>
        */
-      public Builder setNodeId(NodeId value) {
+      public Builder setNodeId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId value) {
         if (nodeIdBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2039,7 +2039,7 @@ public final class NodeControlServiceApi {
        * <code>.NodeId node_id = 1;</code>
        */
       public Builder setNodeId(
-          NodeId.Builder builderForValue) {
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder builderForValue) {
         if (nodeIdBuilder_ == null) {
           nodeId_ = builderForValue.build();
           onChanged();
@@ -2052,11 +2052,11 @@ public final class NodeControlServiceApi {
       /**
        * <code>.NodeId node_id = 1;</code>
        */
-      public Builder mergeNodeId(NodeId value) {
+      public Builder mergeNodeId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId value) {
         if (nodeIdBuilder_ == null) {
           if (nodeId_ != null) {
             nodeId_ =
-              NodeId.newBuilder(nodeId_).mergeFrom(value).buildPartial();
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.newBuilder(nodeId_).mergeFrom(value).buildPartial();
           } else {
             nodeId_ = value;
           }
@@ -2084,7 +2084,7 @@ public final class NodeControlServiceApi {
       /**
        * <code>.NodeId node_id = 1;</code>
        */
-      public NodeId.Builder getNodeIdBuilder() {
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder getNodeIdBuilder() {
         
         onChanged();
         return getNodeIdFieldBuilder().getBuilder();
@@ -2092,23 +2092,23 @@ public final class NodeControlServiceApi {
       /**
        * <code>.NodeId node_id = 1;</code>
        */
-      public NodeIdOrBuilder getNodeIdOrBuilder() {
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder getNodeIdOrBuilder() {
         if (nodeIdBuilder_ != null) {
           return nodeIdBuilder_.getMessageOrBuilder();
         } else {
           return nodeId_ == null ?
-              NodeId.getDefaultInstance() : nodeId_;
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.getDefaultInstance() : nodeId_;
         }
       }
       /**
        * <code>.NodeId node_id = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          NodeId, NodeId.Builder, NodeIdOrBuilder>
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder> 
           getNodeIdFieldBuilder() {
         if (nodeIdBuilder_ == null) {
           nodeIdBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              NodeId, NodeId.Builder, NodeIdOrBuilder>(
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder>(
                   getNodeId(),
                   getParentForChildren(),
                   isClean());
@@ -2117,9 +2117,9 @@ public final class NodeControlServiceApi {
         return nodeIdBuilder_;
       }
 
-      private DeviceId deviceId_;
+      private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId deviceId_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          DeviceId, DeviceId.Builder, DeviceIdOrBuilder> deviceIdBuilder_;
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder> deviceIdBuilder_;
       /**
        * <code>.DeviceId device_id = 2;</code>
        * @return Whether the deviceId field is set.
@@ -2131,9 +2131,9 @@ public final class NodeControlServiceApi {
        * <code>.DeviceId device_id = 2;</code>
        * @return The deviceId.
        */
-      public DeviceId getDeviceId() {
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId() {
         if (deviceIdBuilder_ == null) {
-          return deviceId_ == null ? DeviceId.getDefaultInstance() : deviceId_;
+          return deviceId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
         } else {
           return deviceIdBuilder_.getMessage();
         }
@@ -2141,7 +2141,7 @@ public final class NodeControlServiceApi {
       /**
        * <code>.DeviceId device_id = 2;</code>
        */
-      public Builder setDeviceId(DeviceId value) {
+      public Builder setDeviceId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId value) {
         if (deviceIdBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2158,7 +2158,7 @@ public final class NodeControlServiceApi {
        * <code>.DeviceId device_id = 2;</code>
        */
       public Builder setDeviceId(
-          DeviceId.Builder builderForValue) {
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder builderForValue) {
         if (deviceIdBuilder_ == null) {
           deviceId_ = builderForValue.build();
           onChanged();
@@ -2171,11 +2171,11 @@ public final class NodeControlServiceApi {
       /**
        * <code>.DeviceId device_id = 2;</code>
        */
-      public Builder mergeDeviceId(DeviceId value) {
+      public Builder mergeDeviceId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId value) {
         if (deviceIdBuilder_ == null) {
           if (deviceId_ != null) {
             deviceId_ =
-              DeviceId.newBuilder(deviceId_).mergeFrom(value).buildPartial();
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.newBuilder(deviceId_).mergeFrom(value).buildPartial();
           } else {
             deviceId_ = value;
           }
@@ -2203,7 +2203,7 @@ public final class NodeControlServiceApi {
       /**
        * <code>.DeviceId device_id = 2;</code>
        */
-      public DeviceId.Builder getDeviceIdBuilder() {
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder getDeviceIdBuilder() {
         
         onChanged();
         return getDeviceIdFieldBuilder().getBuilder();
@@ -2211,23 +2211,23 @@ public final class NodeControlServiceApi {
       /**
        * <code>.DeviceId device_id = 2;</code>
        */
-      public DeviceIdOrBuilder getDeviceIdOrBuilder() {
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder() {
         if (deviceIdBuilder_ != null) {
           return deviceIdBuilder_.getMessageOrBuilder();
         } else {
           return deviceId_ == null ?
-              DeviceId.getDefaultInstance() : deviceId_;
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
         }
       }
       /**
        * <code>.DeviceId device_id = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          DeviceId, DeviceId.Builder, DeviceIdOrBuilder>
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder> 
           getDeviceIdFieldBuilder() {
         if (deviceIdBuilder_ == null) {
           deviceIdBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              DeviceId, DeviceId.Builder, DeviceIdOrBuilder>(
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder>(
                   getDeviceId(),
                   getParentForChildren(),
                   isClean());
@@ -2241,7 +2241,7 @@ public final class NodeControlServiceApi {
        * <code>.NodeControlType control_type = 3;</code>
        * @return The enum numeric value on the wire for controlType.
        */
-      @Override public int getControlTypeValue() {
+      @java.lang.Override public int getControlTypeValue() {
         return controlType_;
       }
       /**
@@ -2259,18 +2259,18 @@ public final class NodeControlServiceApi {
        * <code>.NodeControlType control_type = 3;</code>
        * @return The controlType.
        */
-      @Override
-      public NodeControlType getControlType() {
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType getControlType() {
         @SuppressWarnings("deprecation")
-        NodeControlType result = NodeControlType.valueOf(controlType_);
-        return result == null ? NodeControlType.UNRECOGNIZED : result;
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType result = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType.valueOf(controlType_);
+        return result == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType.UNRECOGNIZED : result;
       }
       /**
        * <code>.NodeControlType control_type = 3;</code>
        * @param value The controlType to set.
        * @return This builder for chaining.
        */
-      public Builder setControlType(NodeControlType value) {
+      public Builder setControlType(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2290,21 +2290,21 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      private Object detail_ = "";
+      private java.lang.Object detail_ = "";
       /**
        * <code>string detail = 4;</code>
        * @return The detail.
        */
-      public String getDetail() {
-        Object ref = detail_;
-        if (!(ref instanceof String)) {
+      public java.lang.String getDetail() {
+        java.lang.Object ref = detail_;
+        if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          java.lang.String s = bs.toStringUtf8();
           detail_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -2313,11 +2313,11 @@ public final class NodeControlServiceApi {
        */
       public com.google.protobuf.ByteString
           getDetailBytes() {
-        Object ref = detail_;
+        java.lang.Object ref = detail_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           detail_ = b;
           return b;
         } else {
@@ -2330,7 +2330,7 @@ public final class NodeControlServiceApi {
        * @return This builder for chaining.
        */
       public Builder setDetail(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2365,13 +2365,13 @@ public final class NodeControlServiceApi {
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -2382,18 +2382,18 @@ public final class NodeControlServiceApi {
     }
 
     // @@protoc_insertion_point(class_scope:NodeControl)
-    private static final NodeControl DEFAULT_INSTANCE;
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new NodeControl();
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl();
     }
 
-    public static NodeControl getDefaultInstance() {
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<NodeControl>
         PARSER = new com.google.protobuf.AbstractParser<NodeControl>() {
-      @Override
+      @java.lang.Override
       public NodeControl parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2406,13 +2406,13 @@ public final class NodeControlServiceApi {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<NodeControl> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public NodeControl getDefaultInstanceForType() {
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2432,7 +2432,7 @@ public final class NodeControlServiceApi {
      * <code>string message = 2;</code>
      * @return The message.
      */
-    String getMessage();
+    java.lang.String getMessage();
     /**
      * <code>string message = 2;</code>
      * @return The bytes for message.
@@ -2460,14 +2460,14 @@ public final class NodeControlServiceApi {
       message_ = "";
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
+    protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
       return new NodeControlResponse();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -2478,7 +2478,7 @@ public final class NodeControlServiceApi {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -2496,7 +2496,7 @@ public final class NodeControlServiceApi {
               break;
             }
             case 18: {
-              String s = input.readStringRequireUtf8();
+              java.lang.String s = input.readStringRequireUtf8();
 
               message_ = s;
               break;
@@ -2522,15 +2522,15 @@ public final class NodeControlServiceApi {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return NodeControlServiceApi.internal_static_NodeControlResponse_descriptor;
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeControlResponse_descriptor;
     }
 
-    @Override
-    protected FieldAccessorTable
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return NodeControlServiceApi.internal_static_NodeControlResponse_fieldAccessorTable
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeControlResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              NodeControlResponse.class, Builder.class);
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse.Builder.class);
     }
 
     public static final int SUCCESS_FIELD_NUMBER = 1;
@@ -2539,26 +2539,26 @@ public final class NodeControlServiceApi {
      * <code>bool success = 1;</code>
      * @return The success.
      */
-    @Override
+    @java.lang.Override
     public boolean getSuccess() {
       return success_;
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 2;
-    private volatile Object message_;
+    private volatile java.lang.Object message_;
     /**
      * <code>string message = 2;</code>
      * @return The message.
      */
-    @Override
-    public String getMessage() {
-      Object ref = message_;
-      if (ref instanceof String) {
-        return (String) ref;
+    @java.lang.Override
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         message_ = s;
         return s;
       }
@@ -2567,14 +2567,14 @@ public final class NodeControlServiceApi {
      * <code>string message = 2;</code>
      * @return The bytes for message.
      */
-    @Override
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getMessageBytes() {
-      Object ref = message_;
-      if (ref instanceof String) {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         message_ = b;
         return b;
       } else {
@@ -2583,7 +2583,7 @@ public final class NodeControlServiceApi {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -2593,7 +2593,7 @@ public final class NodeControlServiceApi {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (success_ != false) {
@@ -2605,7 +2605,7 @@ public final class NodeControlServiceApi {
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -2623,15 +2623,15 @@ public final class NodeControlServiceApi {
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof NodeControlResponse)) {
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse)) {
         return super.equals(obj);
       }
-      NodeControlResponse other = (NodeControlResponse) obj;
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse) obj;
 
       if (getSuccess()
           != other.getSuccess()) return false;
@@ -2641,7 +2641,7 @@ public final class NodeControlServiceApi {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -2658,69 +2658,69 @@ public final class NodeControlServiceApi {
       return hash;
     }
 
-    public static NodeControlResponse parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static NodeControlResponse parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static NodeControlResponse parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static NodeControlResponse parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static NodeControlResponse parseFrom(byte[] data)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static NodeControlResponse parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static NodeControlResponse parseFrom(java.io.InputStream input)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static NodeControlResponse parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static NodeControlResponse parseDelimitedFrom(java.io.InputStream input)
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static NodeControlResponse parseDelimitedFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static NodeControlResponse parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static NodeControlResponse parseFrom(
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2728,23 +2728,23 @@ public final class NodeControlServiceApi {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(NodeControlResponse prototype) {
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2758,18 +2758,18 @@ public final class NodeControlServiceApi {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:NodeControlResponse)
-        NodeControlResponseOrBuilder {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return NodeControlServiceApi.internal_static_NodeControlResponse_descriptor;
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeControlResponse_descriptor;
       }
 
-      @Override
-      protected FieldAccessorTable
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return NodeControlServiceApi.internal_static_NodeControlResponse_fieldAccessorTable
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeControlResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                NodeControlResponse.class, Builder.class);
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse.Builder.class);
       }
 
       // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse.newBuilder()
@@ -2778,7 +2778,7 @@ public final class NodeControlServiceApi {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -2787,7 +2787,7 @@ public final class NodeControlServiceApi {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         success_ = false;
@@ -2797,79 +2797,79 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return NodeControlServiceApi.internal_static_NodeControlResponse_descriptor;
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeControlResponse_descriptor;
       }
 
-      @Override
-      public NodeControlResponse getDefaultInstanceForType() {
-        return NodeControlResponse.getDefaultInstance();
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse.getDefaultInstance();
       }
 
-      @Override
-      public NodeControlResponse build() {
-        NodeControlResponse result = buildPartial();
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public NodeControlResponse buildPartial() {
-        NodeControlResponse result = new NodeControlResponse(this);
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse(this);
         result.success_ = success_;
         result.message_ = message_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof NodeControlResponse) {
-          return mergeFrom((NodeControlResponse)other);
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(NodeControlResponse other) {
-        if (other == NodeControlResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse.getDefaultInstance()) return this;
         if (other.getSuccess() != false) {
           setSuccess(other.getSuccess());
         }
@@ -2882,21 +2882,21 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        NodeControlResponse parsedMessage = null;
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (NodeControlResponse) e.getUnfinishedMessage();
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2911,7 +2911,7 @@ public final class NodeControlServiceApi {
        * <code>bool success = 1;</code>
        * @return The success.
        */
-      @Override
+      @java.lang.Override
       public boolean getSuccess() {
         return success_;
       }
@@ -2937,21 +2937,21 @@ public final class NodeControlServiceApi {
         return this;
       }
 
-      private Object message_ = "";
+      private java.lang.Object message_ = "";
       /**
        * <code>string message = 2;</code>
        * @return The message.
        */
-      public String getMessage() {
-        Object ref = message_;
-        if (!(ref instanceof String)) {
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          java.lang.String s = bs.toStringUtf8();
           message_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -2960,11 +2960,11 @@ public final class NodeControlServiceApi {
        */
       public com.google.protobuf.ByteString
           getMessageBytes() {
-        Object ref = message_;
+        java.lang.Object ref = message_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           message_ = b;
           return b;
         } else {
@@ -2977,7 +2977,7 @@ public final class NodeControlServiceApi {
        * @return This builder for chaining.
        */
       public Builder setMessage(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -3012,13 +3012,13 @@ public final class NodeControlServiceApi {
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -3029,18 +3029,18 @@ public final class NodeControlServiceApi {
     }
 
     // @@protoc_insertion_point(class_scope:NodeControlResponse)
-    private static final NodeControlResponse DEFAULT_INSTANCE;
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new NodeControlResponse();
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse();
     }
 
-    public static NodeControlResponse getDefaultInstance() {
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<NodeControlResponse>
         PARSER = new com.google.protobuf.AbstractParser<NodeControlResponse>() {
-      @Override
+      @java.lang.Override
       public NodeControlResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3053,13 +3053,4732 @@ public final class NodeControlServiceApi {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<NodeControlResponse> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public NodeControlResponse getDefaultInstanceForType() {
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DeviceInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DeviceInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.DeviceId device_id = 1;</code>
+     * @return Whether the deviceId field is set.
+     */
+    boolean hasDeviceId();
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.DeviceId device_id = 1;</code>
+     * @return The deviceId.
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId();
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.DeviceId device_id = 1;</code>
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder();
+
+    /**
+     * <code>string device_name = 2;</code>
+     * @return The deviceName.
+     */
+    java.lang.String getDeviceName();
+    /**
+     * <code>string device_name = 2;</code>
+     * @return The bytes for deviceName.
+     */
+    com.google.protobuf.ByteString
+        getDeviceNameBytes();
+
+    /**
+     * <code>string device_type = 3;</code>
+     * @return The deviceType.
+     */
+    java.lang.String getDeviceType();
+    /**
+     * <code>string device_type = 3;</code>
+     * @return The bytes for deviceType.
+     */
+    com.google.protobuf.ByteString
+        getDeviceTypeBytes();
+
+    /**
+     * <code>string status = 4;</code>
+     * @return The status.
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>string status = 4;</code>
+     * @return The bytes for status.
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+
+    /**
+     * <pre>
+     *节点位置, wgs-84坐标系，弧度单位
+     * </pre>
+     *
+     * <code>.Position position = 5;</code>
+     * @return Whether the position field is set.
+     */
+    boolean hasPosition();
+    /**
+     * <pre>
+     *节点位置, wgs-84坐标系，弧度单位
+     * </pre>
+     *
+     * <code>.Position position = 5;</code>
+     * @return The position.
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position getPosition();
+    /**
+     * <pre>
+     *节点位置, wgs-84坐标系，弧度单位
+     * </pre>
+     *
+     * <code>.Position position = 5;</code>
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.PositionOrBuilder getPositionOrBuilder();
+
+    /**
+     * <code>.Posture posture = 6;</code>
+     * @return Whether the posture field is set.
+     */
+    boolean hasPosture();
+    /**
+     * <code>.Posture posture = 6;</code>
+     * @return The posture.
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture getPosture();
+    /**
+     * <code>.Posture posture = 6;</code>
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.PostureOrBuilder getPostureOrBuilder();
+
+    /**
+     * <code>repeated .Physical physicalList = 7;</code>
+     */
+    java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical> 
+        getPhysicalListList();
+    /**
+     * <code>repeated .Physical physicalList = 7;</code>
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical getPhysicalList(int index);
+    /**
+     * <code>repeated .Physical physicalList = 7;</code>
+     */
+    int getPhysicalListCount();
+    /**
+     * <code>repeated .Physical physicalList = 7;</code>
+     */
+    java.util.List<? extends proto_compile.cetc41.nodecontrol.DCTSServiceApi.PhysicalOrBuilder> 
+        getPhysicalListOrBuilderList();
+    /**
+     * <code>repeated .Physical physicalList = 7;</code>
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.PhysicalOrBuilder getPhysicalListOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   *设备信息
+   * </pre>
+   *
+   * Protobuf type {@code DeviceInfo}
+   */
+  public static final class DeviceInfo extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:DeviceInfo)
+      DeviceInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DeviceInfo.newBuilder() to construct.
+    private DeviceInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DeviceInfo() {
+      deviceName_ = "";
+      deviceType_ = "";
+      status_ = "";
+      physicalList_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DeviceInfo();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DeviceInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder subBuilder = null;
+              if (deviceId_ != null) {
+                subBuilder = deviceId_.toBuilder();
+              }
+              deviceId_ = input.readMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(deviceId_);
+                deviceId_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              deviceName_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              deviceType_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              status_ = s;
+              break;
+            }
+            case 42: {
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position.Builder subBuilder = null;
+              if (position_ != null) {
+                subBuilder = position_.toBuilder();
+              }
+              position_ = input.readMessage(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(position_);
+                position_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 50: {
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture.Builder subBuilder = null;
+              if (posture_ != null) {
+                subBuilder = posture_.toBuilder();
+              }
+              posture_ = input.readMessage(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(posture_);
+                posture_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                physicalList_ = new java.util.ArrayList<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              physicalList_.add(
+                  input.readMessage(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          physicalList_ = java.util.Collections.unmodifiableList(physicalList_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_DeviceInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_DeviceInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder.class);
+    }
+
+    public static final int DEVICE_ID_FIELD_NUMBER = 1;
+    private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId deviceId_;
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.DeviceId device_id = 1;</code>
+     * @return Whether the deviceId field is set.
+     */
+    @java.lang.Override
+    public boolean hasDeviceId() {
+      return deviceId_ != null;
+    }
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.DeviceId device_id = 1;</code>
+     * @return The deviceId.
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId() {
+      return deviceId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+    }
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.DeviceId device_id = 1;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder() {
+      return getDeviceId();
+    }
+
+    public static final int DEVICE_NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object deviceName_;
+    /**
+     * <code>string device_name = 2;</code>
+     * @return The deviceName.
+     */
+    @java.lang.Override
+    public java.lang.String getDeviceName() {
+      java.lang.Object ref = deviceName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        deviceName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string device_name = 2;</code>
+     * @return The bytes for deviceName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDeviceNameBytes() {
+      java.lang.Object ref = deviceName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        deviceName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DEVICE_TYPE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object deviceType_;
+    /**
+     * <code>string device_type = 3;</code>
+     * @return The deviceType.
+     */
+    @java.lang.Override
+    public java.lang.String getDeviceType() {
+      java.lang.Object ref = deviceType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        deviceType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string device_type = 3;</code>
+     * @return The bytes for deviceType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDeviceTypeBytes() {
+      java.lang.Object ref = deviceType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        deviceType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 4;
+    private volatile java.lang.Object status_;
+    /**
+     * <code>string status = 4;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string status = 4;</code>
+     * @return The bytes for status.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int POSITION_FIELD_NUMBER = 5;
+    private proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position position_;
+    /**
+     * <pre>
+     *节点位置, wgs-84坐标系，弧度单位
+     * </pre>
+     *
+     * <code>.Position position = 5;</code>
+     * @return Whether the position field is set.
+     */
+    @java.lang.Override
+    public boolean hasPosition() {
+      return position_ != null;
+    }
+    /**
+     * <pre>
+     *节点位置, wgs-84坐标系，弧度单位
+     * </pre>
+     *
+     * <code>.Position position = 5;</code>
+     * @return The position.
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position getPosition() {
+      return position_ == null ? proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position.getDefaultInstance() : position_;
+    }
+    /**
+     * <pre>
+     *节点位置, wgs-84坐标系，弧度单位
+     * </pre>
+     *
+     * <code>.Position position = 5;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.PositionOrBuilder getPositionOrBuilder() {
+      return getPosition();
+    }
+
+    public static final int POSTURE_FIELD_NUMBER = 6;
+    private proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture posture_;
+    /**
+     * <code>.Posture posture = 6;</code>
+     * @return Whether the posture field is set.
+     */
+    @java.lang.Override
+    public boolean hasPosture() {
+      return posture_ != null;
+    }
+    /**
+     * <code>.Posture posture = 6;</code>
+     * @return The posture.
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture getPosture() {
+      return posture_ == null ? proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture.getDefaultInstance() : posture_;
+    }
+    /**
+     * <code>.Posture posture = 6;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.PostureOrBuilder getPostureOrBuilder() {
+      return getPosture();
+    }
+
+    public static final int PHYSICALLIST_FIELD_NUMBER = 7;
+    private java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical> physicalList_;
+    /**
+     * <code>repeated .Physical physicalList = 7;</code>
+     */
+    @java.lang.Override
+    public java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical> getPhysicalListList() {
+      return physicalList_;
+    }
+    /**
+     * <code>repeated .Physical physicalList = 7;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends proto_compile.cetc41.nodecontrol.DCTSServiceApi.PhysicalOrBuilder> 
+        getPhysicalListOrBuilderList() {
+      return physicalList_;
+    }
+    /**
+     * <code>repeated .Physical physicalList = 7;</code>
+     */
+    @java.lang.Override
+    public int getPhysicalListCount() {
+      return physicalList_.size();
+    }
+    /**
+     * <code>repeated .Physical physicalList = 7;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical getPhysicalList(int index) {
+      return physicalList_.get(index);
+    }
+    /**
+     * <code>repeated .Physical physicalList = 7;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.PhysicalOrBuilder getPhysicalListOrBuilder(
+        int index) {
+      return physicalList_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (deviceId_ != null) {
+        output.writeMessage(1, getDeviceId());
+      }
+      if (!getDeviceNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, deviceName_);
+      }
+      if (!getDeviceTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, deviceType_);
+      }
+      if (!getStatusBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, status_);
+      }
+      if (position_ != null) {
+        output.writeMessage(5, getPosition());
+      }
+      if (posture_ != null) {
+        output.writeMessage(6, getPosture());
+      }
+      for (int i = 0; i < physicalList_.size(); i++) {
+        output.writeMessage(7, physicalList_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (deviceId_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getDeviceId());
+      }
+      if (!getDeviceNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, deviceName_);
+      }
+      if (!getDeviceTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, deviceType_);
+      }
+      if (!getStatusBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, status_);
+      }
+      if (position_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getPosition());
+      }
+      if (posture_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getPosture());
+      }
+      for (int i = 0; i < physicalList_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, physicalList_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo)) {
+        return super.equals(obj);
+      }
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo) obj;
+
+      if (hasDeviceId() != other.hasDeviceId()) return false;
+      if (hasDeviceId()) {
+        if (!getDeviceId()
+            .equals(other.getDeviceId())) return false;
+      }
+      if (!getDeviceName()
+          .equals(other.getDeviceName())) return false;
+      if (!getDeviceType()
+          .equals(other.getDeviceType())) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
+      if (hasPosition() != other.hasPosition()) return false;
+      if (hasPosition()) {
+        if (!getPosition()
+            .equals(other.getPosition())) return false;
+      }
+      if (hasPosture() != other.hasPosture()) return false;
+      if (hasPosture()) {
+        if (!getPosture()
+            .equals(other.getPosture())) return false;
+      }
+      if (!getPhysicalListList()
+          .equals(other.getPhysicalListList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasDeviceId()) {
+        hash = (37 * hash) + DEVICE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getDeviceId().hashCode();
+      }
+      hash = (37 * hash) + DEVICE_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getDeviceName().hashCode();
+      hash = (37 * hash) + DEVICE_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getDeviceType().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
+      if (hasPosition()) {
+        hash = (37 * hash) + POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getPosition().hashCode();
+      }
+      if (hasPosture()) {
+        hash = (37 * hash) + POSTURE_FIELD_NUMBER;
+        hash = (53 * hash) + getPosture().hashCode();
+      }
+      if (getPhysicalListCount() > 0) {
+        hash = (37 * hash) + PHYSICALLIST_FIELD_NUMBER;
+        hash = (53 * hash) + getPhysicalListList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *设备信息
+     * </pre>
+     *
+     * Protobuf type {@code DeviceInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DeviceInfo)
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_DeviceInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_DeviceInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder.class);
+      }
+
+      // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getPhysicalListFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = null;
+        } else {
+          deviceId_ = null;
+          deviceIdBuilder_ = null;
+        }
+        deviceName_ = "";
+
+        deviceType_ = "";
+
+        status_ = "";
+
+        if (positionBuilder_ == null) {
+          position_ = null;
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
+        if (postureBuilder_ == null) {
+          posture_ = null;
+        } else {
+          posture_ = null;
+          postureBuilder_ = null;
+        }
+        if (physicalListBuilder_ == null) {
+          physicalList_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          physicalListBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_DeviceInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo(this);
+        int from_bitField0_ = bitField0_;
+        if (deviceIdBuilder_ == null) {
+          result.deviceId_ = deviceId_;
+        } else {
+          result.deviceId_ = deviceIdBuilder_.build();
+        }
+        result.deviceName_ = deviceName_;
+        result.deviceType_ = deviceType_;
+        result.status_ = status_;
+        if (positionBuilder_ == null) {
+          result.position_ = position_;
+        } else {
+          result.position_ = positionBuilder_.build();
+        }
+        if (postureBuilder_ == null) {
+          result.posture_ = posture_;
+        } else {
+          result.posture_ = postureBuilder_.build();
+        }
+        if (physicalListBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            physicalList_ = java.util.Collections.unmodifiableList(physicalList_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.physicalList_ = physicalList_;
+        } else {
+          result.physicalList_ = physicalListBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.getDefaultInstance()) return this;
+        if (other.hasDeviceId()) {
+          mergeDeviceId(other.getDeviceId());
+        }
+        if (!other.getDeviceName().isEmpty()) {
+          deviceName_ = other.deviceName_;
+          onChanged();
+        }
+        if (!other.getDeviceType().isEmpty()) {
+          deviceType_ = other.deviceType_;
+          onChanged();
+        }
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
+          onChanged();
+        }
+        if (other.hasPosition()) {
+          mergePosition(other.getPosition());
+        }
+        if (other.hasPosture()) {
+          mergePosture(other.getPosture());
+        }
+        if (physicalListBuilder_ == null) {
+          if (!other.physicalList_.isEmpty()) {
+            if (physicalList_.isEmpty()) {
+              physicalList_ = other.physicalList_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensurePhysicalListIsMutable();
+              physicalList_.addAll(other.physicalList_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.physicalList_.isEmpty()) {
+            if (physicalListBuilder_.isEmpty()) {
+              physicalListBuilder_.dispose();
+              physicalListBuilder_ = null;
+              physicalList_ = other.physicalList_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              physicalListBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getPhysicalListFieldBuilder() : null;
+            } else {
+              physicalListBuilder_.addAllMessages(other.physicalList_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId deviceId_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder> deviceIdBuilder_;
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.DeviceId device_id = 1;</code>
+       * @return Whether the deviceId field is set.
+       */
+      public boolean hasDeviceId() {
+        return deviceIdBuilder_ != null || deviceId_ != null;
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.DeviceId device_id = 1;</code>
+       * @return The deviceId.
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId() {
+        if (deviceIdBuilder_ == null) {
+          return deviceId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+        } else {
+          return deviceIdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder setDeviceId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId value) {
+        if (deviceIdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          deviceId_ = value;
+          onChanged();
+        } else {
+          deviceIdBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder setDeviceId(
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder builderForValue) {
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = builderForValue.build();
+          onChanged();
+        } else {
+          deviceIdBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder mergeDeviceId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId value) {
+        if (deviceIdBuilder_ == null) {
+          if (deviceId_ != null) {
+            deviceId_ =
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.newBuilder(deviceId_).mergeFrom(value).buildPartial();
+          } else {
+            deviceId_ = value;
+          }
+          onChanged();
+        } else {
+          deviceIdBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder clearDeviceId() {
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = null;
+          onChanged();
+        } else {
+          deviceId_ = null;
+          deviceIdBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder getDeviceIdBuilder() {
+        
+        onChanged();
+        return getDeviceIdFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder() {
+        if (deviceIdBuilder_ != null) {
+          return deviceIdBuilder_.getMessageOrBuilder();
+        } else {
+          return deviceId_ == null ?
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+        }
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder> 
+          getDeviceIdFieldBuilder() {
+        if (deviceIdBuilder_ == null) {
+          deviceIdBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder>(
+                  getDeviceId(),
+                  getParentForChildren(),
+                  isClean());
+          deviceId_ = null;
+        }
+        return deviceIdBuilder_;
+      }
+
+      private java.lang.Object deviceName_ = "";
+      /**
+       * <code>string device_name = 2;</code>
+       * @return The deviceName.
+       */
+      public java.lang.String getDeviceName() {
+        java.lang.Object ref = deviceName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          deviceName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string device_name = 2;</code>
+       * @return The bytes for deviceName.
+       */
+      public com.google.protobuf.ByteString
+          getDeviceNameBytes() {
+        java.lang.Object ref = deviceName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          deviceName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string device_name = 2;</code>
+       * @param value The deviceName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        deviceName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string device_name = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeviceName() {
+        
+        deviceName_ = getDefaultInstance().getDeviceName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string device_name = 2;</code>
+       * @param value The bytes for deviceName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        deviceName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object deviceType_ = "";
+      /**
+       * <code>string device_type = 3;</code>
+       * @return The deviceType.
+       */
+      public java.lang.String getDeviceType() {
+        java.lang.Object ref = deviceType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          deviceType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string device_type = 3;</code>
+       * @return The bytes for deviceType.
+       */
+      public com.google.protobuf.ByteString
+          getDeviceTypeBytes() {
+        java.lang.Object ref = deviceType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          deviceType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string device_type = 3;</code>
+       * @param value The deviceType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        deviceType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string device_type = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeviceType() {
+        
+        deviceType_ = getDefaultInstance().getDeviceType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string device_type = 3;</code>
+       * @param value The bytes for deviceType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        deviceType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object status_ = "";
+      /**
+       * <code>string status = 4;</code>
+       * @return The status.
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string status = 4;</code>
+       * @return The bytes for status.
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string status = 4;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        
+        status_ = getDefaultInstance().getStatus();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 4;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        status_ = value;
+        onChanged();
+        return this;
+      }
+
+      private proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position position_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.PositionOrBuilder> positionBuilder_;
+      /**
+       * <pre>
+       *节点位置, wgs-84坐标系，弧度单位
+       * </pre>
+       *
+       * <code>.Position position = 5;</code>
+       * @return Whether the position field is set.
+       */
+      public boolean hasPosition() {
+        return positionBuilder_ != null || position_ != null;
+      }
+      /**
+       * <pre>
+       *节点位置, wgs-84坐标系，弧度单位
+       * </pre>
+       *
+       * <code>.Position position = 5;</code>
+       * @return The position.
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position getPosition() {
+        if (positionBuilder_ == null) {
+          return position_ == null ? proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position.getDefaultInstance() : position_;
+        } else {
+          return positionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       *节点位置, wgs-84坐标系，弧度单位
+       * </pre>
+       *
+       * <code>.Position position = 5;</code>
+       */
+      public Builder setPosition(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position value) {
+        if (positionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          position_ = value;
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点位置, wgs-84坐标系，弧度单位
+       * </pre>
+       *
+       * <code>.Position position = 5;</code>
+       */
+      public Builder setPosition(
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position.Builder builderForValue) {
+        if (positionBuilder_ == null) {
+          position_ = builderForValue.build();
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点位置, wgs-84坐标系，弧度单位
+       * </pre>
+       *
+       * <code>.Position position = 5;</code>
+       */
+      public Builder mergePosition(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position value) {
+        if (positionBuilder_ == null) {
+          if (position_ != null) {
+            position_ =
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position.newBuilder(position_).mergeFrom(value).buildPartial();
+          } else {
+            position_ = value;
+          }
+          onChanged();
+        } else {
+          positionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点位置, wgs-84坐标系，弧度单位
+       * </pre>
+       *
+       * <code>.Position position = 5;</code>
+       */
+      public Builder clearPosition() {
+        if (positionBuilder_ == null) {
+          position_ = null;
+          onChanged();
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点位置, wgs-84坐标系，弧度单位
+       * </pre>
+       *
+       * <code>.Position position = 5;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position.Builder getPositionBuilder() {
+        
+        onChanged();
+        return getPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       *节点位置, wgs-84坐标系，弧度单位
+       * </pre>
+       *
+       * <code>.Position position = 5;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.PositionOrBuilder getPositionOrBuilder() {
+        if (positionBuilder_ != null) {
+          return positionBuilder_.getMessageOrBuilder();
+        } else {
+          return position_ == null ?
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position.getDefaultInstance() : position_;
+        }
+      }
+      /**
+       * <pre>
+       *节点位置, wgs-84坐标系，弧度单位
+       * </pre>
+       *
+       * <code>.Position position = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.PositionOrBuilder> 
+          getPositionFieldBuilder() {
+        if (positionBuilder_ == null) {
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Position.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.PositionOrBuilder>(
+                  getPosition(),
+                  getParentForChildren(),
+                  isClean());
+          position_ = null;
+        }
+        return positionBuilder_;
+      }
+
+      private proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture posture_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.PostureOrBuilder> postureBuilder_;
+      /**
+       * <code>.Posture posture = 6;</code>
+       * @return Whether the posture field is set.
+       */
+      public boolean hasPosture() {
+        return postureBuilder_ != null || posture_ != null;
+      }
+      /**
+       * <code>.Posture posture = 6;</code>
+       * @return The posture.
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture getPosture() {
+        if (postureBuilder_ == null) {
+          return posture_ == null ? proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture.getDefaultInstance() : posture_;
+        } else {
+          return postureBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.Posture posture = 6;</code>
+       */
+      public Builder setPosture(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture value) {
+        if (postureBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          posture_ = value;
+          onChanged();
+        } else {
+          postureBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Posture posture = 6;</code>
+       */
+      public Builder setPosture(
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture.Builder builderForValue) {
+        if (postureBuilder_ == null) {
+          posture_ = builderForValue.build();
+          onChanged();
+        } else {
+          postureBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Posture posture = 6;</code>
+       */
+      public Builder mergePosture(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture value) {
+        if (postureBuilder_ == null) {
+          if (posture_ != null) {
+            posture_ =
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture.newBuilder(posture_).mergeFrom(value).buildPartial();
+          } else {
+            posture_ = value;
+          }
+          onChanged();
+        } else {
+          postureBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Posture posture = 6;</code>
+       */
+      public Builder clearPosture() {
+        if (postureBuilder_ == null) {
+          posture_ = null;
+          onChanged();
+        } else {
+          posture_ = null;
+          postureBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Posture posture = 6;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture.Builder getPostureBuilder() {
+        
+        onChanged();
+        return getPostureFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Posture posture = 6;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.PostureOrBuilder getPostureOrBuilder() {
+        if (postureBuilder_ != null) {
+          return postureBuilder_.getMessageOrBuilder();
+        } else {
+          return posture_ == null ?
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture.getDefaultInstance() : posture_;
+        }
+      }
+      /**
+       * <code>.Posture posture = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.PostureOrBuilder> 
+          getPostureFieldBuilder() {
+        if (postureBuilder_ == null) {
+          postureBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Posture.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.PostureOrBuilder>(
+                  getPosture(),
+                  getParentForChildren(),
+                  isClean());
+          posture_ = null;
+        }
+        return postureBuilder_;
+      }
+
+      private java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical> physicalList_ =
+        java.util.Collections.emptyList();
+      private void ensurePhysicalListIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          physicalList_ = new java.util.ArrayList<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical>(physicalList_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.PhysicalOrBuilder> physicalListBuilder_;
+
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical> getPhysicalListList() {
+        if (physicalListBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(physicalList_);
+        } else {
+          return physicalListBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public int getPhysicalListCount() {
+        if (physicalListBuilder_ == null) {
+          return physicalList_.size();
+        } else {
+          return physicalListBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical getPhysicalList(int index) {
+        if (physicalListBuilder_ == null) {
+          return physicalList_.get(index);
+        } else {
+          return physicalListBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public Builder setPhysicalList(
+          int index, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical value) {
+        if (physicalListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePhysicalListIsMutable();
+          physicalList_.set(index, value);
+          onChanged();
+        } else {
+          physicalListBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public Builder setPhysicalList(
+          int index, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.Builder builderForValue) {
+        if (physicalListBuilder_ == null) {
+          ensurePhysicalListIsMutable();
+          physicalList_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          physicalListBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public Builder addPhysicalList(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical value) {
+        if (physicalListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePhysicalListIsMutable();
+          physicalList_.add(value);
+          onChanged();
+        } else {
+          physicalListBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public Builder addPhysicalList(
+          int index, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical value) {
+        if (physicalListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePhysicalListIsMutable();
+          physicalList_.add(index, value);
+          onChanged();
+        } else {
+          physicalListBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public Builder addPhysicalList(
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.Builder builderForValue) {
+        if (physicalListBuilder_ == null) {
+          ensurePhysicalListIsMutable();
+          physicalList_.add(builderForValue.build());
+          onChanged();
+        } else {
+          physicalListBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public Builder addPhysicalList(
+          int index, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.Builder builderForValue) {
+        if (physicalListBuilder_ == null) {
+          ensurePhysicalListIsMutable();
+          physicalList_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          physicalListBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public Builder addAllPhysicalList(
+          java.lang.Iterable<? extends proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical> values) {
+        if (physicalListBuilder_ == null) {
+          ensurePhysicalListIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, physicalList_);
+          onChanged();
+        } else {
+          physicalListBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public Builder clearPhysicalList() {
+        if (physicalListBuilder_ == null) {
+          physicalList_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          physicalListBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public Builder removePhysicalList(int index) {
+        if (physicalListBuilder_ == null) {
+          ensurePhysicalListIsMutable();
+          physicalList_.remove(index);
+          onChanged();
+        } else {
+          physicalListBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.Builder getPhysicalListBuilder(
+          int index) {
+        return getPhysicalListFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.PhysicalOrBuilder getPhysicalListOrBuilder(
+          int index) {
+        if (physicalListBuilder_ == null) {
+          return physicalList_.get(index);  } else {
+          return physicalListBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public java.util.List<? extends proto_compile.cetc41.nodecontrol.DCTSServiceApi.PhysicalOrBuilder> 
+           getPhysicalListOrBuilderList() {
+        if (physicalListBuilder_ != null) {
+          return physicalListBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(physicalList_);
+        }
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.Builder addPhysicalListBuilder() {
+        return getPhysicalListFieldBuilder().addBuilder(
+            proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.Builder addPhysicalListBuilder(
+          int index) {
+        return getPhysicalListFieldBuilder().addBuilder(
+            index, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Physical physicalList = 7;</code>
+       */
+      public java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.Builder> 
+           getPhysicalListBuilderList() {
+        return getPhysicalListFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.PhysicalOrBuilder> 
+          getPhysicalListFieldBuilder() {
+        if (physicalListBuilder_ == null) {
+          physicalListBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.PhysicalOrBuilder>(
+                  physicalList_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          physicalList_ = null;
+        }
+        return physicalListBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:DeviceInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:DeviceInfo)
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo();
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DeviceInfo>
+        PARSER = new com.google.protobuf.AbstractParser<DeviceInfo>() {
+      @java.lang.Override
+      public DeviceInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DeviceInfo(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DeviceInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DeviceInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NodeInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:NodeInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.NodeId node_id = 1;</code>
+     * @return Whether the nodeId field is set.
+     */
+    boolean hasNodeId();
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.NodeId node_id = 1;</code>
+     * @return The nodeId.
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId getNodeId();
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.NodeId node_id = 1;</code>
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder getNodeIdOrBuilder();
+
+    /**
+     * <pre>
+     *节点名字
+     * </pre>
+     *
+     * <code>string node_name = 2;</code>
+     * @return The nodeName.
+     */
+    java.lang.String getNodeName();
+    /**
+     * <pre>
+     *节点名字
+     * </pre>
+     *
+     * <code>string node_name = 2;</code>
+     * @return The bytes for nodeName.
+     */
+    com.google.protobuf.ByteString
+        getNodeNameBytes();
+
+    /**
+     * <pre>
+     *节点类型
+     * </pre>
+     *
+     * <code>string node_type = 3;</code>
+     * @return The nodeType.
+     */
+    java.lang.String getNodeType();
+    /**
+     * <pre>
+     *节点类型
+     * </pre>
+     *
+     * <code>string node_type = 3;</code>
+     * @return The bytes for nodeType.
+     */
+    com.google.protobuf.ByteString
+        getNodeTypeBytes();
+
+    /**
+     * <pre>
+     *从最近一次收到节点心跳起逝去的秒值
+     * </pre>
+     *
+     * <code>.Timestamp last_heard = 4;</code>
+     * @return Whether the lastHeard field is set.
+     */
+    boolean hasLastHeard();
+    /**
+     * <pre>
+     *从最近一次收到节点心跳起逝去的秒值
+     * </pre>
+     *
+     * <code>.Timestamp last_heard = 4;</code>
+     * @return The lastHeard.
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp getLastHeard();
+    /**
+     * <pre>
+     *从最近一次收到节点心跳起逝去的秒值
+     * </pre>
+     *
+     * <code>.Timestamp last_heard = 4;</code>
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.TimestampOrBuilder getLastHeardOrBuilder();
+
+    /**
+     * <pre>
+     *隶属于节点设备信息列表
+     * </pre>
+     *
+     * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+     */
+    java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo> 
+        getDataSourceListList();
+    /**
+     * <pre>
+     *隶属于节点设备信息列表
+     * </pre>
+     *
+     * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo getDataSourceList(int index);
+    /**
+     * <pre>
+     *隶属于节点设备信息列表
+     * </pre>
+     *
+     * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+     */
+    int getDataSourceListCount();
+    /**
+     * <pre>
+     *隶属于节点设备信息列表
+     * </pre>
+     *
+     * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+     */
+    java.util.List<? extends proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfoOrBuilder> 
+        getDataSourceListOrBuilderList();
+    /**
+     * <pre>
+     *隶属于节点设备信息列表
+     * </pre>
+     *
+     * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfoOrBuilder getDataSourceListOrBuilder(
+        int index);
+
+    /**
+     * <pre>
+     *节点设备是物理/虚拟的
+     * </pre>
+     *
+     * <code>optional bool is_physical = 6;</code>
+     * @return Whether the isPhysical field is set.
+     */
+    boolean hasIsPhysical();
+    /**
+     * <pre>
+     *节点设备是物理/虚拟的
+     * </pre>
+     *
+     * <code>optional bool is_physical = 6;</code>
+     * @return The isPhysical.
+     */
+    boolean getIsPhysical();
+  }
+  /**
+   * Protobuf type {@code NodeInfo}
+   */
+  public static final class NodeInfo extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:NodeInfo)
+      NodeInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NodeInfo.newBuilder() to construct.
+    private NodeInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NodeInfo() {
+      nodeName_ = "";
+      nodeType_ = "";
+      dataSourceList_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NodeInfo();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private NodeInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder subBuilder = null;
+              if (nodeId_ != null) {
+                subBuilder = nodeId_.toBuilder();
+              }
+              nodeId_ = input.readMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(nodeId_);
+                nodeId_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              nodeName_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              nodeType_ = s;
+              break;
+            }
+            case 34: {
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp.Builder subBuilder = null;
+              if (lastHeard_ != null) {
+                subBuilder = lastHeard_.toBuilder();
+              }
+              lastHeard_ = input.readMessage(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(lastHeard_);
+                lastHeard_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                dataSourceList_ = new java.util.ArrayList<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              dataSourceList_.add(
+                  input.readMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.parser(), extensionRegistry));
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000001;
+              isPhysical_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          dataSourceList_ = java.util.Collections.unmodifiableList(dataSourceList_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int NODE_ID_FIELD_NUMBER = 1;
+    private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId nodeId_;
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.NodeId node_id = 1;</code>
+     * @return Whether the nodeId field is set.
+     */
+    @java.lang.Override
+    public boolean hasNodeId() {
+      return nodeId_ != null;
+    }
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.NodeId node_id = 1;</code>
+     * @return The nodeId.
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId getNodeId() {
+      return nodeId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.getDefaultInstance() : nodeId_;
+    }
+    /**
+     * <pre>
+     *节点id
+     * </pre>
+     *
+     * <code>.NodeId node_id = 1;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder getNodeIdOrBuilder() {
+      return getNodeId();
+    }
+
+    public static final int NODE_NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object nodeName_;
+    /**
+     * <pre>
+     *节点名字
+     * </pre>
+     *
+     * <code>string node_name = 2;</code>
+     * @return The nodeName.
+     */
+    @java.lang.Override
+    public java.lang.String getNodeName() {
+      java.lang.Object ref = nodeName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nodeName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *节点名字
+     * </pre>
+     *
+     * <code>string node_name = 2;</code>
+     * @return The bytes for nodeName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNodeNameBytes() {
+      java.lang.Object ref = nodeName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nodeName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int NODE_TYPE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object nodeType_;
+    /**
+     * <pre>
+     *节点类型
+     * </pre>
+     *
+     * <code>string node_type = 3;</code>
+     * @return The nodeType.
+     */
+    @java.lang.Override
+    public java.lang.String getNodeType() {
+      java.lang.Object ref = nodeType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nodeType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *节点类型
+     * </pre>
+     *
+     * <code>string node_type = 3;</code>
+     * @return The bytes for nodeType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNodeTypeBytes() {
+      java.lang.Object ref = nodeType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nodeType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int LAST_HEARD_FIELD_NUMBER = 4;
+    private proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp lastHeard_;
+    /**
+     * <pre>
+     *从最近一次收到节点心跳起逝去的秒值
+     * </pre>
+     *
+     * <code>.Timestamp last_heard = 4;</code>
+     * @return Whether the lastHeard field is set.
+     */
+    @java.lang.Override
+    public boolean hasLastHeard() {
+      return lastHeard_ != null;
+    }
+    /**
+     * <pre>
+     *从最近一次收到节点心跳起逝去的秒值
+     * </pre>
+     *
+     * <code>.Timestamp last_heard = 4;</code>
+     * @return The lastHeard.
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp getLastHeard() {
+      return lastHeard_ == null ? proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp.getDefaultInstance() : lastHeard_;
+    }
+    /**
+     * <pre>
+     *从最近一次收到节点心跳起逝去的秒值
+     * </pre>
+     *
+     * <code>.Timestamp last_heard = 4;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.TimestampOrBuilder getLastHeardOrBuilder() {
+      return getLastHeard();
+    }
+
+    public static final int DATASOURCELIST_FIELD_NUMBER = 5;
+    private java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo> dataSourceList_;
+    /**
+     * <pre>
+     *隶属于节点设备信息列表
+     * </pre>
+     *
+     * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+     */
+    @java.lang.Override
+    public java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo> getDataSourceListList() {
+      return dataSourceList_;
+    }
+    /**
+     * <pre>
+     *隶属于节点设备信息列表
+     * </pre>
+     *
+     * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfoOrBuilder> 
+        getDataSourceListOrBuilderList() {
+      return dataSourceList_;
+    }
+    /**
+     * <pre>
+     *隶属于节点设备信息列表
+     * </pre>
+     *
+     * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+     */
+    @java.lang.Override
+    public int getDataSourceListCount() {
+      return dataSourceList_.size();
+    }
+    /**
+     * <pre>
+     *隶属于节点设备信息列表
+     * </pre>
+     *
+     * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo getDataSourceList(int index) {
+      return dataSourceList_.get(index);
+    }
+    /**
+     * <pre>
+     *隶属于节点设备信息列表
+     * </pre>
+     *
+     * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfoOrBuilder getDataSourceListOrBuilder(
+        int index) {
+      return dataSourceList_.get(index);
+    }
+
+    public static final int IS_PHYSICAL_FIELD_NUMBER = 6;
+    private boolean isPhysical_;
+    /**
+     * <pre>
+     *节点设备是物理/虚拟的
+     * </pre>
+     *
+     * <code>optional bool is_physical = 6;</code>
+     * @return Whether the isPhysical field is set.
+     */
+    @java.lang.Override
+    public boolean hasIsPhysical() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     *节点设备是物理/虚拟的
+     * </pre>
+     *
+     * <code>optional bool is_physical = 6;</code>
+     * @return The isPhysical.
+     */
+    @java.lang.Override
+    public boolean getIsPhysical() {
+      return isPhysical_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (nodeId_ != null) {
+        output.writeMessage(1, getNodeId());
+      }
+      if (!getNodeNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nodeName_);
+      }
+      if (!getNodeTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, nodeType_);
+      }
+      if (lastHeard_ != null) {
+        output.writeMessage(4, getLastHeard());
+      }
+      for (int i = 0; i < dataSourceList_.size(); i++) {
+        output.writeMessage(5, dataSourceList_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBool(6, isPhysical_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (nodeId_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getNodeId());
+      }
+      if (!getNodeNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, nodeName_);
+      }
+      if (!getNodeTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, nodeType_);
+      }
+      if (lastHeard_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getLastHeard());
+      }
+      for (int i = 0; i < dataSourceList_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, dataSourceList_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, isPhysical_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo)) {
+        return super.equals(obj);
+      }
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo) obj;
+
+      if (hasNodeId() != other.hasNodeId()) return false;
+      if (hasNodeId()) {
+        if (!getNodeId()
+            .equals(other.getNodeId())) return false;
+      }
+      if (!getNodeName()
+          .equals(other.getNodeName())) return false;
+      if (!getNodeType()
+          .equals(other.getNodeType())) return false;
+      if (hasLastHeard() != other.hasLastHeard()) return false;
+      if (hasLastHeard()) {
+        if (!getLastHeard()
+            .equals(other.getLastHeard())) return false;
+      }
+      if (!getDataSourceListList()
+          .equals(other.getDataSourceListList())) return false;
+      if (hasIsPhysical() != other.hasIsPhysical()) return false;
+      if (hasIsPhysical()) {
+        if (getIsPhysical()
+            != other.getIsPhysical()) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasNodeId()) {
+        hash = (37 * hash) + NODE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getNodeId().hashCode();
+      }
+      hash = (37 * hash) + NODE_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getNodeName().hashCode();
+      hash = (37 * hash) + NODE_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getNodeType().hashCode();
+      if (hasLastHeard()) {
+        hash = (37 * hash) + LAST_HEARD_FIELD_NUMBER;
+        hash = (53 * hash) + getLastHeard().hashCode();
+      }
+      if (getDataSourceListCount() > 0) {
+        hash = (37 * hash) + DATASOURCELIST_FIELD_NUMBER;
+        hash = (53 * hash) + getDataSourceListList().hashCode();
+      }
+      if (hasIsPhysical()) {
+        hash = (37 * hash) + IS_PHYSICAL_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIsPhysical());
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code NodeInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:NodeInfo)
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder.class);
+      }
+
+      // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getDataSourceListFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (nodeIdBuilder_ == null) {
+          nodeId_ = null;
+        } else {
+          nodeId_ = null;
+          nodeIdBuilder_ = null;
+        }
+        nodeName_ = "";
+
+        nodeType_ = "";
+
+        if (lastHeardBuilder_ == null) {
+          lastHeard_ = null;
+        } else {
+          lastHeard_ = null;
+          lastHeardBuilder_ = null;
+        }
+        if (dataSourceListBuilder_ == null) {
+          dataSourceList_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          dataSourceListBuilder_.clear();
+        }
+        isPhysical_ = false;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodeInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (nodeIdBuilder_ == null) {
+          result.nodeId_ = nodeId_;
+        } else {
+          result.nodeId_ = nodeIdBuilder_.build();
+        }
+        result.nodeName_ = nodeName_;
+        result.nodeType_ = nodeType_;
+        if (lastHeardBuilder_ == null) {
+          result.lastHeard_ = lastHeard_;
+        } else {
+          result.lastHeard_ = lastHeardBuilder_.build();
+        }
+        if (dataSourceListBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            dataSourceList_ = java.util.Collections.unmodifiableList(dataSourceList_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.dataSourceList_ = dataSourceList_;
+        } else {
+          result.dataSourceList_ = dataSourceListBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.isPhysical_ = isPhysical_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.getDefaultInstance()) return this;
+        if (other.hasNodeId()) {
+          mergeNodeId(other.getNodeId());
+        }
+        if (!other.getNodeName().isEmpty()) {
+          nodeName_ = other.nodeName_;
+          onChanged();
+        }
+        if (!other.getNodeType().isEmpty()) {
+          nodeType_ = other.nodeType_;
+          onChanged();
+        }
+        if (other.hasLastHeard()) {
+          mergeLastHeard(other.getLastHeard());
+        }
+        if (dataSourceListBuilder_ == null) {
+          if (!other.dataSourceList_.isEmpty()) {
+            if (dataSourceList_.isEmpty()) {
+              dataSourceList_ = other.dataSourceList_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureDataSourceListIsMutable();
+              dataSourceList_.addAll(other.dataSourceList_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.dataSourceList_.isEmpty()) {
+            if (dataSourceListBuilder_.isEmpty()) {
+              dataSourceListBuilder_.dispose();
+              dataSourceListBuilder_ = null;
+              dataSourceList_ = other.dataSourceList_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              dataSourceListBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getDataSourceListFieldBuilder() : null;
+            } else {
+              dataSourceListBuilder_.addAllMessages(other.dataSourceList_);
+            }
+          }
+        }
+        if (other.hasIsPhysical()) {
+          setIsPhysical(other.getIsPhysical());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId nodeId_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder> nodeIdBuilder_;
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.NodeId node_id = 1;</code>
+       * @return Whether the nodeId field is set.
+       */
+      public boolean hasNodeId() {
+        return nodeIdBuilder_ != null || nodeId_ != null;
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.NodeId node_id = 1;</code>
+       * @return The nodeId.
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId getNodeId() {
+        if (nodeIdBuilder_ == null) {
+          return nodeId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.getDefaultInstance() : nodeId_;
+        } else {
+          return nodeIdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.NodeId node_id = 1;</code>
+       */
+      public Builder setNodeId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId value) {
+        if (nodeIdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          nodeId_ = value;
+          onChanged();
+        } else {
+          nodeIdBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.NodeId node_id = 1;</code>
+       */
+      public Builder setNodeId(
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder builderForValue) {
+        if (nodeIdBuilder_ == null) {
+          nodeId_ = builderForValue.build();
+          onChanged();
+        } else {
+          nodeIdBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.NodeId node_id = 1;</code>
+       */
+      public Builder mergeNodeId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId value) {
+        if (nodeIdBuilder_ == null) {
+          if (nodeId_ != null) {
+            nodeId_ =
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.newBuilder(nodeId_).mergeFrom(value).buildPartial();
+          } else {
+            nodeId_ = value;
+          }
+          onChanged();
+        } else {
+          nodeIdBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.NodeId node_id = 1;</code>
+       */
+      public Builder clearNodeId() {
+        if (nodeIdBuilder_ == null) {
+          nodeId_ = null;
+          onChanged();
+        } else {
+          nodeId_ = null;
+          nodeIdBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.NodeId node_id = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder getNodeIdBuilder() {
+        
+        onChanged();
+        return getNodeIdFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.NodeId node_id = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder getNodeIdOrBuilder() {
+        if (nodeIdBuilder_ != null) {
+          return nodeIdBuilder_.getMessageOrBuilder();
+        } else {
+          return nodeId_ == null ?
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.getDefaultInstance() : nodeId_;
+        }
+      }
+      /**
+       * <pre>
+       *节点id
+       * </pre>
+       *
+       * <code>.NodeId node_id = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder> 
+          getNodeIdFieldBuilder() {
+        if (nodeIdBuilder_ == null) {
+          nodeIdBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeIdOrBuilder>(
+                  getNodeId(),
+                  getParentForChildren(),
+                  isClean());
+          nodeId_ = null;
+        }
+        return nodeIdBuilder_;
+      }
+
+      private java.lang.Object nodeName_ = "";
+      /**
+       * <pre>
+       *节点名字
+       * </pre>
+       *
+       * <code>string node_name = 2;</code>
+       * @return The nodeName.
+       */
+      public java.lang.String getNodeName() {
+        java.lang.Object ref = nodeName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nodeName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *节点名字
+       * </pre>
+       *
+       * <code>string node_name = 2;</code>
+       * @return The bytes for nodeName.
+       */
+      public com.google.protobuf.ByteString
+          getNodeNameBytes() {
+        java.lang.Object ref = nodeName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nodeName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *节点名字
+       * </pre>
+       *
+       * <code>string node_name = 2;</code>
+       * @param value The nodeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        nodeName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *节点名字
+       * </pre>
+       *
+       * <code>string node_name = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNodeName() {
+        
+        nodeName_ = getDefaultInstance().getNodeName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *节点名字
+       * </pre>
+       *
+       * <code>string node_name = 2;</code>
+       * @param value The bytes for nodeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        nodeName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object nodeType_ = "";
+      /**
+       * <pre>
+       *节点类型
+       * </pre>
+       *
+       * <code>string node_type = 3;</code>
+       * @return The nodeType.
+       */
+      public java.lang.String getNodeType() {
+        java.lang.Object ref = nodeType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nodeType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *节点类型
+       * </pre>
+       *
+       * <code>string node_type = 3;</code>
+       * @return The bytes for nodeType.
+       */
+      public com.google.protobuf.ByteString
+          getNodeTypeBytes() {
+        java.lang.Object ref = nodeType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nodeType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *节点类型
+       * </pre>
+       *
+       * <code>string node_type = 3;</code>
+       * @param value The nodeType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        nodeType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *节点类型
+       * </pre>
+       *
+       * <code>string node_type = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNodeType() {
+        
+        nodeType_ = getDefaultInstance().getNodeType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *节点类型
+       * </pre>
+       *
+       * <code>string node_type = 3;</code>
+       * @param value The bytes for nodeType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        nodeType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp lastHeard_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.TimestampOrBuilder> lastHeardBuilder_;
+      /**
+       * <pre>
+       *从最近一次收到节点心跳起逝去的秒值
+       * </pre>
+       *
+       * <code>.Timestamp last_heard = 4;</code>
+       * @return Whether the lastHeard field is set.
+       */
+      public boolean hasLastHeard() {
+        return lastHeardBuilder_ != null || lastHeard_ != null;
+      }
+      /**
+       * <pre>
+       *从最近一次收到节点心跳起逝去的秒值
+       * </pre>
+       *
+       * <code>.Timestamp last_heard = 4;</code>
+       * @return The lastHeard.
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp getLastHeard() {
+        if (lastHeardBuilder_ == null) {
+          return lastHeard_ == null ? proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp.getDefaultInstance() : lastHeard_;
+        } else {
+          return lastHeardBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       *从最近一次收到节点心跳起逝去的秒值
+       * </pre>
+       *
+       * <code>.Timestamp last_heard = 4;</code>
+       */
+      public Builder setLastHeard(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp value) {
+        if (lastHeardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          lastHeard_ = value;
+          onChanged();
+        } else {
+          lastHeardBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *从最近一次收到节点心跳起逝去的秒值
+       * </pre>
+       *
+       * <code>.Timestamp last_heard = 4;</code>
+       */
+      public Builder setLastHeard(
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp.Builder builderForValue) {
+        if (lastHeardBuilder_ == null) {
+          lastHeard_ = builderForValue.build();
+          onChanged();
+        } else {
+          lastHeardBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *从最近一次收到节点心跳起逝去的秒值
+       * </pre>
+       *
+       * <code>.Timestamp last_heard = 4;</code>
+       */
+      public Builder mergeLastHeard(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp value) {
+        if (lastHeardBuilder_ == null) {
+          if (lastHeard_ != null) {
+            lastHeard_ =
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp.newBuilder(lastHeard_).mergeFrom(value).buildPartial();
+          } else {
+            lastHeard_ = value;
+          }
+          onChanged();
+        } else {
+          lastHeardBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *从最近一次收到节点心跳起逝去的秒值
+       * </pre>
+       *
+       * <code>.Timestamp last_heard = 4;</code>
+       */
+      public Builder clearLastHeard() {
+        if (lastHeardBuilder_ == null) {
+          lastHeard_ = null;
+          onChanged();
+        } else {
+          lastHeard_ = null;
+          lastHeardBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *从最近一次收到节点心跳起逝去的秒值
+       * </pre>
+       *
+       * <code>.Timestamp last_heard = 4;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp.Builder getLastHeardBuilder() {
+        
+        onChanged();
+        return getLastHeardFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       *从最近一次收到节点心跳起逝去的秒值
+       * </pre>
+       *
+       * <code>.Timestamp last_heard = 4;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.TimestampOrBuilder getLastHeardOrBuilder() {
+        if (lastHeardBuilder_ != null) {
+          return lastHeardBuilder_.getMessageOrBuilder();
+        } else {
+          return lastHeard_ == null ?
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp.getDefaultInstance() : lastHeard_;
+        }
+      }
+      /**
+       * <pre>
+       *从最近一次收到节点心跳起逝去的秒值
+       * </pre>
+       *
+       * <code>.Timestamp last_heard = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.TimestampOrBuilder> 
+          getLastHeardFieldBuilder() {
+        if (lastHeardBuilder_ == null) {
+          lastHeardBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Timestamp.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.TimestampOrBuilder>(
+                  getLastHeard(),
+                  getParentForChildren(),
+                  isClean());
+          lastHeard_ = null;
+        }
+        return lastHeardBuilder_;
+      }
+
+      private java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo> dataSourceList_ =
+        java.util.Collections.emptyList();
+      private void ensureDataSourceListIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          dataSourceList_ = new java.util.ArrayList<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo>(dataSourceList_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfoOrBuilder> dataSourceListBuilder_;
+
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo> getDataSourceListList() {
+        if (dataSourceListBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(dataSourceList_);
+        } else {
+          return dataSourceListBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public int getDataSourceListCount() {
+        if (dataSourceListBuilder_ == null) {
+          return dataSourceList_.size();
+        } else {
+          return dataSourceListBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo getDataSourceList(int index) {
+        if (dataSourceListBuilder_ == null) {
+          return dataSourceList_.get(index);
+        } else {
+          return dataSourceListBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public Builder setDataSourceList(
+          int index, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo value) {
+        if (dataSourceListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataSourceListIsMutable();
+          dataSourceList_.set(index, value);
+          onChanged();
+        } else {
+          dataSourceListBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public Builder setDataSourceList(
+          int index, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder builderForValue) {
+        if (dataSourceListBuilder_ == null) {
+          ensureDataSourceListIsMutable();
+          dataSourceList_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataSourceListBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public Builder addDataSourceList(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo value) {
+        if (dataSourceListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataSourceListIsMutable();
+          dataSourceList_.add(value);
+          onChanged();
+        } else {
+          dataSourceListBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public Builder addDataSourceList(
+          int index, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo value) {
+        if (dataSourceListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataSourceListIsMutable();
+          dataSourceList_.add(index, value);
+          onChanged();
+        } else {
+          dataSourceListBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public Builder addDataSourceList(
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder builderForValue) {
+        if (dataSourceListBuilder_ == null) {
+          ensureDataSourceListIsMutable();
+          dataSourceList_.add(builderForValue.build());
+          onChanged();
+        } else {
+          dataSourceListBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public Builder addDataSourceList(
+          int index, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder builderForValue) {
+        if (dataSourceListBuilder_ == null) {
+          ensureDataSourceListIsMutable();
+          dataSourceList_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataSourceListBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public Builder addAllDataSourceList(
+          java.lang.Iterable<? extends proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo> values) {
+        if (dataSourceListBuilder_ == null) {
+          ensureDataSourceListIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, dataSourceList_);
+          onChanged();
+        } else {
+          dataSourceListBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public Builder clearDataSourceList() {
+        if (dataSourceListBuilder_ == null) {
+          dataSourceList_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          dataSourceListBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public Builder removeDataSourceList(int index) {
+        if (dataSourceListBuilder_ == null) {
+          ensureDataSourceListIsMutable();
+          dataSourceList_.remove(index);
+          onChanged();
+        } else {
+          dataSourceListBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder getDataSourceListBuilder(
+          int index) {
+        return getDataSourceListFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfoOrBuilder getDataSourceListOrBuilder(
+          int index) {
+        if (dataSourceListBuilder_ == null) {
+          return dataSourceList_.get(index);  } else {
+          return dataSourceListBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public java.util.List<? extends proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfoOrBuilder> 
+           getDataSourceListOrBuilderList() {
+        if (dataSourceListBuilder_ != null) {
+          return dataSourceListBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(dataSourceList_);
+        }
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder addDataSourceListBuilder() {
+        return getDataSourceListFieldBuilder().addBuilder(
+            proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder addDataSourceListBuilder(
+          int index) {
+        return getDataSourceListFieldBuilder().addBuilder(
+            index, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *隶属于节点设备信息列表
+       * </pre>
+       *
+       * <code>repeated .DeviceInfo dataSourceList = 5;</code>
+       */
+      public java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder> 
+           getDataSourceListBuilderList() {
+        return getDataSourceListFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfoOrBuilder> 
+          getDataSourceListFieldBuilder() {
+        if (dataSourceListBuilder_ == null) {
+          dataSourceListBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfo.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceInfoOrBuilder>(
+                  dataSourceList_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          dataSourceList_ = null;
+        }
+        return dataSourceListBuilder_;
+      }
+
+      private boolean isPhysical_ ;
+      /**
+       * <pre>
+       *节点设备是物理/虚拟的
+       * </pre>
+       *
+       * <code>optional bool is_physical = 6;</code>
+       * @return Whether the isPhysical field is set.
+       */
+      @java.lang.Override
+      public boolean hasIsPhysical() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       *节点设备是物理/虚拟的
+       * </pre>
+       *
+       * <code>optional bool is_physical = 6;</code>
+       * @return The isPhysical.
+       */
+      @java.lang.Override
+      public boolean getIsPhysical() {
+        return isPhysical_;
+      }
+      /**
+       * <pre>
+       *节点设备是物理/虚拟的
+       * </pre>
+       *
+       * <code>optional bool is_physical = 6;</code>
+       * @param value The isPhysical to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsPhysical(boolean value) {
+        bitField0_ |= 0x00000002;
+        isPhysical_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *节点设备是物理/虚拟的
+       * </pre>
+       *
+       * <code>optional bool is_physical = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsPhysical() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        isPhysical_ = false;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:NodeInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:NodeInfo)
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo();
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<NodeInfo>
+        PARSER = new com.google.protobuf.AbstractParser<NodeInfo>() {
+      @java.lang.Override
+      public NodeInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new NodeInfo(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<NodeInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NodeInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NodesInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:NodesInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .NodeInfo node_infos = 1;</code>
+     */
+    java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> 
+        getNodeInfosList();
+    /**
+     * <code>repeated .NodeInfo node_infos = 1;</code>
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo getNodeInfos(int index);
+    /**
+     * <code>repeated .NodeInfo node_infos = 1;</code>
+     */
+    int getNodeInfosCount();
+    /**
+     * <code>repeated .NodeInfo node_infos = 1;</code>
+     */
+    java.util.List<? extends proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfoOrBuilder> 
+        getNodeInfosOrBuilderList();
+    /**
+     * <code>repeated .NodeInfo node_infos = 1;</code>
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfoOrBuilder getNodeInfosOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   *所有节点的信息
+   * </pre>
+   *
+   * Protobuf type {@code NodesInfo}
+   */
+  public static final class NodesInfo extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:NodesInfo)
+      NodesInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NodesInfo.newBuilder() to construct.
+    private NodesInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NodesInfo() {
+      nodeInfos_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NodesInfo();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private NodesInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                nodeInfos_ = new java.util.ArrayList<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              nodeInfos_.add(
+                  input.readMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          nodeInfos_ = java.util.Collections.unmodifiableList(nodeInfos_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodesInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodesInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo.Builder.class);
+    }
+
+    public static final int NODE_INFOS_FIELD_NUMBER = 1;
+    private java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> nodeInfos_;
+    /**
+     * <code>repeated .NodeInfo node_infos = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> getNodeInfosList() {
+      return nodeInfos_;
+    }
+    /**
+     * <code>repeated .NodeInfo node_infos = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfoOrBuilder> 
+        getNodeInfosOrBuilderList() {
+      return nodeInfos_;
+    }
+    /**
+     * <code>repeated .NodeInfo node_infos = 1;</code>
+     */
+    @java.lang.Override
+    public int getNodeInfosCount() {
+      return nodeInfos_.size();
+    }
+    /**
+     * <code>repeated .NodeInfo node_infos = 1;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo getNodeInfos(int index) {
+      return nodeInfos_.get(index);
+    }
+    /**
+     * <code>repeated .NodeInfo node_infos = 1;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfoOrBuilder getNodeInfosOrBuilder(
+        int index) {
+      return nodeInfos_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < nodeInfos_.size(); i++) {
+        output.writeMessage(1, nodeInfos_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < nodeInfos_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, nodeInfos_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo)) {
+        return super.equals(obj);
+      }
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo) obj;
+
+      if (!getNodeInfosList()
+          .equals(other.getNodeInfosList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getNodeInfosCount() > 0) {
+        hash = (37 * hash) + NODE_INFOS_FIELD_NUMBER;
+        hash = (53 * hash) + getNodeInfosList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *所有节点的信息
+     * </pre>
+     *
+     * Protobuf type {@code NodesInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:NodesInfo)
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodesInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodesInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo.Builder.class);
+      }
+
+      // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getNodeInfosFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (nodeInfosBuilder_ == null) {
+          nodeInfos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          nodeInfosBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_NodesInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo(this);
+        int from_bitField0_ = bitField0_;
+        if (nodeInfosBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            nodeInfos_ = java.util.Collections.unmodifiableList(nodeInfos_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.nodeInfos_ = nodeInfos_;
+        } else {
+          result.nodeInfos_ = nodeInfosBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo.getDefaultInstance()) return this;
+        if (nodeInfosBuilder_ == null) {
+          if (!other.nodeInfos_.isEmpty()) {
+            if (nodeInfos_.isEmpty()) {
+              nodeInfos_ = other.nodeInfos_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureNodeInfosIsMutable();
+              nodeInfos_.addAll(other.nodeInfos_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.nodeInfos_.isEmpty()) {
+            if (nodeInfosBuilder_.isEmpty()) {
+              nodeInfosBuilder_.dispose();
+              nodeInfosBuilder_ = null;
+              nodeInfos_ = other.nodeInfos_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              nodeInfosBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getNodeInfosFieldBuilder() : null;
+            } else {
+              nodeInfosBuilder_.addAllMessages(other.nodeInfos_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> nodeInfos_ =
+        java.util.Collections.emptyList();
+      private void ensureNodeInfosIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          nodeInfos_ = new java.util.ArrayList<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo>(nodeInfos_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfoOrBuilder> nodeInfosBuilder_;
+
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> getNodeInfosList() {
+        if (nodeInfosBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(nodeInfos_);
+        } else {
+          return nodeInfosBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public int getNodeInfosCount() {
+        if (nodeInfosBuilder_ == null) {
+          return nodeInfos_.size();
+        } else {
+          return nodeInfosBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo getNodeInfos(int index) {
+        if (nodeInfosBuilder_ == null) {
+          return nodeInfos_.get(index);
+        } else {
+          return nodeInfosBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public Builder setNodeInfos(
+          int index, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo value) {
+        if (nodeInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNodeInfosIsMutable();
+          nodeInfos_.set(index, value);
+          onChanged();
+        } else {
+          nodeInfosBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public Builder setNodeInfos(
+          int index, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder builderForValue) {
+        if (nodeInfosBuilder_ == null) {
+          ensureNodeInfosIsMutable();
+          nodeInfos_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          nodeInfosBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public Builder addNodeInfos(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo value) {
+        if (nodeInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNodeInfosIsMutable();
+          nodeInfos_.add(value);
+          onChanged();
+        } else {
+          nodeInfosBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public Builder addNodeInfos(
+          int index, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo value) {
+        if (nodeInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNodeInfosIsMutable();
+          nodeInfos_.add(index, value);
+          onChanged();
+        } else {
+          nodeInfosBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public Builder addNodeInfos(
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder builderForValue) {
+        if (nodeInfosBuilder_ == null) {
+          ensureNodeInfosIsMutable();
+          nodeInfos_.add(builderForValue.build());
+          onChanged();
+        } else {
+          nodeInfosBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public Builder addNodeInfos(
+          int index, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder builderForValue) {
+        if (nodeInfosBuilder_ == null) {
+          ensureNodeInfosIsMutable();
+          nodeInfos_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          nodeInfosBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public Builder addAllNodeInfos(
+          java.lang.Iterable<? extends proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> values) {
+        if (nodeInfosBuilder_ == null) {
+          ensureNodeInfosIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, nodeInfos_);
+          onChanged();
+        } else {
+          nodeInfosBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public Builder clearNodeInfos() {
+        if (nodeInfosBuilder_ == null) {
+          nodeInfos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          nodeInfosBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public Builder removeNodeInfos(int index) {
+        if (nodeInfosBuilder_ == null) {
+          ensureNodeInfosIsMutable();
+          nodeInfos_.remove(index);
+          onChanged();
+        } else {
+          nodeInfosBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder getNodeInfosBuilder(
+          int index) {
+        return getNodeInfosFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfoOrBuilder getNodeInfosOrBuilder(
+          int index) {
+        if (nodeInfosBuilder_ == null) {
+          return nodeInfos_.get(index);  } else {
+          return nodeInfosBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public java.util.List<? extends proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfoOrBuilder> 
+           getNodeInfosOrBuilderList() {
+        if (nodeInfosBuilder_ != null) {
+          return nodeInfosBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(nodeInfos_);
+        }
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder addNodeInfosBuilder() {
+        return getNodeInfosFieldBuilder().addBuilder(
+            proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder addNodeInfosBuilder(
+          int index) {
+        return getNodeInfosFieldBuilder().addBuilder(
+            index, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .NodeInfo node_infos = 1;</code>
+       */
+      public java.util.List<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder> 
+           getNodeInfosBuilderList() {
+        return getNodeInfosFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfoOrBuilder> 
+          getNodeInfosFieldBuilder() {
+        if (nodeInfosBuilder_ == null) {
+          nodeInfosBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfoOrBuilder>(
+                  nodeInfos_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          nodeInfos_ = null;
+        }
+        return nodeInfosBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:NodesInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:NodesInfo)
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo();
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<NodesInfo>
+        PARSER = new com.google.protobuf.AbstractParser<NodesInfo>() {
+      @java.lang.Override
+      public NodesInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new NodesInfo(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<NodesInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NodesInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3085,6 +7804,21 @@ public final class NodeControlServiceApi {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_NodeControlResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DeviceInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DeviceInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_NodeInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_NodeInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_NodesInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_NodesInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3093,54 +7827,88 @@ public final class NodeControlServiceApi {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    String[] descriptorData = {
+    java.lang.String[] descriptorData = {
       "\n\020nodeServer.proto\032\033google/protobuf/empt" +
-      "y.proto\032\031google/protobuf/any.proto\"\027\n\006No" +
-      "deId\022\r\n\005value\030\001 \001(\t\"\031\n\010DeviceId\022\r\n\005value" +
-      "\030\001 \001(\t\"}\n\013NodeControl\022\030\n\007node_id\030\001 \001(\0132\007" +
-      ".NodeId\022\034\n\tdevice_id\030\002 \001(\0132\t.DeviceId\022&\n" +
-      "\014control_type\030\003 \001(\0162\020.NodeControlType\022\016\n" +
-      "\006detail\030\004 \001(\t\"7\n\023NodeControlResponse\022\017\n\007" +
-      "success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t*_\n\017NodeCo" +
-      "ntrolType\022\017\n\013REBOOT_NODE\020\000\022\021\n\rSHUTDOWN_N" +
-      "ODE\020\001\022\r\n\tABORT_ALL\020\002\022\r\n\tSELF_TEST\020\003\022\n\n\006R" +
-      "ENAME\020\0042M\n\022NodeControlService\0227\n\017PostNod" +
-      "eControl\022\014.NodeControl\032\024.NodeControlResp" +
-      "onse\"\000B9\n proto_compile.cetc41.nodecontr" +
-      "olB\025NodeControlServiceApib\006proto3"
+      "y.proto\032\031google/protobuf/any.proto\032\ndcts" +
+      ".proto\"\027\n\006NodeId\022\r\n\005value\030\001 \001(\t\"\031\n\010Devic" +
+      "eId\022\r\n\005value\030\001 \001(\t\"}\n\013NodeControl\022\030\n\007nod" +
+      "e_id\030\001 \001(\0132\007.NodeId\022\034\n\tdevice_id\030\002 \001(\0132\t" +
+      ".DeviceId\022&\n\014control_type\030\003 \001(\0162\020.NodeCo" +
+      "ntrolType\022\016\n\006detail\030\004 \001(\t\"7\n\023NodeControl" +
+      "Response\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001" +
+      "(\t\"\275\001\n\nDeviceInfo\022\034\n\tdevice_id\030\001 \001(\0132\t.D" +
+      "eviceId\022\023\n\013device_name\030\002 \001(\t\022\023\n\013device_t" +
+      "ype\030\003 \001(\t\022\016\n\006status\030\004 \001(\t\022\033\n\010position\030\005 " +
+      "\001(\0132\t.Position\022\031\n\007posture\030\006 \001(\0132\010.Postur" +
+      "e\022\037\n\014physicalList\030\007 \003(\0132\t.Physical\"\271\001\n\010N" +
+      "odeInfo\022\030\n\007node_id\030\001 \001(\0132\007.NodeId\022\021\n\tnod" +
+      "e_name\030\002 \001(\t\022\021\n\tnode_type\030\003 \001(\t\022\036\n\nlast_" +
+      "heard\030\004 \001(\0132\n.Timestamp\022#\n\016dataSourceLis" +
+      "t\030\005 \003(\0132\013.DeviceInfo\022\030\n\013is_physical\030\006 \001(" +
+      "\010H\000\210\001\001B\016\n\014_is_physical\"*\n\tNodesInfo\022\035\n\nn" +
+      "ode_infos\030\001 \003(\0132\t.NodeInfo*_\n\017NodeContro" +
+      "lType\022\017\n\013REBOOT_NODE\020\000\022\021\n\rSHUTDOWN_NODE\020" +
+      "\001\022\r\n\tABORT_ALL\020\002\022\r\n\tSELF_TEST\020\003\022\n\n\006RENAM" +
+      "E\020\0042\250\001\n\022NodeControlService\0224\n\014ListAllNod" +
+      "es\022\026.google.protobuf.Empty\032\n.NodesInfo\"\000" +
+      "\022#\n\013GetNodeInfo\022\007.NodeId\032\t.NodeInfo\"\000\0227\n" +
+      "\017PostNodeControl\022\014.NodeControl\032\024.NodeCon" +
+      "trolResponse\"\000B9\n proto_compile.cetc41.n" +
+      "odecontrolB\025NodeControlServiceApib\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.EmptyProto.getDescriptor(),
           com.google.protobuf.AnyProto.getDescriptor(),
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.getDescriptor(),
         });
     internal_static_NodeId_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_NodeId_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_NodeId_descriptor,
-        new String[] { "Value", });
+        new java.lang.String[] { "Value", });
     internal_static_DeviceId_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_DeviceId_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DeviceId_descriptor,
-        new String[] { "Value", });
+        new java.lang.String[] { "Value", });
     internal_static_NodeControl_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_NodeControl_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_NodeControl_descriptor,
-        new String[] { "NodeId", "DeviceId", "ControlType", "Detail", });
+        new java.lang.String[] { "NodeId", "DeviceId", "ControlType", "Detail", });
     internal_static_NodeControlResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_NodeControlResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_NodeControlResponse_descriptor,
-        new String[] { "Success", "Message", });
+        new java.lang.String[] { "Success", "Message", });
+    internal_static_DeviceInfo_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_DeviceInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DeviceInfo_descriptor,
+        new java.lang.String[] { "DeviceId", "DeviceName", "DeviceType", "Status", "Position", "Posture", "PhysicalList", });
+    internal_static_NodeInfo_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_NodeInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_NodeInfo_descriptor,
+        new java.lang.String[] { "NodeId", "NodeName", "NodeType", "LastHeard", "DataSourceList", "IsPhysical", "IsPhysical", });
+    internal_static_NodesInfo_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_NodesInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_NodesInfo_descriptor,
+        new java.lang.String[] { "NodeInfos", });
     com.google.protobuf.EmptyProto.getDescriptor();
     com.google.protobuf.AnyProto.getDescriptor();
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

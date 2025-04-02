@@ -48,7 +48,6 @@ public class DeviceInfoAccepter {
     private static void saveDeviceMapToRedis() {
         try {
             Map<String, DataSource> deviceMap = DeviceManager.getInstance().getDeviceMap();
-            System.out.println(deviceMap);
             String json = objectMapper.writeValueAsString(deviceMap);
             redisClient.set("deviceMap", json);
             System.out.println("deviceMap saved to Redis: " + json);
