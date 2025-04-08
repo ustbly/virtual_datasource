@@ -57,7 +57,7 @@ public class NodeControlServiceImpl extends NodeControlServiceGrpc.NodeControlSe
 
 //        List<NodeControlServiceApi.NodeInfo> nodeInfos = ListAllNodes.readNodesFromJson("src/main/resources/nodes.json");
         List<NodeControlServiceApi.NodeInfo> nodeInfos = ListAllNodes.getNodesInfo();
-        System.out.println(nodeInfos);
+//        System.out.println(nodeInfos);
 
         // 构建 NodesInfo
         // 返回响应
@@ -65,6 +65,8 @@ public class NodeControlServiceImpl extends NodeControlServiceGrpc.NodeControlSe
                 .addAllNodeInfos(nodeInfos)
                 .build();
         responseObserver.onNext(response);
+        System.out.println("收到请求，开始处理...");
+        // 处理请求
         responseObserver.onCompleted();
     }
 

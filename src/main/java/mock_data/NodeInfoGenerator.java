@@ -1,93 +1,153 @@
 package mock_data;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import common.DOA;
 import common.Physical;
 import common.Position;
 import common.Posture;
 import datasource.DataSource;
+import datasource.InfoSystem;
+import datasource.ReconStation;
 import datasource.Sensor;
 import entity.FixSignal;
 import entity.NodeInfo;
 import entity.SignalList;
-import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
 import redis.clients.jedis.Jedis;
 import utils.RedisClient;
+import utils.VirtualDeviceScheduler;
 
-import java.sql.Timestamp;
+import java.io.File;
+import java.io.IOException;
+import java.time.Instant;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class NodeInfoGenerator {
     public static void main(String[] args) {
+        MockVirtualDataSourceData();
+    }
+
+
+    /**
+     * 模拟生成虚拟设备的状态数据
+     */
+    public static void MockVirtualDataSourceData() {
         // 创建 Redis 连接
         Jedis jedis = RedisClient.getJedis();
+        ObjectMapper objectMapper = new ObjectMapper();
 
-        // 创建模拟的 NodeInfo 数据
-        NodeInfo node1 = generateNode("N001", "Node-Alpha", "Sensor");
-        NodeInfo node2 = generateNode("N002", "Node-Beta", "ReconStation");
+        try {
+            JsonNode rootNode = objectMapper.readTree(new File("src/main/resources/nodes.json"));
+            JsonNode nodesArray = rootNode.get("nodes");
 
-        // 序列化数据
-        Gson gson = new Gson();
-        String node1Json = gson.toJson(node1);
-        String node2Json = gson.toJson(node2);
+            if (nodesArray != null && nodesArray.isArray()) {
+                for (JsonNode node : nodesArray) {
+                    // 确保 JSON 格式正确
+                    String node_id = node.get("node_id").get("value").asText();
+                    String node_name = node.get("node_name").asText();
+                    String node_type = node.get("node_type").asText();
+                    JsonNode dataSourceList = node.get("dataSourceList");
+                    boolean is_physical = node.get("is_physical").asBoolean();
 
-        // 存储到 Redis
-        jedis.set(node1.getNode_id(), node1Json);
-        jedis.set(node2.getNode_id(), node2Json);
-
-        System.out.println("数据已存入 Redis：");
-        System.out.println("N001 -> " + node1Json);
-        System.out.println("N002 -> " + node2Json);
-
+                    if (!is_physical) {  // 直接读入纯虚拟设备的数据，一次性生成的不会变化
+                        NodeInfo nodeInfo = generateNode(node_id, node_name, node_type, dataSourceList, false);
+                        // 序列化数据
+                        Gson gson = new Gson();
+                        String nodeInfoJson = gson.toJson(nodeInfo);
+                        // 存储到 Redis
+                        jedis.set(nodeInfo.getNode_id(), nodeInfoJson);
+                        System.out.println("纯虚拟设备数据已存入Redis：");
+                        System.out.println(nodeInfo.getNode_id() + " -> " + nodeInfoJson);
+                    } else {
+                        NodeInfo nodeInfo = generateNode(node_id, node_name, node_type, dataSourceList, true);
+                        // 序列化数据
+                        Gson gson = new Gson();
+                        String nodeInfoJson = gson.toJson(nodeInfo);
+                        // 存储到 Redis
+                        jedis.set(nodeInfo.getNode_id(), nodeInfoJson);
+                        VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(nodeInfo);
+                        System.out.println("物理设备对应的虚拟设备数据已存入Redis：");
+                        System.out.println(nodeInfo.getNode_id() + " -> " + nodeInfoJson);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         // 关闭 Redis 连接
         jedis.close();
     }
 
-    private static NodeInfo generateNode(String nodeId, String nodeName, String nodeType) {
+    private static NodeInfo generateNode(String nodeId, String nodeName, String nodeType, JsonNode dataSourceList, boolean is_physical) {
         NodeInfo node = new NodeInfo();
         node.setNode_id(nodeId);
         node.setNode_name(nodeName);
         node.setNode_type(nodeType);
-        node.setLast_heard("170000000");
-        node.setIs_physical(false);
+        node.setLast_heard(String.valueOf(Instant.now().getEpochSecond()));
+        node.setIs_physical(is_physical);
 
-        // 创建两个设备
+        // 创建设备
         List<DataSource> devices = new ArrayList<>();
-        devices.add(generateDevice(nodeId + "-D1", "Device-1", "Sensor"));
-        devices.add(generateDevice(nodeId + "-D2", "Device-2", "InfoSystem"));
+        for (JsonNode device : dataSourceList) {
+            String device_id = device.get("device_id").get("value").asText();
+            String device_name = device.get("device_name").asText();
+            String device_type = device.get("device_type").asText();
+            String status = device.get("status").asText();
+            devices.add(generateDevice(device_id, device_name, device_type, status, is_physical));
+        }
 
         node.setDataSourceList(devices);
         return node;
     }
 
-    private static DataSource generateDevice(String deviceId, String deviceName, String deviceType) {
-        DataSource device = new Sensor(); // 假设为 Sensor 设备
+    public static DataSource generateDevice(String deviceId, String deviceName, String deviceType, String status, boolean is_physical) {
+        DataSource device = null;
+        switch (deviceType) {
+            case "Sensor":
+                device = new Sensor();
+                break;
+            case "InfoSystem":
+                device = new InfoSystem();
+                break;
+            case "ReconStation":
+                device = new ReconStation();
+                break;
+        }
+
         device.setDevice_id(deviceId);
         device.setDevice_name(deviceName);
         device.setDevice_type(deviceType);
-        device.setStatus("Online");
-        device.setPosition(new Position(16,24,36));
-        device.setPosture(new Posture(89,12,45));
+        device.setStatus(status);
 
-        List<Physical> physicalList = new ArrayList<>();
+        if ("online".equals(status)) {
+            // 生成随机位置数据
+            double latitude = ThreadLocalRandom.current().nextDouble(-90.0, 90.0);
+            double longitude = ThreadLocalRandom.current().nextDouble(-180.0, 180.0);
+            double altitude = ThreadLocalRandom.current().nextDouble(0, 10000);  // 海拔 0 - 10000 米
+            device.setPosition(new Position(latitude, longitude, altitude));
 
+            // 生成随机姿态数据
+            double roll = ThreadLocalRandom.current().nextDouble(0, 360);  // 滚转角 0 - 360 度
+            double pitch = ThreadLocalRandom.current().nextDouble(-90, 90); // 俯仰角 -90 到 90 度
+            double yaw = ThreadLocalRandom.current().nextDouble(0, 360);   // 偏航角 0 - 360 度
+            device.setPosture(new Posture(roll, pitch, yaw));
 
-        // 生成信号列表
-        SignalList signalList = new SignalList();
-        List<FixSignal> fixSignals = new ArrayList<>();
+            List<Physical> physicalList = new ArrayList<>();
+            List<FixSignal> fixSignals = new ArrayList<>();
+            for (int i = 0; i < 3; i++) {
+                physicalList.add(generatePhysical(deviceId + "-P" + (i + 1)));
+            }
+            for (int i = 0; i < 10; i++) {
+                fixSignals.add(generateFixSignal(deviceId + "-S" + (i + 1)));
+            }
 
-        for (int i = 0; i < 10; i++) {
-            fixSignals.add(generateFixSignal(deviceId + "-S" + (i + 1)));
+            SignalList signalList = new SignalList();
+            signalList.setFixSignalList(fixSignals);
+            device.setPhysical(physicalList);
+            device.setSignalList(signalList);
         }
-
-        for (int i = 0; i < 3; i++) {
-            physicalList.add(generatePhysical(deviceId + "-S" + (i + 1)));
-        }
-
-        signalList.setFixSignalList(fixSignals);
-
-        device.setPhysical(physicalList);
-        device.setSignalList(signalList);
 
         return device;
     }
@@ -101,6 +161,9 @@ public class NodeInfoGenerator {
     }
 
     private static FixSignal generateFixSignal(String signalId) {
+        double azimuth = ThreadLocalRandom.current().nextDouble(0.0, 360.0);
+        double quality = ThreadLocalRandom.current().nextDouble(0.0, 100.0);
+
         FixSignal signal = new FixSignal();
         signal.setSignalId(signalId);
         signal.setActivity("Active");
@@ -108,7 +171,7 @@ public class NodeInfoGenerator {
         signal.setBand_width(100 + Math.random() * 50);
         signal.setAmplitude(-50 + Math.random() * 10);
         signal.setCount_num((int) (Math.random() * 100));
-        signal.setDir_of_arrival(new DOA(10.0,20.0));
+        signal.setDir_of_arrival(new DOA(azimuth, quality));
         signal.setClassification("QAM");
 
         // 额外信息

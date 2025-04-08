@@ -6,6 +6,10 @@ import io.grpc.ManagedChannelBuilder;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceGrpc;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 public class NodeControlClient {
     /*
     public static void main(String[] args) {
@@ -34,7 +38,7 @@ public class NodeControlClient {
     }
     */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // 连接 gRPC 服务器
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50050)
                 .usePlaintext()
@@ -43,11 +47,18 @@ public class NodeControlClient {
         // 创建 Stub
         NodeControlServiceGrpc.NodeControlServiceBlockingStub stub = NodeControlServiceGrpc.newBlockingStub(channel);
 
-        NodeControlServiceApi.NodesInfo response = stub.listAllNodes(Empty.newBuilder().build());
-        System.out.println("返回结果: " + response.getNodeInfosList());
+        // 创建定时任务调度器
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(10);
 
-        // 关闭通道
-        channel.shutdown();
+        // 定义每 3 秒调用一次服务端获取数据
+        scheduler.scheduleWithFixedDelay(() -> {
+            try {
+                NodeControlServiceApi.NodesInfo response = stub.listAllNodes(Empty.newBuilder().build());
+                System.out.println("返回结果: " + response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, 0, 5, TimeUnit.SECONDS); // 延迟 0 秒开始，3 秒执行一次
     }
 }
 
