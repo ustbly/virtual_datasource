@@ -14,6 +14,644 @@ public final class DCTSServiceApi {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  /**
+   * <pre>
+   *命令错误码
+   * </pre>
+   *
+   * Protobuf enum {@code ErrorType}
+   */
+  public enum ErrorType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     *无错误
+     * </pre>
+     *
+     * <code>ERR_NONE = 0;</code>
+     */
+    ERR_NONE(0),
+    /**
+     * <pre>
+     *功能未实现
+     * </pre>
+     *
+     * <code>ERR_NOTIMPLEMENTED = -1;</code>
+     */
+    ERR_NOTIMPLEMENTED(-1),
+    /**
+     * <pre>
+     *未知错误
+     * </pre>
+     *
+     * <code>ERR_UNKNOWN = -2;</code>
+     */
+    ERR_UNKNOWN(-2),
+    /**
+     * <pre>
+     *节点忙
+     * </pre>
+     *
+     * <code>ERR_BUSY = -3;</code>
+     */
+    ERR_BUSY(-3),
+    /**
+     * <pre>
+     *操作终止
+     * </pre>
+     *
+     * <code>ERR_ABORTED = -5;</code>
+     */
+    ERR_ABORTED(-5),
+    /**
+     * <pre>
+     *响应超时
+     * </pre>
+     *
+     * <code>ERR_CMD_NOREPLY = -6;</code>
+     */
+    ERR_CMD_NOREPLY(-6),
+    /**
+     * <pre>
+     *参数错误
+     * </pre>
+     *
+     * <code>ERR_PARAM = -8;</code>
+     */
+    ERR_PARAM(-8),
+    /**
+     * <pre>
+     *节点名称已存在
+     * </pre>
+     *
+     * <code>ERR_STATION_NAME_EXISTS = -11;</code>
+     */
+    ERR_STATION_NAME_EXISTS(-11),
+    /**
+     * <pre>
+     *无效的句柄
+     * </pre>
+     *
+     * <code>ERR_INVALID_HANDLE = -15;</code>
+     */
+    ERR_INVALID_HANDLE(-15),
+    /**
+     * <pre>
+     *无效的请求
+     * </pre>
+     *
+     * <code>ERR_INVALID_REQUEST = -16;</code>
+     */
+    ERR_INVALID_REQUEST(-16),
+    /**
+     * <pre>
+     *无可用的数据源资源
+     * </pre>
+     *
+     * <code>ERR_NO_DATA_SOURCE = -20;</code>
+     */
+    ERR_NO_DATA_SOURCE(-20),
+    /**
+     * <pre>
+     *socket错误
+     * </pre>
+     *
+     * <code>ERR_SOCKET_ERROR = -26;</code>
+     */
+    ERR_SOCKET_ERROR(-26),
+    /**
+     * <pre>
+     *场景未找到
+     * </pre>
+     *
+     * <code>ERR_SCENARIO_NOT_FOUND = -27;</code>
+     */
+    ERR_SCENARIO_NOT_FOUND(-27),
+    /**
+     * <pre>
+     *没有有效数据
+     * </pre>
+     *
+     * <code>ERR_NO_DATA_AVAILABLE = -28;</code>
+     */
+    ERR_NO_DATA_AVAILABLE(-28),
+    /**
+     * <pre>
+     *缓冲区不足
+     * </pre>
+     *
+     * <code>ERR_BUFFER_TOO_SMALL = -30;</code>
+     */
+    ERR_BUFFER_TOO_SMALL(-30),
+    /**
+     * <pre>
+     *诊断错误
+     * </pre>
+     *
+     * <code>ERR_DIAGNOSTIC = -31;</code>
+     */
+    ERR_DIAGNOSTIC(-31),
+    /**
+     * <pre>
+     *命令执行失败
+     * </pre>
+     *
+     * <code>ERR_COMMAND_FAILED = -38;</code>
+     */
+    ERR_COMMAND_FAILED(-38),
+    /**
+     * <pre>
+     *超时
+     * </pre>
+     *
+     * <code>ERR_TIMEOUT = -40;</code>
+     */
+    ERR_TIMEOUT(-40),
+    /**
+     * <pre>
+     *字符串过长
+     * </pre>
+     *
+     * <code>ERR_STRING_TOO_LONG = -43;</code>
+     */
+    ERR_STRING_TOO_LONG(-43),
+    /**
+     * <pre>
+     *数据类型
+     * </pre>
+     *
+     * <code>ERR_DATA_TYPE = -52;</code>
+     */
+    ERR_DATA_TYPE(-52),
+    /**
+     * <pre>
+     *鉴权失败
+     * </pre>
+     *
+     * <code>ERR_AUTHORIZATION = -57;</code>
+     */
+    ERR_AUTHORIZATION(-57),
+    /**
+     * <pre>
+     *授权失效
+     * </pre>
+     *
+     * <code>ERR_LICENSE = -64;</code>
+     */
+    ERR_LICENSE(-64),
+    /**
+     * <pre>
+     *测量失败
+     * </pre>
+     *
+     * <code>ERR_MEAS_FAILED = -66;</code>
+     */
+    ERR_MEAS_FAILED(-66),
+    /**
+     * <pre>
+     *数据超时
+     * </pre>
+     *
+     * <code>ERR_DATA_AVAIL_TIMEOUT = -75;</code>
+     */
+    ERR_DATA_AVAIL_TIMEOUT(-75),
+    /**
+     * <pre>
+     *任务未找到
+     * </pre>
+     *
+     * <code>ERR_TASK_NOT_FOUND = -76;</code>
+     */
+    ERR_TASK_NOT_FOUND(-76),
+    /**
+     * <pre>
+     *节点任务指派失败
+     * </pre>
+     *
+     * <code>ERR_SOURCE_ASSIGN = -77;</code>
+     */
+    ERR_SOURCE_ASSIGN(-77),
+    /**
+     * <pre>
+     *设备任务指派失败
+     * </pre>
+     *
+     * <code>ERR_TASK_START = -78;</code>
+     */
+    ERR_TASK_START(-78),
+    /**
+     * <pre>
+     *任务暂停失败
+     * </pre>
+     *
+     * <code>ERR_TASK_PAUSE = -79;</code>
+     */
+    ERR_TASK_PAUSE(-79),
+    /**
+     * <pre>
+     *任务继续失败
+     * </pre>
+     *
+     * <code>ERR_TASK_RESUME = -80;</code>
+     */
+    ERR_TASK_RESUME(-80),
+    /**
+     * <pre>
+     *打开文件错误
+     * </pre>
+     *
+     * <code>ERR_OPEN_FILE = -81;</code>
+     */
+    ERR_OPEN_FILE(-81),
+    /**
+     * <pre>
+     *TDOA错误
+     * </pre>
+     *
+     * <code>ERR_TDOA = -82;</code>
+     */
+    ERR_TDOA(-82),
+    /**
+     * <pre>
+     *任务已退出
+     * </pre>
+     *
+     * <code>ERR_TASK_QUIT = -83;</code>
+     */
+    ERR_TASK_QUIT(-83),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <pre>
+     *无错误
+     * </pre>
+     *
+     * <code>ERR_NONE = 0;</code>
+     */
+    public static final int ERR_NONE_VALUE = 0;
+    /**
+     * <pre>
+     *功能未实现
+     * </pre>
+     *
+     * <code>ERR_NOTIMPLEMENTED = -1;</code>
+     */
+    public static final int ERR_NOTIMPLEMENTED_VALUE = -1;
+    /**
+     * <pre>
+     *未知错误
+     * </pre>
+     *
+     * <code>ERR_UNKNOWN = -2;</code>
+     */
+    public static final int ERR_UNKNOWN_VALUE = -2;
+    /**
+     * <pre>
+     *节点忙
+     * </pre>
+     *
+     * <code>ERR_BUSY = -3;</code>
+     */
+    public static final int ERR_BUSY_VALUE = -3;
+    /**
+     * <pre>
+     *操作终止
+     * </pre>
+     *
+     * <code>ERR_ABORTED = -5;</code>
+     */
+    public static final int ERR_ABORTED_VALUE = -5;
+    /**
+     * <pre>
+     *响应超时
+     * </pre>
+     *
+     * <code>ERR_CMD_NOREPLY = -6;</code>
+     */
+    public static final int ERR_CMD_NOREPLY_VALUE = -6;
+    /**
+     * <pre>
+     *参数错误
+     * </pre>
+     *
+     * <code>ERR_PARAM = -8;</code>
+     */
+    public static final int ERR_PARAM_VALUE = -8;
+    /**
+     * <pre>
+     *节点名称已存在
+     * </pre>
+     *
+     * <code>ERR_STATION_NAME_EXISTS = -11;</code>
+     */
+    public static final int ERR_STATION_NAME_EXISTS_VALUE = -11;
+    /**
+     * <pre>
+     *无效的句柄
+     * </pre>
+     *
+     * <code>ERR_INVALID_HANDLE = -15;</code>
+     */
+    public static final int ERR_INVALID_HANDLE_VALUE = -15;
+    /**
+     * <pre>
+     *无效的请求
+     * </pre>
+     *
+     * <code>ERR_INVALID_REQUEST = -16;</code>
+     */
+    public static final int ERR_INVALID_REQUEST_VALUE = -16;
+    /**
+     * <pre>
+     *无可用的数据源资源
+     * </pre>
+     *
+     * <code>ERR_NO_DATA_SOURCE = -20;</code>
+     */
+    public static final int ERR_NO_DATA_SOURCE_VALUE = -20;
+    /**
+     * <pre>
+     *socket错误
+     * </pre>
+     *
+     * <code>ERR_SOCKET_ERROR = -26;</code>
+     */
+    public static final int ERR_SOCKET_ERROR_VALUE = -26;
+    /**
+     * <pre>
+     *场景未找到
+     * </pre>
+     *
+     * <code>ERR_SCENARIO_NOT_FOUND = -27;</code>
+     */
+    public static final int ERR_SCENARIO_NOT_FOUND_VALUE = -27;
+    /**
+     * <pre>
+     *没有有效数据
+     * </pre>
+     *
+     * <code>ERR_NO_DATA_AVAILABLE = -28;</code>
+     */
+    public static final int ERR_NO_DATA_AVAILABLE_VALUE = -28;
+    /**
+     * <pre>
+     *缓冲区不足
+     * </pre>
+     *
+     * <code>ERR_BUFFER_TOO_SMALL = -30;</code>
+     */
+    public static final int ERR_BUFFER_TOO_SMALL_VALUE = -30;
+    /**
+     * <pre>
+     *诊断错误
+     * </pre>
+     *
+     * <code>ERR_DIAGNOSTIC = -31;</code>
+     */
+    public static final int ERR_DIAGNOSTIC_VALUE = -31;
+    /**
+     * <pre>
+     *命令执行失败
+     * </pre>
+     *
+     * <code>ERR_COMMAND_FAILED = -38;</code>
+     */
+    public static final int ERR_COMMAND_FAILED_VALUE = -38;
+    /**
+     * <pre>
+     *超时
+     * </pre>
+     *
+     * <code>ERR_TIMEOUT = -40;</code>
+     */
+    public static final int ERR_TIMEOUT_VALUE = -40;
+    /**
+     * <pre>
+     *字符串过长
+     * </pre>
+     *
+     * <code>ERR_STRING_TOO_LONG = -43;</code>
+     */
+    public static final int ERR_STRING_TOO_LONG_VALUE = -43;
+    /**
+     * <pre>
+     *数据类型
+     * </pre>
+     *
+     * <code>ERR_DATA_TYPE = -52;</code>
+     */
+    public static final int ERR_DATA_TYPE_VALUE = -52;
+    /**
+     * <pre>
+     *鉴权失败
+     * </pre>
+     *
+     * <code>ERR_AUTHORIZATION = -57;</code>
+     */
+    public static final int ERR_AUTHORIZATION_VALUE = -57;
+    /**
+     * <pre>
+     *授权失效
+     * </pre>
+     *
+     * <code>ERR_LICENSE = -64;</code>
+     */
+    public static final int ERR_LICENSE_VALUE = -64;
+    /**
+     * <pre>
+     *测量失败
+     * </pre>
+     *
+     * <code>ERR_MEAS_FAILED = -66;</code>
+     */
+    public static final int ERR_MEAS_FAILED_VALUE = -66;
+    /**
+     * <pre>
+     *数据超时
+     * </pre>
+     *
+     * <code>ERR_DATA_AVAIL_TIMEOUT = -75;</code>
+     */
+    public static final int ERR_DATA_AVAIL_TIMEOUT_VALUE = -75;
+    /**
+     * <pre>
+     *任务未找到
+     * </pre>
+     *
+     * <code>ERR_TASK_NOT_FOUND = -76;</code>
+     */
+    public static final int ERR_TASK_NOT_FOUND_VALUE = -76;
+    /**
+     * <pre>
+     *节点任务指派失败
+     * </pre>
+     *
+     * <code>ERR_SOURCE_ASSIGN = -77;</code>
+     */
+    public static final int ERR_SOURCE_ASSIGN_VALUE = -77;
+    /**
+     * <pre>
+     *设备任务指派失败
+     * </pre>
+     *
+     * <code>ERR_TASK_START = -78;</code>
+     */
+    public static final int ERR_TASK_START_VALUE = -78;
+    /**
+     * <pre>
+     *任务暂停失败
+     * </pre>
+     *
+     * <code>ERR_TASK_PAUSE = -79;</code>
+     */
+    public static final int ERR_TASK_PAUSE_VALUE = -79;
+    /**
+     * <pre>
+     *任务继续失败
+     * </pre>
+     *
+     * <code>ERR_TASK_RESUME = -80;</code>
+     */
+    public static final int ERR_TASK_RESUME_VALUE = -80;
+    /**
+     * <pre>
+     *打开文件错误
+     * </pre>
+     *
+     * <code>ERR_OPEN_FILE = -81;</code>
+     */
+    public static final int ERR_OPEN_FILE_VALUE = -81;
+    /**
+     * <pre>
+     *TDOA错误
+     * </pre>
+     *
+     * <code>ERR_TDOA = -82;</code>
+     */
+    public static final int ERR_TDOA_VALUE = -82;
+    /**
+     * <pre>
+     *任务已退出
+     * </pre>
+     *
+     * <code>ERR_TASK_QUIT = -83;</code>
+     */
+    public static final int ERR_TASK_QUIT_VALUE = -83;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ErrorType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static ErrorType forNumber(int value) {
+      switch (value) {
+        case 0: return ERR_NONE;
+        case -1: return ERR_NOTIMPLEMENTED;
+        case -2: return ERR_UNKNOWN;
+        case -3: return ERR_BUSY;
+        case -5: return ERR_ABORTED;
+        case -6: return ERR_CMD_NOREPLY;
+        case -8: return ERR_PARAM;
+        case -11: return ERR_STATION_NAME_EXISTS;
+        case -15: return ERR_INVALID_HANDLE;
+        case -16: return ERR_INVALID_REQUEST;
+        case -20: return ERR_NO_DATA_SOURCE;
+        case -26: return ERR_SOCKET_ERROR;
+        case -27: return ERR_SCENARIO_NOT_FOUND;
+        case -28: return ERR_NO_DATA_AVAILABLE;
+        case -30: return ERR_BUFFER_TOO_SMALL;
+        case -31: return ERR_DIAGNOSTIC;
+        case -38: return ERR_COMMAND_FAILED;
+        case -40: return ERR_TIMEOUT;
+        case -43: return ERR_STRING_TOO_LONG;
+        case -52: return ERR_DATA_TYPE;
+        case -57: return ERR_AUTHORIZATION;
+        case -64: return ERR_LICENSE;
+        case -66: return ERR_MEAS_FAILED;
+        case -75: return ERR_DATA_AVAIL_TIMEOUT;
+        case -76: return ERR_TASK_NOT_FOUND;
+        case -77: return ERR_SOURCE_ASSIGN;
+        case -78: return ERR_TASK_START;
+        case -79: return ERR_TASK_PAUSE;
+        case -80: return ERR_TASK_RESUME;
+        case -81: return ERR_OPEN_FILE;
+        case -82: return ERR_TDOA;
+        case -83: return ERR_TASK_QUIT;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ErrorType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ErrorType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ErrorType>() {
+            public ErrorType findValueByNumber(int number) {
+              return ErrorType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.DCTSServiceApi.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final ErrorType[] VALUES = values();
+
+    public static ErrorType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private ErrorType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ErrorType)
+  }
+
   public interface TaskIdOrBuilder extends
       // @@protoc_insertion_point(interface_extends:TaskId)
       com.google.protobuf.MessageOrBuilder {
@@ -13816,6 +14454,724 @@ public final class DCTSServiceApi {
 
   }
 
+  public interface TopicOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Topic)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string key = 1;</code>
+     * @return The key.
+     */
+    java.lang.String getKey();
+    /**
+     * <code>string key = 1;</code>
+     * @return The bytes for key.
+     */
+    com.google.protobuf.ByteString
+        getKeyBytes();
+
+    /**
+     * <code>string value = 2;</code>
+     * @return The value.
+     */
+    java.lang.String getValue();
+    /**
+     * <code>string value = 2;</code>
+     * @return The bytes for value.
+     */
+    com.google.protobuf.ByteString
+        getValueBytes();
+  }
+  /**
+   * Protobuf type {@code Topic}
+   */
+  public static final class Topic extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Topic)
+      TopicOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Topic.newBuilder() to construct.
+    private Topic(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Topic() {
+      key_ = "";
+      value_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Topic();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Topic(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              key_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              value_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.DCTSServiceApi.internal_static_Topic_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto_compile.cetc41.nodecontrol.DCTSServiceApi.internal_static_Topic_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.class, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder.class);
+    }
+
+    public static final int KEY_FIELD_NUMBER = 1;
+    private volatile java.lang.Object key_;
+    /**
+     * <code>string key = 1;</code>
+     * @return The key.
+     */
+    @java.lang.Override
+    public java.lang.String getKey() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        key_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string key = 1;</code>
+     * @return The bytes for key.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        key_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int VALUE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object value_;
+    /**
+     * <code>string value = 2;</code>
+     * @return The value.
+     */
+    @java.lang.Override
+    public java.lang.String getValue() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        value_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string value = 2;</code>
+     * @return The bytes for value.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getValueBytes() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        value_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getKeyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, key_);
+      }
+      if (!getValueBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, value_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getKeyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, key_);
+      }
+      if (!getValueBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, value_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic)) {
+        return super.equals(obj);
+      }
+      proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic other = (proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic) obj;
+
+      if (!getKey()
+          .equals(other.getKey())) return false;
+      if (!getValue()
+          .equals(other.getValue())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + KEY_FIELD_NUMBER;
+      hash = (53 * hash) + getKey().hashCode();
+      hash = (37 * hash) + VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getValue().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Topic}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Topic)
+        proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_compile.cetc41.nodecontrol.DCTSServiceApi.internal_static_Topic_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_compile.cetc41.nodecontrol.DCTSServiceApi.internal_static_Topic_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.class, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder.class);
+      }
+
+      // Construct using proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        key_ = "";
+
+        value_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto_compile.cetc41.nodecontrol.DCTSServiceApi.internal_static_Topic_descriptor;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic build() {
+        proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic buildPartial() {
+        proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic result = new proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic(this);
+        result.key_ = key_;
+        result.value_ = value_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic other) {
+        if (other == proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.getDefaultInstance()) return this;
+        if (!other.getKey().isEmpty()) {
+          key_ = other.key_;
+          onChanged();
+        }
+        if (!other.getValue().isEmpty()) {
+          value_ = other.value_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object key_ = "";
+      /**
+       * <code>string key = 1;</code>
+       * @return The key.
+       */
+      public java.lang.String getKey() {
+        java.lang.Object ref = key_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          key_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string key = 1;</code>
+       * @return The bytes for key.
+       */
+      public com.google.protobuf.ByteString
+          getKeyBytes() {
+        java.lang.Object ref = key_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          key_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string key = 1;</code>
+       * @param value The key to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        key_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string key = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearKey() {
+        
+        key_ = getDefaultInstance().getKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string key = 1;</code>
+       * @param value The bytes for key to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        key_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object value_ = "";
+      /**
+       * <code>string value = 2;</code>
+       * @return The value.
+       */
+      public java.lang.String getValue() {
+        java.lang.Object ref = value_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          value_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string value = 2;</code>
+       * @return The bytes for value.
+       */
+      public com.google.protobuf.ByteString
+          getValueBytes() {
+        java.lang.Object ref = value_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          value_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string value = 2;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValue(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string value = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValue() {
+        
+        value_ = getDefaultInstance().getValue();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string value = 2;</code>
+       * @param value The bytes for value to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Topic)
+    }
+
+    // @@protoc_insertion_point(class_scope:Topic)
+    private static final proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic();
+    }
+
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Topic>
+        PARSER = new com.google.protobuf.AbstractParser<Topic>() {
+      @java.lang.Override
+      public Topic parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Topic(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Topic> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Topic> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TaskId_descriptor;
   private static final 
@@ -13921,6 +15277,11 @@ public final class DCTSServiceApi {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TimerParam_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Topic_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Topic_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -13964,8 +15325,33 @@ public final class DCTSServiceApi {
       "ct_cfg\030\005 \001(\0132\020.ReconnectionCfg\022$\n\014msg_se" +
       "nd_cfg\030\006 \001(\0132\016.MsgSendOption\"3\n\nTimerPar" +
       "am\022\026\n\016interval_in_ms\030\001 \001(\005\022\r\n\005times\030\002 \001(" +
-      "\005B2\n proto_compile.cetc41.nodecontrolB\016D" +
-      "CTSServiceApib\006proto3"
+      "\005\"#\n\005Topic\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t*\313" +
+      "\007\n\tErrorType\022\014\n\010ERR_NONE\020\000\022\037\n\022ERR_NOTIMP" +
+      "LEMENTED\020\377\377\377\377\377\377\377\377\377\001\022\030\n\013ERR_UNKNOWN\020\376\377\377\377\377" +
+      "\377\377\377\377\001\022\025\n\010ERR_BUSY\020\375\377\377\377\377\377\377\377\377\001\022\030\n\013ERR_ABOR" +
+      "TED\020\373\377\377\377\377\377\377\377\377\001\022\034\n\017ERR_CMD_NOREPLY\020\372\377\377\377\377\377" +
+      "\377\377\377\001\022\026\n\tERR_PARAM\020\370\377\377\377\377\377\377\377\377\001\022$\n\027ERR_STAT" +
+      "ION_NAME_EXISTS\020\365\377\377\377\377\377\377\377\377\001\022\037\n\022ERR_INVALI" +
+      "D_HANDLE\020\361\377\377\377\377\377\377\377\377\001\022 \n\023ERR_INVALID_REQUE" +
+      "ST\020\360\377\377\377\377\377\377\377\377\001\022\037\n\022ERR_NO_DATA_SOURCE\020\354\377\377\377" +
+      "\377\377\377\377\377\001\022\035\n\020ERR_SOCKET_ERROR\020\346\377\377\377\377\377\377\377\377\001\022#\n" +
+      "\026ERR_SCENARIO_NOT_FOUND\020\345\377\377\377\377\377\377\377\377\001\022\"\n\025ER" +
+      "R_NO_DATA_AVAILABLE\020\344\377\377\377\377\377\377\377\377\001\022!\n\024ERR_BU" +
+      "FFER_TOO_SMALL\020\342\377\377\377\377\377\377\377\377\001\022\033\n\016ERR_DIAGNOS" +
+      "TIC\020\341\377\377\377\377\377\377\377\377\001\022\037\n\022ERR_COMMAND_FAILED\020\332\377\377" +
+      "\377\377\377\377\377\377\001\022\030\n\013ERR_TIMEOUT\020\330\377\377\377\377\377\377\377\377\001\022 \n\023ERR" +
+      "_STRING_TOO_LONG\020\325\377\377\377\377\377\377\377\377\001\022\032\n\rERR_DATA_" +
+      "TYPE\020\314\377\377\377\377\377\377\377\377\001\022\036\n\021ERR_AUTHORIZATION\020\307\377\377" +
+      "\377\377\377\377\377\377\001\022\030\n\013ERR_LICENSE\020\300\377\377\377\377\377\377\377\377\001\022\034\n\017ERR" +
+      "_MEAS_FAILED\020\276\377\377\377\377\377\377\377\377\001\022#\n\026ERR_DATA_AVAI" +
+      "L_TIMEOUT\020\265\377\377\377\377\377\377\377\377\001\022\037\n\022ERR_TASK_NOT_FOU" +
+      "ND\020\264\377\377\377\377\377\377\377\377\001\022\036\n\021ERR_SOURCE_ASSIGN\020\263\377\377\377\377" +
+      "\377\377\377\377\001\022\033\n\016ERR_TASK_START\020\262\377\377\377\377\377\377\377\377\001\022\033\n\016ER" +
+      "R_TASK_PAUSE\020\261\377\377\377\377\377\377\377\377\001\022\034\n\017ERR_TASK_RESU" +
+      "ME\020\260\377\377\377\377\377\377\377\377\001\022\032\n\rERR_OPEN_FILE\020\257\377\377\377\377\377\377\377\377" +
+      "\001\022\025\n\010ERR_TDOA\020\256\377\377\377\377\377\377\377\377\001\022\032\n\rERR_TASK_QUI" +
+      "T\020\255\377\377\377\377\377\377\377\377\001B2\n proto_compile.cetc41.nod" +
+      "econtrolB\016DCTSServiceApib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -14097,6 +15483,12 @@ public final class DCTSServiceApi {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TimerParam_descriptor,
         new java.lang.String[] { "IntervalInMs", "Times", });
+    internal_static_Topic_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_Topic_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Topic_descriptor,
+        new java.lang.String[] { "Key", "Value", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

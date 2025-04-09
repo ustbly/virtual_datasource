@@ -1,5 +1,7 @@
 package proto_compile.cetc41.nodecontrol;
 
+import com.google.protobuf.InvalidProtocolBufferException;
+
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
@@ -49,35 +51,35 @@ public final class NodeControlServiceGrpc {
     return getListAllNodesMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId,
-      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> getGetNodeInfoMethod;
+  private static volatile io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand,
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply> getSendSourceCommandMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetNodeInfo",
-      requestType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.class,
-      responseType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.class,
+      fullMethodName = SERVICE_NAME + '/' + "SendSourceCommand",
+      requestType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand.class,
+      responseType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId,
-      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> getGetNodeInfoMethod() {
-    io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> getGetNodeInfoMethod;
-    if ((getGetNodeInfoMethod = NodeControlServiceGrpc.getGetNodeInfoMethod) == null) {
+  public static io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand,
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply> getSendSourceCommandMethod() {
+    io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply> getSendSourceCommandMethod;
+    if ((getSendSourceCommandMethod = NodeControlServiceGrpc.getSendSourceCommandMethod) == null) {
       synchronized (NodeControlServiceGrpc.class) {
-        if ((getGetNodeInfoMethod = NodeControlServiceGrpc.getGetNodeInfoMethod) == null) {
-          NodeControlServiceGrpc.getGetNodeInfoMethod = getGetNodeInfoMethod =
-              io.grpc.MethodDescriptor.<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo>newBuilder()
+        if ((getSendSourceCommandMethod = NodeControlServiceGrpc.getSendSourceCommandMethod) == null) {
+          NodeControlServiceGrpc.getSendSourceCommandMethod = getSendSourceCommandMethod =
+              io.grpc.MethodDescriptor.<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetNodeInfo"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SendSourceCommand"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId.getDefaultInstance()))
+                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo.getDefaultInstance()))
-              .setSchemaDescriptor(new NodeControlServiceMethodDescriptorSupplier("GetNodeInfo"))
+                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply.getDefaultInstance()))
+              .setSchemaDescriptor(new NodeControlServiceMethodDescriptorSupplier("SendSourceCommand"))
               .build();
         }
       }
     }
-    return getGetNodeInfoMethod;
+    return getSendSourceCommandMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl,
@@ -171,9 +173,9 @@ public final class NodeControlServiceGrpc {
 
     /**
      */
-    public void getNodeInfo(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId request,
-        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetNodeInfoMethod(), responseObserver);
+    public void sendSourceCommand(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand request,
+        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply> responseObserver) throws InvalidProtocolBufferException {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSendSourceCommandMethod(), responseObserver);
     }
 
     /**
@@ -193,12 +195,12 @@ public final class NodeControlServiceGrpc {
                 proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo>(
                   this, METHODID_LIST_ALL_NODES)))
           .addMethod(
-            getGetNodeInfoMethod(),
+            getSendSourceCommandMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId,
-                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo>(
-                  this, METHODID_GET_NODE_INFO)))
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand,
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply>(
+                  this, METHODID_SEND_SOURCE_COMMAND)))
           .addMethod(
             getPostNodeControlMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -237,10 +239,10 @@ public final class NodeControlServiceGrpc {
 
     /**
      */
-    public void getNodeInfo(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId request,
-        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> responseObserver) {
+    public void sendSourceCommand(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand request,
+        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetNodeInfoMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getSendSourceCommandMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -278,9 +280,9 @@ public final class NodeControlServiceGrpc {
 
     /**
      */
-    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo getNodeInfo(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId request) {
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply sendSourceCommand(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetNodeInfoMethod(), getCallOptions(), request);
+          getChannel(), getSendSourceCommandMethod(), getCallOptions(), request);
     }
 
     /**
@@ -318,10 +320,10 @@ public final class NodeControlServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo> getNodeInfo(
-        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId request) {
+    public com.google.common.util.concurrent.ListenableFuture<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply> sendSourceCommand(
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetNodeInfoMethod(), getCallOptions()), request);
+          getChannel().newCall(getSendSourceCommandMethod(), getCallOptions()), request);
     }
 
     /**
@@ -334,7 +336,7 @@ public final class NodeControlServiceGrpc {
   }
 
   private static final int METHODID_LIST_ALL_NODES = 0;
-  private static final int METHODID_GET_NODE_INFO = 1;
+  private static final int METHODID_SEND_SOURCE_COMMAND = 1;
   private static final int METHODID_POST_NODE_CONTROL = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
@@ -358,9 +360,13 @@ public final class NodeControlServiceGrpc {
           serviceImpl.listAllNodes((com.google.protobuf.Empty) request,
               (io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodesInfo>) responseObserver);
           break;
-        case METHODID_GET_NODE_INFO:
-          serviceImpl.getNodeInfo((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeId) request,
-              (io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeInfo>) responseObserver);
+        case METHODID_SEND_SOURCE_COMMAND:
+          try {
+            serviceImpl.sendSourceCommand((NodeControlServiceApi.SourceCommand) request,
+                (io.grpc.stub.StreamObserver<NodeControlServiceApi.SourceCommandReply>) responseObserver);
+          } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+          }
           break;
         case METHODID_POST_NODE_CONTROL:
           serviceImpl.postNodeControl((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl) request,
@@ -428,7 +434,7 @@ public final class NodeControlServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new NodeControlServiceFileDescriptorSupplier())
               .addMethod(getListAllNodesMethod())
-              .addMethod(getGetNodeInfoMethod())
+              .addMethod(getSendSourceCommandMethod())
               .addMethod(getPostNodeControlMethod())
               .build();
         }

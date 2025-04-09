@@ -70,10 +70,46 @@ message NodesInfo
 {
   repeated NodeInfo node_infos = 1;
 }
+
+message Command
+{
+  uint32 command_function = 1;
+  google.protobuf.Any command_param = 2;
+}
+
+enum CmdType
+{
+  RESERVED = 0;
+  PAUSE = 1;
+  RESUME = 2;
+  RESTART_AT = 3;
+  RESET_LENGTH = 4;
+  START = 5;
+  SHUTDOWN = 6;
+}
+
+message CommandReply
+{
+  ErrorType error_code = 1;
+  google.protobuf.Any attachment = 2;
+}
+
+message SourceCommand
+{
+  DeviceId device_id = 1;
+  Command command = 2;
+}
+
+message SourceCommandReply
+{
+  DeviceId device_id = 1;
+  CommandReply reply = 2;
+}
+
 // 通用管理的API
 service NodeControlService
 {
-  rpc ListAllNodes(google.protobuf.Empty) returns (NodesInfo) {}// 枚举所有节点
-  rpc GetNodeInfo(NodeId) returns (NodeInfo) {}// 根据id获得节点信息
-  rpc PostNodeControl(NodeControl) returns (NodeControlResponse) {}// 节点控制
+  rpc ListAllNodes(google.protobuf.Empty) returns (NodesInfo) {}       // 枚举所有节点
+  rpc SendSourceCommand(SourceCommand) returns (SourceCommandReply) {} // 节点控制
+  rpc PostNodeControl(NodeControl) returns (NodeControlResponse) {}    // 节点控制
 }

@@ -1,8 +1,11 @@
 package gRPC.node_control;
 
+import com.google.protobuf.Any;
 import com.google.protobuf.Empty;
+import com.google.protobuf.InvalidProtocolBufferException;
 import datasource.DataSource;
 import io.grpc.stub.StreamObserver;
+import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceGrpc;
 import service.ListAllNodes;
@@ -52,6 +55,11 @@ public class NodeControlServiceImpl extends NodeControlServiceGrpc.NodeControlSe
     }
 
 
+    /**
+     * 获取所有设备的信息
+     * @param request
+     * @param responseObserver
+     */
     @Override
     public void listAllNodes(Empty request, StreamObserver<NodeControlServiceApi.NodesInfo> responseObserver) {
 
@@ -70,13 +78,37 @@ public class NodeControlServiceImpl extends NodeControlServiceGrpc.NodeControlSe
         responseObserver.onCompleted();
     }
 
-
+    /**
+     * 向设备发送控制指令
+     * @param request
+     * @param responseObserver
+     */
     @Override
-    public void getNodeInfo(NodeControlServiceApi.NodeId request, StreamObserver<NodeControlServiceApi.NodeInfo> responseObserver) {
-        List<NodeControlServiceApi.NodeInfo> nodeInfos = ListAllNodes.readNodesFromJson("src/main/resources/nodes.json");
+    public void sendSourceCommand(NodeControlServiceApi.SourceCommand request, StreamObserver<NodeControlServiceApi.SourceCommandReply> responseObserver) throws InvalidProtocolBufferException {
+        // 获取客户端请求参数
+        String device_id = request.getDeviceId().getValue();
 
-        // 构建 NodesInfo
-        // 返回响应
+        NodeControlServiceApi.Command command = request.getCommand();
+        int commandFunction = command.getCommandFunction();
+        long commandParam = command.getCommandParam().unpack(DCTSServiceApi.Integer.class).getValue();
 
+
+        System.out.println("接收到的客户端的参数为：device_id: " + device_id + ", command_function: " + commandFunction + " ,command_param: " + commandParam);
+
+        // 模拟执行命令
+        NodeControlServiceApi.CommandReply commandReply = NodeControlServiceApi.CommandReply.newBuilder()
+                .setErrorCode(DCTSServiceApi.ErrorType.ERR_ABORTED)
+                .setAttachment(Any.getDefaultInstance())  // 可根据需求填充
+                .build();
+
+        NodeControlServiceApi.SourceCommandReply response = NodeControlServiceApi.SourceCommandReply.newBuilder()
+                .setDeviceId(request.getDeviceId())
+                .setReply(commandReply)
+                .build();
+
+        responseObserver.onNext(response);
+        System.out.println("收到请求，开始处理...");
+        // 处理请求
+        responseObserver.onCompleted();
     }
 }

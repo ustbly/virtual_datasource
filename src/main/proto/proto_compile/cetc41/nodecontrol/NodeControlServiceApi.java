@@ -193,6 +193,159 @@ public final class NodeControlServiceApi {
     // @@protoc_insertion_point(enum_scope:NodeControlType)
   }
 
+  /**
+   * Protobuf enum {@code CmdType}
+   */
+  public enum CmdType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>RESERVED = 0;</code>
+     */
+    RESERVED(0),
+    /**
+     * <code>PAUSE = 1;</code>
+     */
+    PAUSE(1),
+    /**
+     * <code>RESUME = 2;</code>
+     */
+    RESUME(2),
+    /**
+     * <code>RESTART_AT = 3;</code>
+     */
+    RESTART_AT(3),
+    /**
+     * <code>RESET_LENGTH = 4;</code>
+     */
+    RESET_LENGTH(4),
+    /**
+     * <code>START = 5;</code>
+     */
+    START(5),
+    /**
+     * <code>SHUTDOWN = 6;</code>
+     */
+    SHUTDOWN(6),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>RESERVED = 0;</code>
+     */
+    public static final int RESERVED_VALUE = 0;
+    /**
+     * <code>PAUSE = 1;</code>
+     */
+    public static final int PAUSE_VALUE = 1;
+    /**
+     * <code>RESUME = 2;</code>
+     */
+    public static final int RESUME_VALUE = 2;
+    /**
+     * <code>RESTART_AT = 3;</code>
+     */
+    public static final int RESTART_AT_VALUE = 3;
+    /**
+     * <code>RESET_LENGTH = 4;</code>
+     */
+    public static final int RESET_LENGTH_VALUE = 4;
+    /**
+     * <code>START = 5;</code>
+     */
+    public static final int START_VALUE = 5;
+    /**
+     * <code>SHUTDOWN = 6;</code>
+     */
+    public static final int SHUTDOWN_VALUE = 6;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static CmdType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static CmdType forNumber(int value) {
+      switch (value) {
+        case 0: return RESERVED;
+        case 1: return PAUSE;
+        case 2: return RESUME;
+        case 3: return RESTART_AT;
+        case 4: return RESET_LENGTH;
+        case 5: return START;
+        case 6: return SHUTDOWN;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<CmdType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        CmdType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<CmdType>() {
+            public CmdType findValueByNumber(int number) {
+              return CmdType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final CmdType[] VALUES = values();
+
+    public static CmdType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private CmdType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:CmdType)
+  }
+
   public interface NodeIdOrBuilder extends
       // @@protoc_insertion_point(interface_extends:NodeId)
       com.google.protobuf.MessageOrBuilder {
@@ -7784,6 +7937,3073 @@ public final class NodeControlServiceApi {
 
   }
 
+  public interface CommandOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Command)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 command_function = 1;</code>
+     * @return The commandFunction.
+     */
+    int getCommandFunction();
+
+    /**
+     * <code>.google.protobuf.Any command_param = 2;</code>
+     * @return Whether the commandParam field is set.
+     */
+    boolean hasCommandParam();
+    /**
+     * <code>.google.protobuf.Any command_param = 2;</code>
+     * @return The commandParam.
+     */
+    com.google.protobuf.Any getCommandParam();
+    /**
+     * <code>.google.protobuf.Any command_param = 2;</code>
+     */
+    com.google.protobuf.AnyOrBuilder getCommandParamOrBuilder();
+  }
+  /**
+   * Protobuf type {@code Command}
+   */
+  public static final class Command extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Command)
+      CommandOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Command.newBuilder() to construct.
+    private Command(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Command() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Command();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Command(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              commandFunction_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              com.google.protobuf.Any.Builder subBuilder = null;
+              if (commandParam_ != null) {
+                subBuilder = commandParam_.toBuilder();
+              }
+              commandParam_ = input.readMessage(com.google.protobuf.Any.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(commandParam_);
+                commandParam_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_Command_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_Command_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.Builder.class);
+    }
+
+    public static final int COMMAND_FUNCTION_FIELD_NUMBER = 1;
+    private int commandFunction_;
+    /**
+     * <code>uint32 command_function = 1;</code>
+     * @return The commandFunction.
+     */
+    @java.lang.Override
+    public int getCommandFunction() {
+      return commandFunction_;
+    }
+
+    public static final int COMMAND_PARAM_FIELD_NUMBER = 2;
+    private com.google.protobuf.Any commandParam_;
+    /**
+     * <code>.google.protobuf.Any command_param = 2;</code>
+     * @return Whether the commandParam field is set.
+     */
+    @java.lang.Override
+    public boolean hasCommandParam() {
+      return commandParam_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Any command_param = 2;</code>
+     * @return The commandParam.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Any getCommandParam() {
+      return commandParam_ == null ? com.google.protobuf.Any.getDefaultInstance() : commandParam_;
+    }
+    /**
+     * <code>.google.protobuf.Any command_param = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.AnyOrBuilder getCommandParamOrBuilder() {
+      return getCommandParam();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (commandFunction_ != 0) {
+        output.writeUInt32(1, commandFunction_);
+      }
+      if (commandParam_ != null) {
+        output.writeMessage(2, getCommandParam());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (commandFunction_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, commandFunction_);
+      }
+      if (commandParam_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getCommandParam());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command)) {
+        return super.equals(obj);
+      }
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command) obj;
+
+      if (getCommandFunction()
+          != other.getCommandFunction()) return false;
+      if (hasCommandParam() != other.hasCommandParam()) return false;
+      if (hasCommandParam()) {
+        if (!getCommandParam()
+            .equals(other.getCommandParam())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + COMMAND_FUNCTION_FIELD_NUMBER;
+      hash = (53 * hash) + getCommandFunction();
+      if (hasCommandParam()) {
+        hash = (37 * hash) + COMMAND_PARAM_FIELD_NUMBER;
+        hash = (53 * hash) + getCommandParam().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Command}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Command)
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_Command_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_Command_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.Builder.class);
+      }
+
+      // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        commandFunction_ = 0;
+
+        if (commandParamBuilder_ == null) {
+          commandParam_ = null;
+        } else {
+          commandParam_ = null;
+          commandParamBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_Command_descriptor;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command(this);
+        result.commandFunction_ = commandFunction_;
+        if (commandParamBuilder_ == null) {
+          result.commandParam_ = commandParam_;
+        } else {
+          result.commandParam_ = commandParamBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.getDefaultInstance()) return this;
+        if (other.getCommandFunction() != 0) {
+          setCommandFunction(other.getCommandFunction());
+        }
+        if (other.hasCommandParam()) {
+          mergeCommandParam(other.getCommandParam());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int commandFunction_ ;
+      /**
+       * <code>uint32 command_function = 1;</code>
+       * @return The commandFunction.
+       */
+      @java.lang.Override
+      public int getCommandFunction() {
+        return commandFunction_;
+      }
+      /**
+       * <code>uint32 command_function = 1;</code>
+       * @param value The commandFunction to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCommandFunction(int value) {
+        
+        commandFunction_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 command_function = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCommandFunction() {
+        
+        commandFunction_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Any commandParam_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> commandParamBuilder_;
+      /**
+       * <code>.google.protobuf.Any command_param = 2;</code>
+       * @return Whether the commandParam field is set.
+       */
+      public boolean hasCommandParam() {
+        return commandParamBuilder_ != null || commandParam_ != null;
+      }
+      /**
+       * <code>.google.protobuf.Any command_param = 2;</code>
+       * @return The commandParam.
+       */
+      public com.google.protobuf.Any getCommandParam() {
+        if (commandParamBuilder_ == null) {
+          return commandParam_ == null ? com.google.protobuf.Any.getDefaultInstance() : commandParam_;
+        } else {
+          return commandParamBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Any command_param = 2;</code>
+       */
+      public Builder setCommandParam(com.google.protobuf.Any value) {
+        if (commandParamBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          commandParam_ = value;
+          onChanged();
+        } else {
+          commandParamBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any command_param = 2;</code>
+       */
+      public Builder setCommandParam(
+          com.google.protobuf.Any.Builder builderForValue) {
+        if (commandParamBuilder_ == null) {
+          commandParam_ = builderForValue.build();
+          onChanged();
+        } else {
+          commandParamBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any command_param = 2;</code>
+       */
+      public Builder mergeCommandParam(com.google.protobuf.Any value) {
+        if (commandParamBuilder_ == null) {
+          if (commandParam_ != null) {
+            commandParam_ =
+              com.google.protobuf.Any.newBuilder(commandParam_).mergeFrom(value).buildPartial();
+          } else {
+            commandParam_ = value;
+          }
+          onChanged();
+        } else {
+          commandParamBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any command_param = 2;</code>
+       */
+      public Builder clearCommandParam() {
+        if (commandParamBuilder_ == null) {
+          commandParam_ = null;
+          onChanged();
+        } else {
+          commandParam_ = null;
+          commandParamBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any command_param = 2;</code>
+       */
+      public com.google.protobuf.Any.Builder getCommandParamBuilder() {
+        
+        onChanged();
+        return getCommandParamFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Any command_param = 2;</code>
+       */
+      public com.google.protobuf.AnyOrBuilder getCommandParamOrBuilder() {
+        if (commandParamBuilder_ != null) {
+          return commandParamBuilder_.getMessageOrBuilder();
+        } else {
+          return commandParam_ == null ?
+              com.google.protobuf.Any.getDefaultInstance() : commandParam_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Any command_param = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+          getCommandParamFieldBuilder() {
+        if (commandParamBuilder_ == null) {
+          commandParamBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
+                  getCommandParam(),
+                  getParentForChildren(),
+                  isClean());
+          commandParam_ = null;
+        }
+        return commandParamBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Command)
+    }
+
+    // @@protoc_insertion_point(class_scope:Command)
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command();
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Command>
+        PARSER = new com.google.protobuf.AbstractParser<Command>() {
+      @java.lang.Override
+      public Command parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Command(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Command> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Command> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CommandReplyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CommandReply)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.ErrorType error_code = 1;</code>
+     * @return The enum numeric value on the wire for errorCode.
+     */
+    int getErrorCodeValue();
+    /**
+     * <code>.ErrorType error_code = 1;</code>
+     * @return The errorCode.
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType getErrorCode();
+
+    /**
+     * <code>.google.protobuf.Any attachment = 2;</code>
+     * @return Whether the attachment field is set.
+     */
+    boolean hasAttachment();
+    /**
+     * <code>.google.protobuf.Any attachment = 2;</code>
+     * @return The attachment.
+     */
+    com.google.protobuf.Any getAttachment();
+    /**
+     * <code>.google.protobuf.Any attachment = 2;</code>
+     */
+    com.google.protobuf.AnyOrBuilder getAttachmentOrBuilder();
+  }
+  /**
+   * Protobuf type {@code CommandReply}
+   */
+  public static final class CommandReply extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:CommandReply)
+      CommandReplyOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CommandReply.newBuilder() to construct.
+    private CommandReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CommandReply() {
+      errorCode_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CommandReply();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CommandReply(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              errorCode_ = rawValue;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.Any.Builder subBuilder = null;
+              if (attachment_ != null) {
+                subBuilder = attachment_.toBuilder();
+              }
+              attachment_ = input.readMessage(com.google.protobuf.Any.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attachment_);
+                attachment_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_CommandReply_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_CommandReply_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.Builder.class);
+    }
+
+    public static final int ERROR_CODE_FIELD_NUMBER = 1;
+    private int errorCode_;
+    /**
+     * <code>.ErrorType error_code = 1;</code>
+     * @return The enum numeric value on the wire for errorCode.
+     */
+    @java.lang.Override public int getErrorCodeValue() {
+      return errorCode_;
+    }
+    /**
+     * <code>.ErrorType error_code = 1;</code>
+     * @return The errorCode.
+     */
+    @java.lang.Override public proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType getErrorCode() {
+      @SuppressWarnings("deprecation")
+      proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType result = proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType.valueOf(errorCode_);
+      return result == null ? proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType.UNRECOGNIZED : result;
+    }
+
+    public static final int ATTACHMENT_FIELD_NUMBER = 2;
+    private com.google.protobuf.Any attachment_;
+    /**
+     * <code>.google.protobuf.Any attachment = 2;</code>
+     * @return Whether the attachment field is set.
+     */
+    @java.lang.Override
+    public boolean hasAttachment() {
+      return attachment_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Any attachment = 2;</code>
+     * @return The attachment.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Any getAttachment() {
+      return attachment_ == null ? com.google.protobuf.Any.getDefaultInstance() : attachment_;
+    }
+    /**
+     * <code>.google.protobuf.Any attachment = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.AnyOrBuilder getAttachmentOrBuilder() {
+      return getAttachment();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (errorCode_ != proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType.ERR_NONE.getNumber()) {
+        output.writeEnum(1, errorCode_);
+      }
+      if (attachment_ != null) {
+        output.writeMessage(2, getAttachment());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (errorCode_ != proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType.ERR_NONE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, errorCode_);
+      }
+      if (attachment_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getAttachment());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply)) {
+        return super.equals(obj);
+      }
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply) obj;
+
+      if (errorCode_ != other.errorCode_) return false;
+      if (hasAttachment() != other.hasAttachment()) return false;
+      if (hasAttachment()) {
+        if (!getAttachment()
+            .equals(other.getAttachment())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ERROR_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + errorCode_;
+      if (hasAttachment()) {
+        hash = (37 * hash) + ATTACHMENT_FIELD_NUMBER;
+        hash = (53 * hash) + getAttachment().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CommandReply}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CommandReply)
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReplyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_CommandReply_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_CommandReply_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.Builder.class);
+      }
+
+      // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        errorCode_ = 0;
+
+        if (attachmentBuilder_ == null) {
+          attachment_ = null;
+        } else {
+          attachment_ = null;
+          attachmentBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_CommandReply_descriptor;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply(this);
+        result.errorCode_ = errorCode_;
+        if (attachmentBuilder_ == null) {
+          result.attachment_ = attachment_;
+        } else {
+          result.attachment_ = attachmentBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.getDefaultInstance()) return this;
+        if (other.errorCode_ != 0) {
+          setErrorCodeValue(other.getErrorCodeValue());
+        }
+        if (other.hasAttachment()) {
+          mergeAttachment(other.getAttachment());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int errorCode_ = 0;
+      /**
+       * <code>.ErrorType error_code = 1;</code>
+       * @return The enum numeric value on the wire for errorCode.
+       */
+      @java.lang.Override public int getErrorCodeValue() {
+        return errorCode_;
+      }
+      /**
+       * <code>.ErrorType error_code = 1;</code>
+       * @param value The enum numeric value on the wire for errorCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setErrorCodeValue(int value) {
+        
+        errorCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ErrorType error_code = 1;</code>
+       * @return The errorCode.
+       */
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType getErrorCode() {
+        @SuppressWarnings("deprecation")
+        proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType result = proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType.valueOf(errorCode_);
+        return result == null ? proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.ErrorType error_code = 1;</code>
+       * @param value The errorCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setErrorCode(proto_compile.cetc41.nodecontrol.DCTSServiceApi.ErrorType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        errorCode_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ErrorType error_code = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearErrorCode() {
+        
+        errorCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Any attachment_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> attachmentBuilder_;
+      /**
+       * <code>.google.protobuf.Any attachment = 2;</code>
+       * @return Whether the attachment field is set.
+       */
+      public boolean hasAttachment() {
+        return attachmentBuilder_ != null || attachment_ != null;
+      }
+      /**
+       * <code>.google.protobuf.Any attachment = 2;</code>
+       * @return The attachment.
+       */
+      public com.google.protobuf.Any getAttachment() {
+        if (attachmentBuilder_ == null) {
+          return attachment_ == null ? com.google.protobuf.Any.getDefaultInstance() : attachment_;
+        } else {
+          return attachmentBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Any attachment = 2;</code>
+       */
+      public Builder setAttachment(com.google.protobuf.Any value) {
+        if (attachmentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          attachment_ = value;
+          onChanged();
+        } else {
+          attachmentBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any attachment = 2;</code>
+       */
+      public Builder setAttachment(
+          com.google.protobuf.Any.Builder builderForValue) {
+        if (attachmentBuilder_ == null) {
+          attachment_ = builderForValue.build();
+          onChanged();
+        } else {
+          attachmentBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any attachment = 2;</code>
+       */
+      public Builder mergeAttachment(com.google.protobuf.Any value) {
+        if (attachmentBuilder_ == null) {
+          if (attachment_ != null) {
+            attachment_ =
+              com.google.protobuf.Any.newBuilder(attachment_).mergeFrom(value).buildPartial();
+          } else {
+            attachment_ = value;
+          }
+          onChanged();
+        } else {
+          attachmentBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any attachment = 2;</code>
+       */
+      public Builder clearAttachment() {
+        if (attachmentBuilder_ == null) {
+          attachment_ = null;
+          onChanged();
+        } else {
+          attachment_ = null;
+          attachmentBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any attachment = 2;</code>
+       */
+      public com.google.protobuf.Any.Builder getAttachmentBuilder() {
+        
+        onChanged();
+        return getAttachmentFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Any attachment = 2;</code>
+       */
+      public com.google.protobuf.AnyOrBuilder getAttachmentOrBuilder() {
+        if (attachmentBuilder_ != null) {
+          return attachmentBuilder_.getMessageOrBuilder();
+        } else {
+          return attachment_ == null ?
+              com.google.protobuf.Any.getDefaultInstance() : attachment_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Any attachment = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+          getAttachmentFieldBuilder() {
+        if (attachmentBuilder_ == null) {
+          attachmentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
+                  getAttachment(),
+                  getParentForChildren(),
+                  isClean());
+          attachment_ = null;
+        }
+        return attachmentBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:CommandReply)
+    }
+
+    // @@protoc_insertion_point(class_scope:CommandReply)
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply();
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CommandReply>
+        PARSER = new com.google.protobuf.AbstractParser<CommandReply>() {
+      @java.lang.Override
+      public CommandReply parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CommandReply(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CommandReply> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CommandReply> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SourceCommandOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SourceCommand)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     * @return Whether the deviceId field is set.
+     */
+    boolean hasDeviceId();
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     * @return The deviceId.
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId();
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder();
+
+    /**
+     * <code>.Command command = 2;</code>
+     * @return Whether the command field is set.
+     */
+    boolean hasCommand();
+    /**
+     * <code>.Command command = 2;</code>
+     * @return The command.
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command getCommand();
+    /**
+     * <code>.Command command = 2;</code>
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandOrBuilder getCommandOrBuilder();
+  }
+  /**
+   * Protobuf type {@code SourceCommand}
+   */
+  public static final class SourceCommand extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SourceCommand)
+      SourceCommandOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SourceCommand.newBuilder() to construct.
+    private SourceCommand(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SourceCommand() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SourceCommand();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SourceCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder subBuilder = null;
+              if (deviceId_ != null) {
+                subBuilder = deviceId_.toBuilder();
+              }
+              deviceId_ = input.readMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(deviceId_);
+                deviceId_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.Builder subBuilder = null;
+              if (command_ != null) {
+                subBuilder = command_.toBuilder();
+              }
+              command_ = input.readMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(command_);
+                command_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SourceCommand_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SourceCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand.Builder.class);
+    }
+
+    public static final int DEVICE_ID_FIELD_NUMBER = 1;
+    private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId deviceId_;
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     * @return Whether the deviceId field is set.
+     */
+    @java.lang.Override
+    public boolean hasDeviceId() {
+      return deviceId_ != null;
+    }
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     * @return The deviceId.
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId() {
+      return deviceId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+    }
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder() {
+      return getDeviceId();
+    }
+
+    public static final int COMMAND_FIELD_NUMBER = 2;
+    private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command command_;
+    /**
+     * <code>.Command command = 2;</code>
+     * @return Whether the command field is set.
+     */
+    @java.lang.Override
+    public boolean hasCommand() {
+      return command_ != null;
+    }
+    /**
+     * <code>.Command command = 2;</code>
+     * @return The command.
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command getCommand() {
+      return command_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.getDefaultInstance() : command_;
+    }
+    /**
+     * <code>.Command command = 2;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandOrBuilder getCommandOrBuilder() {
+      return getCommand();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (deviceId_ != null) {
+        output.writeMessage(1, getDeviceId());
+      }
+      if (command_ != null) {
+        output.writeMessage(2, getCommand());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (deviceId_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getDeviceId());
+      }
+      if (command_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getCommand());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand)) {
+        return super.equals(obj);
+      }
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand) obj;
+
+      if (hasDeviceId() != other.hasDeviceId()) return false;
+      if (hasDeviceId()) {
+        if (!getDeviceId()
+            .equals(other.getDeviceId())) return false;
+      }
+      if (hasCommand() != other.hasCommand()) return false;
+      if (hasCommand()) {
+        if (!getCommand()
+            .equals(other.getCommand())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasDeviceId()) {
+        hash = (37 * hash) + DEVICE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getDeviceId().hashCode();
+      }
+      if (hasCommand()) {
+        hash = (37 * hash) + COMMAND_FIELD_NUMBER;
+        hash = (53 * hash) + getCommand().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SourceCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SourceCommand)
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SourceCommand_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SourceCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand.Builder.class);
+      }
+
+      // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = null;
+        } else {
+          deviceId_ = null;
+          deviceIdBuilder_ = null;
+        }
+        if (commandBuilder_ == null) {
+          command_ = null;
+        } else {
+          command_ = null;
+          commandBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SourceCommand_descriptor;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand(this);
+        if (deviceIdBuilder_ == null) {
+          result.deviceId_ = deviceId_;
+        } else {
+          result.deviceId_ = deviceIdBuilder_.build();
+        }
+        if (commandBuilder_ == null) {
+          result.command_ = command_;
+        } else {
+          result.command_ = commandBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand.getDefaultInstance()) return this;
+        if (other.hasDeviceId()) {
+          mergeDeviceId(other.getDeviceId());
+        }
+        if (other.hasCommand()) {
+          mergeCommand(other.getCommand());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId deviceId_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder> deviceIdBuilder_;
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       * @return Whether the deviceId field is set.
+       */
+      public boolean hasDeviceId() {
+        return deviceIdBuilder_ != null || deviceId_ != null;
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       * @return The deviceId.
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId() {
+        if (deviceIdBuilder_ == null) {
+          return deviceId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+        } else {
+          return deviceIdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder setDeviceId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId value) {
+        if (deviceIdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          deviceId_ = value;
+          onChanged();
+        } else {
+          deviceIdBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder setDeviceId(
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder builderForValue) {
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = builderForValue.build();
+          onChanged();
+        } else {
+          deviceIdBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder mergeDeviceId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId value) {
+        if (deviceIdBuilder_ == null) {
+          if (deviceId_ != null) {
+            deviceId_ =
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.newBuilder(deviceId_).mergeFrom(value).buildPartial();
+          } else {
+            deviceId_ = value;
+          }
+          onChanged();
+        } else {
+          deviceIdBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder clearDeviceId() {
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = null;
+          onChanged();
+        } else {
+          deviceId_ = null;
+          deviceIdBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder getDeviceIdBuilder() {
+        
+        onChanged();
+        return getDeviceIdFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder() {
+        if (deviceIdBuilder_ != null) {
+          return deviceIdBuilder_.getMessageOrBuilder();
+        } else {
+          return deviceId_ == null ?
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+        }
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder> 
+          getDeviceIdFieldBuilder() {
+        if (deviceIdBuilder_ == null) {
+          deviceIdBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder>(
+                  getDeviceId(),
+                  getParentForChildren(),
+                  isClean());
+          deviceId_ = null;
+        }
+        return deviceIdBuilder_;
+      }
+
+      private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command command_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandOrBuilder> commandBuilder_;
+      /**
+       * <code>.Command command = 2;</code>
+       * @return Whether the command field is set.
+       */
+      public boolean hasCommand() {
+        return commandBuilder_ != null || command_ != null;
+      }
+      /**
+       * <code>.Command command = 2;</code>
+       * @return The command.
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command getCommand() {
+        if (commandBuilder_ == null) {
+          return command_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.getDefaultInstance() : command_;
+        } else {
+          return commandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.Command command = 2;</code>
+       */
+      public Builder setCommand(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command value) {
+        if (commandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          command_ = value;
+          onChanged();
+        } else {
+          commandBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Command command = 2;</code>
+       */
+      public Builder setCommand(
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.Builder builderForValue) {
+        if (commandBuilder_ == null) {
+          command_ = builderForValue.build();
+          onChanged();
+        } else {
+          commandBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Command command = 2;</code>
+       */
+      public Builder mergeCommand(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command value) {
+        if (commandBuilder_ == null) {
+          if (command_ != null) {
+            command_ =
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.newBuilder(command_).mergeFrom(value).buildPartial();
+          } else {
+            command_ = value;
+          }
+          onChanged();
+        } else {
+          commandBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Command command = 2;</code>
+       */
+      public Builder clearCommand() {
+        if (commandBuilder_ == null) {
+          command_ = null;
+          onChanged();
+        } else {
+          command_ = null;
+          commandBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Command command = 2;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.Builder getCommandBuilder() {
+        
+        onChanged();
+        return getCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Command command = 2;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandOrBuilder getCommandOrBuilder() {
+        if (commandBuilder_ != null) {
+          return commandBuilder_.getMessageOrBuilder();
+        } else {
+          return command_ == null ?
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.getDefaultInstance() : command_;
+        }
+      }
+      /**
+       * <code>.Command command = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandOrBuilder> 
+          getCommandFieldBuilder() {
+        if (commandBuilder_ == null) {
+          commandBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.Command.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandOrBuilder>(
+                  getCommand(),
+                  getParentForChildren(),
+                  isClean());
+          command_ = null;
+        }
+        return commandBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SourceCommand)
+    }
+
+    // @@protoc_insertion_point(class_scope:SourceCommand)
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand();
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SourceCommand>
+        PARSER = new com.google.protobuf.AbstractParser<SourceCommand>() {
+      @java.lang.Override
+      public SourceCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SourceCommand(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SourceCommand> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SourceCommand> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommand getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SourceCommandReplyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SourceCommandReply)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     * @return Whether the deviceId field is set.
+     */
+    boolean hasDeviceId();
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     * @return The deviceId.
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId();
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder();
+
+    /**
+     * <code>.CommandReply reply = 2;</code>
+     * @return Whether the reply field is set.
+     */
+    boolean hasReply();
+    /**
+     * <code>.CommandReply reply = 2;</code>
+     * @return The reply.
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply getReply();
+    /**
+     * <code>.CommandReply reply = 2;</code>
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReplyOrBuilder getReplyOrBuilder();
+  }
+  /**
+   * Protobuf type {@code SourceCommandReply}
+   */
+  public static final class SourceCommandReply extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SourceCommandReply)
+      SourceCommandReplyOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SourceCommandReply.newBuilder() to construct.
+    private SourceCommandReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SourceCommandReply() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SourceCommandReply();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SourceCommandReply(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder subBuilder = null;
+              if (deviceId_ != null) {
+                subBuilder = deviceId_.toBuilder();
+              }
+              deviceId_ = input.readMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(deviceId_);
+                deviceId_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.Builder subBuilder = null;
+              if (reply_ != null) {
+                subBuilder = reply_.toBuilder();
+              }
+              reply_ = input.readMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(reply_);
+                reply_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SourceCommandReply_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SourceCommandReply_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply.Builder.class);
+    }
+
+    public static final int DEVICE_ID_FIELD_NUMBER = 1;
+    private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId deviceId_;
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     * @return Whether the deviceId field is set.
+     */
+    @java.lang.Override
+    public boolean hasDeviceId() {
+      return deviceId_ != null;
+    }
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     * @return The deviceId.
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId() {
+      return deviceId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+    }
+    /**
+     * <code>.DeviceId device_id = 1;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder() {
+      return getDeviceId();
+    }
+
+    public static final int REPLY_FIELD_NUMBER = 2;
+    private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply reply_;
+    /**
+     * <code>.CommandReply reply = 2;</code>
+     * @return Whether the reply field is set.
+     */
+    @java.lang.Override
+    public boolean hasReply() {
+      return reply_ != null;
+    }
+    /**
+     * <code>.CommandReply reply = 2;</code>
+     * @return The reply.
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply getReply() {
+      return reply_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.getDefaultInstance() : reply_;
+    }
+    /**
+     * <code>.CommandReply reply = 2;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReplyOrBuilder getReplyOrBuilder() {
+      return getReply();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (deviceId_ != null) {
+        output.writeMessage(1, getDeviceId());
+      }
+      if (reply_ != null) {
+        output.writeMessage(2, getReply());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (deviceId_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getDeviceId());
+      }
+      if (reply_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getReply());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply)) {
+        return super.equals(obj);
+      }
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply) obj;
+
+      if (hasDeviceId() != other.hasDeviceId()) return false;
+      if (hasDeviceId()) {
+        if (!getDeviceId()
+            .equals(other.getDeviceId())) return false;
+      }
+      if (hasReply() != other.hasReply()) return false;
+      if (hasReply()) {
+        if (!getReply()
+            .equals(other.getReply())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasDeviceId()) {
+        hash = (37 * hash) + DEVICE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getDeviceId().hashCode();
+      }
+      if (hasReply()) {
+        hash = (37 * hash) + REPLY_FIELD_NUMBER;
+        hash = (53 * hash) + getReply().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SourceCommandReply}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SourceCommandReply)
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReplyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SourceCommandReply_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SourceCommandReply_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply.Builder.class);
+      }
+
+      // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = null;
+        } else {
+          deviceId_ = null;
+          deviceIdBuilder_ = null;
+        }
+        if (replyBuilder_ == null) {
+          reply_ = null;
+        } else {
+          reply_ = null;
+          replyBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SourceCommandReply_descriptor;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply(this);
+        if (deviceIdBuilder_ == null) {
+          result.deviceId_ = deviceId_;
+        } else {
+          result.deviceId_ = deviceIdBuilder_.build();
+        }
+        if (replyBuilder_ == null) {
+          result.reply_ = reply_;
+        } else {
+          result.reply_ = replyBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply.getDefaultInstance()) return this;
+        if (other.hasDeviceId()) {
+          mergeDeviceId(other.getDeviceId());
+        }
+        if (other.hasReply()) {
+          mergeReply(other.getReply());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId deviceId_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder> deviceIdBuilder_;
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       * @return Whether the deviceId field is set.
+       */
+      public boolean hasDeviceId() {
+        return deviceIdBuilder_ != null || deviceId_ != null;
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       * @return The deviceId.
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId() {
+        if (deviceIdBuilder_ == null) {
+          return deviceId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+        } else {
+          return deviceIdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder setDeviceId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId value) {
+        if (deviceIdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          deviceId_ = value;
+          onChanged();
+        } else {
+          deviceIdBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder setDeviceId(
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder builderForValue) {
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = builderForValue.build();
+          onChanged();
+        } else {
+          deviceIdBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder mergeDeviceId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId value) {
+        if (deviceIdBuilder_ == null) {
+          if (deviceId_ != null) {
+            deviceId_ =
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.newBuilder(deviceId_).mergeFrom(value).buildPartial();
+          } else {
+            deviceId_ = value;
+          }
+          onChanged();
+        } else {
+          deviceIdBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public Builder clearDeviceId() {
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = null;
+          onChanged();
+        } else {
+          deviceId_ = null;
+          deviceIdBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder getDeviceIdBuilder() {
+        
+        onChanged();
+        return getDeviceIdFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder() {
+        if (deviceIdBuilder_ != null) {
+          return deviceIdBuilder_.getMessageOrBuilder();
+        } else {
+          return deviceId_ == null ?
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+        }
+      }
+      /**
+       * <code>.DeviceId device_id = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder> 
+          getDeviceIdFieldBuilder() {
+        if (deviceIdBuilder_ == null) {
+          deviceIdBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder>(
+                  getDeviceId(),
+                  getParentForChildren(),
+                  isClean());
+          deviceId_ = null;
+        }
+        return deviceIdBuilder_;
+      }
+
+      private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply reply_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReplyOrBuilder> replyBuilder_;
+      /**
+       * <code>.CommandReply reply = 2;</code>
+       * @return Whether the reply field is set.
+       */
+      public boolean hasReply() {
+        return replyBuilder_ != null || reply_ != null;
+      }
+      /**
+       * <code>.CommandReply reply = 2;</code>
+       * @return The reply.
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply getReply() {
+        if (replyBuilder_ == null) {
+          return reply_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.getDefaultInstance() : reply_;
+        } else {
+          return replyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.CommandReply reply = 2;</code>
+       */
+      public Builder setReply(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply value) {
+        if (replyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          reply_ = value;
+          onChanged();
+        } else {
+          replyBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CommandReply reply = 2;</code>
+       */
+      public Builder setReply(
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.Builder builderForValue) {
+        if (replyBuilder_ == null) {
+          reply_ = builderForValue.build();
+          onChanged();
+        } else {
+          replyBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CommandReply reply = 2;</code>
+       */
+      public Builder mergeReply(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply value) {
+        if (replyBuilder_ == null) {
+          if (reply_ != null) {
+            reply_ =
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.newBuilder(reply_).mergeFrom(value).buildPartial();
+          } else {
+            reply_ = value;
+          }
+          onChanged();
+        } else {
+          replyBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CommandReply reply = 2;</code>
+       */
+      public Builder clearReply() {
+        if (replyBuilder_ == null) {
+          reply_ = null;
+          onChanged();
+        } else {
+          reply_ = null;
+          replyBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CommandReply reply = 2;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.Builder getReplyBuilder() {
+        
+        onChanged();
+        return getReplyFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.CommandReply reply = 2;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReplyOrBuilder getReplyOrBuilder() {
+        if (replyBuilder_ != null) {
+          return replyBuilder_.getMessageOrBuilder();
+        } else {
+          return reply_ == null ?
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.getDefaultInstance() : reply_;
+        }
+      }
+      /**
+       * <code>.CommandReply reply = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReplyOrBuilder> 
+          getReplyFieldBuilder() {
+        if (replyBuilder_ == null) {
+          replyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReply.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.CommandReplyOrBuilder>(
+                  getReply(),
+                  getParentForChildren(),
+                  isClean());
+          reply_ = null;
+        }
+        return replyBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SourceCommandReply)
+    }
+
+    // @@protoc_insertion_point(class_scope:SourceCommandReply)
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply();
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SourceCommandReply>
+        PARSER = new com.google.protobuf.AbstractParser<SourceCommandReply>() {
+      @java.lang.Override
+      public SourceCommandReply parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SourceCommandReply(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SourceCommandReply> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SourceCommandReply> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_NodeId_descriptor;
   private static final 
@@ -7819,6 +11039,26 @@ public final class NodeControlServiceApi {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_NodesInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Command_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Command_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CommandReply_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_CommandReply_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SourceCommand_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SourceCommand_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SourceCommandReply_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SourceCommandReply_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7846,16 +11086,27 @@ public final class NodeControlServiceApi {
       "heard\030\004 \001(\0132\n.Timestamp\022#\n\016dataSourceLis" +
       "t\030\005 \003(\0132\013.DeviceInfo\022\030\n\013is_physical\030\006 \001(" +
       "\010H\000\210\001\001B\016\n\014_is_physical\"*\n\tNodesInfo\022\035\n\nn" +
-      "ode_infos\030\001 \003(\0132\t.NodeInfo*_\n\017NodeContro" +
-      "lType\022\017\n\013REBOOT_NODE\020\000\022\021\n\rSHUTDOWN_NODE\020" +
-      "\001\022\r\n\tABORT_ALL\020\002\022\r\n\tSELF_TEST\020\003\022\n\n\006RENAM" +
-      "E\020\0042\250\001\n\022NodeControlService\0224\n\014ListAllNod" +
-      "es\022\026.google.protobuf.Empty\032\n.NodesInfo\"\000" +
-      "\022#\n\013GetNodeInfo\022\007.NodeId\032\t.NodeInfo\"\000\0227\n" +
-      "\017PostNodeControl\022\014.NodeControl\032\024.NodeCon" +
-      "trolResponse\"\000B9\n proto_compile.cetc41.n" +
-      "odecontrolB\025NodeControlServiceApib\006proto" +
-      "3"
+      "ode_infos\030\001 \003(\0132\t.NodeInfo\"P\n\007Command\022\030\n" +
+      "\020command_function\030\001 \001(\r\022+\n\rcommand_param" +
+      "\030\002 \001(\0132\024.google.protobuf.Any\"X\n\014CommandR" +
+      "eply\022\036\n\nerror_code\030\001 \001(\0162\n.ErrorType\022(\n\n" +
+      "attachment\030\002 \001(\0132\024.google.protobuf.Any\"H" +
+      "\n\rSourceCommand\022\034\n\tdevice_id\030\001 \001(\0132\t.Dev" +
+      "iceId\022\031\n\007command\030\002 \001(\0132\010.Command\"P\n\022Sour" +
+      "ceCommandReply\022\034\n\tdevice_id\030\001 \001(\0132\t.Devi" +
+      "ceId\022\034\n\005reply\030\002 \001(\0132\r.CommandReply*_\n\017No" +
+      "deControlType\022\017\n\013REBOOT_NODE\020\000\022\021\n\rSHUTDO" +
+      "WN_NODE\020\001\022\r\n\tABORT_ALL\020\002\022\r\n\tSELF_TEST\020\003\022" +
+      "\n\n\006RENAME\020\004*i\n\007CmdType\022\014\n\010RESERVED\020\000\022\t\n\005" +
+      "PAUSE\020\001\022\n\n\006RESUME\020\002\022\016\n\nRESTART_AT\020\003\022\020\n\014R" +
+      "ESET_LENGTH\020\004\022\t\n\005START\020\005\022\014\n\010SHUTDOWN\020\0062\277" +
+      "\001\n\022NodeControlService\0224\n\014ListAllNodes\022\026." +
+      "google.protobuf.Empty\032\n.NodesInfo\"\000\022:\n\021S" +
+      "endSourceCommand\022\016.SourceCommand\032\023.Sourc" +
+      "eCommandReply\"\000\0227\n\017PostNodeControl\022\014.Nod" +
+      "eControl\032\024.NodeControlResponse\"\000B9\n prot" +
+      "o_compile.cetc41.nodecontrolB\025NodeContro" +
+      "lServiceApib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7906,6 +11157,30 @@ public final class NodeControlServiceApi {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_NodesInfo_descriptor,
         new java.lang.String[] { "NodeInfos", });
+    internal_static_Command_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_Command_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Command_descriptor,
+        new java.lang.String[] { "CommandFunction", "CommandParam", });
+    internal_static_CommandReply_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_CommandReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_CommandReply_descriptor,
+        new java.lang.String[] { "ErrorCode", "Attachment", });
+    internal_static_SourceCommand_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_SourceCommand_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SourceCommand_descriptor,
+        new java.lang.String[] { "DeviceId", "Command", });
+    internal_static_SourceCommandReply_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_SourceCommandReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SourceCommandReply_descriptor,
+        new java.lang.String[] { "DeviceId", "Reply", });
     com.google.protobuf.EmptyProto.getDescriptor();
     com.google.protobuf.AnyProto.getDescriptor();
     proto_compile.cetc41.nodecontrol.DCTSServiceApi.getDescriptor();
