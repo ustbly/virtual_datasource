@@ -8,7 +8,7 @@ import io.grpc.stub.StreamObserver;
 import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceGrpc;
-import service.ListAllNodes;
+import service.NodeControlService;
 import utils.DeviceMapUtils;
 
 import java.util.List;
@@ -64,7 +64,7 @@ public class NodeControlServiceImpl extends NodeControlServiceGrpc.NodeControlSe
     public void listAllNodes(Empty request, StreamObserver<NodeControlServiceApi.NodesInfo> responseObserver) {
 
 //        List<NodeControlServiceApi.NodeInfo> nodeInfos = ListAllNodes.readNodesFromJson("src/main/resources/nodes.json");
-        List<NodeControlServiceApi.NodeInfo> nodeInfos = ListAllNodes.getNodesInfo();
+        List<NodeControlServiceApi.NodeInfo> nodeInfos = NodeControlService.getNodesInfo();
 //        System.out.println(nodeInfos);
 
         // 构建 NodesInfo
@@ -92,15 +92,13 @@ public class NodeControlServiceImpl extends NodeControlServiceGrpc.NodeControlSe
         int commandFunction = command.getCommandFunction();
         long commandParam = command.getCommandParam().unpack(DCTSServiceApi.Integer.class).getValue();
 
-
         System.out.println("接收到的客户端的参数为：device_id: " + device_id + ", command_function: " + commandFunction + " ,command_param: " + commandParam);
 
-        // 模拟执行命令
-        NodeControlServiceApi.CommandReply commandReply = NodeControlServiceApi.CommandReply.newBuilder()
-                .setErrorCode(DCTSServiceApi.ErrorType.ERR_ABORTED)
-                .setAttachment(Any.getDefaultInstance())  // 可根据需求填充
-                .build();
+        // 获取当前的设备列表
 
+
+        NodeControlServiceApi.CommandReply commandReply = NodeControlService.sendSourceCommand(device_id,commandFunction,commandParam);
+        // 模拟执行命令
         NodeControlServiceApi.SourceCommandReply response = NodeControlServiceApi.SourceCommandReply.newBuilder()
                 .setDeviceId(request.getDeviceId())
                 .setReply(commandReply)

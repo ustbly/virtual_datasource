@@ -26,7 +26,7 @@ public class VirtualDeviceScheduler {
                         device.getDevice_name(),
                         device.getDevice_type(),
                         "online",
-                        false
+                        true
                 );
                 updatedDevices.add(updated);
             }
@@ -35,6 +35,8 @@ public class VirtualDeviceScheduler {
 
             // ✅ 同步更新时间戳
             node.setLast_heard(String.valueOf(Instant.now().getEpochSecond()));
+
+            System.out.println("node updated:" + node.hashCode());
 
 
             // 存储更新到 Redis

@@ -44,6 +44,16 @@ public abstract class DataSource {
         this.signalList = signalList;
     }
 
+    public DataSource(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList) {
+        this.device_id = device_id;
+        this.device_name = device_name;
+        this.device_type = device_type;
+        this.status = status;
+        this.position = position;
+        this.posture = posture;
+        this.physicalList = physicalList;
+    }
+
     public DataSource() {
     }
 
@@ -127,4 +137,7 @@ public abstract class DataSource {
 
     // 设备执行指令的方法（子类实现）
     public abstract String executeCommand(NodeControlServiceApi.NodeControlType type, String detail);
+
+    // 设备执行指令的方法（子类实现）
+    public abstract String executeCommand(int commandFunction, long commandParam);
 }

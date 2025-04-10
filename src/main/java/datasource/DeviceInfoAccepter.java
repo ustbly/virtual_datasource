@@ -4,16 +4,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.zeromq.ZMQ;
 import redis.clients.jedis.Jedis;
+import utils.RedisClient;
 
 import java.util.Map;
 
 public class DeviceInfoAccepter {
     private static final ObjectMapper objectMapper = new ObjectMapper();
-    private static final Jedis redisClient = new Jedis("node1", 6379); // 连接 Redis
-
-    static {
-        redisClient.auth("123456");
-    }
+    private static final Jedis jedis = RedisClient.getJedis(); // 连接 Redis
 
     public static void main(String[] args) {
         ZMQ.Context context = ZMQ.context(1);
@@ -41,7 +38,6 @@ public class DeviceInfoAccepter {
 
         subscriber.close();
         context.term();
-        redisClient.close();
     }
 
     // 将 deviceMap 存入 Redis
@@ -49,7 +45,7 @@ public class DeviceInfoAccepter {
         try {
             Map<String, DataSource> deviceMap = DeviceManager.getInstance().getDeviceMap();
             String json = objectMapper.writeValueAsString(deviceMap);
-            redisClient.set("deviceMap", json);
+            jedis.set("deviceMap", json);
             System.out.println("deviceMap saved to Redis: " + json);
         } catch (Exception e) {
             e.printStackTrace();

@@ -7,6 +7,8 @@ import datasource.DataSource;
 import datasource.InfoSystem;
 import datasource.ReconStation;
 import datasource.Sensor;
+import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
+import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -32,6 +34,7 @@ public class NodeInfo {
         this.dataSourceList = dataSourceList;
         this.is_physical = is_physical;
     }
+
 
     public String getNode_id() {
         return node_id;

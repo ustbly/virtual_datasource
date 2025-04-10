@@ -1,7 +1,7 @@
 package gRPC.node_control;
 
 import com.google.protobuf.Any;
-import com.google.protobuf.ByteString;
+import com.google.protobuf.InvalidProtocolBufferException;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
@@ -15,6 +15,7 @@ public class SourceControlClient {
         blockingStub = NodeControlServiceGrpc.newBlockingStub(channel);
     }
 
+
     public NodeControlServiceApi.SourceCommandReply sendSourceCommand(NodeControlServiceApi.DeviceId deviceId, NodeControlServiceApi.Command command) {
         NodeControlServiceApi.SourceCommand sourceCommand = NodeControlServiceApi.SourceCommand.newBuilder()
                 .setDeviceId(deviceId)
@@ -24,7 +25,7 @@ public class SourceControlClient {
         return blockingStub.sendSourceCommand(sourceCommand);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidProtocolBufferException {
         // 创建 gRPC 通道
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50050)
                 .usePlaintext()
@@ -40,13 +41,14 @@ public class SourceControlClient {
         Any commandParam = Any.pack(shutdownParam);
 
         NodeControlServiceApi.Command command = NodeControlServiceApi.Command.newBuilder()
-                .setCommandFunction(NodeControlServiceApi.CmdType.SHUTDOWN.getNumber())  // 示例命令编号
+                .setCommandFunction(NodeControlServiceApi.CmdType.SHUTDOWN.getNumber())  // 功能编号
                 .setCommandParam(commandParam)
                 .build();
 
         // 发送命令
         NodeControlServiceApi.SourceCommandReply reply = client.sendSourceCommand(deviceId, command);
-        System.out.println("Command reply status code: " + reply.getReply().getErrorCode());
+        DCTSServiceApi.String result = reply.getReply().getAttachment().unpack(DCTSServiceApi.String.class);
+        System.out.println("Command reply result: " + result.getValue());
 
         // 关闭通道
         channel.shutdown();

@@ -27,6 +27,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class NodeInfoGenerator {
     public static void main(String[] args) {
         MockVirtualDataSourceData();
+
     }
 
 
@@ -62,6 +63,7 @@ public class NodeInfoGenerator {
                         System.out.println(nodeInfo.getNode_id() + " -> " + nodeInfoJson);
                     } else {
                         NodeInfo nodeInfo = generateNode(node_id, node_name, node_type, dataSourceList, true);
+                        System.out.println("nodeInfo:" + nodeInfo.hashCode());
                         // 序列化数据
                         Gson gson = new Gson();
                         String nodeInfoJson = gson.toJson(nodeInfo);

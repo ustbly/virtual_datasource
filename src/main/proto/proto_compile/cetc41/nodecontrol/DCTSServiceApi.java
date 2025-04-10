@@ -8226,6 +8226,574 @@ public final class DCTSServiceApi {
 
   }
 
+  public interface StringOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:String)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string value = 1;</code>
+     * @return The value.
+     */
+    java.lang.String getValue();
+    /**
+     * <code>string value = 1;</code>
+     * @return The bytes for value.
+     */
+    com.google.protobuf.ByteString
+        getValueBytes();
+  }
+  /**
+   * Protobuf type {@code String}
+   */
+  public static final class String extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:String)
+      StringOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use String.newBuilder() to construct.
+    private String(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private String() {
+      value_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new String();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private String(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              value_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.DCTSServiceApi.internal_static_String_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto_compile.cetc41.nodecontrol.DCTSServiceApi.internal_static_String_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.String.class, proto_compile.cetc41.nodecontrol.DCTSServiceApi.String.Builder.class);
+    }
+
+    public static final int VALUE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object value_;
+    /**
+     * <code>string value = 1;</code>
+     * @return The value.
+     */
+    @java.lang.Override
+    public java.lang.String getValue() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        value_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string value = 1;</code>
+     * @return The bytes for value.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getValueBytes() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        value_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getValueBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, value_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getValueBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, value_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.DCTSServiceApi.String)) {
+        return super.equals(obj);
+      }
+      proto_compile.cetc41.nodecontrol.DCTSServiceApi.String other = (proto_compile.cetc41.nodecontrol.DCTSServiceApi.String) obj;
+
+      if (!getValue()
+          .equals(other.getValue())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getValue().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.DCTSServiceApi.String prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code String}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:String)
+        proto_compile.cetc41.nodecontrol.DCTSServiceApi.StringOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_compile.cetc41.nodecontrol.DCTSServiceApi.internal_static_String_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_compile.cetc41.nodecontrol.DCTSServiceApi.internal_static_String_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_compile.cetc41.nodecontrol.DCTSServiceApi.String.class, proto_compile.cetc41.nodecontrol.DCTSServiceApi.String.Builder.class);
+      }
+
+      // Construct using proto_compile.cetc41.nodecontrol.DCTSServiceApi.String.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        value_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto_compile.cetc41.nodecontrol.DCTSServiceApi.internal_static_String_descriptor;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.String getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.DCTSServiceApi.String.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.String build() {
+        proto_compile.cetc41.nodecontrol.DCTSServiceApi.String result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.String buildPartial() {
+        proto_compile.cetc41.nodecontrol.DCTSServiceApi.String result = new proto_compile.cetc41.nodecontrol.DCTSServiceApi.String(this);
+        result.value_ = value_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto_compile.cetc41.nodecontrol.DCTSServiceApi.String) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.DCTSServiceApi.String)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.DCTSServiceApi.String other) {
+        if (other == proto_compile.cetc41.nodecontrol.DCTSServiceApi.String.getDefaultInstance()) return this;
+        if (!other.getValue().isEmpty()) {
+          value_ = other.value_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto_compile.cetc41.nodecontrol.DCTSServiceApi.String parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto_compile.cetc41.nodecontrol.DCTSServiceApi.String) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object value_ = "";
+      /**
+       * <code>string value = 1;</code>
+       * @return The value.
+       */
+      public java.lang.String getValue() {
+        java.lang.Object ref = value_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          value_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string value = 1;</code>
+       * @return The bytes for value.
+       */
+      public com.google.protobuf.ByteString
+          getValueBytes() {
+        java.lang.Object ref = value_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          value_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string value = 1;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValue(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string value = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValue() {
+        
+        value_ = getDefaultInstance().getValue();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string value = 1;</code>
+       * @param value The bytes for value to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:String)
+    }
+
+    // @@protoc_insertion_point(class_scope:String)
+    private static final proto_compile.cetc41.nodecontrol.DCTSServiceApi.String DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.DCTSServiceApi.String();
+    }
+
+    public static proto_compile.cetc41.nodecontrol.DCTSServiceApi.String getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<String>
+        PARSER = new com.google.protobuf.AbstractParser<String>() {
+      @java.lang.Override
+      public String parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new String(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<String> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<String> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.String getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface RealNumberOrBuilder extends
       // @@protoc_insertion_point(interface_extends:RealNumber)
       com.google.protobuf.MessageOrBuilder {
@@ -15233,6 +15801,11 @@ public final class DCTSServiceApi {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Boolean_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_String_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_String_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_RealNumber_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -15308,50 +15881,51 @@ public final class DCTSServiceApi {
       "LE\020\002\022\014\n\010DISTANCE\020\003\022\014\n\010VELOCITY\020\004\022\024\n\020ANGU" +
       "LAR_VELOCITY\020\005\022\n\n\006VOTAGE\020\006\022\t\n\005POWER\020\007\022\013\n" +
       "\007CURRENT\020\010\"\030\n\007Integer\022\r\n\005value\030\001 \001(\003\"\030\n\007" +
-      "Boolean\022\r\n\005value\030\001 \001(\010\"\033\n\nRealNumber\022\r\n\005" +
-      "value\030\001 \001(\001\",\n\rComplexNumber\022\014\n\004real\030\001 \001" +
-      "(\001\022\r\n\005image\030\002 \001(\001\"C\n\014StatisticVal\022\n\n\002up\030" +
-      "\001 \001(\001\022\014\n\004down\030\002 \001(\001\022\013\n\003cur\030\003 \001(\001\022\014\n\004mean" +
-      "\030\004 \001(\001\"\\\n\014HeartbeatCfg\022\032\n\022heartbeat_inte" +
-      "rval\030\001 \001(\005\022\031\n\021heartbeat_timeout\030\002 \001(\005\022\025\n" +
-      "\rheartbeat_ttl\030\003 \001(\005\"M\n\017ReconnectionCfg\022" +
-      "\032\n\022reconnect_interval\030\001 \001(\005\022\036\n\026reconnect" +
-      "_interval_max\030\002 \001(\005\"=\n\rMsgSendOption\022\013\n\003" +
-      "hwm\030\001 \001(\005\022\016\n\006linger\030\002 \001(\005\022\017\n\007timeout\030\003 \001" +
-      "(\005\"\'\n\013IPv4Address\022\n\n\002ip\030\001 \001(\t\022\014\n\004port\030\002 " +
-      "\001(\005\"\266\001\n\rZeromqLinkCfg\022\035\n\007address\030\001 \001(\0132\014" +
-      ".IPv4Address\022\021\n\tlink_name\030\002 \001(\t\022$\n\rheart" +
-      "beat_cfg\030\004 \001(\0132\r.HeartbeatCfg\022\'\n\rreconne" +
-      "ct_cfg\030\005 \001(\0132\020.ReconnectionCfg\022$\n\014msg_se" +
-      "nd_cfg\030\006 \001(\0132\016.MsgSendOption\"3\n\nTimerPar" +
-      "am\022\026\n\016interval_in_ms\030\001 \001(\005\022\r\n\005times\030\002 \001(" +
-      "\005\"#\n\005Topic\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t*\313" +
-      "\007\n\tErrorType\022\014\n\010ERR_NONE\020\000\022\037\n\022ERR_NOTIMP" +
-      "LEMENTED\020\377\377\377\377\377\377\377\377\377\001\022\030\n\013ERR_UNKNOWN\020\376\377\377\377\377" +
-      "\377\377\377\377\001\022\025\n\010ERR_BUSY\020\375\377\377\377\377\377\377\377\377\001\022\030\n\013ERR_ABOR" +
-      "TED\020\373\377\377\377\377\377\377\377\377\001\022\034\n\017ERR_CMD_NOREPLY\020\372\377\377\377\377\377" +
-      "\377\377\377\001\022\026\n\tERR_PARAM\020\370\377\377\377\377\377\377\377\377\001\022$\n\027ERR_STAT" +
-      "ION_NAME_EXISTS\020\365\377\377\377\377\377\377\377\377\001\022\037\n\022ERR_INVALI" +
-      "D_HANDLE\020\361\377\377\377\377\377\377\377\377\001\022 \n\023ERR_INVALID_REQUE" +
-      "ST\020\360\377\377\377\377\377\377\377\377\001\022\037\n\022ERR_NO_DATA_SOURCE\020\354\377\377\377" +
-      "\377\377\377\377\377\001\022\035\n\020ERR_SOCKET_ERROR\020\346\377\377\377\377\377\377\377\377\001\022#\n" +
-      "\026ERR_SCENARIO_NOT_FOUND\020\345\377\377\377\377\377\377\377\377\001\022\"\n\025ER" +
-      "R_NO_DATA_AVAILABLE\020\344\377\377\377\377\377\377\377\377\001\022!\n\024ERR_BU" +
-      "FFER_TOO_SMALL\020\342\377\377\377\377\377\377\377\377\001\022\033\n\016ERR_DIAGNOS" +
-      "TIC\020\341\377\377\377\377\377\377\377\377\001\022\037\n\022ERR_COMMAND_FAILED\020\332\377\377" +
-      "\377\377\377\377\377\377\001\022\030\n\013ERR_TIMEOUT\020\330\377\377\377\377\377\377\377\377\001\022 \n\023ERR" +
-      "_STRING_TOO_LONG\020\325\377\377\377\377\377\377\377\377\001\022\032\n\rERR_DATA_" +
-      "TYPE\020\314\377\377\377\377\377\377\377\377\001\022\036\n\021ERR_AUTHORIZATION\020\307\377\377" +
-      "\377\377\377\377\377\377\001\022\030\n\013ERR_LICENSE\020\300\377\377\377\377\377\377\377\377\001\022\034\n\017ERR" +
-      "_MEAS_FAILED\020\276\377\377\377\377\377\377\377\377\001\022#\n\026ERR_DATA_AVAI" +
-      "L_TIMEOUT\020\265\377\377\377\377\377\377\377\377\001\022\037\n\022ERR_TASK_NOT_FOU" +
-      "ND\020\264\377\377\377\377\377\377\377\377\001\022\036\n\021ERR_SOURCE_ASSIGN\020\263\377\377\377\377" +
-      "\377\377\377\377\001\022\033\n\016ERR_TASK_START\020\262\377\377\377\377\377\377\377\377\001\022\033\n\016ER" +
-      "R_TASK_PAUSE\020\261\377\377\377\377\377\377\377\377\001\022\034\n\017ERR_TASK_RESU" +
-      "ME\020\260\377\377\377\377\377\377\377\377\001\022\032\n\rERR_OPEN_FILE\020\257\377\377\377\377\377\377\377\377" +
-      "\001\022\025\n\010ERR_TDOA\020\256\377\377\377\377\377\377\377\377\001\022\032\n\rERR_TASK_QUI" +
-      "T\020\255\377\377\377\377\377\377\377\377\001B2\n proto_compile.cetc41.nod" +
-      "econtrolB\016DCTSServiceApib\006proto3"
+      "Boolean\022\r\n\005value\030\001 \001(\010\"\027\n\006String\022\r\n\005valu" +
+      "e\030\001 \001(\t\"\033\n\nRealNumber\022\r\n\005value\030\001 \001(\001\",\n\r" +
+      "ComplexNumber\022\014\n\004real\030\001 \001(\001\022\r\n\005image\030\002 \001" +
+      "(\001\"C\n\014StatisticVal\022\n\n\002up\030\001 \001(\001\022\014\n\004down\030\002" +
+      " \001(\001\022\013\n\003cur\030\003 \001(\001\022\014\n\004mean\030\004 \001(\001\"\\\n\014Heart" +
+      "beatCfg\022\032\n\022heartbeat_interval\030\001 \001(\005\022\031\n\021h" +
+      "eartbeat_timeout\030\002 \001(\005\022\025\n\rheartbeat_ttl\030" +
+      "\003 \001(\005\"M\n\017ReconnectionCfg\022\032\n\022reconnect_in" +
+      "terval\030\001 \001(\005\022\036\n\026reconnect_interval_max\030\002" +
+      " \001(\005\"=\n\rMsgSendOption\022\013\n\003hwm\030\001 \001(\005\022\016\n\006li" +
+      "nger\030\002 \001(\005\022\017\n\007timeout\030\003 \001(\005\"\'\n\013IPv4Addre" +
+      "ss\022\n\n\002ip\030\001 \001(\t\022\014\n\004port\030\002 \001(\005\"\266\001\n\rZeromqL" +
+      "inkCfg\022\035\n\007address\030\001 \001(\0132\014.IPv4Address\022\021\n" +
+      "\tlink_name\030\002 \001(\t\022$\n\rheartbeat_cfg\030\004 \001(\0132" +
+      "\r.HeartbeatCfg\022\'\n\rreconnect_cfg\030\005 \001(\0132\020." +
+      "ReconnectionCfg\022$\n\014msg_send_cfg\030\006 \001(\0132\016." +
+      "MsgSendOption\"3\n\nTimerParam\022\026\n\016interval_" +
+      "in_ms\030\001 \001(\005\022\r\n\005times\030\002 \001(\005\"#\n\005Topic\022\013\n\003k" +
+      "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\t*\313\007\n\tErrorType\022\014\n" +
+      "\010ERR_NONE\020\000\022\037\n\022ERR_NOTIMPLEMENTED\020\377\377\377\377\377\377" +
+      "\377\377\377\001\022\030\n\013ERR_UNKNOWN\020\376\377\377\377\377\377\377\377\377\001\022\025\n\010ERR_BU" +
+      "SY\020\375\377\377\377\377\377\377\377\377\001\022\030\n\013ERR_ABORTED\020\373\377\377\377\377\377\377\377\377\001\022" +
+      "\034\n\017ERR_CMD_NOREPLY\020\372\377\377\377\377\377\377\377\377\001\022\026\n\tERR_PAR" +
+      "AM\020\370\377\377\377\377\377\377\377\377\001\022$\n\027ERR_STATION_NAME_EXISTS" +
+      "\020\365\377\377\377\377\377\377\377\377\001\022\037\n\022ERR_INVALID_HANDLE\020\361\377\377\377\377\377" +
+      "\377\377\377\001\022 \n\023ERR_INVALID_REQUEST\020\360\377\377\377\377\377\377\377\377\001\022\037" +
+      "\n\022ERR_NO_DATA_SOURCE\020\354\377\377\377\377\377\377\377\377\001\022\035\n\020ERR_S" +
+      "OCKET_ERROR\020\346\377\377\377\377\377\377\377\377\001\022#\n\026ERR_SCENARIO_N" +
+      "OT_FOUND\020\345\377\377\377\377\377\377\377\377\001\022\"\n\025ERR_NO_DATA_AVAIL" +
+      "ABLE\020\344\377\377\377\377\377\377\377\377\001\022!\n\024ERR_BUFFER_TOO_SMALL\020" +
+      "\342\377\377\377\377\377\377\377\377\001\022\033\n\016ERR_DIAGNOSTIC\020\341\377\377\377\377\377\377\377\377\001\022" +
+      "\037\n\022ERR_COMMAND_FAILED\020\332\377\377\377\377\377\377\377\377\001\022\030\n\013ERR_" +
+      "TIMEOUT\020\330\377\377\377\377\377\377\377\377\001\022 \n\023ERR_STRING_TOO_LON" +
+      "G\020\325\377\377\377\377\377\377\377\377\001\022\032\n\rERR_DATA_TYPE\020\314\377\377\377\377\377\377\377\377\001" +
+      "\022\036\n\021ERR_AUTHORIZATION\020\307\377\377\377\377\377\377\377\377\001\022\030\n\013ERR_" +
+      "LICENSE\020\300\377\377\377\377\377\377\377\377\001\022\034\n\017ERR_MEAS_FAILED\020\276\377" +
+      "\377\377\377\377\377\377\377\001\022#\n\026ERR_DATA_AVAIL_TIMEOUT\020\265\377\377\377\377" +
+      "\377\377\377\377\001\022\037\n\022ERR_TASK_NOT_FOUND\020\264\377\377\377\377\377\377\377\377\001\022\036" +
+      "\n\021ERR_SOURCE_ASSIGN\020\263\377\377\377\377\377\377\377\377\001\022\033\n\016ERR_TA" +
+      "SK_START\020\262\377\377\377\377\377\377\377\377\001\022\033\n\016ERR_TASK_PAUSE\020\261\377" +
+      "\377\377\377\377\377\377\377\001\022\034\n\017ERR_TASK_RESUME\020\260\377\377\377\377\377\377\377\377\001\022\032" +
+      "\n\rERR_OPEN_FILE\020\257\377\377\377\377\377\377\377\377\001\022\025\n\010ERR_TDOA\020\256" +
+      "\377\377\377\377\377\377\377\377\001\022\032\n\rERR_TASK_QUIT\020\255\377\377\377\377\377\377\377\377\001B2\n" +
+      " proto_compile.cetc41.nodecontrolB\016DCTSS" +
+      "erviceApib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -15429,62 +16003,68 @@ public final class DCTSServiceApi {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Boolean_descriptor,
         new java.lang.String[] { "Value", });
-    internal_static_RealNumber_descriptor =
+    internal_static_String_descriptor =
       getDescriptor().getMessageTypes().get(12);
+    internal_static_String_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_String_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_RealNumber_descriptor =
+      getDescriptor().getMessageTypes().get(13);
     internal_static_RealNumber_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RealNumber_descriptor,
         new java.lang.String[] { "Value", });
     internal_static_ComplexNumber_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_ComplexNumber_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ComplexNumber_descriptor,
         new java.lang.String[] { "Real", "Image", });
     internal_static_StatisticVal_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_StatisticVal_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_StatisticVal_descriptor,
         new java.lang.String[] { "Up", "Down", "Cur", "Mean", });
     internal_static_HeartbeatCfg_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_HeartbeatCfg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_HeartbeatCfg_descriptor,
         new java.lang.String[] { "HeartbeatInterval", "HeartbeatTimeout", "HeartbeatTtl", });
     internal_static_ReconnectionCfg_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_ReconnectionCfg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReconnectionCfg_descriptor,
         new java.lang.String[] { "ReconnectInterval", "ReconnectIntervalMax", });
     internal_static_MsgSendOption_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_MsgSendOption_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MsgSendOption_descriptor,
         new java.lang.String[] { "Hwm", "Linger", "Timeout", });
     internal_static_IPv4Address_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_IPv4Address_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IPv4Address_descriptor,
         new java.lang.String[] { "Ip", "Port", });
     internal_static_ZeromqLinkCfg_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_ZeromqLinkCfg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ZeromqLinkCfg_descriptor,
         new java.lang.String[] { "Address", "LinkName", "HeartbeatCfg", "ReconnectCfg", "MsgSendCfg", });
     internal_static_TimerParam_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_TimerParam_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TimerParam_descriptor,
         new java.lang.String[] { "IntervalInMs", "Times", });
     internal_static_Topic_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_Topic_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Topic_descriptor,
