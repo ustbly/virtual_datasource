@@ -30,56 +30,51 @@ public class NodeInfoGenerator {
 
     }
 
-
-    /**
-     * 模拟生成虚拟设备的状态数据
-     */
-    public static void MockVirtualDataSourceData() {
-        // 创建 Redis 连接
-        Jedis jedis = RedisClient.getJedis();
-        ObjectMapper objectMapper = new ObjectMapper();
-
+    public static List<NodeInfo> loadNodeInfosFromJson() {
+        List<NodeInfo> nodeInfoList = new ArrayList<>();
         try {
-            JsonNode rootNode = objectMapper.readTree(new File("src/main/resources/nodes.json"));
-            JsonNode nodesArray = rootNode.get("nodes");
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(new File("src/main/resources/nodes.json"));
+            JsonNode nodesArray = root.get("nodes");
 
             if (nodesArray != null && nodesArray.isArray()) {
                 for (JsonNode node : nodesArray) {
-                    // 确保 JSON 格式正确
                     String node_id = node.get("node_id").get("value").asText();
                     String node_name = node.get("node_name").asText();
                     String node_type = node.get("node_type").asText();
                     JsonNode dataSourceList = node.get("dataSourceList");
                     boolean is_physical = node.get("is_physical").asBoolean();
 
-                    if (!is_physical) {  // 直接读入纯虚拟设备的数据，一次性生成的不会变化
-                        NodeInfo nodeInfo = generateNode(node_id, node_name, node_type, dataSourceList, false);
-                        // 序列化数据
-                        Gson gson = new Gson();
-                        String nodeInfoJson = gson.toJson(nodeInfo);
-                        // 存储到 Redis
-                        jedis.set(nodeInfo.getNode_id(), nodeInfoJson);
-                        System.out.println("纯虚拟设备数据已存入Redis：");
-                        System.out.println(nodeInfo.getNode_id() + " -> " + nodeInfoJson);
-                    } else {
-                        NodeInfo nodeInfo = generateNode(node_id, node_name, node_type, dataSourceList, true);
-                        System.out.println("nodeInfo:" + nodeInfo.hashCode());
-                        // 序列化数据
-                        Gson gson = new Gson();
-                        String nodeInfoJson = gson.toJson(nodeInfo);
-                        // 存储到 Redis
-                        jedis.set(nodeInfo.getNode_id(), nodeInfoJson);
-                        VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(nodeInfo);
-                        System.out.println("物理设备对应的虚拟设备数据已存入Redis：");
-                        System.out.println(nodeInfo.getNode_id() + " -> " + nodeInfoJson);
-                    }
+                    NodeInfo nodeInfo = generateNode(node_id, node_name, node_type, dataSourceList, is_physical);
+                    nodeInfoList.add(nodeInfo);
                 }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        // 关闭 Redis 连接
-        jedis.close();
+        return nodeInfoList;
+    }
+
+    /**
+     * 模拟生成虚拟设备的状态数据
+     */
+    public static void MockVirtualDataSourceData() {
+        List<NodeInfo> nodeInfoList = loadNodeInfosFromJson();
+        try (Jedis jedis = RedisClient.getJedis()) {
+            for (NodeInfo nodeInfo : nodeInfoList) {
+                String nodeInfoJson = new Gson().toJson(nodeInfo);
+                jedis.set(nodeInfo.getNode_id(), nodeInfoJson);
+
+                if (nodeInfo.getIs_physical()) {
+                    VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(nodeInfo.getNode_id());
+                    System.out.println("物理设备虚拟节点更新入 Redis: " + nodeInfo.getNode_id());
+                } else {
+                    System.out.println("纯虚拟设备节点更新入 Redis: " + nodeInfo.getNode_id());
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Redis 更新失败: " + e.getMessage());
+        }
     }
 
     private static NodeInfo generateNode(String nodeId, String nodeName, String nodeType, JsonNode dataSourceList, boolean is_physical) {
@@ -141,7 +136,7 @@ public class NodeInfoGenerator {
             for (int i = 0; i < 3; i++) {
                 physicalList.add(generatePhysical(deviceId + "-P" + (i + 1)));
             }
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 3; i++) {
                 fixSignals.add(generateFixSignal(deviceId + "-S" + (i + 1)));
             }
 

@@ -94,9 +94,6 @@ public class NodeControlServiceImpl extends NodeControlServiceGrpc.NodeControlSe
 
         System.out.println("接收到的客户端的参数为：device_id: " + device_id + ", command_function: " + commandFunction + " ,command_param: " + commandParam);
 
-        // 获取当前的设备列表
-
-
         NodeControlServiceApi.CommandReply commandReply = NodeControlService.sendSourceCommand(device_id,commandFunction,commandParam);
         // 模拟执行命令
         NodeControlServiceApi.SourceCommandReply response = NodeControlServiceApi.SourceCommandReply.newBuilder()

@@ -40,19 +40,19 @@ public class ReconStation extends DataSource {
     public String executeCommand(int commandFunction, long commandParam) {
         switch (commandFunction) {
             case 1:
-                return "device_id: " + this.getDevice_id() + " 正在重启...";
+                return "ReconStation:" + this.getDevice_id() + " 正在重启...";
             case 2:
-                return "device_id: " + this.getDevice_id() + " 正在关闭...";
+                return "ReconStation:" + this.getDevice_id() + " 正在关闭...";
             case 3:
-                return "device_id: " + this.getDevice_id() + " 正在停止所有任务...";
+                return "ReconStation:" + this.getDevice_id() + " 正在停止所有任务...";
             case 4:
-                return "device_id: " + this.getDevice_id() + " 正在自检...";
+                return "ReconStation:" + this.getDevice_id() + " 正在自检...";
             case 5:
-                return "device_id: " + this.getDevice_id() + " 正在开机...";
+                return "ReconStation:" + this.getDevice_id() + " 正在开机...";
             case 6:
-                return "device_id: " + this.getDevice_id() + " 正在关机...";
+                return "ReconStation:" + this.getDevice_id() + " 正在关机...";
             default:
-                return "device_id: " + this.getDevice_id() + " 不支持此操作";
+                return "ReconStation:" + this.getDevice_id() + " 不支持此操作";
         }
     }
 }

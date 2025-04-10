@@ -53,19 +53,19 @@ public class InfoSystem extends DataSource {
     public String executeCommand(int commandFunction, long commandParam) {
         switch (commandFunction) {
             case 1:
-                return "device_id: " + this.getDevice_id() + " 正在重启...";
+                return "InfoSystem:" + this.getDevice_id() + " 正在重启...";
             case 2:
-                return "device_id: " + this.getDevice_id() + " 正在关闭...";
+                return "InfoSystem:" + this.getDevice_id() + " 正在关闭...";
             case 3:
-                return "device_id: " + this.getDevice_id() + " 正在停止所有任务...";
+                return "InfoSystem:" + this.getDevice_id() + " 正在停止所有任务...";
             case 4:
-                return "device_id: " + this.getDevice_id() + " 正在自检...";
+                return "InfoSystem:" + this.getDevice_id() + " 正在自检...";
             case 5:
-                return "device_id: " + this.getDevice_id() + " 正在开机...";
+                return "InfoSystem:" + this.getDevice_id() + " 正在开机...";
             case 6:
-                return "device_id: " + this.getDevice_id() + " 正在关机...";
+                return "InfoSystem:" + this.getDevice_id() + " 正在关机...";
             default:
-                return "device_id: " + this.getDevice_id() + " 不支持此操作";
+                return "InfoSystem:" + this.getDevice_id() + " 不支持此操作";
         }
     }
 }

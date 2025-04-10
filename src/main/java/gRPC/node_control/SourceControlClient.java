@@ -34,7 +34,7 @@ public class SourceControlClient {
         SourceControlClient client = new SourceControlClient(channel);
 
         // 创建设备 ID
-        NodeControlServiceApi.DeviceId deviceId = NodeControlServiceApi.DeviceId.newBuilder().setValue("Device_02").build();
+        NodeControlServiceApi.DeviceId deviceId = NodeControlServiceApi.DeviceId.newBuilder().setValue("Device_01").build();
 
         // 创建命令（例如关机命令）
         DCTSServiceApi.Integer shutdownParam = DCTSServiceApi.Integer.newBuilder().setValue(123).build();
