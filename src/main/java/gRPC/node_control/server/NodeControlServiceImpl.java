@@ -1,9 +1,8 @@
-package gRPC.node_control;
+package gRPC.node_control.server;
 
-import com.google.protobuf.Any;
-import com.google.protobuf.Empty;
-import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.*;
 import datasource.DataSource;
+import io.grpc.Context;
 import io.grpc.stub.StreamObserver;
 import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
@@ -12,46 +11,36 @@ import service.NodeControlService;
 import utils.DeviceMapUtils;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 
 public class NodeControlServiceImpl extends NodeControlServiceGrpc.NodeControlServiceImplBase {
+
+    /**
+     * 订阅所有设备的任务数据
+     * @param request
+     * @param responseObserver
+     */
     @Override
-    public void postNodeControl(NodeControlServiceApi.NodeControl request, StreamObserver<NodeControlServiceApi.NodeControlResponse> responseObserver) {
+    public void subscribeSourceMessage(NodeControlServiceApi.SubscribeRequest request,
+                                       StreamObserver<Any> responseObserver) {
 
-
-        String nodeId = request.getNodeId().getValue();
         String deviceId = request.getDeviceId().getValue();
-        NodeControlServiceApi.NodeControlType type = request.getControlType();
-        String detail = request.getDetail();
+        String topicKey = request.getTopic().getKey();
+        String topicValue = request.getTopic().getValue();
 
-        // 获取设备唯一标识node_device_id
-        String key = nodeId + "-" + deviceId;
-        DataSource ds = DeviceMapUtils.getSpecificDevice(key);
-        System.out.println(ds);
+        System.out.println("客户端订阅了设备: " + deviceId + "，主题: " + topicKey + "=" + topicValue);
 
-
-
-        // 执行设备控制逻辑
-        String message;
-        boolean success;
-
-        if (ds != null) {
-            message = ds.executeCommand(type,detail);
-            success = true;
-        } else {
-            message = "未知设备 ID: " + nodeId;
-            success = false;
-        }
-
-        System.out.println("执行操作: " + message);
-
-        // 返回响应
-        NodeControlServiceApi.NodeControlResponse response = NodeControlServiceApi.NodeControlResponse.newBuilder()
-                .setSuccess(success)
-                .setMessage(message)
-                .build();
-        responseObserver.onNext(response);
-        responseObserver.onCompleted();
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+            try {
+                String message = "设备 " + deviceId + " 发送的模拟消息，主题: " + topicKey + "=" + topicValue;
+                Any anyMsg = Any.pack(StringValue.of(message));
+                responseObserver.onNext(anyMsg);
+            } catch (Exception e) {
+                responseObserver.onError(e);
+            }
+        }, 0, 3, TimeUnit.SECONDS);
     }
 
 

@@ -11004,6 +11004,830 @@ public final class NodeControlServiceApi {
 
   }
 
+  public interface SubscribeRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SubscribeRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.DeviceId DeviceId = 1;</code>
+     * @return Whether the deviceId field is set.
+     */
+    boolean hasDeviceId();
+    /**
+     * <code>.DeviceId DeviceId = 1;</code>
+     * @return The deviceId.
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId();
+    /**
+     * <code>.DeviceId DeviceId = 1;</code>
+     */
+    proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder();
+
+    /**
+     * <code>.Topic topic = 2;</code>
+     * @return Whether the topic field is set.
+     */
+    boolean hasTopic();
+    /**
+     * <code>.Topic topic = 2;</code>
+     * @return The topic.
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic getTopic();
+    /**
+     * <code>.Topic topic = 2;</code>
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder getTopicOrBuilder();
+  }
+  /**
+   * Protobuf type {@code SubscribeRequest}
+   */
+  public static final class SubscribeRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:SubscribeRequest)
+      SubscribeRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SubscribeRequest.newBuilder() to construct.
+    private SubscribeRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SubscribeRequest() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SubscribeRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SubscribeRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder subBuilder = null;
+              if (deviceId_ != null) {
+                subBuilder = deviceId_.toBuilder();
+              }
+              deviceId_ = input.readMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(deviceId_);
+                deviceId_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder subBuilder = null;
+              if (topic_ != null) {
+                subBuilder = topic_.toBuilder();
+              }
+              topic_ = input.readMessage(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(topic_);
+                topic_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SubscribeRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SubscribeRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest.Builder.class);
+    }
+
+    public static final int DEVICEID_FIELD_NUMBER = 1;
+    private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId deviceId_;
+    /**
+     * <code>.DeviceId DeviceId = 1;</code>
+     * @return Whether the deviceId field is set.
+     */
+    @java.lang.Override
+    public boolean hasDeviceId() {
+      return deviceId_ != null;
+    }
+    /**
+     * <code>.DeviceId DeviceId = 1;</code>
+     * @return The deviceId.
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId() {
+      return deviceId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+    }
+    /**
+     * <code>.DeviceId DeviceId = 1;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder() {
+      return getDeviceId();
+    }
+
+    public static final int TOPIC_FIELD_NUMBER = 2;
+    private proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic topic_;
+    /**
+     * <code>.Topic topic = 2;</code>
+     * @return Whether the topic field is set.
+     */
+    @java.lang.Override
+    public boolean hasTopic() {
+      return topic_ != null;
+    }
+    /**
+     * <code>.Topic topic = 2;</code>
+     * @return The topic.
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic getTopic() {
+      return topic_ == null ? proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.getDefaultInstance() : topic_;
+    }
+    /**
+     * <code>.Topic topic = 2;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder getTopicOrBuilder() {
+      return getTopic();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (deviceId_ != null) {
+        output.writeMessage(1, getDeviceId());
+      }
+      if (topic_ != null) {
+        output.writeMessage(2, getTopic());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (deviceId_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getDeviceId());
+      }
+      if (topic_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getTopic());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest)) {
+        return super.equals(obj);
+      }
+      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest other = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest) obj;
+
+      if (hasDeviceId() != other.hasDeviceId()) return false;
+      if (hasDeviceId()) {
+        if (!getDeviceId()
+            .equals(other.getDeviceId())) return false;
+      }
+      if (hasTopic() != other.hasTopic()) return false;
+      if (hasTopic()) {
+        if (!getTopic()
+            .equals(other.getTopic())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasDeviceId()) {
+        hash = (37 * hash) + DEVICEID_FIELD_NUMBER;
+        hash = (53 * hash) + getDeviceId().hashCode();
+      }
+      if (hasTopic()) {
+        hash = (37 * hash) + TOPIC_FIELD_NUMBER;
+        hash = (53 * hash) + getTopic().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SubscribeRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SubscribeRequest)
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SubscribeRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SubscribeRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest.class, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest.Builder.class);
+      }
+
+      // Construct using proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = null;
+        } else {
+          deviceId_ = null;
+          deviceIdBuilder_ = null;
+        }
+        if (topicBuilder_ == null) {
+          topic_ = null;
+        } else {
+          topic_ = null;
+          topicBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.internal_static_SubscribeRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest getDefaultInstanceForType() {
+        return proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest build() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest buildPartial() {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest result = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest(this);
+        if (deviceIdBuilder_ == null) {
+          result.deviceId_ = deviceId_;
+        } else {
+          result.deviceId_ = deviceIdBuilder_.build();
+        }
+        if (topicBuilder_ == null) {
+          result.topic_ = topic_;
+        } else {
+          result.topic_ = topicBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest) {
+          return mergeFrom((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest other) {
+        if (other == proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest.getDefaultInstance()) return this;
+        if (other.hasDeviceId()) {
+          mergeDeviceId(other.getDeviceId());
+        }
+        if (other.hasTopic()) {
+          mergeTopic(other.getTopic());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId deviceId_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder> deviceIdBuilder_;
+      /**
+       * <code>.DeviceId DeviceId = 1;</code>
+       * @return Whether the deviceId field is set.
+       */
+      public boolean hasDeviceId() {
+        return deviceIdBuilder_ != null || deviceId_ != null;
+      }
+      /**
+       * <code>.DeviceId DeviceId = 1;</code>
+       * @return The deviceId.
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId getDeviceId() {
+        if (deviceIdBuilder_ == null) {
+          return deviceId_ == null ? proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+        } else {
+          return deviceIdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.DeviceId DeviceId = 1;</code>
+       */
+      public Builder setDeviceId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId value) {
+        if (deviceIdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          deviceId_ = value;
+          onChanged();
+        } else {
+          deviceIdBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId DeviceId = 1;</code>
+       */
+      public Builder setDeviceId(
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder builderForValue) {
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = builderForValue.build();
+          onChanged();
+        } else {
+          deviceIdBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId DeviceId = 1;</code>
+       */
+      public Builder mergeDeviceId(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId value) {
+        if (deviceIdBuilder_ == null) {
+          if (deviceId_ != null) {
+            deviceId_ =
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.newBuilder(deviceId_).mergeFrom(value).buildPartial();
+          } else {
+            deviceId_ = value;
+          }
+          onChanged();
+        } else {
+          deviceIdBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId DeviceId = 1;</code>
+       */
+      public Builder clearDeviceId() {
+        if (deviceIdBuilder_ == null) {
+          deviceId_ = null;
+          onChanged();
+        } else {
+          deviceId_ = null;
+          deviceIdBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.DeviceId DeviceId = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder getDeviceIdBuilder() {
+        
+        onChanged();
+        return getDeviceIdFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.DeviceId DeviceId = 1;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder getDeviceIdOrBuilder() {
+        if (deviceIdBuilder_ != null) {
+          return deviceIdBuilder_.getMessageOrBuilder();
+        } else {
+          return deviceId_ == null ?
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.getDefaultInstance() : deviceId_;
+        }
+      }
+      /**
+       * <code>.DeviceId DeviceId = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder> 
+          getDeviceIdFieldBuilder() {
+        if (deviceIdBuilder_ == null) {
+          deviceIdBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceId.Builder, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.DeviceIdOrBuilder>(
+                  getDeviceId(),
+                  getParentForChildren(),
+                  isClean());
+          deviceId_ = null;
+        }
+        return deviceIdBuilder_;
+      }
+
+      private proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic topic_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder> topicBuilder_;
+      /**
+       * <code>.Topic topic = 2;</code>
+       * @return Whether the topic field is set.
+       */
+      public boolean hasTopic() {
+        return topicBuilder_ != null || topic_ != null;
+      }
+      /**
+       * <code>.Topic topic = 2;</code>
+       * @return The topic.
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic getTopic() {
+        if (topicBuilder_ == null) {
+          return topic_ == null ? proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.getDefaultInstance() : topic_;
+        } else {
+          return topicBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.Topic topic = 2;</code>
+       */
+      public Builder setTopic(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic value) {
+        if (topicBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          topic_ = value;
+          onChanged();
+        } else {
+          topicBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Topic topic = 2;</code>
+       */
+      public Builder setTopic(
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder builderForValue) {
+        if (topicBuilder_ == null) {
+          topic_ = builderForValue.build();
+          onChanged();
+        } else {
+          topicBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Topic topic = 2;</code>
+       */
+      public Builder mergeTopic(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic value) {
+        if (topicBuilder_ == null) {
+          if (topic_ != null) {
+            topic_ =
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.newBuilder(topic_).mergeFrom(value).buildPartial();
+          } else {
+            topic_ = value;
+          }
+          onChanged();
+        } else {
+          topicBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Topic topic = 2;</code>
+       */
+      public Builder clearTopic() {
+        if (topicBuilder_ == null) {
+          topic_ = null;
+          onChanged();
+        } else {
+          topic_ = null;
+          topicBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Topic topic = 2;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder getTopicBuilder() {
+        
+        onChanged();
+        return getTopicFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Topic topic = 2;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder getTopicOrBuilder() {
+        if (topicBuilder_ != null) {
+          return topicBuilder_.getMessageOrBuilder();
+        } else {
+          return topic_ == null ?
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.getDefaultInstance() : topic_;
+        }
+      }
+      /**
+       * <code>.Topic topic = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder> 
+          getTopicFieldBuilder() {
+        if (topicBuilder_ == null) {
+          topicBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder>(
+                  getTopic(),
+                  getParentForChildren(),
+                  isClean());
+          topic_ = null;
+        }
+        return topicBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:SubscribeRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:SubscribeRequest)
+    private static final proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest();
+    }
+
+    public static proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SubscribeRequest>
+        PARSER = new com.google.protobuf.AbstractParser<SubscribeRequest>() {
+      @java.lang.Override
+      public SubscribeRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SubscribeRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SubscribeRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SubscribeRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_NodeId_descriptor;
   private static final 
@@ -11059,6 +11883,11 @@ public final class NodeControlServiceApi {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SourceCommandReply_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SubscribeRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_SubscribeRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -11094,19 +11923,21 @@ public final class NodeControlServiceApi {
       "\n\rSourceCommand\022\034\n\tdevice_id\030\001 \001(\0132\t.Dev" +
       "iceId\022\031\n\007command\030\002 \001(\0132\010.Command\"P\n\022Sour" +
       "ceCommandReply\022\034\n\tdevice_id\030\001 \001(\0132\t.Devi" +
-      "ceId\022\034\n\005reply\030\002 \001(\0132\r.CommandReply*_\n\017No" +
-      "deControlType\022\017\n\013REBOOT_NODE\020\000\022\021\n\rSHUTDO" +
-      "WN_NODE\020\001\022\r\n\tABORT_ALL\020\002\022\r\n\tSELF_TEST\020\003\022" +
-      "\n\n\006RENAME\020\004*i\n\007CmdType\022\014\n\010RESERVED\020\000\022\t\n\005" +
-      "PAUSE\020\001\022\n\n\006RESUME\020\002\022\016\n\nRESTART_AT\020\003\022\020\n\014R" +
-      "ESET_LENGTH\020\004\022\t\n\005START\020\005\022\014\n\010SHUTDOWN\020\0062\277" +
-      "\001\n\022NodeControlService\0224\n\014ListAllNodes\022\026." +
-      "google.protobuf.Empty\032\n.NodesInfo\"\000\022:\n\021S" +
-      "endSourceCommand\022\016.SourceCommand\032\023.Sourc" +
-      "eCommandReply\"\000\0227\n\017PostNodeControl\022\014.Nod" +
-      "eControl\032\024.NodeControlResponse\"\000B9\n prot" +
-      "o_compile.cetc41.nodecontrolB\025NodeContro" +
-      "lServiceApib\006proto3"
+      "ceId\022\034\n\005reply\030\002 \001(\0132\r.CommandReply\"F\n\020Su" +
+      "bscribeRequest\022\033\n\010DeviceId\030\001 \001(\0132\t.Devic" +
+      "eId\022\025\n\005topic\030\002 \001(\0132\006.Topic*_\n\017NodeContro" +
+      "lType\022\017\n\013REBOOT_NODE\020\000\022\021\n\rSHUTDOWN_NODE\020" +
+      "\001\022\r\n\tABORT_ALL\020\002\022\r\n\tSELF_TEST\020\003\022\n\n\006RENAM" +
+      "E\020\004*i\n\007CmdType\022\014\n\010RESERVED\020\000\022\t\n\005PAUSE\020\001\022" +
+      "\n\n\006RESUME\020\002\022\016\n\nRESTART_AT\020\003\022\020\n\014RESET_LEN" +
+      "GTH\020\004\022\t\n\005START\020\005\022\014\n\010SHUTDOWN\020\0062\315\001\n\022NodeC" +
+      "ontrolService\0224\n\014ListAllNodes\022\026.google.p" +
+      "rotobuf.Empty\032\n.NodesInfo\"\000\022:\n\021SendSourc" +
+      "eCommand\022\016.SourceCommand\032\023.SourceCommand" +
+      "Reply\"\000\022E\n\026SubscribeSourceMessage\022\021.Subs" +
+      "cribeRequest\032\024.google.protobuf.Any\"\0000\001B9" +
+      "\n proto_compile.cetc41.nodecontrolB\025Node" +
+      "ControlServiceApib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -11181,6 +12012,12 @@ public final class NodeControlServiceApi {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SourceCommandReply_descriptor,
         new java.lang.String[] { "DeviceId", "Reply", });
+    internal_static_SubscribeRequest_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_SubscribeRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_SubscribeRequest_descriptor,
+        new java.lang.String[] { "DeviceId", "Topic", });
     com.google.protobuf.EmptyProto.getDescriptor();
     com.google.protobuf.AnyProto.getDescriptor();
     proto_compile.cetc41.nodecontrol.DCTSServiceApi.getDescriptor();

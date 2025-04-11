@@ -1,4 +1,4 @@
-package gRPC.node_control;
+package gRPC.node_control.client;
 
 import com.google.protobuf.Empty;
 import io.grpc.ManagedChannel;

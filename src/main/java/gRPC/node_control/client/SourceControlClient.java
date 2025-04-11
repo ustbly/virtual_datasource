@@ -1,4 +1,4 @@
-package gRPC.node_control;
+package gRPC.node_control.client;
 
 import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -56,7 +56,7 @@ public class SourceControlClient {
 
     public static void main(String[] args) throws InvalidProtocolBufferException {
         sourceControl(NodeControlServiceApi.CmdType.SHUTDOWN.getNumber());
-//        sourceControl(NodeControlServiceApi.CmdType.START.getNumber());
+        // sourceControl(NodeControlServiceApi.CmdType.START.getNumber());
     }
 }
 

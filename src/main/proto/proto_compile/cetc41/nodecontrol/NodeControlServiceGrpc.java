@@ -82,35 +82,35 @@ public final class NodeControlServiceGrpc {
     return getSendSourceCommandMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl,
-      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> getPostNodeControlMethod;
+  private static volatile io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest,
+      com.google.protobuf.Any> getSubscribeSourceMessageMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "PostNodeControl",
-      requestType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl.class,
-      responseType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl,
-      proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> getPostNodeControlMethod() {
-    io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> getPostNodeControlMethod;
-    if ((getPostNodeControlMethod = NodeControlServiceGrpc.getPostNodeControlMethod) == null) {
+      fullMethodName = SERVICE_NAME + '/' + "SubscribeSourceMessage",
+      requestType = proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest.class,
+      responseType = com.google.protobuf.Any.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest,
+      com.google.protobuf.Any> getSubscribeSourceMessageMethod() {
+    io.grpc.MethodDescriptor<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest, com.google.protobuf.Any> getSubscribeSourceMessageMethod;
+    if ((getSubscribeSourceMessageMethod = NodeControlServiceGrpc.getSubscribeSourceMessageMethod) == null) {
       synchronized (NodeControlServiceGrpc.class) {
-        if ((getPostNodeControlMethod = NodeControlServiceGrpc.getPostNodeControlMethod) == null) {
-          NodeControlServiceGrpc.getPostNodeControlMethod = getPostNodeControlMethod =
-              io.grpc.MethodDescriptor.<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl, proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "PostNodeControl"))
+        if ((getSubscribeSourceMessageMethod = NodeControlServiceGrpc.getSubscribeSourceMessageMethod) == null) {
+          NodeControlServiceGrpc.getSubscribeSourceMessageMethod = getSubscribeSourceMessageMethod =
+              io.grpc.MethodDescriptor.<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest, com.google.protobuf.Any>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SubscribeSourceMessage"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl.getDefaultInstance()))
+                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new NodeControlServiceMethodDescriptorSupplier("PostNodeControl"))
+                  com.google.protobuf.Any.getDefaultInstance()))
+              .setSchemaDescriptor(new NodeControlServiceMethodDescriptorSupplier("SubscribeSourceMessage"))
               .build();
         }
       }
     }
-    return getPostNodeControlMethod;
+    return getSubscribeSourceMessageMethod;
   }
 
   /**
@@ -180,9 +180,9 @@ public final class NodeControlServiceGrpc {
 
     /**
      */
-    public void postNodeControl(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl request,
-        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPostNodeControlMethod(), responseObserver);
+    public void subscribeSourceMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Any> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeSourceMessageMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -202,12 +202,12 @@ public final class NodeControlServiceGrpc {
                 proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SourceCommandReply>(
                   this, METHODID_SEND_SOURCE_COMMAND)))
           .addMethod(
-            getPostNodeControlMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
+            getSubscribeSourceMessageMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl,
-                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse>(
-                  this, METHODID_POST_NODE_CONTROL)))
+                proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest,
+                com.google.protobuf.Any>(
+                  this, METHODID_SUBSCRIBE_SOURCE_MESSAGE)))
           .build();
     }
   }
@@ -247,10 +247,10 @@ public final class NodeControlServiceGrpc {
 
     /**
      */
-    public void postNodeControl(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl request,
-        io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getPostNodeControlMethod(), getCallOptions()), request, responseObserver);
+    public void subscribeSourceMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Any> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getSubscribeSourceMessageMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -287,9 +287,10 @@ public final class NodeControlServiceGrpc {
 
     /**
      */
-    public proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse postNodeControl(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getPostNodeControlMethod(), getCallOptions(), request);
+    public java.util.Iterator<com.google.protobuf.Any> subscribeSourceMessage(
+        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getSubscribeSourceMessageMethod(), getCallOptions(), request);
     }
   }
 
@@ -325,19 +326,11 @@ public final class NodeControlServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSendSourceCommandMethod(), getCallOptions()), request);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse> postNodeControl(
-        proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getPostNodeControlMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_LIST_ALL_NODES = 0;
   private static final int METHODID_SEND_SOURCE_COMMAND = 1;
-  private static final int METHODID_POST_NODE_CONTROL = 2;
+  private static final int METHODID_SUBSCRIBE_SOURCE_MESSAGE = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -368,9 +361,9 @@ public final class NodeControlServiceGrpc {
             e.printStackTrace();
           }
           break;
-        case METHODID_POST_NODE_CONTROL:
-          serviceImpl.postNodeControl((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControl) request,
-              (io.grpc.stub.StreamObserver<proto_compile.cetc41.nodecontrol.NodeControlServiceApi.NodeControlResponse>) responseObserver);
+        case METHODID_SUBSCRIBE_SOURCE_MESSAGE:
+          serviceImpl.subscribeSourceMessage((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.Any>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -435,7 +428,7 @@ public final class NodeControlServiceGrpc {
               .setSchemaDescriptor(new NodeControlServiceFileDescriptorSupplier())
               .addMethod(getListAllNodesMethod())
               .addMethod(getSendSourceCommandMethod())
-              .addMethod(getPostNodeControlMethod())
+              .addMethod(getSubscribeSourceMessageMethod())
               .build();
         }
       }
