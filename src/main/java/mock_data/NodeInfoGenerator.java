@@ -63,13 +63,17 @@ public class NodeInfoGenerator {
             for (NodeInfo nodeInfo : nodeInfoList) {
                 String nodeInfoJson = new Gson().toJson(nodeInfo);
                 jedis.set(nodeInfo.getNode_id(), nodeInfoJson);
-
+                /*
                 if (nodeInfo.getIs_physical()) {
                     VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(nodeInfo.getNode_id());
                     System.out.println("物理设备虚拟节点更新入 Redis: " + nodeInfo.getNode_id());
                 } else {
                     System.out.println("纯虚拟设备节点更新入 Redis: " + nodeInfo.getNode_id());
                 }
+                */
+                // 更新设备状态
+                VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(nodeInfo.getNode_id());
+                System.out.println("设备信息更新入 Redis: " + nodeInfo.getNode_id());
             }
         } catch (Exception e) {
             System.err.println("Redis 更新失败: " + e.getMessage());

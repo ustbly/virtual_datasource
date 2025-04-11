@@ -160,6 +160,7 @@ public class NodeControlService {
 
     public static NodeControlServiceApi.CommandReply sendSourceCommand(String device_id, int commandFunction, long commandParam) {
         List<NodeInfo> nodeInfoList = NodeControlService.getNodeInfoFromRedis();
+        System.out.println("device_id:" + device_id);
         String result = "设备" + device_id +"不存在或设备不在线！"; // 默认值
         boolean found = false;
 

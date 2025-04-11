@@ -7,8 +7,6 @@ import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class DeviceViewAndControl extends JFrame {
@@ -18,7 +16,7 @@ public class DeviceViewAndControl extends JFrame {
 
     public DeviceViewAndControl() {
         setTitle("所有设备信息查看器");
-        setSize(1000, 600);
+        setSize(1200, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -134,8 +132,12 @@ public class DeviceViewAndControl extends JFrame {
                     NodeControlService.sendSourceCommand(currentDeviceId,
                             NodeControlServiceApi.CmdType.START.getNumber(), 1L);
                     JOptionPane.showMessageDialog(null, "已发送开机指令给设备 " + currentDeviceId);
-                    fireEditingStopped();
-                    fetchDeviceList(); // 刷新状态
+
+                    // 等待 800 毫秒再刷新状态（模拟后端响应时间）
+                    new Timer(800, evt -> {
+                        fetchDeviceList();
+                        fireEditingStopped(); // 结束编辑状态
+                    }).setRepeats(false); // 只执行一次
                 }
             });
 
@@ -144,8 +146,12 @@ public class DeviceViewAndControl extends JFrame {
                     NodeControlService.sendSourceCommand(currentDeviceId,
                             NodeControlServiceApi.CmdType.SHUTDOWN.getNumber(), 1L);
                     JOptionPane.showMessageDialog(null, "已发送关机指令给设备 " + currentDeviceId);
-                    fireEditingStopped();
-                    fetchDeviceList(); // 刷新状态
+
+                    // 等待 800 毫秒再刷新状态
+                    new Timer(800, evt -> {
+                        fetchDeviceList();
+                        fireEditingStopped();
+                    }).setRepeats(false);
                 }
             });
         }

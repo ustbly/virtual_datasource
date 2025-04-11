@@ -55,8 +55,8 @@ public class SourceControlClient {
     }
 
     public static void main(String[] args) throws InvalidProtocolBufferException {
-//        sourceControl(NodeControlServiceApi.CmdType.SHUTDOWN.getNumber());
-        sourceControl(NodeControlServiceApi.CmdType.START.getNumber());
+        sourceControl(NodeControlServiceApi.CmdType.SHUTDOWN.getNumber());
+//        sourceControl(NodeControlServiceApi.CmdType.START.getNumber());
     }
 }
 
