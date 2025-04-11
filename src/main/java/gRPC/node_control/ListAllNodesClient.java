@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class NodeControlClient {
+public class ListAllNodesClient {
     /*
     public static void main(String[] args) {
         // 连接 gRPC 服务器

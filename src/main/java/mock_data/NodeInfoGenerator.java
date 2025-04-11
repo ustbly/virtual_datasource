@@ -19,7 +19,6 @@ import utils.RedisClient;
 import utils.VirtualDeviceScheduler;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;

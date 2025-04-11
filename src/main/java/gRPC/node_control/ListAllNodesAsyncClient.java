@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class NodeControlAsyncClient {
+public class ListAllNodesAsyncClient {
 
     public static void main(String[] args) {
         // 创建 gRPC 连接通道

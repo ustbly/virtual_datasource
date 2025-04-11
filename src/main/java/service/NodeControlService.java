@@ -168,39 +168,11 @@ public class NodeControlService {
                 if (device_id.equals(dataSource.getDevice_id()) && "online".equals(dataSource.getStatus())) {
                     result = dataSource.executeCommand(commandFunction, commandParam);
                     found = true;
-
-                    // 修改配置文件中的设备状态
-                    ObjectMapper mapper = new ObjectMapper();
-                    File file = new File("src/main/resources/nodes.json");
-
-                    try {
-                        // 1. 读取 JSON 文件为 JsonNode
-                        JsonNode root = mapper.readTree(file);
-
-                        JsonNode nodesArray = root.get("nodes");
-                        if (nodesArray != null && nodesArray.isArray()) {
-                            for (JsonNode node : nodesArray) {
-                                JsonNode dataSourceList = node.get("dataSourceList");
-                                if (dataSourceList != null && dataSourceList.isArray()) {
-                                    for (JsonNode device : dataSourceList) {
-                                        if (device_id.equals(device.get("device_id").get("value").asText())) {
-                                            // 设置 status 为 offline
-                                            ((ObjectNode) device).put("status", "offline");
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        // 2. 写回 JSON 文件
-                        mapper.writerWithDefaultPrettyPrinter().writeValue(file, root);
-                        System.out.println("设备 " + device_id + " 状态已更新为 offline");
-
-                    } catch (IOException e) {
-                        System.err.println("更新 JSON 文件失败：" + e.getMessage());
-                        e.printStackTrace();
-                    }
+                    break; // 找到后就不再继续遍历当前 Node 的设备
+                }
+                else if (device_id.equals(dataSource.getDevice_id()) && "offline".equals(dataSource.getStatus())) {
+                    result = dataSource.executeCommand(commandFunction, commandParam);
+                    found = true;
                     break; // 找到后就不再继续遍历当前 Node 的设备
                 }
             }

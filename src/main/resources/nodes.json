@@ -14,7 +14,7 @@
         "value" : "Device_01"
       },
       "device_name" : "Device_A",
-      "device_type" : "InfoSystem",
+      "device_type" : "Sensor",
       "status" : "offline"
     }, {
       "device_id" : {
@@ -48,7 +48,7 @@
       },
       "device_name" : "Device_D",
       "device_type" : "Sensor",
-      "status" : "online"
+      "status" : "offline"
     } ],
     "is_physical" : false
   } ]

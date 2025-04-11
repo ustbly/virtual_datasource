@@ -25,7 +25,7 @@ public class SourceControlClient {
         return blockingStub.sendSourceCommand(sourceCommand);
     }
 
-    public static void main(String[] args) throws InvalidProtocolBufferException {
+    public static void sourceControl(int commandNum) throws InvalidProtocolBufferException {
         // 创建 gRPC 通道
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50050)
                 .usePlaintext()
@@ -41,7 +41,7 @@ public class SourceControlClient {
         Any commandParam = Any.pack(shutdownParam);
 
         NodeControlServiceApi.Command command = NodeControlServiceApi.Command.newBuilder()
-                .setCommandFunction(NodeControlServiceApi.CmdType.SHUTDOWN.getNumber())  // 功能编号
+                .setCommandFunction(commandNum)  // 功能编号
                 .setCommandParam(commandParam)
                 .build();
 
@@ -52,6 +52,11 @@ public class SourceControlClient {
 
         // 关闭通道
         channel.shutdown();
+    }
+
+    public static void main(String[] args) throws InvalidProtocolBufferException {
+//        sourceControl(NodeControlServiceApi.CmdType.SHUTDOWN.getNumber());
+        sourceControl(NodeControlServiceApi.CmdType.START.getNumber());
     }
 }
 

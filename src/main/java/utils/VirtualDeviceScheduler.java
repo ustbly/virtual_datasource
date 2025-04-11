@@ -5,7 +5,6 @@ import datasource.DataSource;
 import entity.NodeInfo;
 import mock_data.NodeInfoGenerator;
 import redis.clients.jedis.Jedis;
-import utils.RedisClient;
 
 import java.time.Instant;
 import java.util.ArrayList;
