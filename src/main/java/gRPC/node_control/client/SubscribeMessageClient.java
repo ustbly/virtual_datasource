@@ -13,7 +13,7 @@ import proto_compile.cetc41.nodecontrol.NodeControlServiceGrpc;
 
 public class SubscribeMessageClient {
     public static void main(String[] args) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50050)
                 .usePlaintext()
                 .build();
 
