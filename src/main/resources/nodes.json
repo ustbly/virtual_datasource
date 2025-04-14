@@ -15,7 +15,7 @@
       },
       "device_name" : "Device_A",
       "device_type" : "Sensor",
-      "status" : "online"
+      "status" : "offline"
     }, {
       "device_id" : {
         "value" : "Device_02"
