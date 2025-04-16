@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class NodeInfoGenerator {
@@ -49,6 +47,10 @@ public class NodeInfoGenerator {
     }
 
 
+    /**
+     * 从JSON中加载节点设备数据
+     * @return List<NodeInfo>
+     */
     public static List<NodeInfo> loadNodeInfosFromJson() {
         List<NodeInfo> nodeInfoList = new ArrayList<>();
         try {
@@ -74,7 +76,15 @@ public class NodeInfoGenerator {
         return nodeInfoList;
     }
 
-
+    /**
+     * 模拟生成 Node 数据结构
+     * @param nodeId
+     * @param nodeName
+     * @param nodeType
+     * @param dataSourceList
+     * @param is_physical
+     * @return NodeInfo
+     */
     private static NodeInfo generateNode(String nodeId, String nodeName, String nodeType, JsonNode dataSourceList, boolean is_physical) {
         NodeInfo node = new NodeInfo();
         node.setNode_id(nodeId);
@@ -97,6 +107,15 @@ public class NodeInfoGenerator {
         return node;
     }
 
+    /**
+     * 模拟生成 DataSource 数据结构
+     * @param deviceId
+     * @param deviceName
+     * @param deviceType
+     * @param status
+     * @param is_physical
+     * @return DataSource
+     */
     public static DataSource generateDevice(String deviceId, String deviceName, String deviceType, String status, boolean is_physical) {
         DataSource device = null;
         List<Map<String, String>> topics = new ArrayList<>();
@@ -161,6 +180,11 @@ public class NodeInfoGenerator {
         return device;
     }
 
+    /**
+     * 模拟生成物理指标数据
+     * @param signalId
+     * @return Physical
+     */
     private static Physical generatePhysical(String signalId) {
         Physical physical = new Physical();
         physical.setType((int) (Math.random() * 8) + 1);
@@ -169,7 +193,12 @@ public class NodeInfoGenerator {
         return physical;
     }
 
-    private static FixSignal generateFixSignal(String signalId) {
+    /**
+     * 模拟生成定频信号
+     * @param signalId
+     * @return FixSignal
+     */
+    public static FixSignal generateFixSignal(String signalId) {
         double azimuth = ThreadLocalRandom.current().nextDouble(0.0, 360.0);
         double quality = ThreadLocalRandom.current().nextDouble(0.0, 100.0);
 
@@ -192,7 +221,11 @@ public class NodeInfoGenerator {
     }
 
 
-    private static List<HoppingSignalCluster> generateHoppingSignalCluster() {
+    /**
+     * 模拟生成跳频信号数据集
+     * @return List<HoppingSignalCluster>
+     */
+    public static List<HoppingSignalCluster> generateHoppingSignalCluster() {
         List<HoppingSignal> hoppingSignalList = new ArrayList<>();
         List<HoppingSignalCluster> hoppingSignalClusterList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {

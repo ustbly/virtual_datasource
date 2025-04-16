@@ -4,7 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
 import datasource.DataSource;
+import entity.FixSignal;
 import entity.NodeInfo;
+import entity.SignalList;
 import mock_data.NodeInfoGenerator;
 import org.zeromq.ZMQ;
 import redis.clients.jedis.Jedis;
@@ -15,6 +17,8 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import static mock_data.NodeInfoGenerator.generateHoppingSignalCluster;
 
 public class VirtualDeviceScheduler {
     private static final ZMQ.Context context = ZMQ.context(1);
@@ -83,22 +87,35 @@ public class VirtualDeviceScheduler {
 
         scheduler.scheduleWithFixedDelay(() -> {
             List<DataSource> devices = DeviceManager.getOnlineDevices();
-            String[] dataTypes = {"signal_list", "spectrum"};
 
             for (DataSource device : devices) {
-                for (String type : dataTypes) {
-                    ObjectNode json = new ObjectMapper().createObjectNode();
-                    json.put("device_id", device.getDevice_id());
-                    json.put("data_type", type);
-                    json.put("payload", "模拟数据_" + type + "_" + System.currentTimeMillis());
+                String deviceId = device.getDevice_id();
 
-                    String topic = type;
-                    publisher.sendMore(topic);
-                    publisher.send(json.toString());
+                // 生成模拟信号数据
+                SignalList signalList = new SignalList();
+                signalList.setFixSignalList(generateFixSignals(3));
+                signalList.setHoppingSignalList(generateHoppingSignalCluster());
 
-                    System.out.println("[ZMQ] 发送: " + topic + " -> " + json);
-                }
+                // 构造 ZMQ 消息内容
+                ObjectMapper mapper = new ObjectMapper();
+                ObjectNode json = mapper.createObjectNode();
+                json.put("device_id", deviceId);
+                json.set("data", mapper.valueToTree(signalList));  // payload 嵌入整个 SignalList
+
+                String topic = "signal_list";
+                publisher.sendMore(topic);
+                publisher.send(json.toString());
+
+                System.out.println("[ZMQ] 发送: " + topic + " -> " + json);
             }
         }, 0, 2, TimeUnit.SECONDS);
+    }
+
+    private static List<FixSignal> generateFixSignals(int count) {
+        List<FixSignal> list = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            list.add(NodeInfoGenerator.generateFixSignal("fix-" + i));
+        }
+        return list;
     }
 }

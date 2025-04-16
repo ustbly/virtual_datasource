@@ -1,5 +1,7 @@
 package gRPC.node_control.server;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.protobuf.Any;
 import com.google.protobuf.Empty;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -12,14 +14,29 @@ import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceGrpc;
 import service.NodeControlService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 
 
+
+
 public class NodeControlServiceImpl extends NodeControlServiceGrpc.NodeControlServiceImplBase {
-    private final Map<String, StreamObserver<Any>> activeSubscribers = new ConcurrentHashMap<>();
+    static class SubscriberInfo {
+        String deviceId;
+        StreamObserver<Any> observer;
+
+        SubscriberInfo(String deviceId, StreamObserver<Any> observer) {
+            this.deviceId = deviceId;
+            this.observer = observer;
+        }
+    }
+
+
+    private final Map<String, List<SubscriberInfo>> activeSubscribers = new ConcurrentHashMap<>();
+
 
     public NodeControlServiceImpl() {
         new Thread(this::listenZmq).start();
@@ -27,15 +44,22 @@ public class NodeControlServiceImpl extends NodeControlServiceGrpc.NodeControlSe
 
     @Override
     public void subscribeSourceMessage(NodeControlServiceApi.SubscribeRequest request, StreamObserver<Any> responseObserver) {
-        String topicKey = request.getTopic().getKey();
-        activeSubscribers.put(topicKey, responseObserver);
+        String topicKey = request.getTopic().getKey(); // e.g. "signal_list"
+        String deviceId = request.getDeviceId().getValue(); // e.g. "Device_01"
 
-        System.out.println("客户端订阅: " + topicKey);
+        // 添加订阅者
+        activeSubscribers.computeIfAbsent(topicKey, k -> new ArrayList<>())
+                .add(new SubscriberInfo(deviceId, responseObserver));
 
-        // 清理：当客户端断开连接时移除订阅
+        System.out.println("客户端订阅 topic: " + topicKey + "，deviceId: " + deviceId);
+
+        // 客户端断开时移除
         Context.current().addListener(context -> {
-            activeSubscribers.remove(topicKey);
-            System.out.println("取消订阅: " + topicKey);
+            List<SubscriberInfo> list = activeSubscribers.get(topicKey);
+            if (list != null) {
+                list.removeIf(sub -> sub.observer.equals(responseObserver));
+                System.out.println("取消订阅: " + topicKey + " deviceId: " + deviceId);
+            }
         }, Executors.newSingleThreadExecutor());
     }
 
@@ -45,17 +69,25 @@ public class NodeControlServiceImpl extends NodeControlServiceGrpc.NodeControlSe
         subscriber.connect("tcp://localhost:5555");
         subscriber.subscribe("".getBytes());
 
+        ObjectMapper mapper = new ObjectMapper();
+
         while (!Thread.currentThread().isInterrupted()) {
-            String topic = subscriber.recvStr();
+            String topic = subscriber.recvStr(); // e.g. "signal_list"
             String msg = subscriber.recvStr();
 
-            StreamObserver<Any> observer = activeSubscribers.get(topic);
-            if (observer != null) {
-                try {
-                    Any anyMsg = Any.pack(StringValue.of(msg));
-                    observer.onNext(anyMsg);
-                } catch (Exception e) {
-                    System.err.println("发送失败: " + e.getMessage());
+            List<SubscriberInfo> subscribers = activeSubscribers.get(topic);
+            if (subscribers != null) {
+                for (SubscriberInfo sub : subscribers) {
+                    try {
+                        JsonNode jsonNode = mapper.readTree(msg);
+                        String msgDeviceId = jsonNode.get("device_id").asText();
+
+                        if (sub.deviceId.isEmpty() || sub.deviceId.equals(msgDeviceId)) {
+                            sub.observer.onNext(Any.pack(StringValue.of(msg)));
+                        }
+                    } catch (Exception e) {
+                        System.err.println("发送失败: " + e.getMessage());
+                    }
                 }
             }
         }

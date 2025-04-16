@@ -15,14 +15,14 @@
       },
       "device_name" : "Device_A",
       "device_type" : "Sensor",
-      "status" : "offline"
+      "status" : "online"
     }, {
       "device_id" : {
         "value" : "Device_02"
       },
       "device_name" : "Device_B",
       "device_type" : "Sensor",
-      "status" : "offline"
+      "status" : "online"
     } ],
     "is_physical" : true
   }, {
@@ -48,7 +48,7 @@
       },
       "device_name" : "Device_D",
       "device_type" : "Sensor",
-      "status" : "offline"
+      "status" : "online"
     } ],
     "is_physical" : false
   } ]
