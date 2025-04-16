@@ -3,18 +3,18 @@ package datasource;
 import common.Physical;
 import common.Position;
 import common.Posture;
-import entity.SignalList;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
 
 import java.util.List;
+import java.util.Map;
 
 public class InfoSystem extends DataSource {
 
     public InfoSystem() {
     }
 
-    public InfoSystem(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, SignalList signalList) {
-        super(device_id, device_name, device_type, status, position, posture, physicalList, signalList);
+    public InfoSystem(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, List<Map<String, String>> topics) {
+        super(device_id, device_name, device_type, status, position, posture, physicalList, topics);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class InfoSystem extends DataSource {
                 ", position=" + position +
                 ", posture=" + posture +
                 ", physicalList=" + physicalList +
-                ", signalList=" + signalList +
+                ", topics=" + topics +
                 '}';
     }
 

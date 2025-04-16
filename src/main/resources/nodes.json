@@ -22,7 +22,7 @@
       },
       "device_name" : "Device_B",
       "device_type" : "Sensor",
-      "status" : "online"
+      "status" : "offline"
     } ],
     "is_physical" : true
   }, {
@@ -41,14 +41,14 @@
       },
       "device_name" : "Device_C",
       "device_type" : "Sensor",
-      "status" : "offline"
+      "status" : "online"
     }, {
       "device_id" : {
         "value" : "Device_04"
       },
       "device_name" : "Device_D",
       "device_type" : "Sensor",
-      "status" : "online"
+      "status" : "offline"
     } ],
     "is_physical" : false
   } ]

@@ -6,10 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import common.Physical;
 import common.Position;
 import common.Posture;
-import entity.SignalList;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
 
 import java.util.List;
+import java.util.Map;
 
 
 @JsonTypeInfo(
@@ -31,9 +31,10 @@ public abstract class DataSource {
     protected Position position;      // 设备位置
     protected Posture posture;        // 设备姿态
     protected List<Physical> physicalList;// 设备的物理属性
-    protected SignalList signalList;    // 信号列表
+//    protected SignalList signalList;    // 信号列表
+    protected List<Map<String,String>> topics;
 
-    public DataSource(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, SignalList signalList) {
+    public DataSource(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, List<Map<String, String>> topics) {
         this.device_id = device_id;
         this.device_name = device_name;
         this.device_type = device_type;
@@ -41,7 +42,7 @@ public abstract class DataSource {
         this.position = position;
         this.posture = posture;
         this.physicalList = physicalList;
-        this.signalList = signalList;
+        this.topics = topics;
     }
 
     public DataSource(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList) {
@@ -109,17 +110,25 @@ public abstract class DataSource {
         return physicalList;
     }
 
-    public void setPhysical(List<Physical> physicalList) {
+    public void setPhysicalList(List<Physical> physicalList) {
         this.physicalList = physicalList;
     }
 
-    public SignalList getSignalList() {
-        return signalList;
+    public List<Map<String, String>> getTopics() {
+        return topics;
     }
 
-    public void setSignalList(SignalList signalList) {
-        this.signalList = signalList;
+    public void setTopics(List<Map<String, String>> topics) {
+        this.topics = topics;
     }
+    //    public SignalList getSignalList() {
+//        return signalList;
+//    }
+//
+//    public void setSignalList(SignalList signalList) {
+//        this.signalList = signalList;
+//    }
+
 
     @Override
     public String toString() {
@@ -131,7 +140,7 @@ public abstract class DataSource {
                 ", position=" + position +
                 ", posture=" + posture +
                 ", physicalList=" + physicalList +
-                ", signalList=" + signalList +
+                ", topics=" + topics +
                 '}';
     }
 

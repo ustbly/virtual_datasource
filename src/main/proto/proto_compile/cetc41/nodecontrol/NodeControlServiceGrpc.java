@@ -2,8 +2,6 @@ package proto_compile.cetc41.nodecontrol;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 
-import java.util.concurrent.ExecutionException;
-
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
@@ -183,7 +181,7 @@ public final class NodeControlServiceGrpc {
     /**
      */
     public void subscribeSourceMessage(proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Any> responseObserver) throws ExecutionException, InterruptedException {
+        io.grpc.stub.StreamObserver<com.google.protobuf.Any> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeSourceMessageMethod(), responseObserver);
     }
 
@@ -364,14 +362,8 @@ public final class NodeControlServiceGrpc {
           }
           break;
         case METHODID_SUBSCRIBE_SOURCE_MESSAGE:
-          try {
-            serviceImpl.subscribeSourceMessage((NodeControlServiceApi.SubscribeRequest) request,
-                (io.grpc.stub.StreamObserver<com.google.protobuf.Any>) responseObserver);
-          } catch (ExecutionException e) {
-            e.printStackTrace();
-          } catch (InterruptedException e) {
-            e.printStackTrace();
-          }
+          serviceImpl.subscribeSourceMessage((proto_compile.cetc41.nodecontrol.NodeControlServiceApi.SubscribeRequest) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.Any>) responseObserver);
           break;
         default:
           throw new AssertionError();

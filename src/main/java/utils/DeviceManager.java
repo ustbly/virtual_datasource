@@ -1,117 +1,92 @@
 package utils;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.sun.xml.internal.ws.encoding.xml.XMLMessage;
+import datasource.DataSource;
+import datasource.InfoSystem;
+import datasource.ReconStation;
+import datasource.Sensor;
+import entity.NodeInfo;
 import redis.clients.jedis.Jedis;
+import service.NodeControlService;
+
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.*;
+import java.util.stream.Collectors;
+class NodeFileWrapper {
+    public List<RawNodeInfo> nodes;
+}
+
+class RawNodeInfo {
+    public IdWrapper node_id;
+    public String node_name;
+    public String node_type;
+    public TimeWrapper last_heard;
+    public List<RawDevice> dataSourceList;
+    public boolean is_physical;
+}
+
+class RawDevice {
+    public IdWrapper device_id;
+    public String device_name;
+    public String device_type;
+    public String status;
+}
+
+class IdWrapper {
+    public String value;
+}
+
+class TimeWrapper {
+    public long seconds;
+    public int nanos;
+}
+
+class DataSourceFactory {
+    public static DataSource createDataSource(String type) {
+        switch (type) {
+            case "Sensor":
+                return new Sensor();
+            case "InfoSystem":
+                return new InfoSystem();
+            case "ReconStation":
+                return new ReconStation();
+            default:
+                return null; // 或抛出异常
+        }
+    }
+}
 
 public class DeviceManager {
-    private static final String FILE_PATH = "devices.json";
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final Jedis REDIS = RedisClient.getJedis();
 
-    public static synchronized List<Device> loadDevices() {
-        File file = new File(FILE_PATH);
-        if (!file.exists()) return new ArrayList<>();
-        try (Reader reader = new FileReader(file)) {
-            Type listType = new TypeToken<List<Device>>(){}.getType();
-            return GSON.fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
-    }
+    public static List<DataSource> getOnlineDevices() {
+        List<DataSource> onlineDevices = new ArrayList<>();
+        try {
+            List<NodeInfo> nodeInfoList = NodeControlService.getNodeInfoFromRedis();
+            for (NodeInfo nodeInfo : nodeInfoList) {
+                for (DataSource dataSource : nodeInfo.getDataSourceList()) {
+                    if ("online".equals(dataSource.getStatus())) {
+                        onlineDevices.add(dataSource);
+                    }
+                }
+            }
 
-    public static synchronized void saveDevices(List<Device> devices) {
-        try (Writer writer = new FileWriter(FILE_PATH)) {
-            GSON.toJson(devices, writer);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
-    public static Device getDeviceById(String id) {
-        String cachedDevice = REDIS.get("device:" + id);
-        if (cachedDevice != null) {
-            return GSON.fromJson(cachedDevice, Device.class);
-        }
-
-        List<Device> devices = loadDevices();
-        for (Device device : devices) {
-            if (device.getId().equals(id)) {
-                REDIS.setex("device:" + id, 3600, GSON.toJson(device)); // 缓存 1 小时
-                return device;
-            }
-        }
-        return null;
-    }
-
-    public static void addDevice(Device device) {
-        List<Device> devices = loadDevices();
-        devices.add(device);
-        saveDevices(devices);
-        REDIS.setex("device:" + device.getId(), 3600, GSON.toJson(device));
-    }
-
-    public static void updateDevice(Device updatedDevice) {
-        List<Device> devices = loadDevices();
-        for (int i = 0; i < devices.size(); i++) {
-            if (devices.get(i).getId().equals(updatedDevice.getId())) {
-                devices.set(i, updatedDevice);
-                saveDevices(devices);
-                REDIS.setex("device:" + updatedDevice.getId(), 3600, GSON.toJson(updatedDevice));
-                return;
-            }
-        }
-    }
-
-    public static void deleteDevice(String id) {
-        List<Device> devices = loadDevices();
-        devices.removeIf(device -> device.getId().equals(id));
-        saveDevices(devices);
-        REDIS.del("device:" + id);
-    }
-
-    public static List<Device> getAllDevices() {
-        return loadDevices();
+        return onlineDevices;
     }
 
     public static void main(String[] args) {
-        Device device1 = new Device("1", "Sensor1", "Sensor");
-        Device device2 = new Device("2", "ReconStation1", "ReconStation");
-        addDevice(device1);
-        addDevice(device2);
-
-        System.out.println("All Devices: " + getAllDevices());
-        System.out.println("Device 1: " + getDeviceById("1"));
+        List<DataSource> list = getOnlineDevices();
+        for (DataSource d : list) {
+            System.out.println("Online Device: " + d.getDevice_id() + " - " + d.getDevice_name());
+        }
     }
 }
-
-class Device {
-    private String id;
-    private String name;
-    private String type;
-
-    public Device(String id, String name, String type) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-    }
-
-    public String getId() { return id; }
-    public String getName() { return name; }
-    public String getType() { return type; }
-
-    @Override
-    public String toString() {
-        return "Device{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                '}';
-    }
-}
-

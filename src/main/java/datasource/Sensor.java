@@ -6,14 +6,13 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import common.Physical;
 import common.Position;
 import common.Posture;
-import entity.SignalList;
-import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
 import utils.DeviceMapUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 
 public class Sensor extends DataSource {
@@ -21,8 +20,8 @@ public class Sensor extends DataSource {
     }
 
 
-    public Sensor(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, SignalList signalList) {
-        super(device_id, device_name, device_type, status, position, posture, physicalList, signalList);
+    public Sensor(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, List<Map<String, String>> topics) {
+        super(device_id, device_name, device_type, status, position, posture, physicalList, topics);
     }
 
     @Override
@@ -35,7 +34,7 @@ public class Sensor extends DataSource {
                 ", position=" + position +
                 ", posture=" + posture +
                 ", physicalList=" + physicalList +
-                ", signalList=" + signalList +
+                ", topics=" + topics +
                 '}';
     }
 

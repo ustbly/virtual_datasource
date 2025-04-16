@@ -3350,6 +3350,50 @@ public final class NodeControlServiceApi {
      */
     proto_compile.cetc41.nodecontrol.DCTSServiceApi.PhysicalOrBuilder getPhysicalListOrBuilder(
         int index);
+
+    /**
+     * <pre>
+     *源正在发布的主题
+     * </pre>
+     *
+     * <code>repeated .Topic topics = 8;</code>
+     */
+    java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic> 
+        getTopicsList();
+    /**
+     * <pre>
+     *源正在发布的主题
+     * </pre>
+     *
+     * <code>repeated .Topic topics = 8;</code>
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic getTopics(int index);
+    /**
+     * <pre>
+     *源正在发布的主题
+     * </pre>
+     *
+     * <code>repeated .Topic topics = 8;</code>
+     */
+    int getTopicsCount();
+    /**
+     * <pre>
+     *源正在发布的主题
+     * </pre>
+     *
+     * <code>repeated .Topic topics = 8;</code>
+     */
+    java.util.List<? extends proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder> 
+        getTopicsOrBuilderList();
+    /**
+     * <pre>
+     *源正在发布的主题
+     * </pre>
+     *
+     * <code>repeated .Topic topics = 8;</code>
+     */
+    proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder getTopicsOrBuilder(
+        int index);
   }
   /**
    * <pre>
@@ -3372,6 +3416,7 @@ public final class NodeControlServiceApi {
       deviceType_ = "";
       status_ = "";
       physicalList_ = java.util.Collections.emptyList();
+      topics_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -3471,6 +3516,15 @@ public final class NodeControlServiceApi {
                   input.readMessage(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Physical.parser(), extensionRegistry));
               break;
             }
+            case 66: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                topics_ = new java.util.ArrayList<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              topics_.add(
+                  input.readMessage(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.parser(), extensionRegistry));
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -3488,6 +3542,9 @@ public final class NodeControlServiceApi {
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           physicalList_ = java.util.Collections.unmodifiableList(physicalList_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          topics_ = java.util.Collections.unmodifiableList(topics_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -3762,6 +3819,66 @@ public final class NodeControlServiceApi {
       return physicalList_.get(index);
     }
 
+    public static final int TOPICS_FIELD_NUMBER = 8;
+    private java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic> topics_;
+    /**
+     * <pre>
+     *源正在发布的主题
+     * </pre>
+     *
+     * <code>repeated .Topic topics = 8;</code>
+     */
+    @java.lang.Override
+    public java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic> getTopicsList() {
+      return topics_;
+    }
+    /**
+     * <pre>
+     *源正在发布的主题
+     * </pre>
+     *
+     * <code>repeated .Topic topics = 8;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder> 
+        getTopicsOrBuilderList() {
+      return topics_;
+    }
+    /**
+     * <pre>
+     *源正在发布的主题
+     * </pre>
+     *
+     * <code>repeated .Topic topics = 8;</code>
+     */
+    @java.lang.Override
+    public int getTopicsCount() {
+      return topics_.size();
+    }
+    /**
+     * <pre>
+     *源正在发布的主题
+     * </pre>
+     *
+     * <code>repeated .Topic topics = 8;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic getTopics(int index) {
+      return topics_.get(index);
+    }
+    /**
+     * <pre>
+     *源正在发布的主题
+     * </pre>
+     *
+     * <code>repeated .Topic topics = 8;</code>
+     */
+    @java.lang.Override
+    public proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder getTopicsOrBuilder(
+        int index) {
+      return topics_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3797,6 +3914,9 @@ public final class NodeControlServiceApi {
       for (int i = 0; i < physicalList_.size(); i++) {
         output.writeMessage(7, physicalList_.get(i));
       }
+      for (int i = 0; i < topics_.size(); i++) {
+        output.writeMessage(8, topics_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -3830,6 +3950,10 @@ public final class NodeControlServiceApi {
       for (int i = 0; i < physicalList_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, physicalList_.get(i));
+      }
+      for (int i = 0; i < topics_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, topics_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3869,6 +3993,8 @@ public final class NodeControlServiceApi {
       }
       if (!getPhysicalListList()
           .equals(other.getPhysicalListList())) return false;
+      if (!getTopicsList()
+          .equals(other.getTopicsList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3901,6 +4027,10 @@ public final class NodeControlServiceApi {
       if (getPhysicalListCount() > 0) {
         hash = (37 * hash) + PHYSICALLIST_FIELD_NUMBER;
         hash = (53 * hash) + getPhysicalListList().hashCode();
+      }
+      if (getTopicsCount() > 0) {
+        hash = (37 * hash) + TOPICS_FIELD_NUMBER;
+        hash = (53 * hash) + getTopicsList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -4035,6 +4165,7 @@ public final class NodeControlServiceApi {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getPhysicalListFieldBuilder();
+          getTopicsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -4069,6 +4200,12 @@ public final class NodeControlServiceApi {
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           physicalListBuilder_.clear();
+        }
+        if (topicsBuilder_ == null) {
+          topics_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          topicsBuilder_.clear();
         }
         return this;
       }
@@ -4123,6 +4260,15 @@ public final class NodeControlServiceApi {
           result.physicalList_ = physicalList_;
         } else {
           result.physicalList_ = physicalListBuilder_.build();
+        }
+        if (topicsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            topics_ = java.util.Collections.unmodifiableList(topics_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.topics_ = topics_;
+        } else {
+          result.topics_ = topicsBuilder_.build();
         }
         onBuilt();
         return result;
@@ -4216,6 +4362,32 @@ public final class NodeControlServiceApi {
                    getPhysicalListFieldBuilder() : null;
             } else {
               physicalListBuilder_.addAllMessages(other.physicalList_);
+            }
+          }
+        }
+        if (topicsBuilder_ == null) {
+          if (!other.topics_.isEmpty()) {
+            if (topics_.isEmpty()) {
+              topics_ = other.topics_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureTopicsIsMutable();
+              topics_.addAll(other.topics_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.topics_.isEmpty()) {
+            if (topicsBuilder_.isEmpty()) {
+              topicsBuilder_.dispose();
+              topicsBuilder_ = null;
+              topics_ = other.topics_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              topicsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getTopicsFieldBuilder() : null;
+            } else {
+              topicsBuilder_.addAllMessages(other.topics_);
             }
           }
         }
@@ -5144,6 +5316,318 @@ public final class NodeControlServiceApi {
           physicalList_ = null;
         }
         return physicalListBuilder_;
+      }
+
+      private java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic> topics_ =
+        java.util.Collections.emptyList();
+      private void ensureTopicsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          topics_ = new java.util.ArrayList<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic>(topics_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder> topicsBuilder_;
+
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic> getTopicsList() {
+        if (topicsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(topics_);
+        } else {
+          return topicsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public int getTopicsCount() {
+        if (topicsBuilder_ == null) {
+          return topics_.size();
+        } else {
+          return topicsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic getTopics(int index) {
+        if (topicsBuilder_ == null) {
+          return topics_.get(index);
+        } else {
+          return topicsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public Builder setTopics(
+          int index, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic value) {
+        if (topicsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTopicsIsMutable();
+          topics_.set(index, value);
+          onChanged();
+        } else {
+          topicsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public Builder setTopics(
+          int index, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder builderForValue) {
+        if (topicsBuilder_ == null) {
+          ensureTopicsIsMutable();
+          topics_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          topicsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public Builder addTopics(proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic value) {
+        if (topicsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTopicsIsMutable();
+          topics_.add(value);
+          onChanged();
+        } else {
+          topicsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public Builder addTopics(
+          int index, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic value) {
+        if (topicsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTopicsIsMutable();
+          topics_.add(index, value);
+          onChanged();
+        } else {
+          topicsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public Builder addTopics(
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder builderForValue) {
+        if (topicsBuilder_ == null) {
+          ensureTopicsIsMutable();
+          topics_.add(builderForValue.build());
+          onChanged();
+        } else {
+          topicsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public Builder addTopics(
+          int index, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder builderForValue) {
+        if (topicsBuilder_ == null) {
+          ensureTopicsIsMutable();
+          topics_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          topicsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public Builder addAllTopics(
+          java.lang.Iterable<? extends proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic> values) {
+        if (topicsBuilder_ == null) {
+          ensureTopicsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, topics_);
+          onChanged();
+        } else {
+          topicsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public Builder clearTopics() {
+        if (topicsBuilder_ == null) {
+          topics_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          topicsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public Builder removeTopics(int index) {
+        if (topicsBuilder_ == null) {
+          ensureTopicsIsMutable();
+          topics_.remove(index);
+          onChanged();
+        } else {
+          topicsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder getTopicsBuilder(
+          int index) {
+        return getTopicsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder getTopicsOrBuilder(
+          int index) {
+        if (topicsBuilder_ == null) {
+          return topics_.get(index);  } else {
+          return topicsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public java.util.List<? extends proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder> 
+           getTopicsOrBuilderList() {
+        if (topicsBuilder_ != null) {
+          return topicsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(topics_);
+        }
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder addTopicsBuilder() {
+        return getTopicsFieldBuilder().addBuilder(
+            proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder addTopicsBuilder(
+          int index) {
+        return getTopicsFieldBuilder().addBuilder(
+            index, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *源正在发布的主题
+       * </pre>
+       *
+       * <code>repeated .Topic topics = 8;</code>
+       */
+      public java.util.List<proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder> 
+           getTopicsBuilderList() {
+        return getTopicsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder> 
+          getTopicsFieldBuilder() {
+        if (topicsBuilder_ == null) {
+          topicsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic, proto_compile.cetc41.nodecontrol.DCTSServiceApi.Topic.Builder, proto_compile.cetc41.nodecontrol.DCTSServiceApi.TopicOrBuilder>(
+                  topics_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          topics_ = null;
+        }
+        return topicsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -11905,39 +12389,40 @@ public final class NodeControlServiceApi {
       ".DeviceId\022&\n\014control_type\030\003 \001(\0162\020.NodeCo" +
       "ntrolType\022\016\n\006detail\030\004 \001(\t\"7\n\023NodeControl" +
       "Response\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001" +
-      "(\t\"\275\001\n\nDeviceInfo\022\034\n\tdevice_id\030\001 \001(\0132\t.D" +
+      "(\t\"\325\001\n\nDeviceInfo\022\034\n\tdevice_id\030\001 \001(\0132\t.D" +
       "eviceId\022\023\n\013device_name\030\002 \001(\t\022\023\n\013device_t" +
       "ype\030\003 \001(\t\022\016\n\006status\030\004 \001(\t\022\033\n\010position\030\005 " +
       "\001(\0132\t.Position\022\031\n\007posture\030\006 \001(\0132\010.Postur" +
-      "e\022\037\n\014physicalList\030\007 \003(\0132\t.Physical\"\271\001\n\010N" +
-      "odeInfo\022\030\n\007node_id\030\001 \001(\0132\007.NodeId\022\021\n\tnod" +
-      "e_name\030\002 \001(\t\022\021\n\tnode_type\030\003 \001(\t\022\036\n\nlast_" +
-      "heard\030\004 \001(\0132\n.Timestamp\022#\n\016dataSourceLis" +
-      "t\030\005 \003(\0132\013.DeviceInfo\022\030\n\013is_physical\030\006 \001(" +
-      "\010H\000\210\001\001B\016\n\014_is_physical\"*\n\tNodesInfo\022\035\n\nn" +
-      "ode_infos\030\001 \003(\0132\t.NodeInfo\"P\n\007Command\022\030\n" +
-      "\020command_function\030\001 \001(\r\022+\n\rcommand_param" +
-      "\030\002 \001(\0132\024.google.protobuf.Any\"X\n\014CommandR" +
-      "eply\022\036\n\nerror_code\030\001 \001(\0162\n.ErrorType\022(\n\n" +
-      "attachment\030\002 \001(\0132\024.google.protobuf.Any\"H" +
-      "\n\rSourceCommand\022\034\n\tdevice_id\030\001 \001(\0132\t.Dev" +
-      "iceId\022\031\n\007command\030\002 \001(\0132\010.Command\"P\n\022Sour" +
-      "ceCommandReply\022\034\n\tdevice_id\030\001 \001(\0132\t.Devi" +
-      "ceId\022\034\n\005reply\030\002 \001(\0132\r.CommandReply\"F\n\020Su" +
-      "bscribeRequest\022\033\n\010DeviceId\030\001 \001(\0132\t.Devic" +
-      "eId\022\025\n\005topic\030\002 \001(\0132\006.Topic*_\n\017NodeContro" +
-      "lType\022\017\n\013REBOOT_NODE\020\000\022\021\n\rSHUTDOWN_NODE\020" +
-      "\001\022\r\n\tABORT_ALL\020\002\022\r\n\tSELF_TEST\020\003\022\n\n\006RENAM" +
-      "E\020\004*i\n\007CmdType\022\014\n\010RESERVED\020\000\022\t\n\005PAUSE\020\001\022" +
-      "\n\n\006RESUME\020\002\022\016\n\nRESTART_AT\020\003\022\020\n\014RESET_LEN" +
-      "GTH\020\004\022\t\n\005START\020\005\022\014\n\010SHUTDOWN\020\0062\315\001\n\022NodeC" +
-      "ontrolService\0224\n\014ListAllNodes\022\026.google.p" +
-      "rotobuf.Empty\032\n.NodesInfo\"\000\022:\n\021SendSourc" +
-      "eCommand\022\016.SourceCommand\032\023.SourceCommand" +
-      "Reply\"\000\022E\n\026SubscribeSourceMessage\022\021.Subs" +
-      "cribeRequest\032\024.google.protobuf.Any\"\0000\001B9" +
-      "\n proto_compile.cetc41.nodecontrolB\025Node" +
-      "ControlServiceApib\006proto3"
+      "e\022\037\n\014physicalList\030\007 \003(\0132\t.Physical\022\026\n\006to" +
+      "pics\030\010 \003(\0132\006.Topic\"\271\001\n\010NodeInfo\022\030\n\007node_" +
+      "id\030\001 \001(\0132\007.NodeId\022\021\n\tnode_name\030\002 \001(\t\022\021\n\t" +
+      "node_type\030\003 \001(\t\022\036\n\nlast_heard\030\004 \001(\0132\n.Ti" +
+      "mestamp\022#\n\016dataSourceList\030\005 \003(\0132\013.Device" +
+      "Info\022\030\n\013is_physical\030\006 \001(\010H\000\210\001\001B\016\n\014_is_ph" +
+      "ysical\"*\n\tNodesInfo\022\035\n\nnode_infos\030\001 \003(\0132" +
+      "\t.NodeInfo\"P\n\007Command\022\030\n\020command_functio" +
+      "n\030\001 \001(\r\022+\n\rcommand_param\030\002 \001(\0132\024.google." +
+      "protobuf.Any\"X\n\014CommandReply\022\036\n\nerror_co" +
+      "de\030\001 \001(\0162\n.ErrorType\022(\n\nattachment\030\002 \001(\013" +
+      "2\024.google.protobuf.Any\"H\n\rSourceCommand\022" +
+      "\034\n\tdevice_id\030\001 \001(\0132\t.DeviceId\022\031\n\007command" +
+      "\030\002 \001(\0132\010.Command\"P\n\022SourceCommandReply\022\034" +
+      "\n\tdevice_id\030\001 \001(\0132\t.DeviceId\022\034\n\005reply\030\002 " +
+      "\001(\0132\r.CommandReply\"F\n\020SubscribeRequest\022\033" +
+      "\n\010DeviceId\030\001 \001(\0132\t.DeviceId\022\025\n\005topic\030\002 \001" +
+      "(\0132\006.Topic*_\n\017NodeControlType\022\017\n\013REBOOT_" +
+      "NODE\020\000\022\021\n\rSHUTDOWN_NODE\020\001\022\r\n\tABORT_ALL\020\002" +
+      "\022\r\n\tSELF_TEST\020\003\022\n\n\006RENAME\020\004*i\n\007CmdType\022\014" +
+      "\n\010RESERVED\020\000\022\t\n\005PAUSE\020\001\022\n\n\006RESUME\020\002\022\016\n\nR" +
+      "ESTART_AT\020\003\022\020\n\014RESET_LENGTH\020\004\022\t\n\005START\020\005" +
+      "\022\014\n\010SHUTDOWN\020\0062\315\001\n\022NodeControlService\0224\n" +
+      "\014ListAllNodes\022\026.google.protobuf.Empty\032\n." +
+      "NodesInfo\"\000\022:\n\021SendSourceCommand\022\016.Sourc" +
+      "eCommand\032\023.SourceCommandReply\"\000\022E\n\026Subsc" +
+      "ribeSourceMessage\022\021.SubscribeRequest\032\024.g" +
+      "oogle.protobuf.Any\"\0000\001B9\n proto_compile." +
+      "cetc41.nodecontrolB\025NodeControlServiceAp" +
+      "ib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -11975,7 +12460,7 @@ public final class NodeControlServiceApi {
     internal_static_DeviceInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DeviceInfo_descriptor,
-        new java.lang.String[] { "DeviceId", "DeviceName", "DeviceType", "Status", "Position", "Posture", "PhysicalList", });
+        new java.lang.String[] { "DeviceId", "DeviceName", "DeviceType", "Status", "Position", "Posture", "PhysicalList", "Topics", });
     internal_static_NodeInfo_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_NodeInfo_fieldAccessorTable = new

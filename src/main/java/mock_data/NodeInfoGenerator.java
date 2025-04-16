@@ -3,31 +3,51 @@ package mock_data;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import common.DOA;
-import common.Physical;
-import common.Position;
-import common.Posture;
+import common.*;
 import datasource.DataSource;
 import datasource.InfoSystem;
 import datasource.ReconStation;
 import datasource.Sensor;
-import entity.FixSignal;
-import entity.NodeInfo;
-import entity.SignalList;
+import entity.*;
 import redis.clients.jedis.Jedis;
 import utils.RedisClient;
 import utils.VirtualDeviceScheduler;
 
 import java.io.File;
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class NodeInfoGenerator {
-    public static void main(String[] args) {
-        MockVirtualDataSourceData();
 
+    public static void main(String[] args) {
+        MockAndPubVirtualDataSourceData();
     }
+
+    /**
+     * 模拟生成并发布虚拟设备的状态数据
+     */
+    public static void MockAndPubVirtualDataSourceData() {
+        List<NodeInfo> nodeInfoList = loadNodeInfosFromJson();
+        try (Jedis jedis = RedisClient.getJedis()) {
+            for (NodeInfo nodeInfo : nodeInfoList) {
+                String nodeInfoJson = new Gson().toJson(nodeInfo);
+                jedis.set(nodeInfo.getNode_id(), nodeInfoJson);
+                // 更新设备状态
+                VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(nodeInfo.getNode_id());
+                VirtualDeviceScheduler.scheduleVirtualDevicePub();
+                System.out.println("设备信息更新入 Redis: " + nodeInfo.getNode_id());
+            }
+        } catch (Exception e) {
+            System.err.println("Redis 更新失败: " + e.getMessage());
+        }
+    }
+
 
     public static List<NodeInfo> loadNodeInfosFromJson() {
         List<NodeInfo> nodeInfoList = new ArrayList<>();
@@ -54,31 +74,6 @@ public class NodeInfoGenerator {
         return nodeInfoList;
     }
 
-    /**
-     * 模拟生成虚拟设备的状态数据
-     */
-    public static void MockVirtualDataSourceData() {
-        List<NodeInfo> nodeInfoList = loadNodeInfosFromJson();
-        try (Jedis jedis = RedisClient.getJedis()) {
-            for (NodeInfo nodeInfo : nodeInfoList) {
-                String nodeInfoJson = new Gson().toJson(nodeInfo);
-                jedis.set(nodeInfo.getNode_id(), nodeInfoJson);
-                /*
-                if (nodeInfo.getIs_physical()) {
-                    VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(nodeInfo.getNode_id());
-                    System.out.println("物理设备虚拟节点更新入 Redis: " + nodeInfo.getNode_id());
-                } else {
-                    System.out.println("纯虚拟设备节点更新入 Redis: " + nodeInfo.getNode_id());
-                }
-                */
-                // 更新设备状态
-                VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(nodeInfo.getNode_id());
-                System.out.println("设备信息更新入 Redis: " + nodeInfo.getNode_id());
-            }
-        } catch (Exception e) {
-            System.err.println("Redis 更新失败: " + e.getMessage());
-        }
-    }
 
     private static NodeInfo generateNode(String nodeId, String nodeName, String nodeType, JsonNode dataSourceList, boolean is_physical) {
         NodeInfo node = new NodeInfo();
@@ -104,6 +99,17 @@ public class NodeInfoGenerator {
 
     public static DataSource generateDevice(String deviceId, String deviceName, String deviceType, String status, boolean is_physical) {
         DataSource device = null;
+        List<Map<String, String>> topics = new ArrayList<>();
+        List<String> dataType = new ArrayList<>();
+        dataType.add("SignalList");
+        dataType.add("Spectrum");
+
+        for (String data : dataType) {
+            Map<String, String> map = new HashMap<>();
+            map.put(data,"");
+            topics.add(map);
+        }
+
         switch (deviceType) {
             case "Sensor":
                 device = new Sensor();
@@ -145,8 +151,11 @@ public class NodeInfoGenerator {
 
             SignalList signalList = new SignalList();
             signalList.setFixSignalList(fixSignals);
-            device.setPhysical(physicalList);
-            device.setSignalList(signalList);
+            signalList.setHoppingSignalList(generateHoppingSignalCluster());
+            device.setPhysicalList(physicalList);
+//            device.setSignalList(signalList);
+
+            device.setTopics(topics);
         }
 
         return device;
@@ -180,5 +189,30 @@ public class NodeInfoGenerator {
         signal.setExtraInfo(extraInfo);
 
         return signal;
+    }
+
+
+    private static List<HoppingSignalCluster> generateHoppingSignalCluster() {
+        List<HoppingSignal> hoppingSignalList = new ArrayList<>();
+        List<HoppingSignalCluster> hoppingSignalClusterList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            double center_freq = ThreadLocalRandom.current().nextDouble(-50.0, 100.0);
+            double band_width = ThreadLocalRandom.current().nextDouble(-20.0, 20.0);
+            double amplitude = ThreadLocalRandom.current().nextDouble(20.0, 200.0);
+
+            HoppingSignal signal = new HoppingSignal(center_freq, band_width, amplitude, 5);
+
+            hoppingSignalList.add(signal);
+        }
+
+        HoppingSignalCluster hoppingSignalCluster = new HoppingSignalCluster();
+        hoppingSignalCluster.setName("hopSignalCluster-001");
+        hoppingSignalCluster.setActivity("Active");
+        hoppingSignalCluster.setTimeSpan(new TimeSpan());
+        hoppingSignalCluster.setFreq_set(hoppingSignalList);
+
+        hoppingSignalClusterList.add(hoppingSignalCluster);
+
+        return hoppingSignalClusterList;
     }
 }

@@ -1,16 +1,8 @@
 package entity;
 
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import datasource.DataSource;
-import datasource.InfoSystem;
-import datasource.ReconStation;
-import datasource.Sensor;
-import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
-import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 

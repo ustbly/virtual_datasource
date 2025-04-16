@@ -53,6 +53,7 @@ message DeviceInfo
   Position position = 5;  //节点位置, wgs-84坐标系，弧度单位
   Posture posture = 6;
   repeated Physical physicalList = 7;
+  repeated Topic topics = 8;                  //源正在发布的主题
 }
 
 message NodeInfo

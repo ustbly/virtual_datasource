@@ -58,7 +58,7 @@ public class ListAllNodesClient {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }, 0, 5, TimeUnit.SECONDS); // 延迟 0 秒开始，3 秒执行一次
+        }, 0, 3, TimeUnit.SECONDS); // 延迟 0 秒开始，3 秒执行一次
     }
 }
 

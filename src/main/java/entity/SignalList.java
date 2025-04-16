@@ -1,10 +1,7 @@
 package entity;
 
 
-import common.DOA;
-
 import java.util.List;
-import java.util.Map;
 
 public class SignalList {
     private List<FixSignal> fixSignalList;

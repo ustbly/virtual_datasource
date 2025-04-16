@@ -1,9 +1,12 @@
 package utils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
 import datasource.DataSource;
 import entity.NodeInfo;
 import mock_data.NodeInfoGenerator;
+import org.zeromq.ZMQ;
 import redis.clients.jedis.Jedis;
 
 import java.time.Instant;
@@ -14,7 +17,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class VirtualDeviceScheduler {
+    private static final ZMQ.Context context = ZMQ.context(1);
+    private static final ZMQ.Socket publisher = context.socket(ZMQ.PUB);
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(100);
+    private static volatile boolean isPublisherBound = false;
+
 
     public static void scheduleVirtualDeviceUpdate(String nodeId) {
         scheduler.scheduleWithFixedDelay(() -> {
@@ -44,8 +51,7 @@ public class VirtualDeviceScheduler {
 
                     // ✅ 同步更新时间戳
                     nodeInfo.setLast_heard(String.valueOf(Instant.now().getEpochSecond()));
-
-                    System.out.println("nodeInfo updated:" + nodeInfo.hashCode());
+                    //System.out.println("nodeInfo updated:" + nodeInfo.hashCode());
 
                     // 存储更新到 Redis
                     try (Jedis jedis = RedisClient.getJedis()) {
@@ -56,10 +62,43 @@ public class VirtualDeviceScheduler {
                         System.err.println("[定时更新] Redis 写入失败: " + e.getMessage());
                         e.printStackTrace();
                     }
-
                 }
             }
+        }, 0, 2, TimeUnit.SECONDS);
+    }
 
-        }, 0, 3, TimeUnit.SECONDS);
+
+
+
+    public static void scheduleVirtualDevicePub() {
+        if (!isPublisherBound) {
+            synchronized (VirtualDeviceScheduler.class) {
+                if (!isPublisherBound) {
+                    publisher.bind("tcp://*:5555");
+                    isPublisherBound = true;
+                    System.out.println("[ZMQ] Publisher 成功绑定端口 tcp://*:5555");
+                }
+            }
+        }
+
+        scheduler.scheduleWithFixedDelay(() -> {
+            List<DataSource> devices = DeviceManager.getOnlineDevices();
+            String[] dataTypes = {"signal_list", "spectrum"};
+
+            for (DataSource device : devices) {
+                for (String type : dataTypes) {
+                    ObjectNode json = new ObjectMapper().createObjectNode();
+                    json.put("device_id", device.getDevice_id());
+                    json.put("data_type", type);
+                    json.put("payload", "模拟数据_" + type + "_" + System.currentTimeMillis());
+
+                    String topic = type;
+                    publisher.sendMore(topic);
+                    publisher.send(json.toString());
+
+                    System.out.println("[ZMQ] 发送: " + topic + " -> " + json);
+                }
+            }
+        }, 0, 2, TimeUnit.SECONDS);
     }
 }

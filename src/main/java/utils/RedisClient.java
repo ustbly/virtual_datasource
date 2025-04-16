@@ -6,6 +6,9 @@ import redis.clients.jedis.JedisPoolConfig;
 
 import java.time.Duration;
 
+/**
+ * Redis数据库的工具类
+ */
 public class RedisClient {
     private static final JedisPool pool;
 

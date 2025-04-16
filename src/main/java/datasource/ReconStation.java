@@ -3,20 +3,34 @@ package datasource;
 import common.Physical;
 import common.Position;
 import common.Posture;
-import entity.SignalList;
 import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
 
 import java.util.List;
+import java.util.Map;
 
 public class ReconStation extends DataSource {
 
     public ReconStation() {
     }
 
-    public ReconStation(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, SignalList signalList) {
-        super(device_id, device_name, device_type, status, position, posture, physicalList, signalList);
+    public ReconStation(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, List<Map<String, String>> topics) {
+        super(device_id, device_name, device_type, status, position, posture, physicalList, topics);
     }
 
+
+    @Override
+    public String toString() {
+        return "ReconStation{" +
+                "device_id='" + device_id + '\'' +
+                ", device_name='" + device_name + '\'' +
+                ", device_type='" + device_type + '\'' +
+                ", status='" + status + '\'' +
+                ", position=" + position +
+                ", posture=" + posture +
+                ", physicalList=" + physicalList +
+                ", topics=" + topics +
+                '}';
+    }
 
     @Override
     public String executeCommand(NodeControlServiceApi.NodeControlType type, String detail) {
