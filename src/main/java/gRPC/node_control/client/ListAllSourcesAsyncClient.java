@@ -4,14 +4,14 @@ import com.google.protobuf.Empty;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
-import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
-import proto_compile.cetc41.nodecontrol.NodeControlServiceGrpc;
+import proto_compile.cetc41.nodecontrol.SourceControlServiceApi;
+import proto_compile.cetc41.nodecontrol.SourceControlServiceGrpc;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class ListAllNodesAsyncClient {
+public class ListAllSourcesAsyncClient {
 
     public static void main(String[] args) {
         // 创建 gRPC 连接通道
@@ -20,15 +20,15 @@ public class ListAllNodesAsyncClient {
                 .build();
 
         // 创建异步 Stub
-        NodeControlServiceGrpc.NodeControlServiceStub asyncStub = NodeControlServiceGrpc.newStub(channel);
+        SourceControlServiceGrpc.SourceControlServiceStub asyncStub = SourceControlServiceGrpc.newStub(channel);
 
         // 定时任务调度器：每 2 秒发送一次请求
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(10);
         scheduler.scheduleAtFixedRate(() -> {
             System.out.println("发送异步请求...");
-            asyncStub.listAllNodes(Empty.newBuilder().build(), new StreamObserver<NodeControlServiceApi.NodesInfo>() {
+            asyncStub.listAllSources(Empty.newBuilder().build(), new StreamObserver<SourceControlServiceApi.SourceSetInfo>() {
                 @Override
-                public void onNext(NodeControlServiceApi.NodesInfo response) {
+                public void onNext(SourceControlServiceApi.SourceSetInfo response) {
                     System.out.println("接收到响应:");
                     System.out.println(response);
                 }

@@ -1,16 +1,17 @@
 syntax = "proto3";
 
-package zb.dcts.source.seqGene; 
-
-//these proto messages are defined for demonstration purpose
+// 选项配置
+option java_package = "proto_compile.cetc41.nodecontrol";
 
 enum CmdType
 {
     RESERVED = 0;
     PAUSE = 1;
-	RESUME = 2;
-	RESTART_AT = 3;
-	RESET_LENGTH = 4;
+    RESUME = 2;
+    RESTART_AT = 3;
+    RESET_LENGTH = 4;
+    STARTUP = 5;
+    SHUTDOWN = 6;
 }
 
 message Result

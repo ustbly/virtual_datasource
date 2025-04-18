@@ -5,9 +5,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
 import datasource.DataSource;
 import entity.FixSignal;
-import entity.NodeInfo;
 import entity.SignalList;
-import mock_data.NodeInfoGenerator;
+import mock_data.SourceInfoGenerator;
 import org.zeromq.ZMQ;
 import redis.clients.jedis.Jedis;
 
@@ -18,7 +17,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static mock_data.NodeInfoGenerator.generateHoppingSignalCluster;
+import static common.SourceStatus.S_ENGAGED;
+import static mock_data.SourceInfoGenerator.generateHoppingSignalCluster;
 
 public class VirtualDeviceScheduler {
     private static final ZMQ.Context context = ZMQ.context(1);
@@ -27,51 +27,36 @@ public class VirtualDeviceScheduler {
     private static volatile boolean isPublisherBound = false;
 
 
-    public static void scheduleVirtualDeviceUpdate(String nodeId) {
+    public static void scheduleVirtualDeviceUpdate(int sourceId) {
         scheduler.scheduleWithFixedDelay(() -> {
-            List<NodeInfo> nodeInfoList = NodeInfoGenerator.loadNodeInfosFromJson();
-            for (NodeInfo nodeInfo : nodeInfoList) {
-                if (nodeId.equals(nodeInfo.getNode_id())) {
-                    List<DataSource> originalList = nodeInfo.getDataSourceList();
-                    List<DataSource> updatedList = new ArrayList<>();
-
-                    for (DataSource device : originalList) {
-                        if ("online".equals(device.getStatus())) {
-                            // 重新生成当前设备信息（保持 device_id 不变）
-                            DataSource updatedDevice = NodeInfoGenerator.generateDevice(
-                                    device.getDevice_id(),
-                                    device.getDevice_name(),
-                                    device.getDevice_type(),
-                                    "online",
-                                    true
-                            );
-                            updatedList.add(updatedDevice); // 替换为新生成的更新对象
-                        } else {
-                            updatedList.add(device); // 保留原本的设备（如 status 为 offline）
-                        }
-                    }
-
-                    nodeInfo.setDataSourceList(updatedList);
-
-                    // ✅ 同步更新时间戳
-                    nodeInfo.setLast_heard(String.valueOf(Instant.now().getEpochSecond()));
-                    //System.out.println("nodeInfo updated:" + nodeInfo.hashCode());
-
-                    // 存储更新到 Redis
-                    try (Jedis jedis = RedisClient.getJedis()) {
-                        String json = new Gson().toJson(nodeInfo);
-                        jedis.set(nodeInfo.getNode_id(), json);
-                        System.out.println("[定时更新] 节点 " + nodeInfo.getNode_id() + " 已更新设备数据: " + json);
-                    } catch (Exception e) {
-                        System.err.println("[定时更新] Redis 写入失败: " + e.getMessage());
-                        e.printStackTrace();
-                    }
+            List<DataSource> dataSourceList = SourceInfoGenerator.loadDeviceInfosFromJson();
+            List<DataSource> updatedDataSourceList = new ArrayList<>();
+            for (DataSource ds : dataSourceList) {
+                if (sourceId == ds.getSource_id() && S_ENGAGED == ds.getStatus()) {
+                    // 重新生成当前设备信息（保持 device_id 不变）
+                    DataSource updatedDevice = SourceInfoGenerator.generateDevice(
+                            ds.getSource_id(),
+                            ds.getType(),
+                            ds.getStatus(),
+                            true
+                    );
+                    updatedDataSourceList.add(updatedDevice);
+                    System.out.println("[定时更新] 设备" + ds.getSource_id() + "工作中,已更新设备数据: " + updatedDevice);
+                } else {
+                    updatedDataSourceList.add(ds);
                 }
+
+            }
+            // 存储更新到 Redis
+            try (Jedis jedis = RedisClient.getJedis()) {
+                String json = new Gson().toJson(updatedDataSourceList);
+                jedis.set("devices", json);
+            } catch (Exception e) {
+                System.err.println("[定时更新] Redis 写入失败: " + e.getMessage());
+                e.printStackTrace();
             }
         }, 0, 2, TimeUnit.SECONDS);
     }
-
-
 
 
     public static void scheduleVirtualDevicePub() {
@@ -89,7 +74,7 @@ public class VirtualDeviceScheduler {
             List<DataSource> devices = DeviceManager.getOnlineDevices();
 
             for (DataSource device : devices) {
-                String deviceId = device.getDevice_id();
+                int sourceId = device.getSource_id();
 
                 // 生成模拟信号数据
                 SignalList signalList = new SignalList();
@@ -99,7 +84,7 @@ public class VirtualDeviceScheduler {
                 // 构造 ZMQ 消息内容
                 ObjectMapper mapper = new ObjectMapper();
                 ObjectNode json = mapper.createObjectNode();
-                json.put("device_id", deviceId);
+                json.put("source_id", sourceId);
                 json.set("data", mapper.valueToTree(signalList));  // payload 嵌入整个 SignalList
 
                 String topic = "signal_list";
@@ -114,7 +99,7 @@ public class VirtualDeviceScheduler {
     private static List<FixSignal> generateFixSignals(int count) {
         List<FixSignal> list = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            list.add(NodeInfoGenerator.generateFixSignal("fix-" + i));
+            list.add(SourceInfoGenerator.generateFixSignal("fix-" + i));
         }
         return list;
     }

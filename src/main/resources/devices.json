@@ -1,40 +1,35 @@
 {
-  "devices": [
-    {
-      "device_id": {
-        "value": "Device_01"
-      },
-      "device_name": "Device_A",
-      "device_type": "Sensor",
-      "status": "online",
-      "is_physical": true
+  "devices" : [ {
+    "device_id" : {
+      "value" : "1"
     },
-    {
-      "device_id": {
-        "value": "Device_02"
-      },
-      "device_name": "Device_B",
-      "device_type": "Sensor",
-      "status": "online",
-      "is_physical": true
+    "device_name" : "Device_A",
+    "device_type" : "SENSOR_3900",
+    "status" : "S_ENGAGED",
+    "is_physical" : true
+  }, {
+    "device_id" : {
+      "value" : "2"
     },
-    {
-      "device_id": {
-        "value": "Device_03"
-      },
-      "device_name": "Device_C",
-      "device_type": "Sensor",
-      "status": "online",
-      "is_physical": false
+    "device_name" : "Device_B",
+    "device_type" : "SENSOR_3900",
+    "status" : "S_ENGAGED",
+    "is_physical" : true
+  }, {
+    "device_id" : {
+      "value" : "3"
     },
-    {
-      "device_id": {
-        "value": "Device_04"
-      },
-      "device_name": "Device_D",
-      "device_type": "Sensor",
-      "status": "online",
-      "is_physical": false
-    }
-  ]
+    "device_name" : "Device_C",
+    "device_type" : "FILE",
+    "status" : "S_ENGAGED",
+    "is_physical" : false
+  }, {
+    "device_id" : {
+      "value" : "4"
+    },
+    "device_name" : "Device_D",
+    "device_type" : "REMOTE",
+    "status" : "S_IDLE",
+    "is_physical" : false
+  } ]
 }

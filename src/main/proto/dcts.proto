@@ -1,19 +1,14 @@
 syntax = "proto3";
 
+import "google/protobuf/any.proto";
 
 option java_outer_classname = "DCTSServiceApi";
 option java_package = "proto_compile.cetc41.nodecontrol";
 
 
 
-//任务Id
-message TaskId 
-{
-  uint32 value = 1;
-}
-
 //时间戳，UTC time stamp
-message Timestamp 
+message Timestamp
 {
   uint32 seconds = 1;  //UTC时间 自1970-1-1日零点以来的秒值
   uint32 nanos = 2;    //本秒内的纳秒偏移
@@ -27,7 +22,7 @@ message TimeSpan
 }
 
 //方位信息 WGS84坐标体系
-message Position 
+message Position
 {
   double latitude  = 1;	        //纬度，单位 弧度
   double longitude = 2;         //经度，单位 弧度
@@ -87,6 +82,11 @@ message Physical
   string unit = 3;
 }
 
+message Metrics
+{
+  map<string, Physical> indices = 1;
+}
+
 message Integer
 {
   int64 value = 1;
@@ -97,10 +97,6 @@ message Boolean
   bool value = 1;
 }
 
-message String
-{
-  string value = 1;
-}
 message RealNumber
 {
   double value = 1;
@@ -114,17 +110,17 @@ message ComplexNumber
 
 message StatisticVal
 {
-    double up = 1;      //上限
-    double down = 2;    //下限
-    double cur = 3;     //当前
-    double mean = 4;    //平均
+  double up = 1;      //上限
+  double down = 2;    //下限
+  double cur = 3;     //当前
+  double mean = 4;    //平均
 }
 
 message HeartbeatCfg
 {
   int32 heartbeat_interval = 1;
   int32 heartbeat_timeout = 2;
-  int32 heartbeat_ttl = 3; 
+  int32 heartbeat_ttl = 3;
 }
 
 message ReconnectionCfg
@@ -157,8 +153,8 @@ message ZeromqLinkCfg
 
 message TimerParam
 {
-    int32 interval_in_ms = 1;
-    int32 times = 2;
+  int32 interval_in_ms = 1;
+  int32 times = 2;
 }
 
 message Topic
@@ -203,3 +199,35 @@ enum ErrorType
   ERR_TDOA = -82;                 //TDOA错误
   ERR_TASK_QUIT = -83;            //任务已退出
 }
+
+message ServerConfig
+{
+  ZeromqLinkCfg server = 1;
+  ZeromqLinkCfg pull = 2;
+  ZeromqLinkCfg pub = 3;
+  ZeromqLinkCfg sub = 4;
+  map<string, IPv4Address> services = 5;
+  map<string, string> path = 6;
+}
+
+message RemoteSourceConfig
+{
+  ZeromqLinkCfg client = 1;
+  ZeromqLinkCfg push = 2;
+  ZeromqLinkCfg pub = 3;
+  ZeromqLinkCfg sub = 4;
+  map<string, string> options = 5;
+}
+
+message Command
+{
+  uint32 command_function = 1;
+  google.protobuf.Any command_param = 2;
+}
+
+message CommandReply
+{
+  ErrorType error_code = 1;
+  google.protobuf.Any attachment = 2;
+}
+

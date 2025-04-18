@@ -11,16 +11,18 @@ import datasource.Sensor;
 import entity.*;
 import redis.clients.jedis.Jedis;
 import utils.RedisClient;
+import utils.VirtualDeviceScheduler;
 
 import java.io.File;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class NodeInfoGenerator {
+import static common.SourceStatus.S_ENGAGED;
+
+public class SourceInfoGenerator {
 
     public static void main(String[] args) {
         MockAndPubVirtualDataSourceData();
@@ -31,16 +33,15 @@ public class NodeInfoGenerator {
      */
     public static void MockAndPubVirtualDataSourceData() {
         List<DataSource> dataSourceList = loadDeviceInfosFromJson();
-        System.out.println(dataSourceList);
         try (Jedis jedis = RedisClient.getJedis()) {
             for (DataSource dataSource : dataSourceList) {
                 String deviceInfoJson = new Gson().toJson(dataSource);
-                jedis.set(dataSource.getDevice_id(), deviceInfoJson);
+                jedis.set("devices", deviceInfoJson);
                 // 更新设备状态
-//                VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(dataSource.getDevice_id());
-//                VirtualDeviceScheduler.scheduleVirtualDevicePub();
-                System.out.println("设备信息更新入 Redis: " + dataSource.getDevice_id());
+                VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(dataSource.getSource_id());
+                VirtualDeviceScheduler.scheduleVirtualDevicePub();
             }
+            System.out.println("设备信息更新入 Redis");
         } catch (Exception e) {
             System.err.println("Redis 更新失败: " + e.getMessage());
         }
@@ -60,14 +61,13 @@ public class NodeInfoGenerator {
 
             if (devicesArray != null && devicesArray.isArray()) {
                 for (JsonNode device : devicesArray) {
-                    String device_id = device.get("device_id").get("value").asText();
-                    String device_name = device.get("device_name").asText();
-                    String device_type = device.get("device_type").asText();
-                    String status = device.get("status").asText();
+                    int device_id = device.get("device_id").get("value").asInt();
+                    SourceType device_type = SourceType.valueOf(device.get("device_type").asText());
+                    SourceStatus status = SourceStatus.valueOf(device.get("status").asText());
                     boolean is_physical = device.get("is_physical").asBoolean();
 
 
-                    DataSource deviceInfo = generateDevice(device_id, device_name, device_type, status, is_physical);
+                    DataSource deviceInfo = generateDevice(device_id, device_type, status, is_physical);
                     dataSourceList.add(deviceInfo);
                 }
             }
@@ -81,14 +81,14 @@ public class NodeInfoGenerator {
     /**
      * 模拟生成 DataSource 数据结构
      * @param deviceId
-     * @param deviceName
      * @param deviceType
      * @param status
      * @param is_physical
      * @return DataSource
      */
-    public static DataSource generateDevice(String deviceId, String deviceName, String deviceType, String status, boolean is_physical) {
+    public static DataSource generateDevice(int deviceId,  SourceType deviceType, SourceStatus status, boolean is_physical) {
         DataSource device = null;
+        Map<String,Physical> metrics = new HashMap<>();
         List<Map<String, String>> topics = new ArrayList<>();
         List<String> dataType = new ArrayList<>();
         dataType.add("SignalList");
@@ -101,51 +101,42 @@ public class NodeInfoGenerator {
         }
 
         switch (deviceType) {
-            case "Sensor":
+            case SENSOR_3900:
                 device = new Sensor();
                 break;
-            case "InfoSystem":
+            case FILE:
                 device = new InfoSystem();
                 break;
-            case "ReconStation":
+            case REMOTE:
                 device = new ReconStation();
                 break;
         }
 
-        device.setDevice_id(deviceId);
-        device.setDevice_name(deviceName);
-        device.setDevice_type(deviceType);
+        device.setSource_id(deviceId);
+        device.setType(deviceType);
         device.setStatus(status);
+        metrics.put("metrics",generatePhysical());
+        device.setMetrics(metrics);
+        device.setTopics(topics);
 
-        if ("online".equals(status)) {
+
+        if (S_ENGAGED == status) {
             // 生成随机位置数据
             double latitude = ThreadLocalRandom.current().nextDouble(-90.0, 90.0);
             double longitude = ThreadLocalRandom.current().nextDouble(-180.0, 180.0);
             double altitude = ThreadLocalRandom.current().nextDouble(0, 10000);  // 海拔 0 - 10000 米
             device.setPosition(new Position(latitude, longitude, altitude));
 
-            // 生成随机姿态数据
-            double roll = ThreadLocalRandom.current().nextDouble(0, 360);  // 滚转角 0 - 360 度
-            double pitch = ThreadLocalRandom.current().nextDouble(-90, 90); // 俯仰角 -90 到 90 度
-            double yaw = ThreadLocalRandom.current().nextDouble(0, 360);   // 偏航角 0 - 360 度
-            device.setPosture(new Posture(roll, pitch, yaw));
-
             List<Physical> physicalList = new ArrayList<>();
             List<FixSignal> fixSignals = new ArrayList<>();
             for (int i = 0; i < 3; i++) {
-                physicalList.add(generatePhysical(deviceId + "-P" + (i + 1)));
+                physicalList.add(generatePhysical());
             }
             for (int i = 0; i < 3; i++) {
                 fixSignals.add(generateFixSignal(deviceId + "-S" + (i + 1)));
             }
 
-            SignalList signalList = new SignalList();
-            signalList.setFixSignalList(fixSignals);
-            signalList.setHoppingSignalList(generateHoppingSignalCluster());
-            device.setPhysicalList(physicalList);
-//            device.setSignalList(signalList);
 
-            device.setTopics(topics);
         }
 
         return device;
@@ -153,10 +144,9 @@ public class NodeInfoGenerator {
 
     /**
      * 模拟生成物理指标数据
-     * @param signalId
      * @return Physical
      */
-    private static Physical generatePhysical(String signalId) {
+    private static Physical generatePhysical() {
         Physical physical = new Physical();
         physical.setType((int) (Math.random() * 8) + 1);
         physical.setValue(100 + Math.random() * 50);

@@ -39,6 +39,14 @@ public final class SeqGene {
      * <code>RESET_LENGTH = 4;</code>
      */
     RESET_LENGTH(4),
+    /**
+     * <code>STARTUP = 5;</code>
+     */
+    STARTUP(5),
+    /**
+     * <code>SHUTDOWN = 6;</code>
+     */
+    SHUTDOWN(6),
     UNRECOGNIZED(-1),
     ;
 
@@ -62,11 +70,19 @@ public final class SeqGene {
      * <code>RESET_LENGTH = 4;</code>
      */
     public static final int RESET_LENGTH_VALUE = 4;
+    /**
+     * <code>STARTUP = 5;</code>
+     */
+    public static final int STARTUP_VALUE = 5;
+    /**
+     * <code>SHUTDOWN = 6;</code>
+     */
+    public static final int SHUTDOWN_VALUE = 6;
 
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
+        throw new IllegalArgumentException(
             "Can't get the number of an unknown enum value.");
       }
       return value;
@@ -77,7 +93,7 @@ public final class SeqGene {
      * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
-    @java.lang.Deprecated
+    @Deprecated
     public static CmdType valueOf(int value) {
       return forNumber(value);
     }
@@ -93,6 +109,8 @@ public final class SeqGene {
         case 2: return RESUME;
         case 3: return RESTART_AT;
         case 4: return RESET_LENGTH;
+        case 5: return STARTUP;
+        case 6: return SHUTDOWN;
         default: return null;
       }
     }
@@ -112,7 +130,7 @@ public final class SeqGene {
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalStateException(
+        throw new IllegalStateException(
             "Can't get the descriptor of an unrecognized enum value.");
       }
       return getDescriptor().getValues().get(ordinal());
@@ -123,7 +141,7 @@ public final class SeqGene {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return proto_compile.cetc41.nodecontrol.SeqGene.getDescriptor().getEnumTypes().get(0);
+      return SeqGene.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final CmdType[] VALUES = values();
@@ -131,7 +149,7 @@ public final class SeqGene {
     public static CmdType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
+        throw new IllegalArgumentException(
           "EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
@@ -157,7 +175,7 @@ public final class SeqGene {
      * <code>repeated int32 num_seq = 1;</code>
      * @return A list containing the numSeq.
      */
-    java.util.List<java.lang.Integer> getNumSeqList();
+    java.util.List<Integer> getNumSeqList();
     /**
      * <code>repeated int32 num_seq = 1;</code>
      * @return The count of numSeq.
@@ -186,14 +204,14 @@ public final class SeqGene {
       numSeq_ = emptyIntList();
     }
 
-    @java.lang.Override
+    @Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
+    protected Object newInstance(
         UnusedPrivateParameter unused) {
       return new Result();
     }
 
-    @java.lang.Override
+    @Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -204,7 +222,7 @@ public final class SeqGene {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
+        throw new NullPointerException();
       }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -262,15 +280,15 @@ public final class SeqGene {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return proto_compile.cetc41.nodecontrol.SeqGene.internal_static_Result_descriptor;
+      return SeqGene.internal_static_Result_descriptor;
     }
 
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    @Override
+    protected FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return proto_compile.cetc41.nodecontrol.SeqGene.internal_static_Result_fieldAccessorTable
+      return SeqGene.internal_static_Result_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              proto_compile.cetc41.nodecontrol.SeqGene.Result.class, proto_compile.cetc41.nodecontrol.SeqGene.Result.Builder.class);
+              Result.class, Builder.class);
     }
 
     public static final int NUM_SEQ_FIELD_NUMBER = 1;
@@ -279,8 +297,8 @@ public final class SeqGene {
      * <code>repeated int32 num_seq = 1;</code>
      * @return A list containing the numSeq.
      */
-    @java.lang.Override
-    public java.util.List<java.lang.Integer>
+    @Override
+    public java.util.List<Integer>
         getNumSeqList() {
       return numSeq_;
     }
@@ -302,7 +320,7 @@ public final class SeqGene {
     private int numSeqMemoizedSerializedSize = -1;
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
+    @Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -312,7 +330,7 @@ public final class SeqGene {
       return true;
     }
 
-    @java.lang.Override
+    @Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -326,7 +344,7 @@ public final class SeqGene {
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
+    @Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -351,15 +369,15 @@ public final class SeqGene {
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
+    @Override
+    public boolean equals(final Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof proto_compile.cetc41.nodecontrol.SeqGene.Result)) {
+      if (!(obj instanceof Result)) {
         return super.equals(obj);
       }
-      proto_compile.cetc41.nodecontrol.SeqGene.Result other = (proto_compile.cetc41.nodecontrol.SeqGene.Result) obj;
+      Result other = (Result) obj;
 
       if (!getNumSeqList()
           .equals(other.getNumSeqList())) return false;
@@ -367,7 +385,7 @@ public final class SeqGene {
       return true;
     }
 
-    @java.lang.Override
+    @Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -383,69 +401,69 @@ public final class SeqGene {
       return hash;
     }
 
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseFrom(
+    public static Result parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseFrom(
+    public static Result parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseFrom(
+    public static Result parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseFrom(
+    public static Result parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseFrom(byte[] data)
+    public static Result parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseFrom(
+    public static Result parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseFrom(java.io.InputStream input)
+    public static Result parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseFrom(
+    public static Result parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseDelimitedFrom(java.io.InputStream input)
+    public static Result parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseDelimitedFrom(
+    public static Result parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseFrom(
+    public static Result parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result parseFrom(
+    public static Result parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -453,23 +471,23 @@ public final class SeqGene {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
+    @Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(proto_compile.cetc41.nodecontrol.SeqGene.Result prototype) {
+    public static Builder newBuilder(Result prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
+    @Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -479,18 +497,18 @@ public final class SeqGene {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:Result)
-        proto_compile.cetc41.nodecontrol.SeqGene.ResultOrBuilder {
+        ResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return proto_compile.cetc41.nodecontrol.SeqGene.internal_static_Result_descriptor;
+        return SeqGene.internal_static_Result_descriptor;
       }
 
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      @Override
+      protected FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return proto_compile.cetc41.nodecontrol.SeqGene.internal_static_Result_fieldAccessorTable
+        return SeqGene.internal_static_Result_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                proto_compile.cetc41.nodecontrol.SeqGene.Result.class, proto_compile.cetc41.nodecontrol.SeqGene.Result.Builder.class);
+                Result.class, Builder.class);
       }
 
       // Construct using proto_compile.cetc41.nodecontrol.SeqGene.Result.newBuilder()
@@ -499,7 +517,7 @@ public final class SeqGene {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -508,7 +526,7 @@ public final class SeqGene {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @java.lang.Override
+      @Override
       public Builder clear() {
         super.clear();
         numSeq_ = emptyIntList();
@@ -516,29 +534,29 @@ public final class SeqGene {
         return this;
       }
 
-      @java.lang.Override
+      @Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return proto_compile.cetc41.nodecontrol.SeqGene.internal_static_Result_descriptor;
+        return SeqGene.internal_static_Result_descriptor;
       }
 
-      @java.lang.Override
-      public proto_compile.cetc41.nodecontrol.SeqGene.Result getDefaultInstanceForType() {
-        return proto_compile.cetc41.nodecontrol.SeqGene.Result.getDefaultInstance();
+      @Override
+      public Result getDefaultInstanceForType() {
+        return Result.getDefaultInstance();
       }
 
-      @java.lang.Override
-      public proto_compile.cetc41.nodecontrol.SeqGene.Result build() {
-        proto_compile.cetc41.nodecontrol.SeqGene.Result result = buildPartial();
+      @Override
+      public Result build() {
+        Result result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @java.lang.Override
-      public proto_compile.cetc41.nodecontrol.SeqGene.Result buildPartial() {
-        proto_compile.cetc41.nodecontrol.SeqGene.Result result = new proto_compile.cetc41.nodecontrol.SeqGene.Result(this);
+      @Override
+      public Result buildPartial() {
+        Result result = new Result(this);
         int from_bitField0_ = bitField0_;
         if (((bitField0_ & 0x00000001) != 0)) {
           numSeq_.makeImmutable();
@@ -549,50 +567,50 @@ public final class SeqGene {
         return result;
       }
 
-      @java.lang.Override
+      @Override
       public Builder clone() {
         return super.clone();
       }
-      @java.lang.Override
+      @Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          Object value) {
         return super.setField(field, value);
       }
-      @java.lang.Override
+      @Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @java.lang.Override
+      @Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @java.lang.Override
+      @Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index, Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
+      @Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          Object value) {
         return super.addRepeatedField(field, value);
       }
-      @java.lang.Override
+      @Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof proto_compile.cetc41.nodecontrol.SeqGene.Result) {
-          return mergeFrom((proto_compile.cetc41.nodecontrol.SeqGene.Result)other);
+        if (other instanceof Result) {
+          return mergeFrom((Result)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(proto_compile.cetc41.nodecontrol.SeqGene.Result other) {
-        if (other == proto_compile.cetc41.nodecontrol.SeqGene.Result.getDefaultInstance()) return this;
+      public Builder mergeFrom(Result other) {
+        if (other == Result.getDefaultInstance()) return this;
         if (!other.numSeq_.isEmpty()) {
           if (numSeq_.isEmpty()) {
             numSeq_ = other.numSeq_;
@@ -608,21 +626,21 @@ public final class SeqGene {
         return this;
       }
 
-      @java.lang.Override
+      @Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
+      @Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        proto_compile.cetc41.nodecontrol.SeqGene.Result parsedMessage = null;
+        Result parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (proto_compile.cetc41.nodecontrol.SeqGene.Result) e.getUnfinishedMessage();
+          parsedMessage = (Result) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -644,7 +662,7 @@ public final class SeqGene {
        * <code>repeated int32 num_seq = 1;</code>
        * @return A list containing the numSeq.
        */
-      public java.util.List<java.lang.Integer>
+      public java.util.List<Integer>
           getNumSeqList() {
         return ((bitField0_ & 0x00000001) != 0) ?
                  java.util.Collections.unmodifiableList(numSeq_) : numSeq_;
@@ -694,7 +712,7 @@ public final class SeqGene {
        * @return This builder for chaining.
        */
       public Builder addAllNumSeq(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
+          Iterable<? extends Integer> values) {
         ensureNumSeqIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, numSeq_);
@@ -711,13 +729,13 @@ public final class SeqGene {
         onChanged();
         return this;
       }
-      @java.lang.Override
+      @Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
+      @Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -728,18 +746,18 @@ public final class SeqGene {
     }
 
     // @@protoc_insertion_point(class_scope:Result)
-    private static final proto_compile.cetc41.nodecontrol.SeqGene.Result DEFAULT_INSTANCE;
+    private static final Result DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new proto_compile.cetc41.nodecontrol.SeqGene.Result();
+      DEFAULT_INSTANCE = new Result();
     }
 
-    public static proto_compile.cetc41.nodecontrol.SeqGene.Result getDefaultInstance() {
+    public static Result getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<Result>
         PARSER = new com.google.protobuf.AbstractParser<Result>() {
-      @java.lang.Override
+      @Override
       public Result parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -752,13 +770,13 @@ public final class SeqGene {
       return PARSER;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Parser<Result> getParserForType() {
       return PARSER;
     }
 
-    @java.lang.Override
-    public proto_compile.cetc41.nodecontrol.SeqGene.Result getDefaultInstanceForType() {
+    @Override
+    public Result getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -777,12 +795,12 @@ public final class SeqGene {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    java.lang.String[] descriptorData = {
+    String[] descriptorData = {
       "\n\rseqGene.proto\"\031\n\006Result\022\017\n\007num_seq\030\001 \003" +
-      "(\005*P\n\007CmdType\022\014\n\010RESERVED\020\000\022\t\n\005PAUSE\020\001\022\n" +
+      "(\005*k\n\007CmdType\022\014\n\010RESERVED\020\000\022\t\n\005PAUSE\020\001\022\n" +
       "\n\006RESUME\020\002\022\016\n\nRESTART_AT\020\003\022\020\n\014RESET_LENG" +
-      "TH\020\004B\"\n proto_compile.cetc41.nodecontrol" +
-      "b\006proto3"
+      "TH\020\004\022\013\n\007STARTUP\020\005\022\014\n\010SHUTDOWN\020\006B\"\n proto" +
+      "_compile.cetc41.nodecontrolb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -793,7 +811,7 @@ public final class SeqGene {
     internal_static_Result_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Result_descriptor,
-        new java.lang.String[] { "NumSeq", });
+        new String[] { "NumSeq", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

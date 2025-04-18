@@ -1,7 +1,8 @@
 package common;
 
+
 public class Physical {
-    private int type;
+    private int  type;
     private double value;
     private String unit;
 
@@ -46,4 +47,5 @@ public class Physical {
                 ", unit='" + unit + '\'' +
                 '}';
     }
+
 }

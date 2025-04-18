@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import common.Physical;
 import common.Position;
-import common.Posture;
-import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
+import common.SourceStatus;
+import common.SourceType;
 
 import java.util.List;
 import java.util.Map;
@@ -15,78 +15,56 @@ import java.util.Map;
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME, // 使用字符串来标识子类
         include = JsonTypeInfo.As.EXISTING_PROPERTY, // 这里使用已有属性（手动设置）
-        property = "device_type", // 指定 device_type 作为类型标识
+        property = "type", // 指定 device_type 作为类型标识
         visible = true // 让 type 仍然可见，避免反序列化后丢失该字段
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = InfoSystem.class, name = "InfoSystem"),
-        @JsonSubTypes.Type(value = Sensor.class, name = "Sensor"),
-        @JsonSubTypes.Type(value = ReconStation.class, name = "ReconStation")
+        @JsonSubTypes.Type(value = InfoSystem.class, name = "REMOTE"),
+        @JsonSubTypes.Type(value = Sensor.class, name = "SENSOR_3900"),
+        @JsonSubTypes.Type(value = ReconStation.class, name = "FILE")
 })
 public abstract class DataSource {
-    protected String device_id;       // 设备编号
-    protected String device_name;     // 设备名称
-    protected String device_type;     // 设备编号类型：3900/3900F/...
-    protected String status;          // 设备状态
-    protected Position position;      // 设备位置
-    protected Posture posture;        // 设备姿态
-    protected List<Physical> physicalList;// 设备的物理属性
-//    protected SignalList signalList;    // 信号列表
-    protected List<Map<String,String>> topics;
+    protected int source_id;                    // 设备编号
+    protected SourceType type;                  // 设备编号类型：3900/3900F/...
+    protected SourceStatus status;              // 设备状态
+    protected Position position;                // 设备位置
+    protected Map<String, Physical> metrics;    // 设备的物理属性
+    protected List<Map<String,String>> topics;  // 设备发布的主题
 
-    public DataSource(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, List<Map<String, String>> topics) {
-        this.device_id = device_id;
-        this.device_name = device_name;
-        this.device_type = device_type;
+
+    public DataSource(int source_id, SourceType type, SourceStatus status, Position position, Map<String, Physical> metrics, List<Map<String, String>> topics) {
+        this.source_id = source_id;
+        this.type = type;
         this.status = status;
         this.position = position;
-        this.posture = posture;
-        this.physicalList = physicalList;
+        this.metrics = metrics;
         this.topics = topics;
-    }
-
-    public DataSource(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList) {
-        this.device_id = device_id;
-        this.device_name = device_name;
-        this.device_type = device_type;
-        this.status = status;
-        this.position = position;
-        this.posture = posture;
-        this.physicalList = physicalList;
     }
 
     public DataSource() {
     }
 
-    public String getDevice_id() {
-        return device_id;
+    public int getSource_id() {
+        return source_id;
     }
 
-    public void setDevice_id(String device_id) {
-        this.device_id = device_id;
+    public void setSource_id(int source_id) {
+        this.source_id = source_id;
     }
 
-    public String getDevice_name() {
-        return device_name;
+    public SourceType getType() {
+        return type;
     }
 
-    public void setDevice_name(String device_name) {
-        this.device_name = device_name;
+    public void setType(SourceType type) {
+        this.type = type;
     }
 
-    public String getDevice_type() {
-        return device_type;
-    }
-
-    public void setDevice_type(String device_type) {
-        this.device_type = device_type;
-    }
-
-    public String getStatus() {
+    public SourceStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(SourceStatus status) {
         this.status = status;
     }
 
@@ -98,20 +76,12 @@ public abstract class DataSource {
         this.position = position;
     }
 
-    public Posture getPosture() {
-        return posture;
+    public Map<String, Physical> getMetrics() {
+        return metrics;
     }
 
-    public void setPosture(Posture posture) {
-        this.posture = posture;
-    }
-
-    public List<Physical> getPhysicalList() {
-        return physicalList;
-    }
-
-    public void setPhysicalList(List<Physical> physicalList) {
-        this.physicalList = physicalList;
+    public void setMetrics(Map<String, Physical> metrics) {
+        this.metrics = metrics;
     }
 
     public List<Map<String, String>> getTopics() {
@@ -121,31 +91,18 @@ public abstract class DataSource {
     public void setTopics(List<Map<String, String>> topics) {
         this.topics = topics;
     }
-    //    public SignalList getSignalList() {
-//        return signalList;
-//    }
-//
-//    public void setSignalList(SignalList signalList) {
-//        this.signalList = signalList;
-//    }
-
 
     @Override
     public String toString() {
         return "DataSource{" +
-                "device_id='" + device_id + '\'' +
-                ", device_name='" + device_name + '\'' +
-                ", device_type='" + device_type + '\'' +
-                ", status='" + status + '\'' +
+                "source_id=" + source_id +
+                ", type=" + type +
+                ", status=" + status +
                 ", position=" + position +
-                ", posture=" + posture +
-                ", physicalList=" + physicalList +
+                ", metrics=" + metrics +
                 ", topics=" + topics +
                 '}';
     }
-
-    // 设备执行指令的方法（子类实现）
-    public abstract String executeCommand(NodeControlServiceApi.NodeControlType type, String detail);
 
     // 设备执行指令的方法（子类实现）
     public abstract String executeCommand(int commandFunction, long commandParam);

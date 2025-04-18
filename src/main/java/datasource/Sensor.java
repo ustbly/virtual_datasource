@@ -1,90 +1,64 @@
 package datasource;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import common.Physical;
 import common.Position;
-import common.Posture;
-import proto_compile.cetc41.nodecontrol.NodeControlServiceApi;
-import utils.DeviceMapUtils;
+import common.SourceStatus;
+import common.SourceType;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-
+@JsonTypeName("Sensor")
 public class Sensor extends DataSource {
     public Sensor() {
     }
 
 
-    public Sensor(String device_id, String device_name, String device_type, String status, Position position, Posture posture, List<Physical> physicalList, List<Map<String, String>> topics) {
-        super(device_id, device_name, device_type, status, position, posture, physicalList, topics);
+    public Sensor(int source_id, SourceType type, SourceStatus status, Position position, Map<String, Physical> metrics, List<Map<String, String>> topics) {
+        super(source_id, type, status, position, metrics, topics);
     }
+
 
     @Override
     public String toString() {
         return "Sensor{" +
-                "device_id='" + device_id + '\'' +
-                ", device_name='" + device_name + '\'' +
-                ", device_type='" + device_type + '\'' +
-                ", status='" + status + '\'' +
+                "source_id=" + source_id +
+                ", type=" + type +
+                ", status=" + status +
                 ", position=" + position +
-                ", posture=" + posture +
-                ", physicalList=" + physicalList +
+                ", metrics=" + metrics +
                 ", topics=" + topics +
                 '}';
     }
 
-
-
-    @Override
-    public String executeCommand(NodeControlServiceApi.NodeControlType type, String detail) {
-        switch (type) {
-            case REBOOT_NODE:
-                return "device_id: " + this.getDevice_id() + " 正在重启...";
-            case SHUTDOWN_NODE:
-                return "device_id: " + this.getDevice_id() + " 正在关闭...";
-            case ABORT_ALL:
-                return "device_id: " + this.getDevice_id() + " 正在停止所有任务...";
-            case SELF_TEST:
-                return "device_id: " + this.getDevice_id() + " 正在自检...";
-            case RENAME:
-                String message = DeviceMapUtils.updateDevice(device_id, detail);
-                return message;
-            default:
-                return "device_id: " + this.getDevice_id() + " 不支持此操作";
-        }
-    }
-
     /**
-     * 公共方法：根据 device_id 修改 JSON 文件中对应设备的 status
-     * @param deviceId
+     * 公共方法：根据 sourceId 修改 JSON 文件中对应设备的 status
+     * @param sourceId
      * @param newStatus
      */
-    private void updateDeviceStatusInJson(String deviceId, String newStatus) {
+    private static void updateDeviceStatusInJson(int sourceId, String newStatus) {
         ObjectMapper mapper = new ObjectMapper();
-        File file = new File("src/main/resources/nodes.json");
+        File file = new File("src/main/resources/devices.json");
 
         try {
             // 1. 读取 JSON 文件为 JsonNode
             JsonNode root = mapper.readTree(file);
 
-            JsonNode nodesArray = root.get("nodes");
-            if (nodesArray != null && nodesArray.isArray()) {
-                for (JsonNode node : nodesArray) {
-                    JsonNode dataSourceList = node.get("dataSourceList");
-                    if (dataSourceList != null && dataSourceList.isArray()) {
-                        for (JsonNode device : dataSourceList) {
-                            if (deviceId.equals(device.get("device_id").get("value").asText())) {
-                                ((ObjectNode) device).put("status", newStatus);
-                                System.out.println("设备 " + deviceId + " 状态已更新为 " + newStatus);
-                                break;
-                            }
-                        }
+            JsonNode devicesArray = root.get("devices");
+            if (devicesArray != null && devicesArray.isArray()) {
+                for (JsonNode device : devicesArray) {
+                    if (String.valueOf(sourceId).equals(device.get("device_id").get("value").asText())) {
+                        ((ObjectNode) device).put("status", newStatus);
+                        System.out.println("设备 " + sourceId + " 状态已更新为 " + newStatus);
+                        break;
                     }
+                    System.out.println(device);
                 }
             }
 
@@ -99,32 +73,32 @@ public class Sensor extends DataSource {
 
 
     public void shutdown() {
-        updateDeviceStatusInJson(device_id, "offline");
+        updateDeviceStatusInJson(source_id, "S_OFFLINE");
     }
 
     public void startup() {
-        updateDeviceStatusInJson(device_id, "online");
+        updateDeviceStatusInJson(source_id, "S_ENGAGED");
     }
 
     @Override
     public String executeCommand(int commandFunction, long commandParam) {
         switch (commandFunction) {
             case 1:
-                return "Sensor:" + this.getDevice_id() + " 正在重启...";
+                return "Sensor:" + this.getSource_id() + " 正在暂停...";
             case 2:
-                return "Sensor:" + this.getDevice_id() + " 正在关闭...";
+                return "Sensor:" + this.getSource_id() + " 正在恢复...";
             case 3:
-                return "Sensor:" + this.getDevice_id() + " 正在停止所有任务...";
+                return "Sensor:" + this.getSource_id() + " 正在从某个指定时间点重新启动任务...";
             case 4:
-                return "Sensor:" + this.getDevice_id() + " 正在自检...";
+                return "Sensor:" + this.getSource_id() + " 重置采集长度...";
             case 5:
                 startup();
-                return "Sensor:" + this.getDevice_id() + " 正在开机...";
+                return "Sensor:" + this.getSource_id() + " 正在开机...";
             case 6:
                 shutdown();
-                return "Sensor:" + this.getDevice_id() + " 正在关机...";
+                return "Sensor:" + this.getSource_id() + " 正在关机...";
             default:
-                return "Sensor:" + this.getDevice_id() + " 不支持此操作";
+                return "Sensor:" + this.getSource_id() + " 不支持该操作";
         }
     }
 }
