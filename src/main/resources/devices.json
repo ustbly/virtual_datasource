@@ -1,0 +1,40 @@
+{
+  "devices": [
+    {
+      "device_id": {
+        "value": "Device_01"
+      },
+      "device_name": "Device_A",
+      "device_type": "Sensor",
+      "status": "online",
+      "is_physical": true
+    },
+    {
+      "device_id": {
+        "value": "Device_02"
+      },
+      "device_name": "Device_B",
+      "device_type": "Sensor",
+      "status": "online",
+      "is_physical": true
+    },
+    {
+      "device_id": {
+        "value": "Device_03"
+      },
+      "device_name": "Device_C",
+      "device_type": "Sensor",
+      "status": "online",
+      "is_physical": false
+    },
+    {
+      "device_id": {
+        "value": "Device_04"
+      },
+      "device_name": "Device_D",
+      "device_type": "Sensor",
+      "status": "online",
+      "is_physical": false
+    }
+  ]
+}

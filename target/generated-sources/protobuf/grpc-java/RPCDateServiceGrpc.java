@@ -1,5 +1,3 @@
-package proto_compile;
-
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
@@ -55,7 +53,7 @@ public final class RPCDateServiceGrpc {
   public static RPCDateServiceStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<RPCDateServiceStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<RPCDateServiceStub>() {
-        @Override
+        @java.lang.Override
         public RPCDateServiceStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new RPCDateServiceStub(channel, callOptions);
         }
@@ -70,7 +68,7 @@ public final class RPCDateServiceGrpc {
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<RPCDateServiceBlockingStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<RPCDateServiceBlockingStub>() {
-        @Override
+        @java.lang.Override
         public RPCDateServiceBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new RPCDateServiceBlockingStub(channel, callOptions);
         }
@@ -85,7 +83,7 @@ public final class RPCDateServiceGrpc {
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<RPCDateServiceFutureStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<RPCDateServiceFutureStub>() {
-        @Override
+        @java.lang.Override
         public RPCDateServiceFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new RPCDateServiceFutureStub(channel, callOptions);
         }
@@ -103,11 +101,11 @@ public final class RPCDateServiceGrpc {
     /**
      */
     public void getDate(RPCDateServiceApi.RPCDateRequest request,
-                        io.grpc.stub.StreamObserver<RPCDateServiceApi.RPCDateResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<RPCDateServiceApi.RPCDateResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetDateMethod(), responseObserver);
     }
 
-    @Override public final io.grpc.ServerServiceDefinition bindService() {
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getGetDateMethod(),
@@ -131,7 +129,7 @@ public final class RPCDateServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected RPCDateServiceStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new RPCDateServiceStub(channel, callOptions);
@@ -140,7 +138,7 @@ public final class RPCDateServiceGrpc {
     /**
      */
     public void getDate(RPCDateServiceApi.RPCDateRequest request,
-                        io.grpc.stub.StreamObserver<RPCDateServiceApi.RPCDateResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<RPCDateServiceApi.RPCDateResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetDateMethod(), getCallOptions()), request, responseObserver);
     }
@@ -157,7 +155,7 @@ public final class RPCDateServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected RPCDateServiceBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new RPCDateServiceBlockingStub(channel, callOptions);
@@ -182,7 +180,7 @@ public final class RPCDateServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected RPCDateServiceFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new RPCDateServiceFutureStub(channel, callOptions);
@@ -212,8 +210,8 @@ public final class RPCDateServiceGrpc {
       this.methodId = methodId;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_DATE:
@@ -225,8 +223,8 @@ public final class RPCDateServiceGrpc {
       }
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
@@ -240,12 +238,12 @@ public final class RPCDateServiceGrpc {
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     RPCDateServiceBaseDescriptorSupplier() {}
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
       return RPCDateServiceApi.getDescriptor();
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
       return getFileDescriptor().findServiceByName("RPCDateService");
     }
@@ -265,7 +263,7 @@ public final class RPCDateServiceGrpc {
       this.methodName = methodName;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
       return getServiceDescriptor().findMethodByName(methodName);
     }

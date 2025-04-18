@@ -11,7 +11,6 @@ import datasource.Sensor;
 import entity.*;
 import redis.clients.jedis.Jedis;
 import utils.RedisClient;
-import utils.VirtualDeviceScheduler;
 
 import java.io.File;
 import java.time.Instant;
@@ -31,15 +30,16 @@ public class NodeInfoGenerator {
      * 模拟生成并发布虚拟设备的状态数据
      */
     public static void MockAndPubVirtualDataSourceData() {
-        List<NodeInfo> nodeInfoList = loadNodeInfosFromJson();
+        List<DataSource> dataSourceList = loadDeviceInfosFromJson();
+        System.out.println(dataSourceList);
         try (Jedis jedis = RedisClient.getJedis()) {
-            for (NodeInfo nodeInfo : nodeInfoList) {
-                String nodeInfoJson = new Gson().toJson(nodeInfo);
-                jedis.set(nodeInfo.getNode_id(), nodeInfoJson);
+            for (DataSource dataSource : dataSourceList) {
+                String deviceInfoJson = new Gson().toJson(dataSource);
+                jedis.set(dataSource.getDevice_id(), deviceInfoJson);
                 // 更新设备状态
-                VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(nodeInfo.getNode_id());
-                VirtualDeviceScheduler.scheduleVirtualDevicePub();
-                System.out.println("设备信息更新入 Redis: " + nodeInfo.getNode_id());
+//                VirtualDeviceScheduler.scheduleVirtualDeviceUpdate(dataSource.getDevice_id());
+//                VirtualDeviceScheduler.scheduleVirtualDevicePub();
+                System.out.println("设备信息更新入 Redis: " + dataSource.getDevice_id());
             }
         } catch (Exception e) {
             System.err.println("Redis 更新失败: " + e.getMessage());
@@ -51,61 +51,32 @@ public class NodeInfoGenerator {
      * 从JSON中加载节点设备数据
      * @return List<NodeInfo>
      */
-    public static List<NodeInfo> loadNodeInfosFromJson() {
-        List<NodeInfo> nodeInfoList = new ArrayList<>();
+    public static List<DataSource> loadDeviceInfosFromJson() {
+        List<DataSource> dataSourceList = new ArrayList<>();
         try {
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(new File("src/main/resources/nodes.json"));
-            JsonNode nodesArray = root.get("nodes");
+            JsonNode root = mapper.readTree(new File("src/main/resources/devices.json"));
+            JsonNode devicesArray = root.get("devices");
 
-            if (nodesArray != null && nodesArray.isArray()) {
-                for (JsonNode node : nodesArray) {
-                    String node_id = node.get("node_id").get("value").asText();
-                    String node_name = node.get("node_name").asText();
-                    String node_type = node.get("node_type").asText();
-                    JsonNode dataSourceList = node.get("dataSourceList");
-                    boolean is_physical = node.get("is_physical").asBoolean();
+            if (devicesArray != null && devicesArray.isArray()) {
+                for (JsonNode device : devicesArray) {
+                    String device_id = device.get("device_id").get("value").asText();
+                    String device_name = device.get("device_name").asText();
+                    String device_type = device.get("device_type").asText();
+                    String status = device.get("status").asText();
+                    boolean is_physical = device.get("is_physical").asBoolean();
 
-                    NodeInfo nodeInfo = generateNode(node_id, node_name, node_type, dataSourceList, is_physical);
-                    nodeInfoList.add(nodeInfo);
+
+                    DataSource deviceInfo = generateDevice(device_id, device_name, device_type, status, is_physical);
+                    dataSourceList.add(deviceInfo);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return nodeInfoList;
+        return dataSourceList;
     }
 
-    /**
-     * 模拟生成 Node 数据结构
-     * @param nodeId
-     * @param nodeName
-     * @param nodeType
-     * @param dataSourceList
-     * @param is_physical
-     * @return NodeInfo
-     */
-    private static NodeInfo generateNode(String nodeId, String nodeName, String nodeType, JsonNode dataSourceList, boolean is_physical) {
-        NodeInfo node = new NodeInfo();
-        node.setNode_id(nodeId);
-        node.setNode_name(nodeName);
-        node.setNode_type(nodeType);
-        node.setLast_heard(String.valueOf(Instant.now().getEpochSecond()));
-        node.setIs_physical(is_physical);
-
-        // 创建设备
-        List<DataSource> devices = new ArrayList<>();
-        for (JsonNode device : dataSourceList) {
-            String device_id = device.get("device_id").get("value").asText();
-            String device_name = device.get("device_name").asText();
-            String device_type = device.get("device_type").asText();
-            String status = device.get("status").asText();
-            devices.add(generateDevice(device_id, device_name, device_type, status, is_physical));
-        }
-
-        node.setDataSourceList(devices);
-        return node;
-    }
 
     /**
      * 模拟生成 DataSource 数据结构
