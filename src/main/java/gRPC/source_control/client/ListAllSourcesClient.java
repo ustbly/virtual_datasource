@@ -1,4 +1,4 @@
-package gRPC.node_control.client;
+package gRPC.source_control.client;
 
 import com.google.protobuf.Empty;
 import io.grpc.ManagedChannel;
@@ -28,11 +28,11 @@ public class ListAllSourcesClient {
         scheduler.scheduleWithFixedDelay(() -> {
             try {
                 SourceControlServiceApi.SourceSetInfo response = stub.listAllSources(Empty.newBuilder().build());
-                System.out.println("返回结果: " + response.getSourceInfoList());
+                System.out.println("返回的设备状态数据: " + response.getSourceInfoList());
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }, 0, 3, TimeUnit.SECONDS); // 延迟 0 秒开始，3 秒执行一次
+        }, 0, 3, TimeUnit.SECONDS); // 3秒一次请求一次设备状态数据
     }
 }
 

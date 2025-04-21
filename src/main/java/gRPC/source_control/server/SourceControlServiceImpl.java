@@ -1,4 +1,4 @@
-package gRPC.node_control.server;
+package gRPC.source_control.server;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,6 +11,7 @@ import io.grpc.stub.StreamObserver;
 import org.zeromq.ZMQ;
 import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
 import proto_compile.cetc41.nodecontrol.SourceControlServiceApi;
+import proto_compile.cetc41.nodecontrol.SourceControlServiceGrpc;
 import service.SourceControlService;
 
 import java.util.ArrayList;
@@ -19,14 +20,21 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 
+/**
+ * @file SourceControlServiceImpl.java
+ * @comment 虚拟数据源gRPC服务器端实现
+ * @date 2025/4/21
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 
-public class SourceControlServiceImpl extends proto_compile.cetc41.nodecontrol.SourceControlServiceGrpc.SourceControlServiceImplBase {
+public class SourceControlServiceImpl extends SourceControlServiceGrpc.SourceControlServiceImplBase {
     static class SubscriberInfo {
-        int deviceId;
+        int sourceId;
         StreamObserver<Any> observer;
 
-        SubscriberInfo(int deviceId, StreamObserver<Any> observer) {
-            this.deviceId = deviceId;
+        SubscriberInfo(int sourceId, StreamObserver<Any> observer) {
+            this.sourceId = sourceId;
             this.observer = observer;
         }
     }
@@ -72,14 +80,16 @@ public class SourceControlServiceImpl extends proto_compile.cetc41.nodecontrol.S
             String topic = subscriber.recvStr(); // e.g. "signal_list"
             String msg = subscriber.recvStr();
 
+//            System.out.println("[ZMQ 收到]: topic = " + topic + " | msg = " + msg);
+
             List<SubscriberInfo> subscribers = activeSubscribers.get(topic);
             if (subscribers != null) {
                 for (SubscriberInfo sub : subscribers) {
                     try {
                         JsonNode jsonNode = mapper.readTree(msg);
-                        int msgDeviceId = jsonNode.get("source_id").asInt();
+                        int msgSourceId = jsonNode.get("source_id").asInt();
 
-                        if (sub.deviceId == msgDeviceId) {
+                        if (sub.sourceId == msgSourceId) {
                             sub.observer.onNext(Any.pack(StringValue.of(msg)));
                         }
                     } catch (Exception e) {
@@ -91,7 +101,7 @@ public class SourceControlServiceImpl extends proto_compile.cetc41.nodecontrol.S
     }
 
     /**
-     * 获取所有设备的信息
+     * 获取所有设备的状态信息
      *
      * @param request
      * @param responseObserver
@@ -102,13 +112,13 @@ public class SourceControlServiceImpl extends proto_compile.cetc41.nodecontrol.S
         List<SourceControlServiceApi.SourceInfo> deviceInfo = SourceControlService.getDeviceInfo();
         System.out.println(deviceInfo);
 
-        // 构建 NodesInfo
+        // 构建 deviceInfo
         // 返回响应
         SourceControlServiceApi.SourceSetInfo response = SourceControlServiceApi.SourceSetInfo.newBuilder()
                 .addAllSourceInfo(deviceInfo)
                 .build();
         responseObserver.onNext(response);
-        System.out.println("收到请求，开始处理...");
+        System.out.println("listAllSources接口收到客户端请求，开始返回设备状态数据...");
         // 处理请求
         responseObserver.onCompleted();
     }
@@ -133,7 +143,7 @@ public class SourceControlServiceImpl extends proto_compile.cetc41.nodecontrol.S
             e.printStackTrace();
         }
 
-        System.out.println("接收到的客户端的参数为：device_id: " + sourceId + ", command_function: " + commandFunction + " ,command_param: " + commandParam);
+        System.out.println("接收到的客户端的参数为：sourceId: " + sourceId + ", command_function: " + commandFunction + " ,command_param: " + commandParam);
 
         DCTSServiceApi.CommandReply commandReply = SourceControlService.sendSourceCommand(sourceId, commandFunction, commandParam);
         // 模拟执行命令

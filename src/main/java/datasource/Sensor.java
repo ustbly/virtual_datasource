@@ -14,6 +14,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @file Sensor.java
+ * @date 2025/4/21
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
+
 @JsonTypeName("Sensor")
 public class Sensor extends DataSource {
     public Sensor() {
@@ -37,48 +44,6 @@ public class Sensor extends DataSource {
                 '}';
     }
 
-    /**
-     * 公共方法：根据 sourceId 修改 JSON 文件中对应设备的 status
-     * @param sourceId
-     * @param newStatus
-     */
-    private static void updateDeviceStatusInJson(int sourceId, String newStatus) {
-        ObjectMapper mapper = new ObjectMapper();
-        File file = new File("src/main/resources/devices.json");
-
-        try {
-            // 1. 读取 JSON 文件为 JsonNode
-            JsonNode root = mapper.readTree(file);
-
-            JsonNode devicesArray = root.get("devices");
-            if (devicesArray != null && devicesArray.isArray()) {
-                for (JsonNode device : devicesArray) {
-                    if (String.valueOf(sourceId).equals(device.get("device_id").get("value").asText())) {
-                        ((ObjectNode) device).put("status", newStatus);
-                        System.out.println("设备 " + sourceId + " 状态已更新为 " + newStatus);
-                        break;
-                    }
-                    System.out.println(device);
-                }
-            }
-
-            // 2. 写回 JSON 文件
-            mapper.writerWithDefaultPrettyPrinter().writeValue(file, root);
-
-        } catch (IOException e) {
-            System.err.println("更新 JSON 文件失败：" + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-
-    public void shutdown() {
-        updateDeviceStatusInJson(source_id, "S_OFFLINE");
-    }
-
-    public void startup() {
-        updateDeviceStatusInJson(source_id, "S_ENGAGED");
-    }
 
     @Override
     public String executeCommand(int commandFunction, long commandParam) {

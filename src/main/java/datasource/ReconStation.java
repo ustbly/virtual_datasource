@@ -9,6 +9,13 @@ import common.SourceType;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @file ReconStation.java
+ * @date 2025/4/21
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
+
 @JsonTypeName("ReconStation")
 public class ReconStation extends DataSource {
 
@@ -43,8 +50,10 @@ public class ReconStation extends DataSource {
             case 4:
                 return "ReconStation:" + this.getSource_id() + " 重置采集长度...";
             case 5:
+                startup();
                 return "ReconStation:" + this.getSource_id() + " 正在开机...";
             case 6:
+                shutdown();
                 return "ReconStation:" + this.getSource_id() + " 正在关机...";
             default:
                 return "ReconStation:" + this.getSource_id() + " 不支持该操作";

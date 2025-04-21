@@ -7,8 +7,13 @@ import redis.clients.jedis.JedisPoolConfig;
 import java.time.Duration;
 
 /**
- * Redis数据库的工具类
+ * @file RedisClient.java
+ * @comment Redis数据库的工具类
+ * @date 2025/4/21
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
+
 public class RedisClient {
     private static final JedisPool pool;
 

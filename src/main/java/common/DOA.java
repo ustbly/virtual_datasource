@@ -1,5 +1,12 @@
 package common;
 
+/**
+ * @file DOA.java
+ * @date 2025/4/21
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
+
 public class DOA {
     private double azimuth;     //水平角 正北方向夹角-顺时针为正(0°~360°)
     private double quality;     //测向质量，百分比[0,1]

@@ -3,7 +3,6 @@ package service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.protobuf.Any;
-import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.StringValue;
 import com.google.protobuf.util.JsonFormat;
 import common.Physical;
@@ -12,11 +11,7 @@ import datasource.DataSource;
 import datasource.InfoSystem;
 import datasource.ReconStation;
 import datasource.Sensor;
-import gRPC.node_control.client.SourceControlClient;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
-import proto_compile.cetc41.nodecontrol.SeqGene;
 import proto_compile.cetc41.nodecontrol.SourceControlServiceApi;
 import redis.clients.jedis.Jedis;
 import utils.RedisClient;
@@ -26,6 +21,14 @@ import java.io.IOException;
 import java.util.*;
 
 import static common.SourceType.*;
+
+/**
+ * @file SourceControlService.java
+ * @comment 服务端接口实现的中间层
+ * @date 2025/4/21
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 
 public class SourceControlService {
 
@@ -84,11 +87,11 @@ public class SourceControlService {
 
                     // 将设备数据转换为 JsonNode
                     JsonNode jsonNode = objectMapper.readTree(deviceData);
-//                    System.out.println(jsonNode);
+                    // System.out.println(jsonNode);
                     // 假设返回的数据是一个数组
                     for (int i = 0; i < jsonNode.size(); i++) {
                         JsonNode device = jsonNode.get(i);
-                        System.out.println(device);
+                        // System.out.println(device);
 
                         // 获取 device_type 字段来决定使用哪个子类
                         String deviceType = device.get("type").asText();
@@ -228,6 +231,8 @@ public class SourceControlService {
 
         return commandReply;
     }
+
+
 
     public static void main(String[] args) {
         sendSourceCommand(1,6,5);

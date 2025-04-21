@@ -1,9 +1,17 @@
-package gRPC.node_control.server;
+package gRPC.source_control.server;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
 import java.io.IOException;
+
+/**
+ * @file SourceControlSever.java
+ * @comment gRPC服务器启动程序入口
+ * @date 2025/4/21
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 
 public class SourceControlSever {
     public static void main(String[] args) throws IOException, InterruptedException {

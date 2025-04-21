@@ -10,17 +10,23 @@ import datasource.ReconStation;
 import datasource.Sensor;
 import entity.*;
 import redis.clients.jedis.Jedis;
+import utils.RandomUtils;
 import utils.RedisClient;
 import utils.VirtualDeviceScheduler;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static common.SourceStatus.S_ENGAGED;
+
+/**
+ * @file SourceInfoGenerator.java
+ * @comment 模拟生成设备状态和任务数据的工具类
+ * @date 2025/4/21
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 
 public class SourceInfoGenerator {
 
@@ -122,9 +128,9 @@ public class SourceInfoGenerator {
 
         if (S_ENGAGED == status) {
             // 生成随机位置数据
-            double latitude = ThreadLocalRandom.current().nextDouble(-90.0, 90.0);
-            double longitude = ThreadLocalRandom.current().nextDouble(-180.0, 180.0);
-            double altitude = ThreadLocalRandom.current().nextDouble(0, 10000);  // 海拔 0 - 10000 米
+            double latitude = RandomUtils.nextDouble(-90.0, 90.0, 3);
+            double longitude = RandomUtils.nextDouble(-180.0, 180.0, 3);
+            double altitude = RandomUtils.nextDouble(0, 10000, 3);  // 海拔 0 - 10000 米
             device.setPosition(new Position(latitude, longitude, altitude));
 
             List<Physical> physicalList = new ArrayList<>();
@@ -160,15 +166,15 @@ public class SourceInfoGenerator {
      * @return FixSignal
      */
     public static FixSignal generateFixSignal(String signalId) {
-        double azimuth = ThreadLocalRandom.current().nextDouble(0.0, 360.0);
-        double quality = ThreadLocalRandom.current().nextDouble(0.0, 100.0);
+        double azimuth = RandomUtils.nextDouble(0.0, 360.0, 3);
+        double quality = RandomUtils.nextDouble(0.0, 100.0, 3);
 
         FixSignal signal = new FixSignal();
         signal.setSignalId(signalId);
         signal.setActivity("Active");
-        signal.setEnter_freq(1000 + Math.random() * 500);
-        signal.setBand_width(100 + Math.random() * 50);
-        signal.setAmplitude(-50 + Math.random() * 10);
+        signal.setEnter_freq(1000 + RandomUtils.nextDouble(-500,500,3));
+        signal.setBand_width(100 + RandomUtils.nextDouble(-50,50,3));
+        signal.setAmplitude(-50 + RandomUtils.nextDouble(-10,10,3));
         signal.setCount_num((int) (Math.random() * 100));
         signal.setDir_of_arrival(new DOA(azimuth, quality));
         signal.setClassification("QAM");
@@ -190,9 +196,9 @@ public class SourceInfoGenerator {
         List<HoppingSignal> hoppingSignalList = new ArrayList<>();
         List<HoppingSignalCluster> hoppingSignalClusterList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            double center_freq = ThreadLocalRandom.current().nextDouble(-50.0, 100.0);
-            double band_width = ThreadLocalRandom.current().nextDouble(-20.0, 20.0);
-            double amplitude = ThreadLocalRandom.current().nextDouble(20.0, 200.0);
+            double center_freq = RandomUtils.nextDouble(-50.0, 100.0,3);
+            double band_width = RandomUtils.nextDouble(-20.0, 20.0,3);
+            double amplitude = RandomUtils.nextDouble(20.0, 200.0,3);
 
             HoppingSignal signal = new HoppingSignal(center_freq, band_width, amplitude, 5);
 
@@ -200,7 +206,7 @@ public class SourceInfoGenerator {
         }
 
         HoppingSignalCluster hoppingSignalCluster = new HoppingSignalCluster();
-        hoppingSignalCluster.setName("hopSignalCluster-001");
+        hoppingSignalCluster.setName("hopSignalCluster-" + UUID.randomUUID().toString().substring(0,8));
         hoppingSignalCluster.setActivity("Active");
         hoppingSignalCluster.setTimeSpan(new TimeSpan());
         hoppingSignalCluster.setFreq_set(hoppingSignalList);

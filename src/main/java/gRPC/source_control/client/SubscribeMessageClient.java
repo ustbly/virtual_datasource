@@ -1,4 +1,4 @@
-package gRPC.node_control.client;
+package gRPC.source_control.client;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -12,8 +12,14 @@ import proto_compile.cetc41.nodecontrol.SourceControlServiceGrpc;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+
+/**
+ * @file SubscribeMessageClient.java
+ * @comment 任务数据订阅的测试客户端
+ * @date 2025/4/21
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 
 public class SubscribeMessageClient {
 
@@ -26,7 +32,7 @@ public class SubscribeMessageClient {
         subscribeDevice(3, "signal_list");
 
         // 模拟在 15 秒后取消某个订阅
-        Executors.newSingleThreadScheduledExecutor().schedule(() -> unsubscribeDevice(2), 10, TimeUnit.SECONDS);
+//        Executors.newSingleThreadScheduledExecutor().schedule(() -> unsubscribeDevice(2), 10, TimeUnit.SECONDS);
 
         // 保持主线程运行
         new CountDownLatch(1).await();

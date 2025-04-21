@@ -1,4 +1,4 @@
-package gRPC.node_control.client;
+package gRPC.source_control.client;
 
 import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -10,6 +10,13 @@ import proto_compile.cetc41.nodecontrol.SeqGene;
 import proto_compile.cetc41.nodecontrol.SourceControlServiceApi;
 import proto_compile.cetc41.nodecontrol.SourceControlServiceGrpc;
 
+/**
+ * @file SourceControlClient.java
+ * @comment 设备控制指令接口的测试客户端
+ * @date 2025/4/21
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 public class SourceControlClient {
     private final SourceControlServiceGrpc.SourceControlServiceBlockingStub blockingStub;
 
