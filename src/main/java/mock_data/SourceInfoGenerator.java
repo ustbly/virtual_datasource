@@ -15,16 +15,17 @@ import utils.RedisClient;
 import utils.VirtualDeviceScheduler;
 
 import java.io.File;
+import java.sql.Timestamp;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static common.SourceStatus.S_ENGAGED;
 
 /**
+ * @author 林跃
  * @file SourceInfoGenerator.java
  * @comment 模拟生成设备状态和任务数据的工具类
  * @date 2025/4/21
- * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
@@ -56,6 +57,7 @@ public class SourceInfoGenerator {
 
     /**
      * 从JSON中加载节点设备数据
+     *
      * @return List<NodeInfo>
      */
     public static List<DataSource> loadDeviceInfosFromJson() {
@@ -86,15 +88,16 @@ public class SourceInfoGenerator {
 
     /**
      * 模拟生成 DataSource 数据结构
+     *
      * @param deviceId
      * @param deviceType
      * @param status
      * @param is_physical
      * @return DataSource
      */
-    public static DataSource generateDevice(int deviceId,  SourceType deviceType, SourceStatus status, boolean is_physical) {
+    public static DataSource generateDevice(int deviceId, SourceType deviceType, SourceStatus status, boolean is_physical) {
         DataSource device = null;
-        Map<String,Physical> metrics = new HashMap<>();
+        Map<String, Physical> metrics = new HashMap<>();
         List<Map<String, String>> topics = new ArrayList<>();
         List<String> dataType = new ArrayList<>();
         dataType.add("signal_list");
@@ -102,7 +105,7 @@ public class SourceInfoGenerator {
 
         for (String data : dataType) {
             Map<String, String> map = new HashMap<>();
-            map.put(data,"");
+            map.put(data, "");
             topics.add(map);
         }
 
@@ -121,7 +124,7 @@ public class SourceInfoGenerator {
         device.setSource_id(deviceId);
         device.setType(deviceType);
         device.setStatus(status);
-        metrics.put("metrics",generatePhysical());
+        metrics.put("metrics", generatePhysical());
         device.setMetrics(metrics);
         device.setTopics(topics);
 
@@ -150,6 +153,7 @@ public class SourceInfoGenerator {
 
     /**
      * 模拟生成物理指标数据
+     *
      * @return Physical
      */
     private static Physical generatePhysical() {
@@ -162,6 +166,7 @@ public class SourceInfoGenerator {
 
     /**
      * 模拟生成定频信号
+     *
      * @param signalId
      * @return FixSignal
      */
@@ -172,9 +177,10 @@ public class SourceInfoGenerator {
         FixSignal signal = new FixSignal();
         signal.setSignalId(signalId);
         signal.setActivity("Active");
-        signal.setCenter_freq(1000 + RandomUtils.nextDouble(-500,500,3));
-        signal.setBand_width(100 + RandomUtils.nextDouble(-50,50,3));
-        signal.setAmplitude(-50 + RandomUtils.nextDouble(-10,10,3));
+        signal.setCenter_freq(1000 + RandomUtils.nextDouble(-500, 500, 3));
+        signal.setBand_width(100 + RandomUtils.nextDouble(-50, 50, 3));
+        signal.setAmplitude(-50 + RandomUtils.nextDouble(-10, 10, 3));
+        signal.setEmit_time_span(new TimeSpan(new Timestamp(System.currentTimeMillis() - 10000), new Timestamp(System.currentTimeMillis())));
         signal.setCount_num((int) (Math.random() * 100));
         signal.setDir_of_arrival(new DOA(azimuth, quality));
         signal.setClassification("QAM");
@@ -190,15 +196,16 @@ public class SourceInfoGenerator {
 
     /**
      * 模拟生成跳频信号数据集
+     *
      * @return List<HoppingSignalCluster>
      */
     public static List<HoppingSignalCluster> generateHoppingSignalCluster() {
         List<HoppingSignal> hoppingSignalList = new ArrayList<>();
         List<HoppingSignalCluster> hoppingSignalClusterList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            double center_freq = RandomUtils.nextDouble(-50.0, 100.0,3);
-            double band_width = RandomUtils.nextDouble(-20.0, 20.0,3);
-            double amplitude = RandomUtils.nextDouble(20.0, 200.0,3);
+            double center_freq = RandomUtils.nextDouble(-50.0, 100.0, 3);
+            double band_width = RandomUtils.nextDouble(-20.0, 20.0, 3);
+            double amplitude = RandomUtils.nextDouble(20.0, 200.0, 3);
 
             HoppingSignal signal = new HoppingSignal(center_freq, band_width, amplitude, 5);
 
@@ -206,7 +213,7 @@ public class SourceInfoGenerator {
         }
 
         HoppingSignalCluster hoppingSignalCluster = new HoppingSignalCluster();
-        hoppingSignalCluster.setName("hopSignalCluster-" + UUID.randomUUID().toString().substring(0,8));
+        hoppingSignalCluster.setName("hopSignalCluster-" + UUID.randomUUID().toString().substring(0, 8));
         hoppingSignalCluster.setActivity("Active");
         hoppingSignalCluster.setTimeSpan(new TimeSpan());
         hoppingSignalCluster.setFreq_set(hoppingSignalList);

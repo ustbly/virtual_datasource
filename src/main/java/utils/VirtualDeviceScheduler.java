@@ -1,19 +1,16 @@
 package utils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
 import datasource.DataSource;
 import entity.FixSignal;
-import entity.HoppingSignalCluster;
 import entity.SignalList;
 import mock_data.SourceInfoGenerator;
 import org.zeromq.ZMQ;
 import redis.clients.jedis.Jedis;
 
-import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

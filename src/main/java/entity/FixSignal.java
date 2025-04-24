@@ -1,6 +1,7 @@
 package entity;
 
 import common.DOA;
+import common.TimeSpan;
 
 import java.util.Map;
 
@@ -18,6 +19,7 @@ public class FixSignal {
     private double center_freq;              // 中心频率，单位Hz
     private double band_width;              // 带宽，单位Hz
     private double amplitude;               // 幅度，单位dBm
+    private TimeSpan emit_time_span;        //信号出现的起始和终止时间
     private int count_num;                  // 出现次数
     private DOA dir_of_arrival;             // 信号的到达角，测向信息
     private String classification;          // 信号分类，一般为调制识别或体制识别的结果
@@ -26,13 +28,13 @@ public class FixSignal {
     public FixSignal() {
     }
 
-    public FixSignal(String signalId, String activity, double center_freq, double band_width, double amplitude,
-                     int count_num, DOA dir_of_arrival, String classification, Map<String, String> extraInfo) {
+    public FixSignal(String signalId, String activity, double center_freq, double band_width, double amplitude, TimeSpan emit_time_span, int count_num, DOA dir_of_arrival, String classification, Map<String, String> extraInfo) {
         this.signalId = signalId;
         this.activity = activity;
         this.center_freq = center_freq;
         this.band_width = band_width;
         this.amplitude = amplitude;
+        this.emit_time_span = emit_time_span;
         this.count_num = count_num;
         this.dir_of_arrival = dir_of_arrival;
         this.classification = classification;
@@ -79,6 +81,14 @@ public class FixSignal {
         this.amplitude = amplitude;
     }
 
+    public TimeSpan getEmit_time_span() {
+        return emit_time_span;
+    }
+
+    public void setEmit_time_span(TimeSpan emit_time_span) {
+        this.emit_time_span = emit_time_span;
+    }
+
     public int getCount_num() {
         return count_num;
     }
@@ -113,12 +123,13 @@ public class FixSignal {
 
     @Override
     public String toString() {
-        return "FixSignalList{" +
+        return "FixSignal{" +
                 "signalId='" + signalId + '\'' +
                 ", activity='" + activity + '\'' +
                 ", center_freq=" + center_freq +
                 ", band_width=" + band_width +
                 ", amplitude=" + amplitude +
+                ", emit_time_span=" + emit_time_span +
                 ", count_num=" + count_num +
                 ", dir_of_arrival=" + dir_of_arrival +
                 ", classification='" + classification + '\'' +
