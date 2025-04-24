@@ -7,15 +7,16 @@ import java.util.List;
 /**
  * @file HoppingSignalCluster.java
  * @date 2025/4/21
+ * @comment 跳频信号集
  * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
 public class HoppingSignalCluster {
-    private String name;    //跳频系统
-    private String activity;
-    private TimeSpan timeSpan;
-    private List<HoppingSignal> freq_set;   //跳频频率集
+    private String name;            // 跳频系统
+    private String activity;        // 信号活跃度
+    private TimeSpan timeSpan;      // 信号的出现时间和消失时间
+    private List<HoppingSignal> freq_set;   // 跳频频率集
 
     public HoppingSignalCluster() {
     }

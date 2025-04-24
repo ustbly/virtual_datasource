@@ -1,22 +1,18 @@
 package datasource;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import common.Physical;
 import common.Position;
 import common.SourceStatus;
 import common.SourceType;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 /**
  * @file Sensor.java
  * @date 2025/4/21
+ * @comment 传感器类型的数据源
  * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */

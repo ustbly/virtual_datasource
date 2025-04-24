@@ -2,7 +2,8 @@ package common;
 
 /**
  * @file TimeSpan.java
- * @date 2025/4/21
+ * @comment 时间类
+ * @date 2025/4/23
  * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
@@ -10,8 +11,8 @@ package common;
 import java.sql.Timestamp;
 
 public class TimeSpan {
-    private Timestamp startTime;
-    private Timestamp stopTime;
+    private Timestamp startTime;    // 开始时间
+    private Timestamp stopTime;     // 结束时机
 
     public TimeSpan() {}
 

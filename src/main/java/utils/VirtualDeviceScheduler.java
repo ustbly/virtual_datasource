@@ -57,7 +57,7 @@ public class VirtualDeviceScheduler {
                 System.err.println("[设备状态数据] Redis 写入失败: " + e.getMessage());
                 e.printStackTrace();
             }
-        }, 0, 2, TimeUnit.SECONDS);
+        }, 0, 5, TimeUnit.SECONDS);
     }
 
 
@@ -80,8 +80,12 @@ public class VirtualDeviceScheduler {
 
                 // 生成模拟信号数据
                 SignalList signalList = new SignalList();
-                signalList.setFixSignalList(generateFixSignals(3));
+                signalList.setFixSignalList(generateFixSignals(2));
                 signalList.setHoppingSignalList(generateHoppingSignalCluster());
+
+                // 写入信号数据
+                DorisUtils.insertFixSignals(sourceId, signalList.getFixSignalList());
+//                DorisUtils.insertHoppingSignals(sourceId, signalList.getHoppingSignalList());
 
                 // 构造 ZMQ 消息内容
                 ObjectMapper mapper = new ObjectMapper();
@@ -123,7 +127,7 @@ public class VirtualDeviceScheduler {
                     e.printStackTrace();
                 }
             }
-        }, 0, 2, TimeUnit.SECONDS);
+        }, 0, 5, TimeUnit.SECONDS);
     }
 
 

@@ -19,7 +19,8 @@ import java.util.Map;
 
 /**
  * @file DataSource.java
- * @date 2025/4/21
+ * @comment 数据源（设备）的抽象类
+ * @date 2025/4/23
  * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
@@ -27,7 +28,7 @@ import java.util.Map;
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME, // 使用字符串来标识子类
         include = JsonTypeInfo.As.EXISTING_PROPERTY, // 这里使用已有属性（手动设置）
-        property = "type", // 指定 device_type 作为类型标识
+        property = "type", // 指定 type 作为类型标识
         visible = true // 让 type 仍然可见，避免反序列化后丢失该字段
 )
 @JsonSubTypes({
@@ -37,7 +38,7 @@ import java.util.Map;
 })
 public abstract class DataSource {
     protected int source_id;                    // 设备编号
-    protected SourceType type;                  // 设备编号类型：3900/3900F/...
+    protected SourceType type;                  // 设备编号类型：3900F/VIRTUAL/FILE/REMOTE
     protected SourceStatus status;              // 设备状态
     protected Position position;                // 设备位置
     protected Map<String, Physical> metrics;    // 设备的物理属性

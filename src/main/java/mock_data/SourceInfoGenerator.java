@@ -97,8 +97,8 @@ public class SourceInfoGenerator {
         Map<String,Physical> metrics = new HashMap<>();
         List<Map<String, String>> topics = new ArrayList<>();
         List<String> dataType = new ArrayList<>();
-        dataType.add("SignalList");
-        dataType.add("Spectrum");
+        dataType.add("signal_list");
+        dataType.add("spectrum");
 
         for (String data : dataType) {
             Map<String, String> map = new HashMap<>();
@@ -172,7 +172,7 @@ public class SourceInfoGenerator {
         FixSignal signal = new FixSignal();
         signal.setSignalId(signalId);
         signal.setActivity("Active");
-        signal.setEnter_freq(1000 + RandomUtils.nextDouble(-500,500,3));
+        signal.setCenter_freq(1000 + RandomUtils.nextDouble(-500,500,3));
         signal.setBand_width(100 + RandomUtils.nextDouble(-50,50,3));
         signal.setAmplitude(-50 + RandomUtils.nextDouble(-10,10,3));
         signal.setCount_num((int) (Math.random() * 100));

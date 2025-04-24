@@ -162,7 +162,7 @@ public class DeviceViewAndControl extends JFrame {
                             SeqGene.CmdType.STARTUP.getNumber(), 1L);
                     JOptionPane.showMessageDialog(null, "已发送开机指令给设备 " + currentDeviceId);
 
-                    Timer t = new Timer(800, evt -> {
+                    Timer t = new Timer(800, event -> {
                         fetchDeviceList();
                         fireEditingStopped();
                     });
@@ -177,7 +177,7 @@ public class DeviceViewAndControl extends JFrame {
                             SeqGene.CmdType.SHUTDOWN.getNumber(), 1L);
                     JOptionPane.showMessageDialog(null, "已发送关机指令给设备 " + currentDeviceId);
 
-                    Timer t = new Timer(800, evt -> {
+                    Timer t = new Timer(800, event -> {
                         fetchDeviceList();
                         fireEditingStopped();
                     });

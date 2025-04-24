@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <arrow.version>15.0.1</arrow.version>
     </properties>
 
     <dependencies>
@@ -59,7 +60,16 @@
             <artifactId>jedis</artifactId>
             <version>5.2.0</version>
         </dependency>
-
+<!--        <dependency>-->
+<!--            <groupId>org.apache.arrow</groupId>-->
+<!--            <artifactId>flight-sql-jdbc-core</artifactId>-->
+<!--            <version>${arrow.version}</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.30</version> <!-- 或其他合适版本 -->
+        </dependency>
     </dependencies>
     <build>
         <extensions>

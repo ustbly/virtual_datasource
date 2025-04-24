@@ -3,15 +3,16 @@ package entity;
 /**
  * @file HoppingSignal.java
  * @date 2025/4/21
+ * @comment 跳频信号类
  * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
 public class HoppingSignal {
-    private double center_freq;
-    private double band_width;
-    private double amplitude;
-    private int count_num;
+    private double center_freq;     // 中心频率，单位Hz
+    private double band_width;      // 带宽，单位Hz
+    private double amplitude;       // 幅度，单位dBm
+    private int count_num;          // 出现次数
 
     public HoppingSignal() {
     }

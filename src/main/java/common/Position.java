@@ -2,15 +2,16 @@ package common;
 
 /**
  * @file Position.java
- * @date 2025/4/21
+ * @comment 位置信息
+ * @date 2025/4/23
  * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
 public class Position {
-    private double latitude;
-    private double longitude;
-    private double altitude;
+    private double latitude;        // 经度
+    private double longitude;       // 纬度
+    private double altitude;        // 海拔
 
     public Position() {}
 

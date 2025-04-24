@@ -6,13 +6,14 @@ import java.util.List;
 /**
  * @file SignalList.java
  * @date 2025/4/21
+ * @comment 信号列表（定频 + 跳频）
  * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
 public class SignalList {
-    private List<FixSignal> fixSignalList;
-    private List<HoppingSignalCluster> hoppingSignalList;
+    private List<FixSignal> fixSignalList;                  // 定频信号集
+    private List<HoppingSignalCluster> hoppingSignalList;   // 跳频信号集
 
     public SignalList() {
     }

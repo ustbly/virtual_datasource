@@ -21,7 +21,7 @@
     },
     "device_name" : "Device_C",
     "device_type" : "FILE",
-    "status" : "S_OFFLINE",
+    "status" : "S_ENGAGED",
     "is_physical" : false
   }, {
     "device_id" : {

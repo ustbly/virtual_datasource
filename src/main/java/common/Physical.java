@@ -2,15 +2,16 @@ package common;
 
 /**
  * @file Physical.java
- * @date 2025/4/21
+ * @comment 物理指标信息
+ * @date 2025/4/23
  * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
 public class Physical {
-    private int  type;
-    private double value;
-    private String unit;
+    private int  type;      // 物理指标类型
+    private double value;   // 物理指标值
+    private String unit;    // 物理指标单位
 
     public Physical() {
     }

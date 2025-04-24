@@ -2,11 +2,11 @@ package common;
 
 /**
  * @file Type.java
- * @date 2025/4/21
+ * @comment 物理指标中的指标类型
+ * @date 2025/4/23
  * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
-
 public enum Type {
     TEMPERATURE(1),
     HUMIDITY(2),

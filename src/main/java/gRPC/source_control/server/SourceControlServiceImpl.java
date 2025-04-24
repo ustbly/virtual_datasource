@@ -110,7 +110,7 @@ public class SourceControlServiceImpl extends SourceControlServiceGrpc.SourceCon
     @Override
     public void listAllSources(Empty request, StreamObserver<SourceControlServiceApi.SourceSetInfo> responseObserver) {
         List<SourceControlServiceApi.SourceInfo> deviceInfo = SourceControlService.getDeviceInfo();
-        System.out.println(deviceInfo);
+//        System.out.println(deviceInfo);
 
         // 构建 deviceInfo
         // 返回响应

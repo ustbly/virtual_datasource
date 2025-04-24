@@ -7,29 +7,30 @@ import java.util.Map;
 /**
  * @file FixSignal.java
  * @date 2025/4/21
+ * @comment 定频信号类
  * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
 public class FixSignal {
-    private String signalId;
-    private String activity;
-    private double enter_freq;
-    private double band_width;
-    private double amplitude;
-    private int count_num;
-    private DOA dir_of_arrival;
-    private String classification;
-    private Map<String,String> extraInfo;
+    private String signalId;                // 信号ID
+    private String activity;                // 信号活跃度
+    private double center_freq;              // 中心频率，单位Hz
+    private double band_width;              // 带宽，单位Hz
+    private double amplitude;               // 幅度，单位dBm
+    private int count_num;                  // 出现次数
+    private DOA dir_of_arrival;             // 信号的到达角，测向信息
+    private String classification;          // 信号分类，一般为调制识别或体制识别的结果
+    private Map<String,String> extraInfo;   // 信号额外的描述信息
 
     public FixSignal() {
     }
 
-    public FixSignal(String signalId, String activity, double enter_freq, double band_width, double amplitude,
+    public FixSignal(String signalId, String activity, double center_freq, double band_width, double amplitude,
                      int count_num, DOA dir_of_arrival, String classification, Map<String, String> extraInfo) {
         this.signalId = signalId;
         this.activity = activity;
-        this.enter_freq = enter_freq;
+        this.center_freq = center_freq;
         this.band_width = band_width;
         this.amplitude = amplitude;
         this.count_num = count_num;
@@ -54,12 +55,12 @@ public class FixSignal {
         this.activity = activity;
     }
 
-    public double getEnter_freq() {
-        return enter_freq;
+    public double getCenter_freq() {
+        return center_freq;
     }
 
-    public void setEnter_freq(double enter_freq) {
-        this.enter_freq = enter_freq;
+    public void setCenter_freq(double center_freq) {
+        this.center_freq = center_freq;
     }
 
     public double getBand_width() {
@@ -115,7 +116,7 @@ public class FixSignal {
         return "FixSignalList{" +
                 "signalId='" + signalId + '\'' +
                 ", activity='" + activity + '\'' +
-                ", enter_freq=" + enter_freq +
+                ", center_freq=" + center_freq +
                 ", band_width=" + band_width +
                 ", amplitude=" + amplitude +
                 ", count_num=" + count_num +

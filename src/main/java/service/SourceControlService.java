@@ -132,7 +132,6 @@ public class SourceControlService {
      */
     public static List<SourceControlServiceApi.SourceInfo> getDeviceInfo() {
         List<DataSource> dataSourceList = getDeviceInfoFromRedis();
-        System.out.println();
         List<SourceControlServiceApi.SourceInfo> deviceInfoList = new ArrayList<>();
 
         for (DataSource device : dataSourceList) {
@@ -210,7 +209,7 @@ public class SourceControlService {
 
 
         for (DataSource dataSource : dataSourceList) {
-            System.out.println(dataSource.getSource_id());
+//            System.out.println(dataSource.getSource_id());
             if (sourceId == dataSource.getSource_id() && "S_ENGAGED".equals(dataSource.getStatus().name())) {
                 result = dataSource.executeCommand(commandFunction, commandParam);
                 found = true;
