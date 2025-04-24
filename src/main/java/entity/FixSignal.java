@@ -16,10 +16,10 @@ import java.util.Map;
 public class FixSignal {
     private String signalId;                // 信号ID
     private String activity;                // 信号活跃度
-    private double center_freq;              // 中心频率，单位Hz
+    private double center_freq;             // 中心频率，单位Hz
     private double band_width;              // 带宽，单位Hz
     private double amplitude;               // 幅度，单位dBm
-    private TimeSpan emit_time_span;        //信号出现的起始和终止时间
+    private TimeSpan emit_time_span;        // 信号出现的起始和终止时间
     private int count_num;                  // 出现次数
     private DOA dir_of_arrival;             // 信号的到达角，测向信息
     private String classification;          // 信号分类，一般为调制识别或体制识别的结果
