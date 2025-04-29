@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
+import common.DOA;
+import common.TimeSpan;
 import datasource.DataSource;
 import entity.FixSignal;
 import entity.SignalList;
@@ -11,6 +13,7 @@ import mock_data.SourceInfoGenerator;
 import org.zeromq.ZMQ;
 import redis.clients.jedis.Jedis;
 
+import java.sql.Timestamp;
 import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -23,6 +26,8 @@ public class VirtualDeviceScheduler {
     private static final ZMQ.Context context = ZMQ.context(1);
     private static final ZMQ.Socket publisher = context.socket(ZMQ.PUB);
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(100);
+    // 全局静态缓存，用于记录历史信号
+    private static final Map<String, FixSignal> fixSignalCache = new HashMap<>();
     private static volatile boolean isPublisherBound = false;
 
 
@@ -44,7 +49,6 @@ public class VirtualDeviceScheduler {
                 } else {
                     updatedDataSourceList.add(ds);
                 }
-
             }
             // 存储更新到 Redis
             try (Jedis jedis = RedisClient.getJedis()) {
@@ -109,7 +113,8 @@ public class VirtualDeviceScheduler {
 
                     if (existingJson != null) {
                         // 已有数据则解析成 Map
-                        signalMap = mapper.readValue(existingJson, new TypeReference<Map<String, ObjectNode>>() {});
+                        signalMap = mapper.readValue(existingJson, new TypeReference<Map<String, ObjectNode>>() {
+                        });
                     } else {
                         signalMap = new HashMap<>();
                     }
@@ -128,13 +133,89 @@ public class VirtualDeviceScheduler {
     }
 
 
+    //    private static List<FixSignal> generateFixSignals(int count) {
+//        List<FixSignal> list = new ArrayList<>();
+//        for (int i = 0; i < count; i++) {
+//            list.add(SourceInfoGenerator.generateFixSignal("fix-" + UUID.randomUUID().toString().substring(0,8)));
+//        }
+//        return list;
+//    }
+    private static double tweak(double base, double range) {
+        return base + (Math.random() * 2 - 1) * range; // 在 ±range 范围内波动
+    }
 
+    private static DOA tweakDOA(DOA old) {
+        double azimuth = tweak(old.getAzimuth(), 5);
+        double quality = tweak(old.getQuality(), 3);
+        return new DOA(azimuth, quality);
+    }
 
     private static List<FixSignal> generateFixSignals(int count) {
         List<FixSignal> list = new ArrayList<>();
+        List<String> existingIds = new ArrayList<>(fixSignalCache.keySet());
+
         for (int i = 0; i < count; i++) {
-            list.add(SourceInfoGenerator.generateFixSignal("fix-" + UUID.randomUUID().toString().substring(0,8)));
+            boolean reuse = !existingIds.isEmpty() && Math.random() < 0.5; // 50% 复用旧信号
+            String signalId;
+            FixSignal signal;
+
+            if (reuse) {
+                // 获取旧信号并克隆 + 微调
+                signalId = existingIds.get((int) (Math.random() * existingIds.size()));
+                FixSignal old = fixSignalCache.get(signalId);
+
+                signal = new FixSignal();
+                signal.setSignalId(signalId);
+                signal.setActivity("Active");
+                signal.setCenter_freq(tweak(old.getCenter_freq(), 10));  // 微调中心频率 ±10
+                signal.setBand_width(tweak(old.getBand_width(), 5));     // 微调带宽 ±5
+                signal.setAmplitude(tweak(old.getAmplitude(), 1));       // 微调幅度 ±1
+                signal.setCount_num(old.getCount_num() + 1);                    // 增加计数
+                signal.setDir_of_arrival(tweakDOA(old.getDir_of_arrival()));
+                signal.setClassification("QAM");
+                signal.setEmit_time_span(new TimeSpan(new Timestamp(System.currentTimeMillis() - 10000), new Timestamp(System.currentTimeMillis())));
+                signal.setExtraInfo(old.getExtraInfo());
+
+            } else {
+                // 新信号
+                signalId = "fix-" + UUID.randomUUID().toString().substring(0, 8);
+                signal = generateFixSignal(signalId);
+            }
+
+            fixSignalCache.put(signalId, signal); // 更新缓存
+            list.add(signal);
         }
+
         return list;
+    }
+
+
+    public static FixSignal generateFixSignal(String signalId) {
+        double azimuth = RandomUtils.nextDouble(0.0, 360.0, 3);
+        double quality = RandomUtils.nextDouble(0.0, 100.0, 3);
+
+        FixSignal signal;
+
+        // 新信号
+        signal = new FixSignal();
+        signal.setSignalId(signalId);
+        signal.setActivity("Active");
+        signal.setCenter_freq(1000 + RandomUtils.nextDouble(-500, 500, 3));
+        signal.setBand_width(100 + RandomUtils.nextDouble(-50, 50, 3));
+        signal.setAmplitude(-50 + RandomUtils.nextDouble(-10, 10, 3));
+        signal.setEmit_time_span(new TimeSpan(
+                new Timestamp(System.currentTimeMillis() - 10000),
+                new Timestamp(System.currentTimeMillis()))
+        );
+        signal.setCount_num(1);
+        signal.setDir_of_arrival(new DOA(azimuth, quality));
+        signal.setClassification("QAM");
+
+        Map<String, String> extraInfo = new HashMap<>();
+        extraInfo.put("encoding", "AES-256");
+        signal.setExtraInfo(extraInfo);
+
+        fixSignalCache.put(signalId, signal);
+        return signal;
     }
 }

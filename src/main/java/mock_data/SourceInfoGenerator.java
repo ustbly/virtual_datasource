@@ -121,6 +121,7 @@ public class SourceInfoGenerator {
                 break;
         }
 
+        assert device != null;
         device.setSource_id(deviceId);
         device.setType(deviceType);
         device.setStatus(status);
@@ -137,13 +138,13 @@ public class SourceInfoGenerator {
             device.setPosition(new Position(latitude, longitude, altitude));
 
             List<Physical> physicalList = new ArrayList<>();
-            List<FixSignal> fixSignals = new ArrayList<>();
+//            List<FixSignal> fixSignals = new ArrayList<>();
             for (int i = 0; i < 3; i++) {
                 physicalList.add(generatePhysical());
             }
-            for (int i = 0; i < 3; i++) {
-                fixSignals.add(generateFixSignal(deviceId + "-S" + (i + 1)));
-            }
+//            for (int i = 0; i < 3; i++) {
+//                fixSignals.add(generateFixSignal(deviceId + "-S" + (i + 1)));
+//            }
 
 
         }
@@ -170,28 +171,28 @@ public class SourceInfoGenerator {
      * @param signalId
      * @return FixSignal
      */
-    public static FixSignal generateFixSignal(String signalId) {
-        double azimuth = RandomUtils.nextDouble(0.0, 360.0, 3);
-        double quality = RandomUtils.nextDouble(0.0, 100.0, 3);
-
-        FixSignal signal = new FixSignal();
-        signal.setSignalId(signalId);
-        signal.setActivity("Active");
-        signal.setCenter_freq(1000 + RandomUtils.nextDouble(-500, 500, 3));
-        signal.setBand_width(100 + RandomUtils.nextDouble(-50, 50, 3));
-        signal.setAmplitude(-50 + RandomUtils.nextDouble(-10, 10, 3));
-        signal.setEmit_time_span(new TimeSpan(new Timestamp(System.currentTimeMillis() - 10000), new Timestamp(System.currentTimeMillis())));
-        signal.setCount_num((int) (Math.random() * 100));
-        signal.setDir_of_arrival(new DOA(azimuth, quality));
-        signal.setClassification("QAM");
-
-        // 额外信息
-        Map<String, String> extraInfo = new HashMap<>();
-        extraInfo.put("encoding", "AES-256");
-        signal.setExtraInfo(extraInfo);
-
-        return signal;
-    }
+//    public static FixSignal generateFixSignal(String signalId) {
+//        double azimuth = RandomUtils.nextDouble(0.0, 360.0, 3);
+//        double quality = RandomUtils.nextDouble(0.0, 100.0, 3);
+//
+//        FixSignal signal = new FixSignal();
+//        signal.setSignalId(signalId);
+//        signal.setActivity("Active");
+//        signal.setCenter_freq(1000 + RandomUtils.nextDouble(-500, 500, 3));
+//        signal.setBand_width(100 + RandomUtils.nextDouble(-50, 50, 3));
+//        signal.setAmplitude(-50 + RandomUtils.nextDouble(-10, 10, 3));
+//        signal.setEmit_time_span(new TimeSpan(new Timestamp(System.currentTimeMillis() - 10000), new Timestamp(System.currentTimeMillis())));
+//        signal.setCount_num((int) (Math.random() * 100));
+//        signal.setDir_of_arrival(new DOA(azimuth, quality));
+//        signal.setClassification("QAM");
+//
+//        // 额外信息
+//        Map<String, String> extraInfo = new HashMap<>();
+//        extraInfo.put("encoding", "AES-256");
+//        signal.setExtraInfo(extraInfo);
+//
+//        return signal;
+//    }
 
 
     /**
