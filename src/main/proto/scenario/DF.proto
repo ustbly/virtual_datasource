@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package zb.dcts.scenario.DF;
+
+import "dcts.proto";
+import "source/source.proto";
+import "scenario/scenario.proto";
+import "scenario/spectrum.proto";
+
+message DirectionFindingSignal
+{
+    string id = 1;
+    spectrum.SignalBand signal_band = 2;
+}
+
+message DirectionFindingSignals
+{
+    repeated DirectionFindingSignal targets = 1; //待测向的辐射源
+}
+
+message SignalDirection
+{
+    string id = 1;
+    spectrum.SignalBand signal_band = 2;
+    DOA direction_of_arrival = 3;    //来波方向
+}
+
+message DirectionFindingResult
+{
+    source.SourceId  result_from = 1;  //结果来源
+    Timestamp   time_stamp = 2;        //时间戳
+    Position    position = 3;          //测向点的位置
+    repeated SignalDirection signals_direction = 4;
+}
+
+message DFSource
+{
+    source.SourceId source = 1; //暂时简单使用数据源id，忽略其它参数，如有，请后续统一
+}
+
+message DirectionFindingRequest
+{
+    ScenarioId scenario = 1;
+    DFSource source = 2;
+    DirectionFindingSignals param = 3;
+}
+
+message ChangeSignalsRequest
+{
+    ScenarioTaskId responser = 1;
+    DirectionFindingSignals param = 2;
+}
+
+service DirectionFindingService
+{
+    rpc StartDFTask(DirectionFindingRequest) returns (ScenarioReply){}
+    rpc ChangeDFSignals(ChangeSignalsRequest) returns (ScenarioReply) {}
+    rpc GetDFResult(ScenarioTaskId) returns (stream DirectionFindingResult) {}
+    rpc StopDFTask(ScenarioTaskId) returns (ScenarioReply) {}
+}

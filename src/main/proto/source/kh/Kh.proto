@@ -1,0 +1,64 @@
+syntax = "proto3";
+package zb.dcts.source.kh;
+
+import "dcts.proto";
+import "source/source.proto";
+import "scenario/scenario.proto";
+
+//节点设备组合，是任务的最小执行单元
+message NodeDevice
+{
+    scenario.ScenarioId node_id = 1;
+    SourceId device_id = 2;
+}
+
+message DeviceConfig{
+    SourceType type = 1;
+    IPv4Address address = 2;
+    SourceId id = 3;
+}
+
+//网络连接参数
+message ClusterConfig
+{
+  ZeromqLinkCfg link = 1;
+  ZeromqLinkCfg stream = 2;
+  ZeromqLinkCfg selftest = 3;
+  repeated DeviceConfig devices = 4;
+}
+
+enum CMTip  {
+  DEVICE_TICK = 0;
+  CLUSTER_TICK = 1;
+  DEVICE_REQUEST = 2;
+  CLUSTER_REQUEST = 3;
+  DEVICE_REPLY = 4;
+  CLUSTER_REPLY = 5;
+  DEVICE_SELF_TEST = 6;
+  CLUSTER_SELF_TEST = 7;
+  DEVICE_REBOOT = 8;
+  CLUSTER_REBOOT = 9;
+  DEVICE_SHUTDOWN = 10;
+  CLUSTER_SHUTDOWN = 11;
+}
+
+//任务命令头
+message CmdHeader
+{
+    uint32 sequence_number = 1;     //命令序列号
+    ErrorType error_code = 2;       //命令错误码
+    scenario.TaskId task_id = 3;    //任务id
+    NodeDevice task_runner = 4;     //命令执行单元
+};
+
+enum TaskCmd{
+    T_START = 0;	///< 任务启动
+    T_STOP = 1;		///< 任务停止
+    T_MODIFY = 2;	///< 任务过程指令
+}
+
+enum SelfTestMode
+{
+  STATIC = 0;
+  DYNAMIC = 1;
+}

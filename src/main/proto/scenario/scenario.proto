@@ -1,0 +1,129 @@
+syntax = "proto3";
+
+package zb.dcts.scenario; 
+
+import "dcts.proto";
+import "source/source.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
+
+//场景Id
+message ScenarioId
+{
+    uint32 value = 1;
+}
+
+//任务Id
+message TaskId 
+{
+    uint32 value = 1;
+}
+
+message ScenarioTaskId
+{
+    ScenarioId scenario_id = 1;
+    TaskId task_id = 2;
+}
+
+//0-15 internal
+//16-31 spectrum monitoring
+//32-47 DF and position
+//48-80 signal analysis
+//81-100 replays
+enum TaskType
+{
+    SELF_TEST = 0;        
+    CAL1 = 1;                   //校准
+    CAL2 = 2;
+    EXAMPLE = 3;
+
+    PSCAN = 16;         //全景扫描
+    IF_SCAN = 17;                //中频扫描
+    PULSE_ANALYSIS = 18;	     //脉冲分析
+    PULSE_ANALYSIS_2 = 19;	     //脉冲分析2
+    OSCILLOSCOPE = 20;           //示波器
+    VECTOR_SIGNAL_ANALYSIS=21;   //矢量分析	
+    IQ_RECORDER = 22;            //IQ记盘
+    SIGNAL_GENERATOR = 23;       //信号产生
+
+    POSITION_TDOA = 32;          //tdoa定位
+    DIRECTION_FINDING_AOA = 33;
+    DIRECTION_FINDING_SPATIAL_SPECTRUM = 34;
+
+    DEMODULATE_ANALOG = 48;
+    CLASSIFY_MODULATE = 56;     //调制识别
+    CLASSIFY_ENCODE = 58;       //编码识别
+    CLASSIFY_COMM_SYS = 60;     //传输系统识别
+    DECODE_ADS_B = 70;
+    DECODE_ACARS = 71;
+    DECODE_AIS = 72;
+    IQ_ACQUIRE = 73;
+    DEMO_DETECT = 80;
+    REPLAY_PSCAN = 81;
+    REPLAY_DECODE_ADS_B = 90;
+    REPLAY_DECODE_ACARS = 91;
+    REPLAY_DECODE_AIS = 92;
+    REPLAY_IQ = 93;
+    REPLAY_TDOA = 94;
+    REPLAY_DEMODULATE_ANALOG = 95;
+}
+
+//任务状态
+enum TaskStatus 
+{
+    T_READY  = 0; //就绪
+    T_RUN    = 1; //运行
+    T_ABORT  = 2; //终止
+    T_FINISH = 3; //完成
+    T_PAUSED = 4; //挂起
+}
+
+//任务摘要
+message TaskSummary 
+{
+    TaskId id = 1;          //任务id
+    TaskType type = 2;      //任务类型
+    TaskStatus status = 4;  //状态
+    Timestamp start_time = 5;//起始时刻
+    repeated Topic topics = 6;  //任务正在发布的主题
+}
+  
+//场景信息
+message ScenarioInfo 
+{
+    ScenarioId id = 1;                          //场景id
+    repeated TaskSummary tasks = 6;             //场景正在运行的任务列表
+    source.SourceSetInfo using_sources = 7;            //数据源信息列表
+}
+
+//场景对命令的响应
+message ScenarioReply
+{
+    ScenarioTaskId responser = 1; //命令响应单元（某场景的某任务）
+    ErrorType error_code = 2;   //命令错误码
+}
+
+//所有场景的信息
+message ScenariosInfo
+{
+    repeated ScenarioInfo scenario_info = 1;
+}
+
+message SubscribeRequest
+{
+    ScenarioTaskId scenario_task = 1;
+    Topic topic = 2;
+}
+
+// 通用管理的API
+service GeneralService 
+{
+    rpc ListAllScenarios(google.protobuf.Empty) returns (ScenariosInfo) {}// 枚举所有场景
+    rpc ListAllSources(google.protobuf.Empty) returns (source.SourceSetInfo) {} //枚举所有设备
+    rpc GetScenarioInfo(ScenarioId) returns (ScenarioInfo) {}// 根据id获得场景信息             
+    rpc AbortOne(ScenarioId) returns (google.protobuf.Empty){}// 终止场景
+    rpc AbortAll(google.protobuf.Empty) returns(google.protobuf.Empty){} // 终止所有场景
+    rpc PauseTask(ScenarioTaskId) returns(ScenarioReply){}    //暂停场景任务
+    rpc ResumeTask(ScenarioTaskId)returns(ScenarioReply){}    //继续场景任务
+    rpc SubscribeScenarioMessage(SubscribeRequest) returns(stream google.protobuf.Any){}  //订阅场景发布的消息（以主题形式分组消息）
+}

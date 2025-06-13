@@ -1,0 +1,66 @@
+syntax = "proto3";
+package zb.dcts.scenario.MCP;
+import "dcts.proto";
+import "source/source.proto";
+import "scenario/scenario.proto";
+import "scenario/spectrum.proto";
+import "scenario/detection.proto";
+
+message PScanSource
+{
+    source.SourceId      id = 1;
+    int32         average_count = 3;                //FFT平均次数[0,128]
+    int32         attenuation_gain = 4;             //衰减增益[-30, 20]
+    int32         antenna = 5;                      //天线选择[0,1]
+    map<string, string> params = 6;                  //其它可选参数
+}
+
+message PScanParam
+{
+    spectrum.FrequencySpan freq_span = 1;                    //频率范围,单位Hz
+    double        rbw = 2;                          //分辨率,单位Hz
+    int32         result_interval = 3;              //监测结果回传间隔,单位ms，0代表每次扫描均上传
+    int32         expected_points = 5;              //希望显示的点数，0代表按原始点数上传，非零时应为偶数
+}
+
+//创建场景请求
+message CreateScenarioRequest 
+{
+    PScanSource pscan_source = 1;
+    PScanParam pscan_param = 2;
+    detection.DetectionParam detection_param = 3;
+    repeated source.SourceId FFP_sources = 4;   //引导窄带的资源申请
+}
+
+message Status //任务运行状态
+{
+    TimeSpan time_span = 1;         //任务已运行的时间段（由设备提供的时间）
+    uint32 total_sweep_count = 2;   //从任务开始的扫描次数计数
+}
+
+message Result
+{
+    spectrum.Header header = 1;
+    Status status = 2;                  //任务状态
+    spectrum.View panorama_view = 6;     //全景视角的数据
+    spectrum.View closeshot_view = 7;    //近景视角的数据
+}
+
+service MCPTrunkService
+{
+    rpc CreateScenario(CreateScenarioRequest) returns (ScenarioReply) {} //创建场景
+    rpc GetPScanResult(ScenarioTaskId) returns (stream Result) {} //获取全景扫描的结果
+    rpc CloseScenario(ScenarioId) returns(ScenarioReply){}          //关闭场景                                         
+    //-----zoomin/datahold/detection-----
+    rpc OpenZoomIn(spectrum.ZoomInRequest) returns (ScenarioReply) {} //选择一个近景观测范围,注意:不改变实际的扫描范围               
+    rpc CloseZoomIn(ScenarioTaskId) returns (ScenarioReply) {} //关闭近景观测                              
+    rpc OpenDataHold(spectrum.DataHoldRequest) returns (ScenarioReply) {} //开启数据保持               
+    rpc ResetDataHold(spectrum.DataHoldRequest)returns (ScenarioReply) {} //数据保持重置               
+    rpc CloseDataHold(spectrum.DataHoldRequest)returns (ScenarioReply) {} //关闭数据保持                
+    rpc OpenDetection(detection.DetectionRequest) returns (ScenarioReply) {} //开启信号检测                       
+    rpc CloseDetection(ScenarioTaskId)returns (ScenarioReply) {} //关闭信号检测
+    rpc QuerySignalTable(detection.SignalTableQueryRequest) returns (detection.SignalTableQueryResponse) {}      //查询信号列表
+    rpc ClearSignalTable(ScenarioTaskId)returns (ScenarioReply) {}
+    rpc SignalGathering(detection.SignalGatheringRequest) returns(ScenarioReply){}
+    rpc GetGatheringResult(ScenarioTaskId)returns(detection.SignalSampleList){}
+}

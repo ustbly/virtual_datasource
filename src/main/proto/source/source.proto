@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package zb.dcts.source; 
+
+import "dcts.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
+
+//数据源Id
+message SourceId
+{
+    uint32 value = 1;
+}
+
+//数据源类型
+enum SourceType
+{
+    SENSOR_3900 = 0;
+    FILE = 1;
+    VIRTUAL = 2;
+    KH_CZ_COMM = 3;
+    KH_CZ_RADAR = 4;
+    KH_CZ_JC = 5;
+    KH_WGH_COMM = 6;
+    KH_WGH_RADAR = 7;
+    CZC_SM = 8;
+    CZC_DF = 9;
+    CZC_QJ = 10;
+    RADAR_DF = 11;
+    DEMO = 12;
+    ZCZH = 13;
+    SIMULATOR_COMM = 14;           //通信模拟器
+}
+
+//数据源能力
+message SourceCapability
+{
+    enum Type
+    {
+        NONE = 0x0;
+        SPECTRUM_SCAN = 0x1;        //频谱扫描
+        IQ_STREAM = 0x2;            //IQ数据流
+        DIRECTION_FINDING = 0x4;    //测向
+        MULTI_CHANNEL = 0x8;        //多路数据
+    }
+    uint32 capability = 1;
+}
+
+//源状态
+enum SourceStatus
+{
+    S_OFFLINE = 0;      //离线
+    S_IDLE = 1;         //空闲
+    S_ENGAGED = 2;      //占用
+    S_ABNORMAL = 3;     //异常
+}
+
+//源信息
+message SourceInfo 
+{
+    SourceId source_id = 1;        //源id
+    SourceType type = 2;
+    SourceCapability capability = 3;
+    bool remote = 4;        //是否远程数据源
+    SourceStatus status = 6;
+    Position position = 7;  //源位置, wgs-84坐标系，弧度单位
+    Metrics metrics = 8;    //温度、电压等一些物理量
+    repeated Topic topics = 9;  //源正在发布的主题
+}
+
+message SourceSetInfo
+{
+    repeated SourceInfo source_info = 1;
+}
+
+message SubscribeRequest
+{
+    SourceId source_id = 1;
+    Topic topic = 2;
+}
+
+message SourceCommand
+{
+    SourceId source_id = 1;
+    Command command = 2;
+}
+
+message SourceCommandReply
+{
+    SourceId source_id = 1;
+    CommandReply reply = 2;
+}
+
+// 源控制的API
+service SourceControlService
+{
+    rpc ListAllSources(google.protobuf.Empty) returns (SourceSetInfo) {} //枚举所有设备
+    rpc SendSourceCommand(SourceCommand) returns (SourceCommandReply) {} //
+    rpc SubscribeSourceMessage(SubscribeRequest) returns(stream google.protobuf.Any){}  //订阅数据源发布的消息（以主题形式分组消息）
+}

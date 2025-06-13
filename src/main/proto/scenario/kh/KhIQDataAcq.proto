@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package zb.dcts.scenario.kh.commIqData;
+
+import "dcts.proto";
+import "source/source.proto";
+import "source/kh/KhContext.proto";
+import "scenario/spectrum.proto";
+
+message CommIQAcqSource
+{
+    source.SourceId      id = 1;
+    map<string, string> params = 6;                  //其它可选参数
+}
+
+//IQ扫描的单频点参数
+message CommIQAcquireParam
+{
+    spectrum.SignalBand signal_band = 1;            //中心频率、带宽,单位Hz
+    source.kh.DetectMode detect_mode = 2;           //检波模式
+    source.kh.ChannelMode channel_mode = 3;         //通道模式
+    double attenuation_gain = 4;                    //衰减增益[0, 50]，按1递增
+    int32 antenna = 5;                              //天线选择[0,1]
+    source.kh.LevelTriggerParam level_trigger = 6;  //幅度触发
+    int32 acquire_samples = 7;                      //采集的点数, 0 实时IQ >0 非实时IQ
+    double scale_to_voltage = 8;                    //电压转换系数，暂时不用
+    source.kh.WindowParams  win_params = 9;         //窗口参数
+    map<string, string> others = 10;                //根据功能自定义其他参数
+}
+
+//IQ数据
+message CommIQData
+{
+	repeated float data_i = 1;             //I路数据
+	repeated float data_q = 2;             //Q路数据
+} 
+
+//设备产生的原始数据。
+message CommIQAcqResult
+{
+    message IQHeader
+    {
+        source.SourceId result_from = 1;    //结果来源
+        uint64		sequence_number = 2;    //顺序号
+        spectrum.SignalBand signal_band = 5;//中心频率、带宽,单位Hz
+        Timestamp   time_stamp = 6;         //时间戳
+        Position    position = 7;           //采集时所处的位置
+        double      qtz = 8;				//量化幅度校准值
+        double      spanIF = 9;			    //带宽幅度校准值
+    }
+	IQHeader header = 1;
+	CommIQData body = 2;
+    repeated float spectrum_views = 3;    //分析带宽内的频谱
+    double sample_rate = 4;              //IQ采样率
+}
+
+enum ChangeRequestType
+{
+    ANALOGDEMOD_CHANNEL = 0;    //模拟解调通道参数修改
+}

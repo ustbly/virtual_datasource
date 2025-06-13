@@ -1,9 +1,7 @@
 package view;
 
-import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
-import proto_compile.cetc41.nodecontrol.SeqGene;
-import proto_compile.cetc41.nodecontrol.SourceControlServiceApi;
 import service.SourceControlService;
+import zb.dcts.source.Source;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -48,7 +46,7 @@ public class DeviceViewAndControl extends JFrame {
     }
 
     private void fetchDeviceList() {
-        List<SourceControlServiceApi.SourceInfo> deviceInfo = SourceControlService.getDeviceInfo();
+        List<Source.SourceInfo> deviceInfo = SourceControlService.getDeviceInfo();
         tableModel.setDeviceData(deviceInfo);
     }
 
@@ -64,7 +62,7 @@ public class DeviceViewAndControl extends JFrame {
         private final String[] columns = {"设备ID", "设备类型", "状态", "位置", "指标", "操作"};
         private Object[][] data = new Object[0][columns.length];
 
-        public void setDeviceData(List<SourceControlServiceApi.SourceInfo> sourceList) {
+        public void setDeviceData(List<Source.SourceInfo> sourceList) {
             data = sourceList.stream()
                     .map(d -> {
                         String positionStr = (d.hasPosition())
@@ -77,7 +75,7 @@ public class DeviceViewAndControl extends JFrame {
                         String metricsStr = (d.hasMetrics())
                                 ? d.getMetrics().getIndicesMap().entrySet().stream()
                                 .map(entry -> {
-                                    DCTSServiceApi.Physical p = entry.getValue();
+                                    zb.dcts.Dcts.Physical p = entry.getValue();
                                     return String.format("类型: %s, 值: %.2f, 单位: %s",
                                             p.getType(), p.getValue(), p.getUnit());
                                 })
@@ -158,8 +156,8 @@ public class DeviceViewAndControl extends JFrame {
 
             onBtn.addActionListener(e -> {
                 if (currentDeviceId != null) {
-                    SourceControlService.sendSourceCommand(Integer.parseInt(currentDeviceId),
-                            SeqGene.CmdType.STARTUP.getNumber(), 1L);
+//                    SourceControlService.sendSourceCommand(Integer.parseInt(currentDeviceId),
+//                            zb.dcts.source.seqGene.CmdType.STARTUP.getNumber(), 1L);
                     JOptionPane.showMessageDialog(null, "已发送开机指令给设备 " + currentDeviceId);
 
                     Timer t = new Timer(800, event -> {
@@ -173,8 +171,8 @@ public class DeviceViewAndControl extends JFrame {
 
             offBtn.addActionListener(e -> {
                 if (currentDeviceId != null) {
-                    SourceControlService.sendSourceCommand(Integer.parseInt(currentDeviceId),
-                            SeqGene.CmdType.SHUTDOWN.getNumber(), 1L);
+//                    SourceControlService.sendSourceCommand(Integer.parseInt(currentDeviceId),
+//                            zb.dcts.source.seqGene.CmdType.SHUTDOWN.getNumber(), 1L);
                     JOptionPane.showMessageDialog(null, "已发送关机指令给设备 " + currentDeviceId);
 
                     Timer t = new Timer(800, event -> {

@@ -1,0 +1,30 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.commDirection;
+
+import "source/source.proto";
+import "scenario/scenario.proto";
+import "scenario/spectrum.proto";
+import "scenario/kh/KhCommDirectionAcq.proto";
+
+//创建场景请求
+message CommScanDirectionCreateScenarioRequest 
+{
+    CommDirectionAcqSource source_param = 1;
+    CommDirectionAcqParam acq_param = 2;       //SCAN、SEARCH、MULTIPLE(离散)
+    repeated source.SourceId FFP_sources = 4;   //引导窄带的资源申请
+}
+
+service CommScanDirectionService
+{
+    rpc CreateScenario(CommScanDirectionCreateScenarioRequest) returns (ScenarioReply) {} //创建场景
+    rpc GetScanResult(ScenarioTaskId) returns (stream CommDirectionResult) {}         //获取扫描的结果
+    rpc CloseScenario(ScenarioId) returns(ScenarioReply){}              //关闭场景 
+    rpc Change(DirectionChangeRequest) returns (ScenarioReply) {}       //修改参数
+
+    //-----zoomin/datahold/detection-----
+    rpc OpenZoomIn(spectrum.ZoomInRequest) returns (ScenarioReply) {} //选择一个近景观测范围,注意:不改变实际的扫描范围               
+    rpc CloseZoomIn(ScenarioTaskId) returns (ScenarioReply) {} //关闭近景观测                              
+    rpc OpenDataHold(spectrum.DataHoldRequest) returns (ScenarioReply) {} //开启数据保持               
+    rpc ResetDataHold(spectrum.DataHoldRequest)returns (ScenarioReply) {} //数据保持重置               
+    rpc CloseDataHold(spectrum.DataHoldRequest)returns (ScenarioReply) {} //关闭数据保持                
+}

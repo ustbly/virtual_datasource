@@ -1,0 +1,65 @@
+syntax = "proto3";
+package zb.dcts.scenario.automatic;
+import "scenario/MCP/trunk.proto";
+import "scenario/DF.proto";
+import "scenario/scenario.proto";
+import "scenario/detection.proto";
+import "source/source.proto";
+
+message WorkTiming
+{
+    int32 duration_in_msec = 1;       //每次执行的时长
+	int32 execute_times = 2;  //执行次数
+}
+
+message AutoWork
+{
+    enum Mode
+    {
+        NO_OP = 0;      //no operation 啥也不干
+        MCP_PSCAN = 1;
+        MCP_DF = 2;
+        PUB_SIG_TABLE = 3;  //发布信号列表到远端消息总线
+    }
+    Mode mode = 1;
+    source.SourceId executor = 2;
+	WorkTiming timing = 3;
+}
+
+//目前仅实现简单的自动工作执行
+//即单线，轮转执行，无并行执行的工作
+message AutoWorkChain
+{
+    repeated AutoWork works = 1;
+}
+
+//创建各类自动执行场景的请求
+message CreateAutoMCPRequest
+{
+    MCP.CreateScenarioRequest mcp_param = 1;
+    AutoWorkChain auto_work_chain = 2;
+}
+
+//向自动MCP场景可以发送的干预命令
+//1. 测向
+message InsertDFCommandParam
+{
+    DF.DirectionFindingSignals targets = 1;
+    WorkTiming timing = 2;
+}
+
+//2. 调整扫描范围
+message ChangeSweepCommandParam
+{
+    MCP.PScanParam pscan_param = 1;
+    detection.DetectionParam detection_param = 2;
+}
+
+//3. 观察原始测量数据开启或关闭
+//   不带参数
+
+service AutoScenarioService
+{
+    rpc CreateAutoMCPScenario(CreateAutoMCPRequest) returns (ScenarioReply) {} //创建场景
+    rpc CloseAutoScenario(ScenarioId) returns(ScenarioReply){}          //关闭自动场景        
+}

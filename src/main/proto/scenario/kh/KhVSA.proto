@@ -1,0 +1,78 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.commVSA;
+
+import "dcts.proto";
+import "source/source.proto";
+import "scenario/scenario.proto";
+import "scenario/kh/KhIQDataAcq.proto";
+import "scenario/FFP/VSA.proto";
+
+//任务请求
+message CommVSATaskRequest 
+{
+    ScenarioId scenario = 1;
+    commIqData.CommIQAcqSource source_param = 2;
+    commIqData.CommIQAcquireParam acq_param = 3;  //采集参数
+    scenario.FFP.VSAParam vas_param = 4;
+}
+
+enum RecognizeResult
+{
+    RR_INCALID = 0;
+    RR_DMR = 1;
+    RR_DPMR = 2;
+    RR_TETRA = 4;
+}
+
+//识别状态
+message RecognizeState
+{
+    int32 symbol_num = 1;           //码元总数
+    int32 matched_num = 2;          //匹配成功总数
+    int32 cur_symbol_num = 3;       //当前长度码元数量
+    int32 cur_matched_num = 4;      //当前长度匹配成功数量
+}
+
+message Recognize
+{
+    RecognizeState state = 1;
+    RecognizeResult result = 2;
+}
+
+//音频结果
+message AudioBlock
+{
+  repeated int32 pcm_bitstream = 1;     
+}
+
+//解码结果
+message DecodeResult
+{
+    string state_info = 1;  //状态信息，json
+    string decode_info = 2; //解码信息，json
+    repeated AudioBlock blocks = 3;     //音频码流
+}
+
+message CommVSAResult
+{
+	message Header
+    {
+        source.SourceId result_from = 1;    //数据来源
+        uint32 sequence_number = 2;         //顺序号，每个任务执行者维护自身的顺序号
+        TimeSpan time_span = 3;             //当前上报周期内的首段和末端采集时刻（由设备提供的时间）
+        Position device_position = 4;       //设备位置
+    }
+	Header header = 1;
+	scenario.FFP.IQData demod_result = 2; //解调得到的IQ数据
+	bytes  symbols = 3;                     //码元
+    Recognize recognize = 4;
+    DecodeResult decode = 5;                //解码信息
+	//DigitalModulateError digital_demod_error = 4;  //调制误差计算结果
+}
+
+service VSAService
+{
+    rpc StartTask(CommVSATaskRequest) returns (ScenarioReply){}
+    rpc GetResult(ScenarioTaskId) returns (stream CommVSAResult) {}          //获取实时任务结果
+    rpc StopTask(ScenarioTaskId) returns (ScenarioReply) {}
+}

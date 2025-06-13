@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package zb.dcts.source.seqGene; 
+
+//these proto messages are defined for demonstration purpose
+
+enum CmdType
+{
+  RESERVED = 0;
+  PAUSE = 1;
+  RESUME = 2;
+  RESTART_AT = 3;
+  RESET_LENGTH = 4;
+}
+
+message Result
+{
+    repeated int32 num_seq = 1;
+}

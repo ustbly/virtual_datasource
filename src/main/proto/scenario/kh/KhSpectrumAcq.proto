@@ -1,0 +1,63 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.commSpectrum;
+
+import "source/source.proto";
+import "source/kh/KhContext.proto";
+import "scenario/spectrum.proto";
+
+message SpectrumAcqSource
+{
+    source.SourceId id = 1;
+    map<string, string> params = 6; //其它可选参数，例如文件路径或网络地址等
+}
+
+enum RunMode
+{
+    REALTIME = 0;		//实时模式，无间隔传输数据，带宽可选，分辨率联动，点数有上限。
+    SWEEP = 1;			//全景扫频模式，大带宽，本振移动，点数带宽无限制。
+    SEAMLESS = 2;       //无缝频谱（跳频）。
+    HSCAN = 3;          //硬件全景扫频模式，由硬件完成扫频过程，并检波。(桂林项目和空工大三期项目全景使用这种方式)
+    SEARCH = 4;         //频段扫描模式。
+    DISCRETE = 5;       //离散扫描模式。给出频点列表。
+}
+
+message FequecyPoints
+{
+    repeated double freq_points = 1;//频点列表。单位Hz。
+}
+
+//采集参数
+message SpectrumAcqParam 
+{
+    RunMode       mode = 1;                         //频谱模式。
+    oneof frequency
+    {
+        spectrum.FrequencySpan freq_span = 2;       //频率范围,单位Hz。实时模式、无缝频谱、硬件全景扫频、频段扫描、离散扫描
+        FequecyPoints freq_points = 3;              //频点列表。离散扫描模式
+    }
+    double        rbw = 4;                          //分辨率,单位Hz
+    source.kh.DetectMode    detect_mode = 5;        //轨迹检波模式       
+    source.kh.ChannelMode   channel_mode = 6;       //通道模式
+    double        attenuation_gain = 7;             //衰减增益[0, 50]，按1递增
+    source.kh.WindowParams  win_params = 8;         //窗口参数
+    double        rf_limit = 9;                     //射频直采最大频率值，单位Hz，1000000~30000000，暂时不用，请固定为30000000
+    double        search_step = 10;                 //频段扫描模式时中心频率的步进值（单位：Hz）
+    int32         residence_time = 11;              //频段扫描、离散扫描模式时每个频点的驻留时间ms。目前固定为5000ms
+    int32         sample_interval = 12;             //设备采样间隔
+    int32         result_interval = 13;             //监测结果回传间隔,单位ms，0代表每次扫描均上传
+    int32         expected_points = 15;             //希望显示的点数，0代表按原始点数上传，非零时应为偶数。对HSCAN，范围为100~8000
+    int32         average_count = 16;               //平均次数[0,128] 
+    int32         antenna = 17;                     //天线选择[0,1]，暂时不用
+    source.kh.AntennaControlMode antenna_mode = 18; //天线模式，只支持： 2 一级放大 3 二级放大
+    source.kh.FFTDetectMode fft_detect_mode = 19;   //FFT检波模式.HSCAN模式使用
+    map<string, string> others = 20;                //根据功能自定义其他参数
+}
+
+//设备产生的原始数据
+message SpectrumAcqResult
+{
+    spectrum.Header header = 1;
+    spectrum.SegmentHeader seg_header = 4;
+    spectrum.FrequencyBand band = 5;     //频段划分
+    repeated float spectrum_view = 6;     //频谱数据
+}

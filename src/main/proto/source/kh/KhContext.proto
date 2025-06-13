@@ -1,0 +1,243 @@
+syntax = "proto3";
+package zb.dcts.source.kh;
+
+import "dcts.proto";
+import "source/source.proto";
+
+enum SourceControlCmd
+{
+  SELT_TEST_STATIC = 0;
+  SELT_TEST_DYNAMIC = 1;
+}
+
+//轨迹检波模式
+enum DetectMode	
+{
+  MAXHOLD = 0;
+  MINHOLD = 1;
+  CURRENT = 2;
+  AVERAGE = 3;
+}
+
+//FFT检波模式
+enum FFTDetectMode	
+{
+  POSITIVE = 0;
+  NEGATIVE = 1;
+  SAMPLED = 2;
+  AVERAGEF = 3;
+}
+
+//通道模式
+enum ChannelMode  
+{
+  NORMAL = 0;			           
+  LOWNOISE = 1;			        
+  LOWDISTORT = 2;
+}
+
+enum WindowType 
+{
+  HANNING = 0;     //汉宁窗
+  HAMMING = 1;     //海明窗
+  RECTWIN = 2;     //矩形窗
+  FLATTOP = 3;     //平顶窗
+  GAUSS = 4;       //高斯窗
+  BLACKHARRIS = 5; //Blackman-Harris
+}
+
+//静态自检状态结果
+message StaticSelfTestResult
+{
+  SourceId source_id = 1;
+  string status = 2; //自检结果，json编码格式
+}
+
+message WindowParams 
+{
+  WindowType type = 1;
+  double param = 2;    //窗口参数，目前高斯窗需要设置alpha值
+}
+
+//天线控制方式
+enum AntennaControlMode
+{
+    ANT_INVALID = 0;
+    ANT_THROUGH = 1;        // 直通
+    ANT_1_AMPLIFY = 2;      // 一级放大
+    ANT_2_AMPLIFY = 3;      // 二级放大
+    ANT_1_2_AMPLIFY = 4;    // 一级+二级放大
+}
+
+enum GainControlMode
+{
+  AGC = 0;  //自动增益
+  MGC = 1;  //手动增益
+}
+
+message GainControlParam
+{
+  float hold_time = 1;  //检波功率下降时的AGC保持时间,秒 0~10s
+  float inc = 2;        //AGC步进 dbm 可设1-3dbm
+}
+
+enum ThresholdMode
+{
+  AUTO = 0; //自动门限
+  MANUAL = 1;
+}
+
+enum DataType
+{
+    cplx_16 = 0;
+    cplx_32 = 1;
+}
+
+message OperationStatus //任务运行状态
+{
+    TimeSpan time_span = 1;         //任务已运行的时间段（由设备提供的时间）
+    uint64 total_sweep_count = 2;   //从任务开始的扫描次数计数
+    uint64 record_count = 3;        //已保存的数据记录个数
+}
+
+//目标方位
+message TargetDirection 
+{
+	double center_frequency = 1;  //频率
+	double direction = 2;	        //目标方向（单位：°）
+	int32	 confidence = 3;	      //置信度
+	float	 amplitude = 4;	        //幅度（单位：dBm）
+  Timestamp time_stamp = 5;     //测向时间戳
+  double pitch_angle = 6;       //俯仰角
+}
+
+//脉冲样本 
+message PulseSample
+{
+	double carrier_freq = 1;   //载频
+	float pulse_width = 2;    //脉宽
+	float repeat_period = 3;  //重复周期
+  uint32 repeat_period_type = 4;//重周类型
+  uint32 freq_type = 5;         //频率类型
+  uint32 pw_type = 6;           //脉宽类型
+}
+
+//脉冲簇
+message PulseCluster
+{
+  float freq = 1;                          //频率
+  float bw = 2;                           //带宽
+  uint32 type = 3;                         //目标调制格式
+	StatisticVal ampt = 4;                   //统计参数
+  repeated PulseSample pulse_samples = 5;  //脉冲样本
+  TimeSpan time_span = 6;                   // 开始和结束时间
+}
+
+//数据源
+message DataSource 
+{
+  uint32 task_id = 1;           //任务Id
+  SourceId source_id = 2;       //节点Id、设备Id
+  Position position = 3;        //设备位置
+}
+
+//定位数据源
+message PositionDataSource
+{
+  uint32 task_id = 1;                  //侦查任务Id
+  repeated SourceId task_runner = 2;   //节点、设备
+}
+
+//在线测向任务参数
+message OnLinePositionParam
+{
+  PositionDataSource data_source = 1;
+}
+
+//历史测向任务参数，因只有一台设备，故每次定位都需要至少一条历史测向任务
+message OffLinePositionParam
+{
+  repeated PositionDataSource data_source = 1;
+}
+
+//定位任务请求
+message StartPositionRequest
+{
+  OnLinePositionParam online_param = 1;
+  OffLinePositionParam offline_param = 2;
+  string task_describe = 3;  //定位任务描述
+  double pos_freq = 4;       //定位频率 (单位：Hz)
+}
+
+
+//目标速度
+message TargetSpeed
+{
+  double ln_speed = 1;
+  double lt_speed = 2;
+  double alt_speed = 3;
+}
+
+//定位目标描述
+message PositionTargetDescriptor 
+{
+  uint32 target_id = 1;                //目标编号
+  Position target_position = 2;  	     //目标位置
+  TargetSpeed target_speed = 3;        //目标速度
+  double confidence_interval = 4;      //置信区间
+  Timestamp time = 5;                  //定位时间
+	repeated DataSource data_source = 7; //数据源
+}
+
+//时间触发参数
+message TimeTriggerParam
+{
+    //触发类型
+    enum TriggerType
+    {
+        NONE = 0;
+        ABS_TIME = 0x2; //绝对时间
+        REL_TIME = 0x4; //相对时间
+    }
+    TriggerType     trigger_type = 1;   //触发类型
+    Timestamp       trigger_time = 2;   //触发时刻
+    uint32		    sweep_interval = 3;     //扫描间隔,单位ms 大于500ms
+    uint32		    segment_interval = 4;   //频点间隔,单位ms 大于100ms
+}
+
+//频率触发参数
+message FreqTriggerParam
+{
+    //触发类型
+    enum TriggerType
+    {
+        NONE = 0;
+        FREQ = 0x8;    //频率触发
+    }
+    TriggerType     trigger_type = 1;   //触发类型
+    float           trigger_value = 2;  //触发频率，Hz
+}
+
+//幅度触发参数
+message LevelTriggerParam
+{
+    //触发类型
+    enum TriggerType
+    {
+        NONE = 0;
+        LEVEL = 0x8;    //幅度触发
+        RISING = 0x10;  //上升沿触发
+        FALLING = 0x18; //下降沿触发
+    }
+    TriggerType     trigger_type = 1;   //触发类型
+    float           trigger_value = 2;  //触发电平dBm(或升降幅度dB)
+}
+
+// 数据链类型
+enum LinkType  
+{
+  UNKNOWN = 0;			           
+  LINK11 = 1;			        
+  LINK16 = 2;
+  LINK4A = 3;
+}

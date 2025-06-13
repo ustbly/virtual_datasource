@@ -1,0 +1,21 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.CommSystemIdentify;
+
+import "scenario/scenario.proto";
+import "scenario/kh/KhIQDataAcq.proto";
+import "scenario/FFP/comSystemIdentify.proto";
+
+//任务请求
+message CommSystemIdentifyTaskRequest 
+{
+    ScenarioId scenario = 1;
+    commIqData.CommIQAcqSource source_param = 2;
+    commIqData.CommIQAcquireParam acq_param = 3;  //采集参数
+}
+
+service CommSystemIdentifyService
+{
+    rpc StartTask(CommSystemIdentifyTaskRequest) returns (ScenarioReply){}
+    rpc GetResult(ScenarioTaskId) returns (scenario.FFP.ComSystemIdentifyResult) {}
+    rpc StopTask(ScenarioTaskId) returns (ScenarioReply) {}
+}

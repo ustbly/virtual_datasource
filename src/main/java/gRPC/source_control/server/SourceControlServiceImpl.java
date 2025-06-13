@@ -9,10 +9,9 @@ import com.google.protobuf.StringValue;
 import io.grpc.Context;
 import io.grpc.stub.StreamObserver;
 import org.zeromq.ZMQ;
-import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
-import proto_compile.cetc41.nodecontrol.SourceControlServiceApi;
-import proto_compile.cetc41.nodecontrol.SourceControlServiceGrpc;
 import service.SourceControlService;
+import zb.dcts.Dcts;
+import zb.dcts.source.Source;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +27,7 @@ import java.util.concurrent.Executors;
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
-public class SourceControlServiceImpl extends SourceControlServiceGrpc.SourceControlServiceImplBase {
+public class SourceControlServiceImpl extends zb.dcts.source.SourceControlServiceGrpc.SourceControlServiceImplBase {
     static class SubscriberInfo {
         int sourceId;
         StreamObserver<Any> observer;
@@ -48,7 +47,7 @@ public class SourceControlServiceImpl extends SourceControlServiceGrpc.SourceCon
     }
 
     @Override
-    public void subscribeSourceMessage(SourceControlServiceApi.SubscribeRequest request, StreamObserver<Any> responseObserver) {
+    public void subscribeSourceMessage(Source.SubscribeRequest request, StreamObserver<Any> responseObserver) {
         String topicKey = request.getTopic().getKey(); // e.g. "signal_list"
         int deviceId = request.getSourceId().getValue(); // e.g. 1、2、3
 
@@ -108,13 +107,13 @@ public class SourceControlServiceImpl extends SourceControlServiceGrpc.SourceCon
      */
 
     @Override
-    public void listAllSources(Empty request, StreamObserver<SourceControlServiceApi.SourceSetInfo> responseObserver) {
-        List<SourceControlServiceApi.SourceInfo> deviceInfo = SourceControlService.getDeviceInfo();
+    public void listAllSources(Empty request, StreamObserver<Source.SourceSetInfo> responseObserver) {
+        List<Source.SourceInfo> deviceInfo = SourceControlService.getDeviceInfo();
 //        System.out.println(deviceInfo);
 
         // 构建 deviceInfo
         // 返回响应
-        SourceControlServiceApi.SourceSetInfo response = SourceControlServiceApi.SourceSetInfo.newBuilder()
+        Source.SourceSetInfo response = Source.SourceSetInfo.newBuilder()
                 .addAllSourceInfo(deviceInfo)
                 .build();
         responseObserver.onNext(response);
@@ -130,24 +129,24 @@ public class SourceControlServiceImpl extends SourceControlServiceGrpc.SourceCon
      * @param responseObserver
      */
     @Override
-    public void sendSourceCommand(SourceControlServiceApi.SourceCommand request, StreamObserver<SourceControlServiceApi.SourceCommandReply> responseObserver) {
+    public void sendSourceCommand(Source.SourceCommand request, StreamObserver<Source.SourceCommandReply> responseObserver) {
         // 获取客户端请求参数
         int sourceId = request.getSourceId().getValue();
 
-        DCTSServiceApi.Command command = request.getCommand();
+        Dcts.Command command = request.getCommand();
         int commandFunction = command.getCommandFunction();
         long commandParam = 0;
         try {
-            commandParam = command.getCommandParam().unpack(DCTSServiceApi.Integer.class).getValue();
+            commandParam = command.getCommandParam().unpack(Dcts.Integer.class).getValue();
         } catch (InvalidProtocolBufferException e) {
             e.printStackTrace();
         }
 
         System.out.println("接收到的客户端的参数为：sourceId: " + sourceId + ", command_function: " + commandFunction + " ,command_param: " + commandParam);
 
-        DCTSServiceApi.CommandReply commandReply = SourceControlService.sendSourceCommand(sourceId, commandFunction, commandParam);
+        Dcts.CommandReply commandReply = SourceControlService.sendSourceCommand(sourceId, commandFunction, commandParam);
         // 模拟执行命令
-        SourceControlServiceApi.SourceCommandReply response = SourceControlServiceApi.SourceCommandReply.newBuilder()
+        Source.SourceCommandReply response = Source.SourceCommandReply.newBuilder()
                 .setSourceId(request.getSourceId())
                 .setReply(commandReply)
                 .build();

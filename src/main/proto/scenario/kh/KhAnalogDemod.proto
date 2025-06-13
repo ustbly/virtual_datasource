@@ -1,0 +1,80 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.commAnalogDemod;
+
+import "scenario/scenario.proto";
+import "scenario/spectrum.proto";
+import "scenario/kh/KhIQDataAcq.proto";
+
+//解调类型
+enum DemodType 
+{
+  NONE = 0;     	
+  AM   = 1;	 
+  FM   = 2; 
+  CW   = 3; //连续波
+  LSB  = 4; //下边带
+  USB  = 5; //上边带
+  PULSE = 6;//脉冲
+  ISB  = 7; //独立边带
+  PM = 8;
+  IQ = 9;
+}
+
+//解调信道
+message DemodChannel 
+{
+  string                id = 1;                     //信道id
+  spectrum.SignalBand   signal_band = 2;            //信道的中心频率带宽
+  double                audio_sample_rate = 3;      //音频流速率
+  double                bfo = 5;                    //CW解调拍频值，仅CW模式时起作用
+  DemodType             demod_type = 6;             //解调类型
+}
+
+//任务请求
+message CommDemodTaskRequest 
+{
+    ScenarioId scenario = 1;
+    commIqData.CommIQAcqSource source_param = 2;
+    //在服务端程序中，需要根据解调信道参数设置others参数，包括：
+    //解调中心频率：cent_freq 
+    //解调带宽：width 
+    commIqData.CommIQAcquireParam acq_param = 3;  
+    DemodChannel channel = 4;                 //解调信道参数
+}
+
+//音频结果
+message AudioBlock
+{
+  repeated int32 pcm_bitstream = 3;      //音频PCM码流, 16位单声道audio_sr速率，2个样点拼接成一个int32
+}
+
+message ChannelAudio
+{
+    string id = 1;                      //信道id
+    repeated AudioBlock blocks = 2;       //音频码流
+}
+
+//解调结果
+message CommDemodResult
+{
+  spectrum.Header header = 1;                   //结果头
+  ChannelAudio channel_audio = 2;               //音频结果
+  spectrum.View spectrum_views = 3;    //分析带宽内的频谱
+}
+
+//改变解调信道的请求
+message ChangeChannelRequest 
+{
+  ScenarioTaskId responser = 1;
+  commIqData.ChangeRequestType type = 2;
+  DemodChannel channel = 3;         //要解调的信道
+}
+
+//模拟解调API
+service AnalogDemodService 
+{
+  rpc StartTask(CommDemodTaskRequest) returns (ScenarioReply) {}                          //启动任务
+  rpc GetResult(ScenarioTaskId) returns (stream CommDemodResult) {}                   //获取任务结果
+  rpc ChangeChannel(ChangeChannelRequest) returns (ScenarioReply) {}                  //改变解调信道  
+  rpc StopTask(ScenarioTaskId) returns (ScenarioReply) {}
+}

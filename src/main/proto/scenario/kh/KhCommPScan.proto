@@ -1,0 +1,45 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.commSpectrum;
+
+import "source/source.proto";
+import "source/kh/KhContext.proto";
+import "scenario/scenario.proto";
+import "scenario/spectrum.proto";
+import "scenario/detection.proto";
+import "scenario/kh/KhSpectrumAcq.proto";
+
+//创建场景请求
+message CommPScanCreateScenarioRequest 
+{
+    SpectrumAcqSource source_param = 1;
+    SpectrumAcqParam acq_param = 2;
+    detection.DetectionParam detection_param = 3;
+    repeated source.SourceId FFP_sources = 4;   //引导窄带的资源申请
+}
+
+message CommPScanResult
+{
+    spectrum.Header header = 1;
+    source.kh.OperationStatus status = 2;//任务状态
+    spectrum.View panorama_view = 6;     //全景视角的数据
+    spectrum.View closeshot_view = 7;    //近景视角的数据
+}
+
+service CommPScanService
+{
+    rpc CreateScenario(CommPScanCreateScenarioRequest) returns (ScenarioReply) {} //创建场景
+    rpc GetPScanResult(ScenarioTaskId) returns (stream CommPScanResult) {}                //获取全景扫描的结果
+    rpc CloseScenario(ScenarioId) returns(ScenarioReply){}          //关闭场景                                         
+    //-----zoomin/datahold/detection-----
+    rpc OpenZoomIn(spectrum.ZoomInRequest) returns (ScenarioReply) {} //选择一个近景观测范围,注意:不改变实际的扫描范围               
+    rpc CloseZoomIn(ScenarioTaskId) returns (ScenarioReply) {} //关闭近景观测                              
+    rpc OpenDataHold(spectrum.DataHoldRequest) returns (ScenarioReply) {} //开启数据保持               
+    rpc ResetDataHold(spectrum.DataHoldRequest)returns (ScenarioReply) {} //数据保持重置               
+    rpc CloseDataHold(spectrum.DataHoldRequest)returns (ScenarioReply) {} //关闭数据保持                
+    rpc OpenDetection(detection.DetectionRequest) returns (ScenarioReply) {} //开启信号检测                       
+    rpc CloseDetection(ScenarioTaskId)returns (ScenarioReply) {} //关闭信号检测
+    rpc QuerySignalTable(detection.SignalTableQueryRequest) returns (detection.SignalTableQueryResponse) {}      //查询信号列表
+    rpc ClearSignalTable(ScenarioTaskId)returns (ScenarioReply) {}
+    rpc SignalGathering(detection.SignalGatheringRequest) returns(ScenarioReply){}
+    rpc GetGatheringResult(ScenarioTaskId)returns(detection.SignalSampleList){}
+}

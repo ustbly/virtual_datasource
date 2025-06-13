@@ -11,10 +11,10 @@ import datasource.DataSource;
 import datasource.InfoSystem;
 import datasource.ReconStation;
 import datasource.Sensor;
-import proto_compile.cetc41.nodecontrol.DCTSServiceApi;
-import proto_compile.cetc41.nodecontrol.SourceControlServiceApi;
 import redis.clients.jedis.Jedis;
 import utils.RedisClient;
+import zb.dcts.Dcts;
+import zb.dcts.source.Source;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,8 +38,8 @@ public class SourceControlService {
      * @param filePath
      * @return
      */
-    public static List<SourceControlServiceApi.SourceInfo> readDevicesFromJson(String filePath) {
-        List<SourceControlServiceApi.SourceInfo> sourceInfoList = new ArrayList<>();
+    public static List<Source.SourceInfo> readDevicesFromJson(String filePath) {
+        List<Source.SourceInfo> sourceInfoList = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
@@ -50,10 +50,10 @@ public class SourceControlService {
                 for (JsonNode device : devicesArray) {
                     // 确保 JSON 格式正确
                     String jsonString = objectMapper.writeValueAsString(device);
-//                    System.out.println(device);
+                    // System.out.println(device);
 
                     // 解析 JSON 为 Protobuf
-                    SourceControlServiceApi.SourceInfo.Builder deviceBuilder = SourceControlServiceApi.SourceInfo.newBuilder();
+                    Source.SourceInfo.Builder deviceBuilder = Source.SourceInfo.newBuilder();
                     JsonFormat.parser().ignoringUnknownFields().merge(jsonString, deviceBuilder);
 
                     sourceInfoList.add(deviceBuilder.build());
@@ -80,7 +80,7 @@ public class SourceControlService {
             for (String deviceKey : deviceKeys) {
                 try {
                     String deviceData = jedis.get(deviceKey);
-//                    System.out.println(deviceData);
+                    // System.out.println(deviceData);
                     if (deviceData == null) continue;
 
 
@@ -130,23 +130,23 @@ public class SourceControlService {
      *
      * @return
      */
-    public static List<SourceControlServiceApi.SourceInfo> getDeviceInfo() {
+    public static List<Source.SourceInfo> getDeviceInfo() {
         List<DataSource> dataSourceList = getDeviceInfoFromRedis();
-        List<SourceControlServiceApi.SourceInfo> deviceInfoList = new ArrayList<>();
+        List<Source.SourceInfo> deviceInfoList = new ArrayList<>();
 
         for (DataSource device : dataSourceList) {
-            SourceControlServiceApi.SourceId sourceId = SourceControlServiceApi.SourceId.newBuilder()
+            Source.SourceId sourceId = Source.SourceId.newBuilder()
                     .setValue(device.getSource_id())
                     .build();
 
 
-            SourceControlServiceApi.SourceInfo.Builder deviceBuilder = SourceControlServiceApi.SourceInfo.newBuilder()
+            Source.SourceInfo.Builder deviceBuilder = Source.SourceInfo.newBuilder()
                     .setSourceId(sourceId)
-                    .setType(SourceControlServiceApi.SourceType.valueOf(device.getType().name()))
-                    .setStatus(SourceControlServiceApi.SourceStatus.valueOf(device.getStatus().name()));
+                    .setType(Source.SourceType.valueOf(device.getType().name()))
+                    .setStatus(Source.SourceStatus.valueOf(device.getStatus().name()));
 
             if (device.getPosition() != null) {
-                DCTSServiceApi.Position position = DCTSServiceApi.Position.newBuilder()
+                Dcts.Position position = Dcts.Position.newBuilder()
                         .setLatitude(device.getPosition().getLatitude())
                         .setLongitude(device.getPosition().getLongitude())
                         .setAltitude(device.getPosition().getAltitude())
@@ -156,14 +156,14 @@ public class SourceControlService {
 
             // 添加 metrics 映射
             if (device.getMetrics() != null && !device.getMetrics().isEmpty()) {
-                DCTSServiceApi.Metrics.Builder metricsBuilder = DCTSServiceApi.Metrics.newBuilder();
+                Dcts.Metrics.Builder metricsBuilder = Dcts.Metrics.newBuilder();
 
                 for (Map.Entry<String, Physical> entry : device.getMetrics().entrySet()) {
                     String key = entry.getKey();
                     Physical value = entry.getValue();
 
-                    DCTSServiceApi.Physical physical = DCTSServiceApi.Physical.newBuilder()
-                            .setType(DCTSServiceApi.Physical.Type.forNumber(value.getType()))
+                    Dcts.Physical physical = Dcts.Physical.newBuilder()
+                            .setType(Dcts.Physical.Type.forNumber(value.getType()))
                             .setValue(value.getValue())
                             .setUnit(value.getUnit())
                             .build();
@@ -175,10 +175,10 @@ public class SourceControlService {
             }
 
             if (device.getTopics() != null && !device.getTopics().isEmpty()) {
-                List<DCTSServiceApi.Topic> topicList = new ArrayList<>();
+                List<Dcts.Topic> topicList = new ArrayList<>();
                 for (Map<String, String> topicMap : device.getTopics()) {
                     for (Map.Entry<String, String> entry : topicMap.entrySet()) {
-                        DCTSServiceApi.Topic topic = DCTSServiceApi.Topic.newBuilder()
+                        Dcts.Topic topic = Dcts.Topic.newBuilder()
                                 .setKey(entry.getKey())
                                 .setValue(entry.getValue())
                                 .build();
@@ -201,30 +201,30 @@ public class SourceControlService {
      * @param commandParam
      * @return
      */
-    public static DCTSServiceApi.CommandReply sendSourceCommand(int sourceId, int commandFunction, long commandParam) {
+    public static Dcts.CommandReply sendSourceCommand(int sourceId, int commandFunction, long commandParam) {
         List<DataSource> dataSourceList = SourceControlService.getDeviceInfoFromRedis();
-//        System.out.println(dataSourceList);
+        // System.out.println(dataSourceList);
         String result = "设备" + sourceId +"不存在或设备不在线！"; // 默认值
         boolean found = false;
 
 
         for (DataSource dataSource : dataSourceList) {
-//            System.out.println(dataSource.getSource_id());
+            // System.out.println(dataSource.getSource_id());
             if (sourceId == dataSource.getSource_id() && "S_ENGAGED".equals(dataSource.getStatus().name())) {
                 result = dataSource.executeCommand(commandFunction, commandParam);
                 found = true;
-//                break; // 找到后就不再继续遍历当前 Node 的设备
+                // break; // 找到后就不再继续遍历当前 Node 的设备
             }
             else if (sourceId == dataSource.getSource_id() && "S_OFFLINE".equals(dataSource.getStatus().name())) {
                 result = dataSource.executeCommand(commandFunction, commandParam);
                 found = true;
-//                break; // 找到后就不再继续遍历当前 Node 的设备
+                // break; // 找到后就不再继续遍历当前 Node 的设备
             }
         }
 
 
-        DCTSServiceApi.CommandReply commandReply = DCTSServiceApi.CommandReply.newBuilder()
-                .setErrorCode(DCTSServiceApi.ErrorType.ERR_ABORTED)
+        Dcts.CommandReply commandReply = Dcts.CommandReply.newBuilder()
+                .setErrorCode(Dcts.ErrorType.ERR_ABORTED)
                 .setAttachment(Any.pack(StringValue.newBuilder().setValue(result).build()))  // 可根据需求填充
                 .build();
 

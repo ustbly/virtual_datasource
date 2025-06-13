@@ -1,0 +1,41 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.commDirection;
+
+import "source/source.proto";
+import "scenario/scenario.proto";;
+import "scenario/kh/KhCommDirectionAcq.proto";
+
+//任务请求
+message CommDirectionCaliTaskRequest 
+{
+    source.SourceId source_id = 1;
+    CommDirectionAcqSource source_param = 2;
+    CommDirectionAcqParam acq_param = 3;
+}
+
+enum CaliParamIndex
+{
+    ALL = 0;            //修改全部参数
+    ATT_GAIN_C = 1;       //修改增益值
+    FREQ_RANGE = 2;     //修改起始频率、结束频率
+    FREQ_RBW = 3;       //修改rbw值
+    FREQ_TUNER = 4;     //修改起始频率、结束频率、rbw值
+    CENTER_FREQ_C = 5;    //修改中心频率
+    OUTPUT_POW = 6;     //多通道校准源输出功率-50~0
+}
+
+//change request
+message CaliChangeRequest {
+    ScenarioTaskId responser = 1;
+    CaliParamIndex param_index = 2;     //修改参数索引
+    CommDirectionAcqParam acq_param = 3;
+    double center_freq = 4;         //中心频率
+}
+
+service CommDirectionCaliService 
+{
+    rpc StartTask(CommDirectionCaliTaskRequest) returns (ScenarioReply) {} //开始任务
+    rpc GetFixResult(ScenarioTaskId) returns (stream CommDirectionResult) {}     //获取结果
+    rpc StopTask(ScenarioTaskId) returns(ScenarioReply){}               //关闭任务  
+    rpc Change(CaliChangeRequest) returns (ScenarioReply) {}       //修改参数               
+}

@@ -1,0 +1,98 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.commDirection;
+
+import "source/source.proto";
+import "source/kh/KhContext.proto";
+import "scenario/scenario.proto";
+import "scenario/spectrum.proto";
+
+message CommDirectionAcqSource
+{
+    source.SourceId id = 1;
+    map<string, string> params = 6; //其它可选参数，例如文件路径或网络地址等
+}
+
+enum DirectionMode
+{
+    SINGLE = 0;		//单点模式
+    MULTIPLE = 1;	//多点模式
+    SCAN = 2;       //扫描模式
+    SEARCH = 3;     //搜索模式 
+}
+
+enum DFThresholdMode
+{
+  AUTO = 0; //自动门限
+  MANUAL = 1;
+  NORMAL = 2;
+}
+
+//采集参数
+message CommDirectionAcqParam 
+{
+    DirectionMode       mode = 1;                   //测向模式。SINGLE、SCAN、SEARCH、MULTIPLE(离散)
+    spectrum.FrequencySpan freq_span = 2;           //频率范围,单位Hz。对SCAN、SEARCH为频率范围。对SINGLE、MULTIPLE由中心频率和带宽计算
+    double rbw = 4;                                 //分辨率,单位Hz
+    double df_bandwidth = 5;	                    //测向带宽（单位：Hz） 
+    source.kh.DetectMode detect_mode = 6;           //轨迹检波模式       
+    source.kh.ChannelMode channel_mode = 7;         //通道模式
+    double attenuation_gain = 8;                    //衰减增益[0, 50]，按1递增
+    source.kh.AntennaControlMode antenna_mode = 9;  //天线模式，只支持： 2 一级放大 3 二级放大 
+    source.kh.GainControlMode gc_mode = 10;           //增益控制方式
+    source.kh.GainControlParam gain_param = 11;       //增益控制方式为自动时的参数
+    DFThresholdMode threshold_mode = 12; 	//门限模式 0-连续模式，1-GATE模式 2-NORMAL
+	int32  threshold_value = 13; 	        //门限值
+    int32  output_pow = 14;                 //多通道校准源输出功率-50~0，目前设置为0 
+    source.kh.WindowParams win_params = 15; //窗口参数
+    int32  average_time = 16;               //平均时间ms
+    double rf_limit = 17;                   //射频直采最大频率值，单位Hz，1000000~30000000，暂时不用，请固定为30000000
+    double search_step = 18;                //SEARCH模式时中心频率的步进值（单位：Hz）
+    int32 residence_time = 19;              //SEARCH模式时每个频点的驻留时间ms，必须为average_time的整数倍。目前固定为5000ms
+    int32 sample_interval = 20;             //设备采样间隔
+    int32 result_interval = 21;             //监测结果回传间隔,单位ms，0代表每次扫描均上传
+    int32 expected_points = 22;             //希望显示的点数，0代表按原始点数上传，非零时应为偶数。对HSCAN，范围为100~8000
+    int32 antenna = 23;                     //天线选择[0,1]，暂时不用
+    int32 df_times = 24;                    //测向采集次数，测向标校中使用。
+}
+
+enum ParamIndex
+{
+    THRESHOLD_VALUE = 0;            //修改门限值
+    THRESHOLD_MODE  = 1;            //修改门限模式
+    AVERAGE_TIME    = 2;            //平均时间
+    CENTER_FREQ     = 3;            //FFM中心频率，仅单点、多点方式支持
+    ANTENNA_MODE    = 4;            //天线控制方式，仅单点、多点方式支持
+    CHANNEL_MODE    = 5;            //通道模式，仅单点、多点方式支持
+    GIAN_MODE       = 6;            //增益控制模式
+    ATT_GAIN        = 7;            //修改增益值
+    GAIN_PARAM      = 8;            //自动增益参数，包括保持时间和步进
+}
+
+//change request
+message DirectionChangeRequest {
+    ScenarioTaskId task_id = 1;
+    ParamIndex param_index = 2;     //修改参数索引
+    CommDirectionAcqParam task_params = 3;
+    double center_freq = 4;         //中心频率
+}
+
+message CommDirectionResult
+{
+    spectrum.Header header = 1;
+    source.kh.OperationStatus status = 2;//任务状态
+    spectrum.SegmentHeader seg_header = 4;
+    spectrum.FrequencyBand band = 5;     //频段划分
+    spectrum.View panorama_view = 6;     //全景视角的数据
+    spectrum.View closeshot_view = 7;    //近景视角的数据
+    double courseAngle = 8;              //航向角
+    //以下几个结果对单点测向只有一个值。
+    repeated source.kh.TargetDirection target_detection_before = 9;    //解耦前目标方位。
+    repeated source.kh.TargetDirection target_detection = 10;          //解耦后目标方位。
+    repeated uint32 LOFrequencykHzs = 11;
+    repeated uint32 scanIndexs = 12;
+    repeated uint32 target_ids = 13;
+    //以下几个结果用于标校
+    repeated float cal_diff = 14;    //8个校准信号相位差+10个幅度值
+    repeated float ant_diff = 15;    //8个天线信号相位差+10个幅度值
+    double center_freq = 16;         //中心频率
+}

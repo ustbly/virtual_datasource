@@ -1,0 +1,83 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.commMultiChannel;
+import "dcts.proto";
+import "source/source.proto";
+import "source/kh/KhContext.proto";
+import "scenario/scenario.proto";
+import "scenario/spectrum.proto";
+import "scenario/detection.proto";
+import "scenario/kh/KhMultiChannelAcq.proto";
+import "scenario/FFP/demodulate.proto";
+
+message MultiSource
+{
+    source.SourceId id = 1;
+    map<string, string> params = 6; //其它可选参数，例如文件路径或网络地址等
+}
+
+//启动请求
+message MultiTaskStartRequest 
+{
+    ScenarioId scenario = 1;
+    MultiSource source_param = 2;
+    MultiAcqParam acq_param = 3;                //采集参数
+    detection.DetectionParam detection_param = 4;
+}
+
+//窄带通路数据
+message NarrowChannelData
+{
+	int32 channel_id = 2;					//通道号（0-15）
+	double cent_freq = 4;                   //中心频率
+    double samp_rate = 6;                   //IQ采样率 单位为Hz
+    Timestamp time_stamp = 7;               //时间
+	repeated float data_i = 8;             	//I路数据
+	repeated float data_q = 9;             	//Q路数据
+    repeated float spectrum = 11;           //频谱数据
+    scenario.FFP.ChannelAudio channel_audio = 12;        //音频结果
+}
+
+//最终结果
+message MultiResult
+{
+    spectrum.Header header = 1;
+    source.kh.OperationStatus status = 2;           //任务状态
+    spectrum.View panorama_view = 3;                //宽带全景视角的数据
+    spectrum.View closeshot_view = 4;               //宽带近景视角的数据
+    repeated NarrowChannelData channel_data = 5;    //多通道窄带数据
+} 
+
+enum ParamIndex
+{
+    INVALID = 0;
+    NB_PARAM = 126;       //修改窄带通路参数
+}
+
+//通道修改请求
+message ChannelChangeRequest 
+{
+    ScenarioTaskId responser = 1;
+    ParamIndex index = 2;
+    repeated NarrowChannel channels= 4;         //窄通道的工作参数
+}
+
+service MultiChannelService
+{
+    rpc StartTask(MultiTaskStartRequest) returns (ScenarioReply) {}                //启动实时任务
+    rpc GetResult(ScenarioTaskId) returns (stream MultiResult) {}                  //获取结果
+    rpc ChangeParam(ChannelChangeRequest) returns (ScenarioReply) {}               //修改参数
+    rpc StopTask(ScenarioTaskId) returns(ScenarioReply){}                          //停止任务
+
+    //-----zoomin/datahold/detection-----
+    rpc OpenZoomIn(spectrum.ZoomInRequest) returns (ScenarioReply) {} //选择一个近景观测范围,注意:不改变实际的扫描范围               
+    rpc CloseZoomIn(ScenarioTaskId) returns (ScenarioReply) {} //关闭近景观测                              
+    rpc OpenDataHold(spectrum.DataHoldRequest) returns (ScenarioReply) {} //开启数据保持               
+    rpc ResetDataHold(spectrum.DataHoldRequest)returns (ScenarioReply) {} //数据保持重置               
+    rpc CloseDataHold(spectrum.DataHoldRequest)returns (ScenarioReply) {} //关闭数据保持  
+    rpc OpenDetection(detection.DetectionRequest) returns (ScenarioReply) {} //开启信号检测                       
+    rpc CloseDetection(ScenarioTaskId)returns (ScenarioReply) {} //关闭信号检测
+    rpc QuerySignalTable(detection.SignalTableQueryRequest) returns (detection.SignalTableQueryResponse) {}      //查询信号列表
+    rpc ClearSignalTable(ScenarioTaskId)returns (ScenarioReply) {}
+    rpc SignalGathering(detection.SignalGatheringRequest) returns(ScenarioReply){}
+    rpc GetGatheringResult(ScenarioTaskId)returns(detection.SignalSampleList){}
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.commTargetClassify;
+
+import "scenario/scenario.proto";
+import "scenario/kh/KhIQDataAcq.proto";
+import "scenario/FFP/modIdentify.proto";
+
+//任务请求
+message CommTargetClassifyTaskRequest 
+{
+    ScenarioId scenario = 1;
+    commIqData.CommIQAcqSource source_param = 2;
+    commIqData.CommIQAcquireParam acq_param = 3;  //采集参数
+}
+
+service CommTargetClassifyService
+{
+    //realtime
+    rpc StartTask(CommTargetClassifyTaskRequest) returns (ScenarioReply) {}             //启动实时任务
+    rpc GetResult(ScenarioTaskId) returns (stream scenario.FFP.ModIdentifyResult) {}             //获取实时任务结果
+    rpc StopTask(ScenarioTaskId) returns (ScenarioReply) {}                             //停止实时任务
+}

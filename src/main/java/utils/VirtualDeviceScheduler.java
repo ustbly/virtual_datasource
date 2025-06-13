@@ -85,7 +85,7 @@ public class VirtualDeviceScheduler {
                 signalList.setHoppingSignalList(generateHoppingSignalCluster());
 
                 // 写入信号数据
-                DorisUtils.insertFixSignals(sourceId, signalList.getFixSignalList());
+//                DorisUtils.insertFixSignals(sourceId, signalList.getFixSignalList());
 //                DorisUtils.insertHoppingSignals(sourceId, signalList.getHoppingSignalList());
 
                 // 构造 ZMQ 消息内容

@@ -1,0 +1,54 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.commSpectrum;
+
+import "source/source.proto";
+import "source/kh/KhContext.proto";
+import "scenario/scenario.proto";
+import "scenario/spectrum.proto";
+import "scenario/detection.proto";
+import "scenario/kh/KhSpectrumAcq.proto";
+
+//任务请求
+message FixTaskRequest 
+{
+    ScenarioId scenario = 1;
+    SpectrumAcqSource source_param = 2;
+    SpectrumAcqParam acq_param = 3;
+    detection.DetectionParam detection_param = 4;
+}
+
+message FixResult
+{
+    spectrum.Header header = 1;
+    source.kh.OperationStatus status = 2;//任务状态
+    spectrum.View panorama_view = 6;     //全景视角的数据
+    spectrum.View closeshot_view = 7;    //近景视角的数据
+}
+
+message IQRecordRequest
+{
+    ScenarioTaskId responser = 1;
+    bool record = 2;    //true 开始记录 false 停止记录
+    int64 length = 3;   //记录IQ数据的长度，0为无限记录，非无限传输应设为64的整数倍
+}
+
+service FixSpectrumService
+{
+    rpc StartTask(FixTaskRequest) returns (ScenarioReply) {}              //开始任务
+    rpc GetResult(ScenarioTaskId) returns (stream FixResult) {}           //获取结果
+    rpc StopTask(ScenarioTaskId) returns(ScenarioReply){}                 //关闭任务                                         
+    //-----zoomin/datahold/detection-----
+    rpc OpenZoomIn(spectrum.ZoomInRequest) returns (ScenarioReply) {} //选择一个近景观测范围,注意:不改变实际的扫描范围               
+    rpc CloseZoomIn(ScenarioTaskId) returns (ScenarioReply) {} //关闭近景观测                              
+    rpc OpenDataHold(spectrum.DataHoldRequest) returns (ScenarioReply) {} //开启数据保持               
+    rpc ResetDataHold(spectrum.DataHoldRequest)returns (ScenarioReply) {} //数据保持重置               
+    rpc CloseDataHold(spectrum.DataHoldRequest)returns (ScenarioReply) {} //关闭数据保持                
+    rpc OpenDetection(detection.DetectionRequest) returns (ScenarioReply) {} //开启信号检测                       
+    rpc CloseDetection(ScenarioTaskId)returns (ScenarioReply) {} //关闭信号检测
+    rpc QuerySignalTable(detection.SignalTableQueryRequest) returns (detection.SignalTableQueryResponse) {}      //查询信号列表
+    rpc ClearSignalTable(ScenarioTaskId)returns (ScenarioReply) {}
+    rpc SignalGathering(detection.SignalGatheringRequest) returns(ScenarioReply){}
+    rpc GetGatheringResult(ScenarioTaskId)returns(detection.SignalSampleList){}
+    //IQ记录命令
+    rpc IQRecordCmd(IQRecordRequest)returns (ScenarioReply) {}
+}

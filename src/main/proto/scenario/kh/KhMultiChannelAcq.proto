@@ -1,0 +1,58 @@
+syntax = "proto3";
+package zb.dcts.scenario.kh.commMultiChannel;
+import "dcts.proto";
+import "source/source.proto";
+import "scenario/kh/KhSpectrumAcq.proto";
+import "scenario/FFP/demodulate.proto";
+
+//多路窄带参数
+message NarrowChannel
+{
+    int32 channel_id = 1;   //0~16
+    double width = 2;       //多路DDC带宽：1kHz/3kHz/10kHz/30kHz/300kHz
+    double cent_freq = 3;   //中心频率，Hz
+    bool run = 4;           //窄带任务运行控制：true，启动；false，停止
+    bool fft = 5;           //需要经FFT变换生成频谱
+    bool demod = 6;         //是否需要进行模拟解调
+    scenario.FFP.AnalogModType type = 7;
+    double audio_sr = 8;    //音频采样率
+}
+
+//采集参数
+message MultiAcqParam
+{
+    commSpectrum.SpectrumAcqParam broad 	= 1;    //单路宽带频谱参数
+	repeated NarrowChannel channels	        = 2;	//窄带通道参数
+}
+
+//设备窄带通路数据
+message ChannelIQDataDev
+{
+	int32 channel_id = 2;					//通道号（0-127）For 跳频序列检测器
+    int32 signal_id = 3;                    //突发信号ID(0-262143)，与HoppingData中的signal_id对应，暂时不用
+	double cent_freq = 4;                   //中心频率
+    int32 status = 5;                       //1 当前突发信号的最后一帧，暂时不用
+    double samp_rate = 6;                   //IQ采样率 单位为Hz
+    Timestamp time_stamp = 7;               //时间
+	repeated uint32 data_iq = 8;            //IQ路数据
+    double hopping_freq = 10;               //跳频中心频率，暂时不用
+}
+
+//设备产生的原始数据
+message MultiAcqResult
+{
+    message ResultHeader 
+    {
+        source.SourceId result_from = 1;
+        uint32 sequence_number = 2;
+        Timestamp time_stamp = 3;
+        Position device_position = 4;       //设备位置 
+        double cent_freq = 5;               //宽带中心频率
+        double samp_rate = 6;               //宽带IQ采样率 单位为Hz
+        double      qtz = 8;				//量化幅度校准值
+	    double      spanIF = 9;			    //带宽幅度校准值
+    }
+    ResultHeader header = 1;
+    repeated float spectrum = 2;                  //宽带频谱数据
+    repeated ChannelIQDataDev channel_data = 3;   //DDCE IQ数据   
+} 

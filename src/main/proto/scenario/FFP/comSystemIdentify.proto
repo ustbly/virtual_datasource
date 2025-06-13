@@ -1,0 +1,57 @@
+syntax = "proto3";
+package zb.dcts.scenario.FFP;
+import "dcts.proto";
+import "source/source.proto";
+import "scenario/scenario.proto";
+import "scenario/spectrum.proto";
+
+message ComSystemSource
+{
+    source.SourceId      id = 1;
+    string        address = 2;                      //文件路径或网络地址(可选项)
+    int32         attenuation_gain = 3;             //衰减增益[-30, 20]
+    int32         antenna = 4;                      //天线选择[0,1]
+}
+
+message  ComSystemParam
+{
+	spectrum.DDCBank bank = 3;      //设备的中心频率和采样率
+}
+
+message ComSystemIdentifyResult
+{
+	message Header
+    {
+        source.SourceId result_from = 1;         //数据来源
+        uint32 sequence_number = 2;         //顺序号，每个任务执行者维护自身的顺序号
+        TimeSpan time_span = 3;             //当前上报周期内的首段和末端采集时刻（由设备提供的时间）
+        Position device_position = 4;       //设备位置
+    }
+
+	enum ComSystemType
+	{
+		UNKNOWN = 0;
+		DME = 1;
+		TACAN = 2;
+        Link4A = 3;
+		Link11 = 4;
+		Link16 = 5;		
+	}
+	Header header = 1;
+    ComSystemType type = 2;
+	repeated float spectrum_samples = 3; //频谱信息
+}
+
+message ComSystemRequest
+{
+    ScenarioId scenario = 1;
+    ComSystemSource source = 2;
+    ComSystemParam param = 3;   //设备的中心频率和采样率
+}
+
+service ComSystemIdentifyService
+{
+    rpc StartComSystemIdentifyTask(ComSystemRequest) returns (ScenarioReply){}
+    //rpc GetComSystemIdentifyResult(ScenarioTaskId) returns (ComSystemIdentifyResult) {}
+    rpc StopComSystemIdentifyTask(ScenarioTaskId) returns (ScenarioReply) {}
+}
