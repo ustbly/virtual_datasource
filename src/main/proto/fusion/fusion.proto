@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package zb.dcts.fusion.fusiondata;
+import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
+
+
+message FusionDataRequest
+{
+  string topic = 1;  //订阅的主题
+}
+
+
+// 获取融合数据的API
+service FusionDataControlService
+{
+  rpc SubscribeFusionData(FusionDataRequest) returns(stream google.protobuf.Any){}  //订阅融合后发布的消息（以主题形式分组消息）
+}

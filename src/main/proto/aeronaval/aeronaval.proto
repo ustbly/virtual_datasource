@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package zb.dcts.aeronaval;
 import "dcts.proto";
+import "scenario/detection.proto";
 
 // 阵营
 enum Camp
@@ -23,216 +24,194 @@ enum AirSpace
 // 兵力类型
 enum EquType
 {
-	UNKNOWN_EUT = 0;
-
-	AIRCAFT_EUT = 1;
-
-	TANK_EUT = 2;
-
-	MISSILE_VECHICLE_EUT = 3;
-
-	MISSILE_EUT = 4;
-
-	CARRIER_EUT = 5;
-
-	FRIGATE_EUT = 6;
-
-	COPTER_EUT = 7;
-
-	KJ500_EUT = 8;
-
-	YL10_WRJ_EUT = 9;
-
-	J16D_EUT = 10;
-
-	YTG9_EUT = 11;
-
-	YTG8_EUT = 12;
-
-	GSBJ_EUT = 13;
-
-	XY_WRJ_EUT = 14;
-
-	JC_054A_EUT = 15;
-
-	JC_052D_EUT = 16;
-
-	JC_891BZ_EUT = 17;
-
-	JC_CFBZ_EUT = 18;
-
-	VEHICLE_LAND_EUT = 19;
-
-	GYYSBJ_EUT = 20;
-
-	FSYSBJ_EUT = 21;
-	// 201 舰船
-	JC_201_EUT = 22;
-	// 722保障舰
-	JC_BZJ722_EUT = 23;
-	// 扫海警戒船
-	JC_SHJJ_EUT = 24;
-	// 波音737
-	BY737_EUT = 25;
-	// bo105直升机
-	BO105_EUT = 26;
-	// E2-C
-	E2C_EUT = 27;
-	// E3-B
-	E3B_EUT = 28;
-	// F-4E
-	F4E_EUT = 29;
-	// F-14
-	F14_EUT = 30;
-	// F-16
-	F16_EUT = 31;
-	// F-18
-	F18_EUT = 32;
-	// J10
-	J10_EUT = 33;
-	//武装直升机9
-	WZ9_EUT = 34;
-	//F15
-	F15_EUT = 35;
-	// su-27
-	SU27_EUT = 36;
-	// 雷达
-	LEIDA_EUT = 37;
-	// 055
-	JC_055_EUT = 38;
-	// 053H3
-	JC_053H3_EUT = 39;
-	// 056A
-	JC_056A_EUT = 40;
-	// 海冰723
-	JC_HB723_EUT = 41;
-	// 歼15D
-	J15D_EUT = 42;
-	// 歼20
-	J20_EUT = 43;
-	// 轰7A
-	H7A_EUT = 44;
-	// 电子侦察856
-	JC_DZZC856_EUT = 45;
-	// 137现代级
-	JC_137_EUT = 46;
-	// 波音747
-	BY747_EUT = 47;
-	// A320
-	A320_EUT = 48;
-	// A380
-	A380_EUT = 49;
-	// 渔船
-	HOOKER_EUT = 50;
-	// MG18直升机
-	COPTER_MG18_EUT = 51;
-	// EA18G电子战机
-	EA18G_EUT = 52;
-	// 运20
-	Y20_EUT = 53;
-	// 运输车
-	DF_EQ1141_EUT = 54;
-	// 指挥车
-	COMMAND_VEHICLE_EUT = 55;
-	// 海事公务船
-	JC_MARINE_EUT = 56;
-	// 伊利莎白女王号战列舰
-	JC_YLSB_EUT = 57;
-	// 兴登堡级战列舰
-	JC_XDB_EUT = 58;
-	// 黑天鹅级护卫舰
-	JC_BLACKSWAN_EUT = 59;
-	// AGM88导弹
-	MISSILE_AGM88 = 60;
-	// AGM154导弹
-	MISSILE_AGM154 = 61;
-	// MALD导弹
-	MISSILE_MALD = 62;
-	// 虎鲸潜艇器
-	MISSILE_HJQTQ = 63;
-	// 直升机Z20
-	COPTER_Z20_EUT = 64;
-	// 直升机Z9
-	COPTER_Z9_EUT = 65;
-	// 无人直升机WZ-2
-	COPTER_WZ2_EUT = 66;
-	// 空警200
-	KJ200_EUT = 67;
-	// E-2D预警机
-	E2D_EUT = 68;
-	// F-35飞机
-	F35_EUT = 69;
-	// EC-130H电子战飞机
-	EC130H_EUT = 70;
-	// EP-3E电子战飞机
-	EP3E_EUT = 71;
-	// J-11
-	J11_EUT = 72;
-	// F/A-18E/F飞机
-	FA18EF_EUT = 73;
-	// P-8A反潜巡逻机
-	P8A_EUT = 74;
-	// 小精灵
-	XJL_WRJ_EUT = 75;
-	// 全球鹰
-	QQY_WRJ_EUT = 76;
-	// XQ-58A无人机
-	XQ58A_WRJ_EUT = 77;
-	// ALTIUS-600无人机/巡飞弹
-	ALTIUS600_WRJ_EUT = 78;
-	// RIM-162鱼叉反舰导弹
-	MISSILE_RIM162_EUT = 79;
-	// MK-48鱼雷
-	MISSILE_MK48_EUT = 80;
-	// MK-67潜射自航水雷
-	MISSILE_MK67_EUT = 81;
-	// GBU-39
-	MISSILE_GBU39_EUT = 82;
-	// LRASM导弹
-	MISSILE_LRASM_EUT = 83;
-	// 霸主无人舰
-	JC_BZBRJ_EUT = 84;
-	// 海魔无人艇
-	JC_HMWRT_EUT = 85;
-	// 弗吉尼亚核潜艇
-	JC_FJNY_EUT = 86;
-	// 货轮
-	JC_HUOLUN1_EUT = 87;
-	JC_HUOLUN2_EUT = 88;
-	JC_HUOLUN3_EUT = 89;
-	JC_HUOLUN4_EUT = 90;
-	// 游轮
-	JC_YOULUN1_EUT = 91;
-	JC_YOULUN2_EUT = 92;
-	JC_YOULUN3_EUT = 93;
-	JC_YOULUN4_EUT = 94;
-	// 渔船
-	JC_YUCHUAN1_EUT = 95;
-	JC_YUCHUAN2_EUT = 96;
-	JC_YUCHUAN3_EUT = 97;
-	// 临时蓝方导弹(因虚兵纹理问题添加)
-	MISSILE_AGM88_BLUE = 98;
-	// HHQ-9B导弹
-	MISSILE_HHQ9B_EUT = 99;
-	// HQ-10导弹
-	MISSILE_HQ10_EUT = 100;
-	// 侦扰无人艇
-	JC_ZRWRT_EUT = 101;
-	// 雷达
-	RADAR_EUT = 102;
-	// 辽宁舰
-	JC_LIAONING_EUT = 103;
-
+		UNKNOWN_EUT = 0;
+		AIRCAFT_EUT = 1;
+		TANK_EUT = 2;
+		MISSILE_VECHICLE_EUT = 3;
+		MISSILE_EUT = 4;
+		CARRIER_EUT = 5;
+		FRIGATE_EUT = 6;
+		COPTER_EUT = 7;
+		KJ500_EUT = 8;
+		YL10_WRJ_EUT = 9;
+		J16D_EUT = 10;
+		YTG9_EUT = 11;
+		YTG8_EUT = 12;
+		GSBJ_EUT = 13;
+		XY_WRJ_EUT = 14;
+		JC_054A_EUT = 15;
+		JC_052D_EUT = 16;
+		JC_891BZ_EUT = 17;
+		JC_CFBZ_EUT = 18;
+		VEHICLE_LAND_EUT = 19;
+		GYYSBJ_EUT = 20;
+		FSYSBJ_EUT = 21;
+		// 201 舰船
+		JC_201_EUT = 22;
+		// 722保障舰
+		JC_BZJ722_EUT = 23;
+		// 扫海警戒船
+		JC_SHJJ_EUT = 24;
+		// 波音737
+		BY737_EUT = 25;
+		// bo105直升机
+		BO105_EUT = 26;
+		// E2-C
+		E2C_EUT = 27;
+		// E3-B
+		E3B_EUT = 28;
+		// F-4E
+		F4E_EUT = 29;
+		// F-14
+		F14_EUT = 30;
+		// F-16
+		F16_EUT = 31;
+		// F-18
+		F18_EUT = 32;
+		// J10
+		J10_EUT = 33;
+		//武装直升机9
+		WZ9_EUT = 34;
+		//F15
+		F15_EUT = 35;
+		// su-27
+		SU27_EUT = 36;
+		// 雷达
+		LEIDA_EUT = 37;
+		// 055
+		JC_055_EUT = 38;
+		// 053H3
+		JC_053H3_EUT = 39;
+		// 056A
+		JC_056A_EUT = 40;
+		// 海冰723
+		JC_HB723_EUT = 41;
+		// 歼15D
+		J15D_EUT = 42;
+		// 歼20
+		J20_EUT = 43;
+		// 轰7A
+		H7A_EUT = 44;
+		// 电子侦察856
+		JC_DZZC856_EUT = 45;
+		// 137现代级
+		JC_137_EUT = 46;
+		// 波音747
+		BY747_EUT = 47;
+		// A320
+		A320_EUT = 48;
+		// A380
+		A380_EUT = 49;
+		// 渔船
+		HOOKER_EUT = 50;
+		// MG18直升机
+		COPTER_MG18_EUT = 51;
+		// EA18G电子战机
+		EA18G_EUT = 52;
+		// 运20
+		Y20_EUT = 53;
+		// 运输车
+		DF_EQ1141_EUT = 54;
+		// 指挥车
+		COMMAND_VEHICLE_EUT = 55;
+		// 海事公务船
+		JC_MARINE_EUT = 56;
+		// 伊利莎白女王号战列舰
+		JC_YLSB_EUT = 57;
+		// 兴登堡级战列舰
+		JC_XDB_EUT = 58;
+		// 黑天鹅级护卫舰
+		JC_BLACKSWAN_EUT = 59;
+		// AGM88导弹
+		MISSILE_AGM88 = 60;
+		// AGM154导弹
+		MISSILE_AGM154 = 61;
+		// MALD导弹
+		MISSILE_MALD = 62;
+		// 虎鲸潜艇器
+		MISSILE_HJQTQ = 63;
+		// 直升机Z20
+		COPTER_Z20_EUT = 64;
+		// 直升机Z9
+		COPTER_Z9_EUT = 65;
+		// 无人直升机WZ-2
+		COPTER_WZ2_EUT = 66;
+		// 空警200
+		KJ200_EUT = 67;
+		// E-2D预警机
+		E2D_EUT = 68;
+		// F-35飞机
+		F35_EUT = 69;
+		// EC-130H电子战飞机
+		EC130H_EUT = 70;
+		// EP-3E电子战飞机
+		EP3E_EUT = 71;
+		// J-11
+		J11_EUT = 72;
+		// F/A-18E/F飞机
+		FA18EF_EUT = 73;
+		// P-8A反潜巡逻机
+		P8A_EUT = 74;
+		// 小精灵
+		XJL_WRJ_EUT = 75;
+		// 全球鹰
+		QQY_WRJ_EUT = 76;
+		// XQ-58A无人机
+		XQ58A_WRJ_EUT = 77;
+		// ALTIUS-600无人机/巡飞弹
+		ALTIUS600_WRJ_EUT = 78;
+		// RIM-162鱼叉反舰导弹
+		MISSILE_RIM162_EUT = 79;
+		// MK-48鱼雷
+		MISSILE_MK48_EUT = 80;
+		// MK-67潜射自航水雷
+		MISSILE_MK67_EUT = 81;
+		// GBU-39
+		MISSILE_GBU39_EUT = 82;
+		// LRASM导弹
+		MISSILE_LRASM_EUT = 83;
+		// 霸主无人舰
+		JC_BZBRJ_EUT = 84;
+		// 海魔无人艇
+		JC_HMWRT_EUT = 85;
+		// 弗吉尼亚核潜艇
+		JC_FJNY_EUT = 86;
+		// 货轮
+		JC_HUOLUN1_EUT = 87;
+		JC_HUOLUN2_EUT = 88;
+		JC_HUOLUN3_EUT = 89;
+		JC_HUOLUN4_EUT = 90;
+		// 游轮
+		JC_YOULUN1_EUT = 91;
+		JC_YOULUN2_EUT = 92;
+		JC_YOULUN3_EUT = 93;
+		JC_YOULUN4_EUT = 94;
+		// 渔船
+		JC_YUCHUAN1_EUT = 95;
+		JC_YUCHUAN2_EUT = 96;
+		JC_YUCHUAN3_EUT = 97;
+		// 临时蓝方导弹(因虚兵纹理问题添加)
+		MISSILE_AGM88_BLUE = 98;
+		// HHQ-9B导弹
+		MISSILE_HHQ9B_EUT = 99;
+		// HQ-10导弹
+		MISSILE_HQ10_EUT = 100;
+		// 侦扰无人艇
+		JC_ZRWRT_EUT = 101;
+		// 雷达
+		RADAR_EUT = 102;
+		// 辽宁舰
+		JC_LIAONING_EUT = 103;
 }
 
 message Velocity
 {
-	// 东向速度
-	double east_velocity = 1;
-	// 北向速度
-	double north_velocity = 2;
-	// 垂直速度
-	double vertical_velocity = 3;
+		// 东向速度
+		double east_velocity = 1;
+		// 北向速度
+		double north_velocity = 2;
+		// 垂直速度
+		double vertical_velocity = 3;
 }
 
 message Target

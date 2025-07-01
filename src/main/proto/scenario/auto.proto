@@ -9,7 +9,7 @@ import "source/source.proto";
 message WorkTiming
 {
     int32 duration_in_msec = 1;       //每次执行的时长
-	int32 execute_times = 2;  //执行次数
+	  int32 execute_times = 2;  //执行次数
 }
 
 message AutoWork
@@ -23,7 +23,7 @@ message AutoWork
     }
     Mode mode = 1;
     source.SourceId executor = 2;
-	WorkTiming timing = 3;
+	  WorkTiming timing = 3;
 }
 
 //目前仅实现简单的自动工作执行

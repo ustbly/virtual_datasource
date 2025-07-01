@@ -75,14 +75,14 @@ message ModIdentifyResult
     double center_frequency = 3;
     double bandwidth = 4;
     double snr = 5;
-	repeated float spectrum_samples = 6; //频谱信息
+	  repeated float spectrum_samples = 6; //频谱信息
 }
 
 message ModIdentifyRequest
 {
     ScenarioId scenario = 1;
     ModSource source = 2;
-	ModIdentifyParam param = 3;
+		ModIdentifyParam param = 3;
 }
 
 service ModulationIdentifyService

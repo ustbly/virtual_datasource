@@ -28,65 +28,13 @@ public final class Source {
      */
     SENSOR_3900(0),
     /**
-     * <code>FILE = 1;</code>
+     * <code>FILE_ = 1;</code>
      */
-    FILE(1),
+    FILE_(1),
     /**
      * <code>VIRTUAL = 2;</code>
      */
     VIRTUAL(2),
-    /**
-     * <code>KH_CZ_COMM = 3;</code>
-     */
-    KH_CZ_COMM(3),
-    /**
-     * <code>KH_CZ_RADAR = 4;</code>
-     */
-    KH_CZ_RADAR(4),
-    /**
-     * <code>KH_CZ_JC = 5;</code>
-     */
-    KH_CZ_JC(5),
-    /**
-     * <code>KH_WGH_COMM = 6;</code>
-     */
-    KH_WGH_COMM(6),
-    /**
-     * <code>KH_WGH_RADAR = 7;</code>
-     */
-    KH_WGH_RADAR(7),
-    /**
-     * <code>CZC_SM = 8;</code>
-     */
-    CZC_SM(8),
-    /**
-     * <code>CZC_DF = 9;</code>
-     */
-    CZC_DF(9),
-    /**
-     * <code>CZC_QJ = 10;</code>
-     */
-    CZC_QJ(10),
-    /**
-     * <code>RADAR_DF = 11;</code>
-     */
-    RADAR_DF(11),
-    /**
-     * <code>DEMO = 12;</code>
-     */
-    DEMO(12),
-    /**
-     * <code>ZCZH = 13;</code>
-     */
-    ZCZH(13),
-    /**
-     * <pre>
-     *通信模拟器
-     * </pre>
-     *
-     * <code>SIMULATOR_COMM = 14;</code>
-     */
-    SIMULATOR_COMM(14),
     UNRECOGNIZED(-1),
     ;
 
@@ -95,65 +43,13 @@ public final class Source {
      */
     public static final int SENSOR_3900_VALUE = 0;
     /**
-     * <code>FILE = 1;</code>
+     * <code>FILE_ = 1;</code>
      */
-    public static final int FILE_VALUE = 1;
+    public static final int FILE__VALUE = 1;
     /**
      * <code>VIRTUAL = 2;</code>
      */
     public static final int VIRTUAL_VALUE = 2;
-    /**
-     * <code>KH_CZ_COMM = 3;</code>
-     */
-    public static final int KH_CZ_COMM_VALUE = 3;
-    /**
-     * <code>KH_CZ_RADAR = 4;</code>
-     */
-    public static final int KH_CZ_RADAR_VALUE = 4;
-    /**
-     * <code>KH_CZ_JC = 5;</code>
-     */
-    public static final int KH_CZ_JC_VALUE = 5;
-    /**
-     * <code>KH_WGH_COMM = 6;</code>
-     */
-    public static final int KH_WGH_COMM_VALUE = 6;
-    /**
-     * <code>KH_WGH_RADAR = 7;</code>
-     */
-    public static final int KH_WGH_RADAR_VALUE = 7;
-    /**
-     * <code>CZC_SM = 8;</code>
-     */
-    public static final int CZC_SM_VALUE = 8;
-    /**
-     * <code>CZC_DF = 9;</code>
-     */
-    public static final int CZC_DF_VALUE = 9;
-    /**
-     * <code>CZC_QJ = 10;</code>
-     */
-    public static final int CZC_QJ_VALUE = 10;
-    /**
-     * <code>RADAR_DF = 11;</code>
-     */
-    public static final int RADAR_DF_VALUE = 11;
-    /**
-     * <code>DEMO = 12;</code>
-     */
-    public static final int DEMO_VALUE = 12;
-    /**
-     * <code>ZCZH = 13;</code>
-     */
-    public static final int ZCZH_VALUE = 13;
-    /**
-     * <pre>
-     *通信模拟器
-     * </pre>
-     *
-     * <code>SIMULATOR_COMM = 14;</code>
-     */
-    public static final int SIMULATOR_COMM_VALUE = 14;
 
 
     public final int getNumber() {
@@ -181,20 +77,8 @@ public final class Source {
     public static SourceType forNumber(int value) {
       switch (value) {
         case 0: return SENSOR_3900;
-        case 1: return FILE;
+        case 1: return FILE_;
         case 2: return VIRTUAL;
-        case 3: return KH_CZ_COMM;
-        case 4: return KH_CZ_RADAR;
-        case 5: return KH_CZ_JC;
-        case 6: return KH_WGH_COMM;
-        case 7: return KH_WGH_RADAR;
-        case 8: return CZC_SM;
-        case 9: return CZC_DF;
-        case 10: return CZC_QJ;
-        case 11: return RADAR_DF;
-        case 12: return DEMO;
-        case 13: return ZCZH;
-        case 14: return SIMULATOR_COMM;
         default: return null;
       }
     }
@@ -1038,14 +922,6 @@ public final class Source {
        * <code>DIRECTION_FINDING = 4;</code>
        */
       DIRECTION_FINDING(4),
-      /**
-       * <pre>
-       *多路数据
-       * </pre>
-       *
-       * <code>MULTI_CHANNEL = 8;</code>
-       */
-      MULTI_CHANNEL(8),
       UNRECOGNIZED(-1),
       ;
 
@@ -1077,14 +953,6 @@ public final class Source {
        * <code>DIRECTION_FINDING = 4;</code>
        */
       public static final int DIRECTION_FINDING_VALUE = 4;
-      /**
-       * <pre>
-       *多路数据
-       * </pre>
-       *
-       * <code>MULTI_CHANNEL = 8;</code>
-       */
-      public static final int MULTI_CHANNEL_VALUE = 8;
 
 
       public final int getNumber() {
@@ -1115,7 +983,6 @@ public final class Source {
           case 1: return SPECTRUM_SCAN;
           case 2: return IQ_STREAM;
           case 4: return DIRECTION_FINDING;
-          case 8: return MULTI_CHANNEL;
           default: return null;
         }
       }
@@ -1572,6 +1439,627 @@ public final class Source {
 
   }
 
+  public interface SourceAttributeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:zb.dcts.source.SourceAttribute)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 attribute = 1;</code>
+     * @return The attribute.
+     */
+    int getAttribute();
+  }
+  /**
+   * Protobuf type {@code zb.dcts.source.SourceAttribute}
+   */
+  public static final class SourceAttribute extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:zb.dcts.source.SourceAttribute)
+      SourceAttributeOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SourceAttribute.newBuilder() to construct.
+    private SourceAttribute(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SourceAttribute() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SourceAttribute();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SourceAttribute(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              attribute_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return zb.dcts.source.Source.internal_static_zb_dcts_source_SourceAttribute_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return zb.dcts.source.Source.internal_static_zb_dcts_source_SourceAttribute_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              zb.dcts.source.Source.SourceAttribute.class, zb.dcts.source.Source.SourceAttribute.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code zb.dcts.source.SourceAttribute.Type}
+     */
+    public enum Type
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>NONE = 0;</code>
+       */
+      NONE(0),
+      /**
+       * <pre>
+       *远程
+       * </pre>
+       *
+       * <code>REMOTE = 1;</code>
+       */
+      REMOTE(1),
+      /**
+       * <pre>
+       *虚拟
+       * </pre>
+       *
+       * <code>VIRTUAL = 2;</code>
+       */
+      VIRTUAL(2),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>NONE = 0;</code>
+       */
+      public static final int NONE_VALUE = 0;
+      /**
+       * <pre>
+       *远程
+       * </pre>
+       *
+       * <code>REMOTE = 1;</code>
+       */
+      public static final int REMOTE_VALUE = 1;
+      /**
+       * <pre>
+       *虚拟
+       * </pre>
+       *
+       * <code>VIRTUAL = 2;</code>
+       */
+      public static final int VIRTUAL_VALUE = 2;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static Type valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static Type forNumber(int value) {
+        switch (value) {
+          case 0: return NONE;
+          case 1: return REMOTE;
+          case 2: return VIRTUAL;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<Type>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          Type> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<Type>() {
+              public Type findValueByNumber(int number) {
+                return Type.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalStateException(
+              "Can't get the descriptor of an unrecognized enum value.");
+        }
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return zb.dcts.source.Source.SourceAttribute.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final Type[] VALUES = values();
+
+      public static Type valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private Type(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:zb.dcts.source.SourceAttribute.Type)
+    }
+
+    public static final int ATTRIBUTE_FIELD_NUMBER = 1;
+    private int attribute_;
+    /**
+     * <code>uint32 attribute = 1;</code>
+     * @return The attribute.
+     */
+    @java.lang.Override
+    public int getAttribute() {
+      return attribute_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (attribute_ != 0) {
+        output.writeUInt32(1, attribute_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (attribute_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, attribute_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof zb.dcts.source.Source.SourceAttribute)) {
+        return super.equals(obj);
+      }
+      zb.dcts.source.Source.SourceAttribute other = (zb.dcts.source.Source.SourceAttribute) obj;
+
+      if (getAttribute()
+          != other.getAttribute()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ATTRIBUTE_FIELD_NUMBER;
+      hash = (53 * hash) + getAttribute();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static zb.dcts.source.Source.SourceAttribute parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.source.Source.SourceAttribute parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.source.Source.SourceAttribute parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.source.Source.SourceAttribute parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.source.Source.SourceAttribute parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.source.Source.SourceAttribute parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.source.Source.SourceAttribute parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static zb.dcts.source.Source.SourceAttribute parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static zb.dcts.source.Source.SourceAttribute parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static zb.dcts.source.Source.SourceAttribute parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static zb.dcts.source.Source.SourceAttribute parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static zb.dcts.source.Source.SourceAttribute parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(zb.dcts.source.Source.SourceAttribute prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code zb.dcts.source.SourceAttribute}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:zb.dcts.source.SourceAttribute)
+        zb.dcts.source.Source.SourceAttributeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return zb.dcts.source.Source.internal_static_zb_dcts_source_SourceAttribute_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return zb.dcts.source.Source.internal_static_zb_dcts_source_SourceAttribute_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                zb.dcts.source.Source.SourceAttribute.class, zb.dcts.source.Source.SourceAttribute.Builder.class);
+      }
+
+      // Construct using zb.dcts.source.Source.SourceAttribute.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        attribute_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return zb.dcts.source.Source.internal_static_zb_dcts_source_SourceAttribute_descriptor;
+      }
+
+      @java.lang.Override
+      public zb.dcts.source.Source.SourceAttribute getDefaultInstanceForType() {
+        return zb.dcts.source.Source.SourceAttribute.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public zb.dcts.source.Source.SourceAttribute build() {
+        zb.dcts.source.Source.SourceAttribute result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public zb.dcts.source.Source.SourceAttribute buildPartial() {
+        zb.dcts.source.Source.SourceAttribute result = new zb.dcts.source.Source.SourceAttribute(this);
+        result.attribute_ = attribute_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof zb.dcts.source.Source.SourceAttribute) {
+          return mergeFrom((zb.dcts.source.Source.SourceAttribute)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(zb.dcts.source.Source.SourceAttribute other) {
+        if (other == zb.dcts.source.Source.SourceAttribute.getDefaultInstance()) return this;
+        if (other.getAttribute() != 0) {
+          setAttribute(other.getAttribute());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        zb.dcts.source.Source.SourceAttribute parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (zb.dcts.source.Source.SourceAttribute) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int attribute_ ;
+      /**
+       * <code>uint32 attribute = 1;</code>
+       * @return The attribute.
+       */
+      @java.lang.Override
+      public int getAttribute() {
+        return attribute_;
+      }
+      /**
+       * <code>uint32 attribute = 1;</code>
+       * @param value The attribute to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAttribute(int value) {
+        
+        attribute_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 attribute = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAttribute() {
+        
+        attribute_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:zb.dcts.source.SourceAttribute)
+    }
+
+    // @@protoc_insertion_point(class_scope:zb.dcts.source.SourceAttribute)
+    private static final zb.dcts.source.Source.SourceAttribute DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new zb.dcts.source.Source.SourceAttribute();
+    }
+
+    public static zb.dcts.source.Source.SourceAttribute getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SourceAttribute>
+        PARSER = new com.google.protobuf.AbstractParser<SourceAttribute>() {
+      @java.lang.Override
+      public SourceAttribute parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SourceAttribute(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SourceAttribute> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SourceAttribute> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public zb.dcts.source.Source.SourceAttribute getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface SourceInfoOrBuilder extends
       // @@protoc_insertion_point(interface_extends:zb.dcts.source.SourceInfo)
       com.google.protobuf.MessageOrBuilder {
@@ -1631,13 +2119,30 @@ public final class Source {
 
     /**
      * <pre>
-     *是否远程数据源
+     *属性（可复合）
      * </pre>
      *
-     * <code>bool remote = 4;</code>
-     * @return The remote.
+     * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+     * @return Whether the attribute field is set.
      */
-    boolean getRemote();
+    boolean hasAttribute();
+    /**
+     * <pre>
+     *属性（可复合）
+     * </pre>
+     *
+     * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+     * @return The attribute.
+     */
+    zb.dcts.source.Source.SourceAttribute getAttribute();
+    /**
+     * <pre>
+     *属性（可复合）
+     * </pre>
+     *
+     * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+     */
+    zb.dcts.source.Source.SourceAttributeOrBuilder getAttributeOrBuilder();
 
     /**
      * <code>.zb.dcts.source.SourceStatus status = 6;</code>
@@ -1833,9 +2338,17 @@ public final class Source {
 
               break;
             }
-            case 32: {
+            case 34: {
+              zb.dcts.source.Source.SourceAttribute.Builder subBuilder = null;
+              if (attribute_ != null) {
+                subBuilder = attribute_.toBuilder();
+              }
+              attribute_ = input.readMessage(zb.dcts.source.Source.SourceAttribute.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attribute_);
+                attribute_ = subBuilder.buildPartial();
+              }
 
-              remote_ = input.readBool();
               break;
             }
             case 48: {
@@ -1997,19 +2510,42 @@ public final class Source {
       return getCapability();
     }
 
-    public static final int REMOTE_FIELD_NUMBER = 4;
-    private boolean remote_;
+    public static final int ATTRIBUTE_FIELD_NUMBER = 4;
+    private zb.dcts.source.Source.SourceAttribute attribute_;
     /**
      * <pre>
-     *是否远程数据源
+     *属性（可复合）
      * </pre>
      *
-     * <code>bool remote = 4;</code>
-     * @return The remote.
+     * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+     * @return Whether the attribute field is set.
      */
     @java.lang.Override
-    public boolean getRemote() {
-      return remote_;
+    public boolean hasAttribute() {
+      return attribute_ != null;
+    }
+    /**
+     * <pre>
+     *属性（可复合）
+     * </pre>
+     *
+     * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+     * @return The attribute.
+     */
+    @java.lang.Override
+    public zb.dcts.source.Source.SourceAttribute getAttribute() {
+      return attribute_ == null ? zb.dcts.source.Source.SourceAttribute.getDefaultInstance() : attribute_;
+    }
+    /**
+     * <pre>
+     *属性（可复合）
+     * </pre>
+     *
+     * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.source.Source.SourceAttributeOrBuilder getAttributeOrBuilder() {
+      return getAttribute();
     }
 
     public static final int STATUS_FIELD_NUMBER = 6;
@@ -2190,8 +2726,8 @@ public final class Source {
       if (capability_ != null) {
         output.writeMessage(3, getCapability());
       }
-      if (remote_ != false) {
-        output.writeBool(4, remote_);
+      if (attribute_ != null) {
+        output.writeMessage(4, getAttribute());
       }
       if (status_ != zb.dcts.source.Source.SourceStatus.S_OFFLINE.getNumber()) {
         output.writeEnum(6, status_);
@@ -2226,9 +2762,9 @@ public final class Source {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getCapability());
       }
-      if (remote_ != false) {
+      if (attribute_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(4, remote_);
+          .computeMessageSize(4, getAttribute());
       }
       if (status_ != zb.dcts.source.Source.SourceStatus.S_OFFLINE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -2272,8 +2808,11 @@ public final class Source {
         if (!getCapability()
             .equals(other.getCapability())) return false;
       }
-      if (getRemote()
-          != other.getRemote()) return false;
+      if (hasAttribute() != other.hasAttribute()) return false;
+      if (hasAttribute()) {
+        if (!getAttribute()
+            .equals(other.getAttribute())) return false;
+      }
       if (status_ != other.status_) return false;
       if (hasPosition() != other.hasPosition()) return false;
       if (hasPosition()) {
@@ -2308,9 +2847,10 @@ public final class Source {
         hash = (37 * hash) + CAPABILITY_FIELD_NUMBER;
         hash = (53 * hash) + getCapability().hashCode();
       }
-      hash = (37 * hash) + REMOTE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getRemote());
+      if (hasAttribute()) {
+        hash = (37 * hash) + ATTRIBUTE_FIELD_NUMBER;
+        hash = (53 * hash) + getAttribute().hashCode();
+      }
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + status_;
       if (hasPosition()) {
@@ -2477,8 +3017,12 @@ public final class Source {
           capability_ = null;
           capabilityBuilder_ = null;
         }
-        remote_ = false;
-
+        if (attributeBuilder_ == null) {
+          attribute_ = null;
+        } else {
+          attribute_ = null;
+          attributeBuilder_ = null;
+        }
         status_ = 0;
 
         if (positionBuilder_ == null) {
@@ -2537,7 +3081,11 @@ public final class Source {
         } else {
           result.capability_ = capabilityBuilder_.build();
         }
-        result.remote_ = remote_;
+        if (attributeBuilder_ == null) {
+          result.attribute_ = attribute_;
+        } else {
+          result.attribute_ = attributeBuilder_.build();
+        }
         result.status_ = status_;
         if (positionBuilder_ == null) {
           result.position_ = position_;
@@ -2615,8 +3163,8 @@ public final class Source {
         if (other.hasCapability()) {
           mergeCapability(other.getCapability());
         }
-        if (other.getRemote() != false) {
-          setRemote(other.getRemote());
+        if (other.hasAttribute()) {
+          mergeAttribute(other.getAttribute());
         }
         if (other.status_ != 0) {
           setStatusValue(other.getStatusValue());
@@ -3011,47 +3559,159 @@ public final class Source {
         return capabilityBuilder_;
       }
 
-      private boolean remote_ ;
+      private zb.dcts.source.Source.SourceAttribute attribute_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          zb.dcts.source.Source.SourceAttribute, zb.dcts.source.Source.SourceAttribute.Builder, zb.dcts.source.Source.SourceAttributeOrBuilder> attributeBuilder_;
       /**
        * <pre>
-       *是否远程数据源
+       *属性（可复合）
        * </pre>
        *
-       * <code>bool remote = 4;</code>
-       * @return The remote.
+       * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+       * @return Whether the attribute field is set.
        */
-      @java.lang.Override
-      public boolean getRemote() {
-        return remote_;
+      public boolean hasAttribute() {
+        return attributeBuilder_ != null || attribute_ != null;
       }
       /**
        * <pre>
-       *是否远程数据源
+       *属性（可复合）
        * </pre>
        *
-       * <code>bool remote = 4;</code>
-       * @param value The remote to set.
-       * @return This builder for chaining.
+       * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+       * @return The attribute.
        */
-      public Builder setRemote(boolean value) {
-        
-        remote_ = value;
-        onChanged();
+      public zb.dcts.source.Source.SourceAttribute getAttribute() {
+        if (attributeBuilder_ == null) {
+          return attribute_ == null ? zb.dcts.source.Source.SourceAttribute.getDefaultInstance() : attribute_;
+        } else {
+          return attributeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       *属性（可复合）
+       * </pre>
+       *
+       * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+       */
+      public Builder setAttribute(zb.dcts.source.Source.SourceAttribute value) {
+        if (attributeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          attribute_ = value;
+          onChanged();
+        } else {
+          attributeBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
        * <pre>
-       *是否远程数据源
+       *属性（可复合）
        * </pre>
        *
-       * <code>bool remote = 4;</code>
-       * @return This builder for chaining.
+       * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
        */
-      public Builder clearRemote() {
-        
-        remote_ = false;
-        onChanged();
+      public Builder setAttribute(
+          zb.dcts.source.Source.SourceAttribute.Builder builderForValue) {
+        if (attributeBuilder_ == null) {
+          attribute_ = builderForValue.build();
+          onChanged();
+        } else {
+          attributeBuilder_.setMessage(builderForValue.build());
+        }
+
         return this;
+      }
+      /**
+       * <pre>
+       *属性（可复合）
+       * </pre>
+       *
+       * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+       */
+      public Builder mergeAttribute(zb.dcts.source.Source.SourceAttribute value) {
+        if (attributeBuilder_ == null) {
+          if (attribute_ != null) {
+            attribute_ =
+              zb.dcts.source.Source.SourceAttribute.newBuilder(attribute_).mergeFrom(value).buildPartial();
+          } else {
+            attribute_ = value;
+          }
+          onChanged();
+        } else {
+          attributeBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *属性（可复合）
+       * </pre>
+       *
+       * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+       */
+      public Builder clearAttribute() {
+        if (attributeBuilder_ == null) {
+          attribute_ = null;
+          onChanged();
+        } else {
+          attribute_ = null;
+          attributeBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *属性（可复合）
+       * </pre>
+       *
+       * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+       */
+      public zb.dcts.source.Source.SourceAttribute.Builder getAttributeBuilder() {
+        
+        onChanged();
+        return getAttributeFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       *属性（可复合）
+       * </pre>
+       *
+       * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+       */
+      public zb.dcts.source.Source.SourceAttributeOrBuilder getAttributeOrBuilder() {
+        if (attributeBuilder_ != null) {
+          return attributeBuilder_.getMessageOrBuilder();
+        } else {
+          return attribute_ == null ?
+              zb.dcts.source.Source.SourceAttribute.getDefaultInstance() : attribute_;
+        }
+      }
+      /**
+       * <pre>
+       *属性（可复合）
+       * </pre>
+       *
+       * <code>.zb.dcts.source.SourceAttribute attribute = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          zb.dcts.source.Source.SourceAttribute, zb.dcts.source.Source.SourceAttribute.Builder, zb.dcts.source.Source.SourceAttributeOrBuilder> 
+          getAttributeFieldBuilder() {
+        if (attributeBuilder_ == null) {
+          attributeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              zb.dcts.source.Source.SourceAttribute, zb.dcts.source.Source.SourceAttribute.Builder, zb.dcts.source.Source.SourceAttributeOrBuilder>(
+                  getAttribute(),
+                  getParentForChildren(),
+                  isClean());
+          attribute_ = null;
+        }
+        return attributeBuilder_;
       }
 
       private int status_ = 0;
@@ -7058,6 +7718,11 @@ public final class Source {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_zb_dcts_source_SourceCapability_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_zb_dcts_source_SourceAttribute_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_zb_dcts_source_SourceAttribute_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_zb_dcts_source_SourceInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -7094,42 +7759,40 @@ public final class Source {
       "\n\023source/source.proto\022\016zb.dcts.source\032\nd" +
       "cts.proto\032\033google/protobuf/empty.proto\032\031" +
       "google/protobuf/any.proto\"\031\n\010SourceId\022\r\n" +
-      "\005value\030\001 \001(\r\"\204\001\n\020SourceCapability\022\022\n\ncap" +
-      "ability\030\001 \001(\r\"\\\n\004Type\022\010\n\004NONE\020\000\022\021\n\rSPECT" +
-      "RUM_SCAN\020\001\022\r\n\tIQ_STREAM\020\002\022\025\n\021DIRECTION_F" +
-      "INDING\020\004\022\021\n\rMULTI_CHANNEL\020\010\"\277\002\n\nSourceIn" +
-      "fo\022+\n\tsource_id\030\001 \001(\0132\030.zb.dcts.source.S" +
-      "ourceId\022(\n\004type\030\002 \001(\0162\032.zb.dcts.source.S" +
-      "ourceType\0224\n\ncapability\030\003 \001(\0132 .zb.dcts." +
-      "source.SourceCapability\022\016\n\006remote\030\004 \001(\010\022" +
-      ",\n\006status\030\006 \001(\0162\034.zb.dcts.source.SourceS" +
-      "tatus\022#\n\010position\030\007 \001(\0132\021.zb.dcts.Positi" +
-      "on\022!\n\007metrics\030\010 \001(\0132\020.zb.dcts.Metrics\022\036\n" +
-      "\006topics\030\t \003(\0132\016.zb.dcts.Topic\"@\n\rSourceS" +
-      "etInfo\022/\n\013source_info\030\001 \003(\0132\032.zb.dcts.so" +
-      "urce.SourceInfo\"^\n\020SubscribeRequest\022+\n\ts" +
-      "ource_id\030\001 \001(\0132\030.zb.dcts.source.SourceId" +
-      "\022\035\n\005topic\030\002 \001(\0132\016.zb.dcts.Topic\"_\n\rSourc" +
-      "eCommand\022+\n\tsource_id\030\001 \001(\0132\030.zb.dcts.so" +
-      "urce.SourceId\022!\n\007command\030\002 \001(\0132\020.zb.dcts" +
-      ".Command\"g\n\022SourceCommandReply\022+\n\tsource" +
-      "_id\030\001 \001(\0132\030.zb.dcts.source.SourceId\022$\n\005r" +
-      "eply\030\002 \001(\0132\025.zb.dcts.CommandReply*\340\001\n\nSo" +
-      "urceType\022\017\n\013SENSOR_3900\020\000\022\010\n\004FILE\020\001\022\013\n\007V" +
-      "IRTUAL\020\002\022\016\n\nKH_CZ_COMM\020\003\022\017\n\013KH_CZ_RADAR\020" +
-      "\004\022\014\n\010KH_CZ_JC\020\005\022\017\n\013KH_WGH_COMM\020\006\022\020\n\014KH_W" +
-      "GH_RADAR\020\007\022\n\n\006CZC_SM\020\010\022\n\n\006CZC_DF\020\t\022\n\n\006CZ" +
-      "C_QJ\020\n\022\014\n\010RADAR_DF\020\013\022\010\n\004DEMO\020\014\022\010\n\004ZCZH\020\r" +
-      "\022\022\n\016SIMULATOR_COMM\020\016*H\n\014SourceStatus\022\r\n\t" +
-      "S_OFFLINE\020\000\022\n\n\006S_IDLE\020\001\022\r\n\tS_ENGAGED\020\002\022\016" +
-      "\n\nS_ABNORMAL\020\0032\221\002\n\024SourceControlService\022" +
-      "I\n\016ListAllSources\022\026.google.protobuf.Empt" +
-      "y\032\035.zb.dcts.source.SourceSetInfo\"\000\022X\n\021Se" +
-      "ndSourceCommand\022\035.zb.dcts.source.SourceC" +
-      "ommand\032\".zb.dcts.source.SourceCommandRep" +
-      "ly\"\000\022T\n\026SubscribeSourceMessage\022 .zb.dcts" +
-      ".source.SubscribeRequest\032\024.google.protob" +
-      "uf.Any\"\0000\001b\006proto3"
+      "\005value\030\001 \001(\r\"q\n\020SourceCapability\022\022\n\ncapa" +
+      "bility\030\001 \001(\r\"I\n\004Type\022\010\n\004NONE\020\000\022\021\n\rSPECTR" +
+      "UM_SCAN\020\001\022\r\n\tIQ_STREAM\020\002\022\025\n\021DIRECTION_FI" +
+      "NDING\020\004\"O\n\017SourceAttribute\022\021\n\tattribute\030" +
+      "\001 \001(\r\")\n\004Type\022\010\n\004NONE\020\000\022\n\n\006REMOTE\020\001\022\013\n\007V" +
+      "IRTUAL\020\002\"\343\002\n\nSourceInfo\022+\n\tsource_id\030\001 \001" +
+      "(\0132\030.zb.dcts.source.SourceId\022(\n\004type\030\002 \001" +
+      "(\0162\032.zb.dcts.source.SourceType\0224\n\ncapabi" +
+      "lity\030\003 \001(\0132 .zb.dcts.source.SourceCapabi" +
+      "lity\0222\n\tattribute\030\004 \001(\0132\037.zb.dcts.source" +
+      ".SourceAttribute\022,\n\006status\030\006 \001(\0162\034.zb.dc" +
+      "ts.source.SourceStatus\022#\n\010position\030\007 \001(\013" +
+      "2\021.zb.dcts.Position\022!\n\007metrics\030\010 \001(\0132\020.z" +
+      "b.dcts.Metrics\022\036\n\006topics\030\t \003(\0132\016.zb.dcts" +
+      ".Topic\"@\n\rSourceSetInfo\022/\n\013source_info\030\001" +
+      " \003(\0132\032.zb.dcts.source.SourceInfo\"^\n\020Subs" +
+      "cribeRequest\022+\n\tsource_id\030\001 \001(\0132\030.zb.dct" +
+      "s.source.SourceId\022\035\n\005topic\030\002 \001(\0132\016.zb.dc" +
+      "ts.Topic\"_\n\rSourceCommand\022+\n\tsource_id\030\001" +
+      " \001(\0132\030.zb.dcts.source.SourceId\022!\n\007comman" +
+      "d\030\002 \001(\0132\020.zb.dcts.Command\"g\n\022SourceComma" +
+      "ndReply\022+\n\tsource_id\030\001 \001(\0132\030.zb.dcts.sou" +
+      "rce.SourceId\022$\n\005reply\030\002 \001(\0132\025.zb.dcts.Co" +
+      "mmandReply*5\n\nSourceType\022\017\n\013SENSOR_3900\020" +
+      "\000\022\t\n\005FILE_\020\001\022\013\n\007VIRTUAL\020\002*H\n\014SourceStatu" +
+      "s\022\r\n\tS_OFFLINE\020\000\022\n\n\006S_IDLE\020\001\022\r\n\tS_ENGAGE" +
+      "D\020\002\022\016\n\nS_ABNORMAL\020\0032\221\002\n\024SourceControlSer" +
+      "vice\022I\n\016ListAllSources\022\026.google.protobuf" +
+      ".Empty\032\035.zb.dcts.source.SourceSetInfo\"\000\022" +
+      "X\n\021SendSourceCommand\022\035.zb.dcts.source.So" +
+      "urceCommand\032\".zb.dcts.source.SourceComma" +
+      "ndReply\"\000\022T\n\026SubscribeSourceMessage\022 .zb" +
+      ".dcts.source.SubscribeRequest\032\024.google.p" +
+      "rotobuf.Any\"\0000\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7150,32 +7813,38 @@ public final class Source {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_source_SourceCapability_descriptor,
         new java.lang.String[] { "Capability", });
-    internal_static_zb_dcts_source_SourceInfo_descriptor =
+    internal_static_zb_dcts_source_SourceAttribute_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_zb_dcts_source_SourceAttribute_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_zb_dcts_source_SourceAttribute_descriptor,
+        new java.lang.String[] { "Attribute", });
+    internal_static_zb_dcts_source_SourceInfo_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_zb_dcts_source_SourceInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_source_SourceInfo_descriptor,
-        new java.lang.String[] { "SourceId", "Type", "Capability", "Remote", "Status", "Position", "Metrics", "Topics", });
+        new java.lang.String[] { "SourceId", "Type", "Capability", "Attribute", "Status", "Position", "Metrics", "Topics", });
     internal_static_zb_dcts_source_SourceSetInfo_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_zb_dcts_source_SourceSetInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_source_SourceSetInfo_descriptor,
         new java.lang.String[] { "SourceInfo", });
     internal_static_zb_dcts_source_SubscribeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_zb_dcts_source_SubscribeRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_source_SubscribeRequest_descriptor,
         new java.lang.String[] { "SourceId", "Topic", });
     internal_static_zb_dcts_source_SourceCommand_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_zb_dcts_source_SourceCommand_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_source_SourceCommand_descriptor,
         new java.lang.String[] { "SourceId", "Command", });
     internal_static_zb_dcts_source_SourceCommandReply_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_zb_dcts_source_SourceCommandReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_source_SourceCommandReply_descriptor,

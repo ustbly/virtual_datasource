@@ -35320,7 +35320,7 @@ public final class Detection {
 
     /**
      * <pre>
-     *信号时频图样本   
+     *信号时频图样本
      * </pre>
      *
      * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -35329,7 +35329,7 @@ public final class Detection {
     boolean hasSignalSampleList();
     /**
      * <pre>
-     *信号时频图样本   
+     *信号时频图样本
      * </pre>
      *
      * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -35338,7 +35338,7 @@ public final class Detection {
     zb.dcts.scenario.detection.Detection.SignalSampleList getSignalSampleList();
     /**
      * <pre>
-     *信号时频图样本   
+     *信号时频图样本
      * </pre>
      *
      * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -35584,7 +35584,7 @@ public final class Detection {
     private zb.dcts.scenario.detection.Detection.SignalSampleList signalSampleList_;
     /**
      * <pre>
-     *信号时频图样本   
+     *信号时频图样本
      * </pre>
      *
      * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -35596,7 +35596,7 @@ public final class Detection {
     }
     /**
      * <pre>
-     *信号时频图样本   
+     *信号时频图样本
      * </pre>
      *
      * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -35608,7 +35608,7 @@ public final class Detection {
     }
     /**
      * <pre>
-     *信号时频图样本   
+     *信号时频图样本
      * </pre>
      *
      * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -36461,7 +36461,7 @@ public final class Detection {
           zb.dcts.scenario.detection.Detection.SignalSampleList, zb.dcts.scenario.detection.Detection.SignalSampleList.Builder, zb.dcts.scenario.detection.Detection.SignalSampleListOrBuilder> signalSampleListBuilder_;
       /**
        * <pre>
-       *信号时频图样本   
+       *信号时频图样本
        * </pre>
        *
        * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -36472,7 +36472,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号时频图样本   
+       *信号时频图样本
        * </pre>
        *
        * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -36487,7 +36487,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号时频图样本   
+       *信号时频图样本
        * </pre>
        *
        * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -36507,7 +36507,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号时频图样本   
+       *信号时频图样本
        * </pre>
        *
        * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -36525,7 +36525,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号时频图样本   
+       *信号时频图样本
        * </pre>
        *
        * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -36547,7 +36547,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号时频图样本   
+       *信号时频图样本
        * </pre>
        *
        * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -36565,7 +36565,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号时频图样本   
+       *信号时频图样本
        * </pre>
        *
        * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -36577,7 +36577,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号时频图样本   
+       *信号时频图样本
        * </pre>
        *
        * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>
@@ -36592,7 +36592,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号时频图样本   
+       *信号时频图样本
        * </pre>
        *
        * <code>.zb.dcts.scenario.detection.SignalSampleList signal_sample_list = 5;</code>

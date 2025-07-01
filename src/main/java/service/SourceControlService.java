@@ -100,7 +100,7 @@ public class SourceControlService {
                         DataSource source = null;
                         if (SENSOR_3900.equals(SourceType.valueOf(deviceType))) {
                             source = objectMapper.treeToValue(device, Sensor.class);
-                        } else if (REMOTE.equals(SourceType.valueOf(deviceType))) {
+                        } else if (KH_CZ_COMM.equals(SourceType.valueOf(deviceType))) {
                             source = objectMapper.treeToValue(device, InfoSystem.class);
                         } else if (FILE.equals(SourceType.valueOf(deviceType))) {
                             source = objectMapper.treeToValue(device, ReconStation.class);

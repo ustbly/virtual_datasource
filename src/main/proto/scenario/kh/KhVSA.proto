@@ -62,9 +62,9 @@ message CommVSAResult
         TimeSpan time_span = 3;             //当前上报周期内的首段和末端采集时刻（由设备提供的时间）
         Position device_position = 4;       //设备位置
     }
-	Header header = 1;
-	scenario.FFP.IQData demod_result = 2; //解调得到的IQ数据
-	bytes  symbols = 3;                     //码元
+    Header header = 1;
+    scenario.FFP.IQData demod_result = 2; //解调得到的IQ数据
+    bytes  symbols = 3;                     //码元
     Recognize recognize = 4;
     DecodeResult decode = 5;                //解码信息
 	//DigitalModulateError digital_demod_error = 4;  //调制误差计算结果

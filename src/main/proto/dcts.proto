@@ -4,7 +4,7 @@ package zb.dcts;
 import "google/protobuf/any.proto";
 
 //时间戳，UTC time stamp
-message Timestamp 
+message Timestamp
 {
   uint32 seconds = 1;  //UTC时间 自1970-1-1日零点以来的秒值
   uint32 nanos = 2;    //本秒内的纳秒偏移
@@ -18,11 +18,11 @@ message TimeSpan
 }
 
 //方位信息 WGS84坐标体系
-message Position 
+message Position
 {
-  double latitude  = 1;	        //纬度，单位 弧度
+  double latitude = 1;          //纬度，单位 弧度
   double longitude = 2;         //经度，单位 弧度
-  double altitude = 3;         //海拔，单位 米
+  double altitude = 3;          //海拔，单位 米
 }
 
 //姿态信息
@@ -37,7 +37,7 @@ message Posture
 message Direction
 {
   double azimuth = 1;       //水平角 正北方向夹角-顺时针为正(0°~360°)
-  double pitch = 2;       //俯仰角 水平为零向下为负向上为正(-90~90)
+  double pitch = 2;         //俯仰角 水平为零向下为负向上为正(-90~90)
 }
 
 message DOA
@@ -80,7 +80,7 @@ message Physical
 
 message Metrics
 {
-    map<string, Physical> indices = 1;
+  map<string, Physical> indices = 1;
 }
 
 message Integer
@@ -106,17 +106,17 @@ message ComplexNumber
 
 message StatisticVal
 {
-    double up = 1;      //上限
-    double down = 2;    //下限
-    double cur = 3;     //当前
-    double mean = 4;    //平均
+  double up = 1;      //上限
+  double down = 2;    //下限
+  double cur = 3;     //当前
+  double mean = 4;    //平均
 }
 
 message HeartbeatCfg
 {
   int32 heartbeat_interval = 1;
   int32 heartbeat_timeout = 2;
-  int32 heartbeat_ttl = 3; 
+  int32 heartbeat_ttl = 3;
 }
 
 message ReconnectionCfg
@@ -149,81 +149,89 @@ message ZeromqLinkCfg
 
 message TimerParam
 {
-    int32 interval_in_ms = 1;
-    int32 times = 2;
+  int32 interval_in_ms = 1;
+  int32 times = 2;
 }
 
 message Topic
 {
-    string key = 1;
-    string value = 2;
+  string key = 1;
+  string value = 2;
 }
 
 //命令错误码
 enum ErrorType
 {
-    ERR_NONE = 0;               //无错误
-    ERR_NOTIMPLEMENTED = -1;    //功能未实现
-    ERR_UNKNOWN = -2;           //未知错误
-    ERR_BUSY = -3;              //节点忙
-    ERR_ABORTED = -5;           //操作终止
-    ERR_CMD_NOREPLY = -6;       //响应超时
-    ERR_PARAM = -8;             //参数错误
-    ERR_STATION_NAME_EXISTS = -11;  //节点名称已存在
-    ERR_INVALID_HANDLE = -15;       //无效的句柄
-    ERR_INVALID_REQUEST = -16;      //无效的请求
-    ERR_NO_DATA_SOURCE = -20;       //无可用的数据源资源
-    ERR_SOCKET_ERROR = -26;         //socket错误
-    ERR_SCENARIO_NOT_FOUND = -27;       //场景未找到
-    ERR_NO_DATA_AVAILABLE = -28;    //没有有效数据
-    ERR_BUFFER_TOO_SMALL = -30;     //缓冲区不足
-    ERR_DIAGNOSTIC = -31;           //诊断错误
-    ERR_COMMAND_FAILED = -38;       //命令执行失败
-    ERR_TIMEOUT = -40;              //超时
-    ERR_STRING_TOO_LONG = -43;      //字符串过长
-    ERR_DATA_TYPE = -52;            //数据类型
-    ERR_AUTHORIZATION = -57;        //鉴权失败
-    ERR_LICENSE = -64;              //授权失效
-    ERR_MEAS_FAILED = -66;          //测量失败
-    ERR_DATA_AVAIL_TIMEOUT = -75;   //数据超时
-    ERR_TASK_NOT_FOUND = -76;       //任务未找到
-    ERR_SOURCE_ASSIGN = -77;     //节点任务指派失败
-    ERR_TASK_START = -78;   //设备任务指派失败
-    ERR_TASK_PAUSE = -79;    //任务暂停失败
-    ERR_TASK_RESUME = -80;      //任务继续失败
-    ERR_OPEN_FILE = -81;            //打开文件错误
-    ERR_TDOA = -82;                 //TDOA错误
-    ERR_TASK_QUIT = -83;            //任务已退出
+  ERR_NONE = 0;               //无错误
+  ERR_NOTIMPLEMENTED = -1;    //功能未实现
+  ERR_UNKNOWN = -2;           //未知错误
+  ERR_BUSY = -3;              //节点忙
+  ERR_ABORTED = -5;           //操作终止
+  ERR_CMD_NOREPLY = -6;       //响应超时
+  ERR_PARAM = -8;             //参数错误
+  ERR_STATION_NAME_EXISTS = -11;  //节点名称已存在
+  ERR_INVALID_HANDLE = -15;       //无效的句柄
+  ERR_INVALID_REQUEST = -16;      //无效的请求
+  ERR_NO_DATA_SOURCE = -20;       //无可用的数据源资源
+  ERR_SOCKET_ERROR = -26;         //socket错误
+  ERR_SCENARIO_NOT_FOUND = -27;       //场景未找到
+  ERR_NO_DATA_AVAILABLE = -28;    //没有有效数据
+  ERR_BUFFER_TOO_SMALL = -30;     //缓冲区不足
+  ERR_DIAGNOSTIC = -31;           //诊断错误
+  ERR_COMMAND_FAILED = -38;       //命令执行失败
+  ERR_TIMEOUT = -40;              //超时
+  ERR_STRING_TOO_LONG = -43;      //字符串过长
+  ERR_DATA_TYPE = -52;            //数据类型
+  ERR_AUTHORIZATION = -57;        //鉴权失败
+  ERR_LICENSE = -64;              //授权失效
+  ERR_MEAS_FAILED = -66;          //测量失败
+  ERR_DATA_AVAIL_TIMEOUT = -75;   //数据超时
+  ERR_TASK_NOT_FOUND = -76;       //任务未找到
+  ERR_SOURCE_ASSIGN = -77;     //节点任务指派失败
+  ERR_TASK_START = -78;   //设备任务指派失败
+  ERR_TASK_PAUSE = -79;    //任务暂停失败
+  ERR_TASK_RESUME = -80;      //任务继续失败
+  ERR_OPEN_FILE = -81;            //打开文件错误
+  ERR_TDOA = -82;                 //TDOA错误
+  ERR_TASK_QUIT = -83;            //任务已退出
 }
 
 message ServerConfig
 {
-    ZeromqLinkCfg server = 1;
-    ZeromqLinkCfg pull = 2;
-    ZeromqLinkCfg pub = 3;
-    ZeromqLinkCfg sub = 4;
-    map<string, IPv4Address> services = 5;
-    map<string, string> path = 6;
+  ZeromqLinkCfg server = 1;
+  ZeromqLinkCfg pull = 2;
+  ZeromqLinkCfg pub = 3;
+  ZeromqLinkCfg sub = 4;
+  map<string, IPv4Address> services = 5;
+  map<string, string> path = 6;
 }
 
 message RemoteConfig
 {
-    ZeromqLinkCfg client = 1;
-    ZeromqLinkCfg push = 2;
-    ZeromqLinkCfg pub = 3;
-    ZeromqLinkCfg sub = 4;
-    map<string, string> options = 5;
+  ZeromqLinkCfg client = 1;
+  ZeromqLinkCfg push = 2;
+  ZeromqLinkCfg pub = 3;
+  ZeromqLinkCfg sub = 4;
+  map<string, string> options = 5;
 }
 
 message Command
 {
-    uint32 command_function = 1;          //命令类型码
-    google.protobuf.Any command_param = 2;//命令参数
+  uint32 command_function = 1;          //命令类型码
+  google.protobuf.Any command_param = 2;//命令参数
 }
 
 message CommandReply
 {
-    ErrorType error_code = 1;           //响应错误码
-    google.protobuf.Any attachment = 2; //响应附件
+  ErrorType error_code = 1;           //响应错误码
+  google.protobuf.Any attachment = 2; //响应附件
 }
 
+// 威胁程度
+enum ThreatLevel
+{
+  NONE = 0;          //无
+  LOW = 1;          //低
+  MIDDLE = 2;            //中
+  HIGH = 3;          //高
+}

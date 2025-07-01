@@ -23,8 +23,8 @@ public class ReconStation extends DataSource {
     public ReconStation() {
     }
 
-    public ReconStation(int source_id, SourceType type, SourceStatus status, Position position, Map<String, Physical> metrics, List<Map<String, String>> topics) {
-        super(source_id, type, status, position, metrics, topics);
+    public ReconStation(int source_id, SourceType type, int capability, SourceStatus status, Position position, Map<String, Physical> metrics, List<Map<String, String>> topics) {
+        super(source_id, type, capability, status, position, metrics, topics);
     }
 
     @Override
@@ -32,6 +32,7 @@ public class ReconStation extends DataSource {
         return "ReconStation{" +
                 "source_id=" + source_id +
                 ", type=" + type +
+                ", capability=" + capability +
                 ", status=" + status +
                 ", position=" + position +
                 ", metrics=" + metrics +

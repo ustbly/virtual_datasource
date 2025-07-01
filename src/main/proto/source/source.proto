@@ -16,20 +16,8 @@ message SourceId
 enum SourceType
 {
     SENSOR_3900 = 0;
-    FILE = 1;
+    FILE_ = 1;
     VIRTUAL = 2;
-    KH_CZ_COMM = 3;
-    KH_CZ_RADAR = 4;
-    KH_CZ_JC = 5;
-    KH_WGH_COMM = 6;
-    KH_WGH_RADAR = 7;
-    CZC_SM = 8;
-    CZC_DF = 9;
-    CZC_QJ = 10;
-    RADAR_DF = 11;
-    DEMO = 12;
-    ZCZH = 13;
-    SIMULATOR_COMM = 14;           //通信模拟器
 }
 
 //数据源能力
@@ -39,11 +27,21 @@ message SourceCapability
     {
         NONE = 0x0;
         SPECTRUM_SCAN = 0x1;        //频谱扫描
-        IQ_STREAM = 0x2;            //IQ数据流
+        IQ_STREAM = 0x2;           //IQ数据流
         DIRECTION_FINDING = 0x4;    //测向
-        MULTI_CHANNEL = 0x8;        //多路数据
     }
     uint32 capability = 1;
+}
+
+message SourceAttribute
+{
+    enum Type
+    {
+        NONE = 0x0;
+        REMOTE = 0x1;        //远程
+        VIRTUAL = 0x2;       //虚拟
+    }
+    uint32 attribute = 1;
 }
 
 //源状态
@@ -61,7 +59,7 @@ message SourceInfo
     SourceId source_id = 1;        //源id
     SourceType type = 2;
     SourceCapability capability = 3;
-    bool remote = 4;        //是否远程数据源
+    SourceAttribute attribute = 4;        //属性（可复合）
     SourceStatus status = 6;
     Position position = 7;  //源位置, wgs-84坐标系，弧度单位
     Metrics metrics = 8;    //温度、电压等一些物理量

@@ -23,8 +23,8 @@ public class InfoSystem extends DataSource {
     public InfoSystem() {
     }
 
-    public InfoSystem(int source_id, SourceType type, SourceStatus status, Position position, Map<String, Physical> metrics, List<Map<String, String>> topics) {
-        super(source_id, type, status, position, metrics, topics);
+    public InfoSystem(int source_id, SourceType type, int capability, SourceStatus status, Position position, Map<String, Physical> metrics, List<Map<String, String>> topics) {
+        super(source_id, type, capability, status, position, metrics, topics);
     }
 
     @Override
@@ -32,6 +32,7 @@ public class InfoSystem extends DataSource {
         return "InfoSystem{" +
                 "source_id=" + source_id +
                 ", type=" + type +
+                ", capability=" + capability +
                 ", status=" + status +
                 ", position=" + position +
                 ", metrics=" + metrics +

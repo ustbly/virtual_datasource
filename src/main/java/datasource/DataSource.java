@@ -39,15 +39,17 @@ import java.util.Map;
 public abstract class DataSource {
     protected int source_id;                    // 设备编号
     protected SourceType type;                  // 设备编号类型：3900F/VIRTUAL/FILE/REMOTE
+    protected int capability;                   // 设备能力
     protected SourceStatus status;              // 设备状态
     protected Position position;                // 设备位置
     protected Map<String, Physical> metrics;    // 设备的物理属性
     protected List<Map<String,String>> topics;  // 设备发布的主题
 
 
-    public DataSource(int source_id, SourceType type, SourceStatus status, Position position, Map<String, Physical> metrics, List<Map<String, String>> topics) {
+    public DataSource(int source_id, SourceType type, int capability, SourceStatus status, Position position, Map<String, Physical> metrics, List<Map<String, String>> topics) {
         this.source_id = source_id;
         this.type = type;
+        this.capability = capability;
         this.status = status;
         this.position = position;
         this.metrics = metrics;
@@ -105,11 +107,21 @@ public abstract class DataSource {
         this.topics = topics;
     }
 
+    public void setCapability(int capability) {
+        this.capability = capability;
+    }
+
+    public int getCapability() {
+        return capability;
+    }
+
+  
     @Override
     public String toString() {
         return "DataSource{" +
                 "source_id=" + source_id +
                 ", type=" + type +
+                ", capability=" + capability +
                 ", status=" + status +
                 ", position=" + position +
                 ", metrics=" + metrics +

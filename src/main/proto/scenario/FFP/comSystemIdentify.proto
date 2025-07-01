@@ -15,7 +15,7 @@ message ComSystemSource
 
 message  ComSystemParam
 {
-	spectrum.DDCBank bank = 3;      //设备的中心频率和采样率
+	  spectrum.DDCBank bank = 3;      //设备的中心频率和采样率
 }
 
 message ComSystemIdentifyResult
@@ -33,7 +33,7 @@ message ComSystemIdentifyResult
 		UNKNOWN = 0;
 		DME = 1;
 		TACAN = 2;
-        Link4A = 3;
+    Link4A = 3;
 		Link11 = 4;
 		Link16 = 5;		
 	}

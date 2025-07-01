@@ -652,6 +652,168 @@ public final class Dcts {
     // @@protoc_insertion_point(enum_scope:zb.dcts.ErrorType)
   }
 
+  /**
+   * <pre>
+   * 威胁程度
+   * </pre>
+   *
+   * Protobuf enum {@code zb.dcts.ThreatLevel}
+   */
+  public enum ThreatLevel
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     *无
+     * </pre>
+     *
+     * <code>NONE = 0;</code>
+     */
+    NONE(0),
+    /**
+     * <pre>
+     *低
+     * </pre>
+     *
+     * <code>LOW = 1;</code>
+     */
+    LOW(1),
+    /**
+     * <pre>
+     *中
+     * </pre>
+     *
+     * <code>MIDDLE = 2;</code>
+     */
+    MIDDLE(2),
+    /**
+     * <pre>
+     *高
+     * </pre>
+     *
+     * <code>HIGH = 3;</code>
+     */
+    HIGH(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <pre>
+     *无
+     * </pre>
+     *
+     * <code>NONE = 0;</code>
+     */
+    public static final int NONE_VALUE = 0;
+    /**
+     * <pre>
+     *低
+     * </pre>
+     *
+     * <code>LOW = 1;</code>
+     */
+    public static final int LOW_VALUE = 1;
+    /**
+     * <pre>
+     *中
+     * </pre>
+     *
+     * <code>MIDDLE = 2;</code>
+     */
+    public static final int MIDDLE_VALUE = 2;
+    /**
+     * <pre>
+     *高
+     * </pre>
+     *
+     * <code>HIGH = 3;</code>
+     */
+    public static final int HIGH_VALUE = 3;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ThreatLevel valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static ThreatLevel forNumber(int value) {
+      switch (value) {
+        case 0: return NONE;
+        case 1: return LOW;
+        case 2: return MIDDLE;
+        case 3: return HIGH;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ThreatLevel>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ThreatLevel> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ThreatLevel>() {
+            public ThreatLevel findValueByNumber(int number) {
+              return ThreatLevel.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return zb.dcts.Dcts.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final ThreatLevel[] VALUES = values();
+
+    public static ThreatLevel valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private ThreatLevel(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:zb.dcts.ThreatLevel)
+  }
+
   public interface TimestampOrBuilder extends
       // @@protoc_insertion_point(interface_extends:zb.dcts.Timestamp)
       com.google.protobuf.MessageOrBuilder {
@@ -20642,7 +20804,8 @@ public final class Dcts {
       "SE\020\261\377\377\377\377\377\377\377\377\001\022\034\n\017ERR_TASK_RESUME\020\260\377\377\377\377\377\377" +
       "\377\377\001\022\032\n\rERR_OPEN_FILE\020\257\377\377\377\377\377\377\377\377\001\022\025\n\010ERR_T" +
       "DOA\020\256\377\377\377\377\377\377\377\377\001\022\032\n\rERR_TASK_QUIT\020\255\377\377\377\377\377\377\377" +
-      "\377\001b\006proto3"
+      "\377\001*6\n\013ThreatLevel\022\010\n\004NONE\020\000\022\007\n\003LOW\020\001\022\n\n\006" +
+      "MIDDLE\020\002\022\010\n\004HIGH\020\003b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -169,9 +169,9 @@ message HopSignalDigest
 
 message HopSignalCluster
 {
-    string name = 1;        //跳频系统
-    SignalActivity  activity = 2;                    //信号活跃度
-    TimeSpan        emit_time_span = 3;              //信号出现的起始和终止时间
+    string name = 1;                        //跳频系统
+    SignalActivity  activity = 2;           //信号活跃度
+    TimeSpan        emit_time_span = 3;     //信号出现的起始和终止时间
     repeated HopSignalDigest freq_set = 4;  //频率集
 }
 
@@ -225,7 +225,7 @@ message SignalSampleList
 message SignalTableQueryRequest
 {
     ScenarioTaskId responser = 1;    
-    source.SourceId data_source = 2;             //必须设置数据源
+    source.SourceId data_source = 2;        //必须设置数据源
     Integer activiy_mask = 3;               //根据活动属性查询（可选）
     spectrum.FrequencySpan freq_range = 4;  //根据频率范围查询（可选）
     TimeSpan time_range = 5;                //根据时间范围查询（可选）
@@ -245,7 +245,7 @@ message SignalTableQueryResponse
 //--------------------------for internal purpose--------------------//
 message Header
 {
-    source.SourceId result_from = 1;         //数据来源
+    source.SourceId result_from = 1;    //数据来源
     uint32 sequence_number = 3;         //顺序号，每个任务执行者维护自身的顺序号
     uint32 sweep_count = 4;             //当前上报周期内的扫描次数
     TimeSpan time_span = 5;             //当前上报周期内的首次末次扫描时刻（由设备提供的时间）
@@ -254,7 +254,7 @@ message Header
 
 message RawBody
 {
-    spectrum.FrequencySegment freq_seg = 1;                           //频率范围及点数
+    spectrum.FrequencySegment freq_seg = 1;                         //频率范围及点数
     spectrum.SpectrumLine over_threshold_hits = 2;                  //超限命中次数
     repeated spectrum.SpectrumLine raw_spectrum_lines = 3;          //积累的频谱线                       
 }
@@ -263,7 +263,7 @@ message RawData
 {
     Header header = 1;
     RawBody body = 2;
-    repeated IRange signal_segments = 3;    //信号片段，闭开区间
+    repeated IRange signal_segments = 3;            //信号片段，闭开区间
 }
 
 //设备端周期性上报的检测结果
@@ -272,15 +272,15 @@ message DeviceDetectResult
     Header header = 1;
     FixSignalList fix_signal_list = 3;              //当前上报周期内的信号列表
     HopSignalList hop_signal_list = 4;              //跳频信号检测结果
-    SignalSampleList signal_sample_list = 5;      //信号时频图样本   
+    SignalSampleList signal_sample_list = 5;        //信号时频图样本
 }
 
 //信号层面的测量报告
 message SignalLayerSurvey
 {
     source.SourceId result_from = 1;
-    Timestamp   time_stamp = 2;        //时间戳
-    Position    position = 3;          //测向点的位置
+    Timestamp   time_stamp = 2;          //时间戳
+    Position position = 3;               //测向点的位置
     repeated SignalDigest fix_signal_list = 4;    
-    repeated HopSignalCluster hop_signal_list = 5;  
+    repeated HopSignalCluster hop_signal_list = 5;
 }

@@ -23,8 +23,8 @@ public class Sensor extends DataSource {
     }
 
 
-    public Sensor(int source_id, SourceType type, SourceStatus status, Position position, Map<String, Physical> metrics, List<Map<String, String>> topics) {
-        super(source_id, type, status, position, metrics, topics);
+    public Sensor(int source_id, SourceType type, int capability, SourceStatus status, Position position, Map<String, Physical> metrics, List<Map<String, String>> topics) {
+        super(source_id, type, capability, status, position, metrics, topics);
     }
 
 
@@ -33,6 +33,7 @@ public class Sensor extends DataSource {
         return "Sensor{" +
                 "source_id=" + source_id +
                 ", type=" + type +
+                ", capability=" + capability +
                 ", status=" + status +
                 ", position=" + position +
                 ", metrics=" + metrics +

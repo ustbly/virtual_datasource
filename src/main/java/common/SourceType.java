@@ -12,7 +12,18 @@ public enum SourceType {
     SENSOR_3900,
     FILE,
     VIRTUAL,
-    REMOTE
+    KH_CZ_COMM,
+    KH_CZ_RADAR,
+    KH_CZ_JC,
+    KH_WGH_COMM,
+    KH_WGH_RADAR,
+    CZC_SM,
+    CZC_DF,
+    CZC_QJ,
+    RADAR_DF,
+    DEMO,
+    ZCZH,
+    SIMULATOR_COMM
 }
 
 

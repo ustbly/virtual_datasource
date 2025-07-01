@@ -16,24 +16,24 @@ message VSASource
 enum DigitalDemodType  //数字解调类型
 {
     OOK = 0;
-	FSK2 = 1;
-	FSK4 = 2;
-	FSK8 = 3;
-	FSK16 = 4;
-	MSK = 5;
-	BPSK = 6;
-	QPSK = 7;
-	CQPSK = 8;
-	PSK8 = 9;
-	PSK16 = 10;
-	PI4QPSK = 11;
+		FSK2 = 1;
+		FSK4 = 2;
+		FSK8 = 3;
+		FSK16 = 4;
+		MSK = 5;
+		BPSK = 6;
+		QPSK = 7;
+		CQPSK = 8;
+		PSK8 = 9;
+		PSK16 = 10;
+		PI4QPSK = 11;
     PI4DQPSK = 12;
-	QAM16 = 16;      //QAM调制
+		QAM16 = 16;      //QAM调制
     QAM32 = 17;
     QAM64 = 18;
-	ASK = 21;
-	ASK2 = 22;
-	ASK4 = 23;
+		ASK = 21;
+		ASK2 = 22;
+		ASK4 = 23;
 }
 
 //输入数据类型

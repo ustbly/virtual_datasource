@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="KGD3" />
         <module name="KGD" />
+        <module name="KGD_3" />
       </profile>
     </annotationProcessing>
   </component>

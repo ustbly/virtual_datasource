@@ -1,0 +1,50 @@
+syntax = "proto3";
+package zb.dcts.fusion.freqDomain;
+import "dcts.proto";
+import "scenario/spectrum.proto";
+import "scenario/detection.proto";
+import "aeronaval/aeronaval.proto";
+
+//业务类型
+enum BusinessType
+{
+  VOICE = 0;    //话音
+  LINK = 1;     //数据链
+}
+
+//融合后定频信号
+message FusionFixedSignal
+{
+  zb.dcts.scenario.detection.SignalDigest    digest = 1;
+  Position      position = 2;      //位置信息
+  string        equipment = 3;      //发射信号装备信息，侦收站
+  BusinessType  bussiness_type = 4;    //业务类型
+  ThreatLevel   threat_level = 5;       //威胁等级
+  double        confidence = 6;         //可信度
+  aeronaval.Camp          camp = 7;               //阵营
+}
+
+//融合后跳频网络
+message  FusionHopSignal
+{
+  string id = 1;                                      //id
+  aeronaval.Camp camp = 2;                                      //阵营
+  string type = 3;                                    //网络类型
+  double  period = 4;                                  //跳频周期
+  double start_freq = 5;                              //起始频率
+  double stop_freq = 6;                                //终止频率
+  repeated double freq_set = 7;                        //频率集
+  double band = 8;                                    //跳频带宽
+  string modulation = 9;                              //调制方式
+  TimeSpan emit_time_span = 10;                  //信号出现的起始和终止时间
+  repeated string equipments = 11;          //发射信号装备信息，侦收站列表
+  BusinessType  bussiness_type = 12;              //业务类型
+  string purpose = 13;                        //用途
+}
+
+message FusionSignalList
+{
+  repeated FusionFixedSignal fus_fixed_signals = 1;      //定频信号融合结果
+  repeated FusionHopSignal fus_hop_signals = 2;        //跳频信号合并结果
+}
+

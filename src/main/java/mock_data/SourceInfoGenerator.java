@@ -8,24 +8,23 @@ import datasource.DataSource;
 import datasource.InfoSystem;
 import datasource.ReconStation;
 import datasource.Sensor;
-import entity.*;
+import entity.HoppingSignal;
+import entity.HoppingSignalCluster;
 import redis.clients.jedis.Jedis;
 import utils.RandomUtils;
 import utils.RedisClient;
 import utils.VirtualDeviceScheduler;
 
 import java.io.File;
-import java.sql.Timestamp;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 import static common.SourceStatus.S_ENGAGED;
 
 /**
  * @author 林跃
- * @file SourceInfoGenerator.java
+ * @file SourceInfoAndMessageGen.java
  * @comment 模拟生成设备状态和任务数据的工具类
- * @date 2025/4/21
+ * @date 2025/6/24
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
@@ -116,7 +115,7 @@ public class SourceInfoGenerator {
             case FILE:
                 device = new InfoSystem();
                 break;
-            case REMOTE:
+            case KH_CZ_COMM:
                 device = new ReconStation();
                 break;
         }
