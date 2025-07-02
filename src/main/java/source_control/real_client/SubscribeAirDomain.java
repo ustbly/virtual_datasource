@@ -1,13 +1,19 @@
 package source_control.real_client;
 
-
 import org.zeromq.ZMQ;
 import zb.dcts.aeronaval.Aeronaval;
 import zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage;
 import zb.dcts.scenario.detection.Detection;
 
+/**
+ * @file SubscribeAirDomain.java
+ * @comment 订阅融合后的空域数据
+ * @date 2025/7/1
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 public class SubscribeAirDomain {
-
+    // ZeroMQ 订阅地址和主题
     private static final String SUB_ADDR = "tcp://localhost:5560";
     private static final String TOPIC = "Fusion_AirDomain";
 

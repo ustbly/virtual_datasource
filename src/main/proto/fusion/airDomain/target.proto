@@ -85,6 +85,11 @@ message JammingStationList
 
 message CombinedMessage
 {
-  aeronaval.Target aeronaval_target = 1;          //海空情目标
+  aeronaval.Target aeronaval_target = 1;            //海空情目标
   repeated zb.dcts.scenario.detection.SignalLayerSurvey signal_layer_surveys = 2; //信号层勘测
+  string bussiness_type = 9;                        //业务类型
+  int32 reliability = 10;                           //可信度
+  int32 importance = 11;                            //重要性等级
+  ThreatLevel  thrt_lvl = 12;                       //威胁等级
+  string purpose = 13;                              //用途
 }

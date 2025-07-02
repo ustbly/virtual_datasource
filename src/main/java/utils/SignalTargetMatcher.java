@@ -12,19 +12,18 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /**
+ * @author 林跃
  * @file SignalTargetMatcher.java
  * @comment 信号与目标关联算法封装类：支持时间、空间、DOA、频段规则匹配，并将匹配结果自动以 CombinedMessage 推送至 ZeroMQ
  * @date 2025/6/30
- * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 public class SignalTargetMatcher {
-
+    // 常量：预定义测向站位置（经纬度）
     private static final zb.dcts.Dcts.Position[] STATION_POS = {
-            zb.dcts.Dcts.Position.newBuilder().setLongitude(116.3).setLatitude(39.8).setAltitude(50).build(),
-            zb.dcts.Dcts.Position.newBuilder().setLongitude(116.5).setLatitude(40.0).setAltitude(60).build()
+            zb.dcts.Dcts.Position.newBuilder().setLongitude(116.3).setLatitude(39.8).build(),
+            zb.dcts.Dcts.Position.newBuilder().setLongitude(116.5).setLatitude(40.0).build()
     };
-
     private final double maxTimeDiffSec;      // 最大时间差（秒）
     private final double maxDistanceKm;       // 最大空间距离（公里）
     private final double maxDoaDiffDeg;       // 最大 DOA 差值（角度）
@@ -34,7 +33,7 @@ public class SignalTargetMatcher {
     private final ZMQ.Socket zmqPublisher;    // ZeroMQ 发布器
 
 
-
+    // 静态内部类：表示测向站的测向数据
     static class DOAMeasurement {
         double lat;   // 测向站纬度
         double lon;   // 测向站经度
@@ -47,7 +46,7 @@ public class SignalTargetMatcher {
         }
     }
 
-
+    // 静态内部类：表示经纬度坐标
     static class LatLon {
         double lat;
         double lon;
@@ -59,9 +58,7 @@ public class SignalTargetMatcher {
     }
 
 
-    /**
-     * 构造函数：初始化匹配参数与 ZeroMQ 发布通道
-     */
+    // 构造函数：初始化匹配参数与 ZeroMQ 发布通道
     public SignalTargetMatcher(double maxTimeDiffSec, double maxDistanceKm, double maxDoaDiffDeg,
                                Map<Aeronaval.EquType, double[]> equFreqMap,
                                int threadPoolSize, String zmqBindAddress) {
@@ -78,12 +75,9 @@ public class SignalTargetMatcher {
         this.zmqPublisher.bind(zmqBindAddress); // 例如 "tcp://*:5560"
     }
 
-    /**
-     * 匹配逻辑入口：输入多个 Survey 与多个 Target，输出匹配成功的 CombinedMessage 列表
-     */
+    // 匹配逻辑入口：输入多个 Survey 与多个 Target，输出匹配成功的 CombinedMessage 列表
     public List<CombinedMessage> matchAndPublish(List<Detection.SignalLayerSurvey> surveys,
                                                  List<Aeronaval.Target> targets) {
-
         List<Future<CombinedMessage>> futures = new ArrayList<>();
         for (Aeronaval.Target tgt : targets) {
             // 对每个目标并发处理匹配任务
@@ -110,6 +104,7 @@ public class SignalTargetMatcher {
         return results;
     }
 
+    // 通过两个测向站的测向数据（双站DOA定位）估计目标位置
     private static LatLon estimatePositionFromDOA(DOAMeasurement m1, DOAMeasurement m2) {
         // 将 azimuth 转为弧度
         double theta1 = Math.toRadians(m1.az);
@@ -141,10 +136,7 @@ public class SignalTargetMatcher {
     }
 
 
-    /**
-     * 关联装备目标与信号列表的逻辑
-     */
-//    private CombinedMessage matchSingleTarget(Aeronaval.Target tgt,
+    //    private CombinedMessage matchSingleTarget(Aeronaval.Target tgt,
 //                                              List<Detection.SignalLayerSurvey> surveys) {
 //
 //        // 提取目标时间和位置
@@ -217,14 +209,14 @@ public class SignalTargetMatcher {
 //
 //        return null;
 //    }
-    private CombinedMessage matchSingleTarget(Aeronaval.Target tgt,
-                                              List<Detection.SignalLayerSurvey> surveys) {
-
+    // 关联装备目标与信号列表的逻辑
+    private CombinedMessage matchSingleTarget(Aeronaval.Target tgt, List<Detection.SignalLayerSurvey> surveys) {
         // 目标信息准备
         Instant t0 = Instant.ofEpochSecond(tgt.getTime().getSeconds(), tgt.getTime().getNanos());
         Dcts.Position tgtPos = tgt.getPosition();
         CombinedMessage.Builder builder = CombinedMessage.newBuilder().setAeronavalTarget(tgt);
 
+        // 用于存放通过时间、空间、频率筛选的 Survey 以及对应的 DOA 信息
         List<Detection.SignalLayerSurvey> matchedSurveys = new ArrayList<>();
         List<DOAMeasurement> doaMeasurements = new ArrayList<>();
         Set<Integer> uniqueStations = new HashSet<>();
@@ -232,6 +224,7 @@ public class SignalTargetMatcher {
         System.out.printf("%n[Matcher] 开始处理目标 ID=%d，位置=(%.5f, %.5f)%n",
                 tgt.getId(), tgtPos.getLatitude(), tgtPos.getLongitude());
 
+        // 遍历所有测向站 Survey
         for (Detection.SignalLayerSurvey survey : surveys) {
             // 1. 时间过滤
             Instant surveyTime = Instant.ofEpochSecond(
@@ -257,7 +250,7 @@ public class SignalTargetMatcher {
                 System.out.printf("[跳过] 测向站 %d 已处理过，跳过重复 Survey%n", sourceId);
                 continue;
             }
-
+            // 检查是否有信号记录
             if (survey.getFixSignalListCount() == 0) {
                 System.out.printf("[跳过] Survey 无信号记录，sourceId = %d%n", sourceId);
                 continue;
@@ -309,18 +302,14 @@ public class SignalTargetMatcher {
     }
 
 
-    /**
-     * 判断频率是否符合装备类型的频段限制
-     */
+    // 判断频率是否符合装备类型的频段限制（目前暂未使用）
     private boolean isFreqMatch(double freqHz, Aeronaval.EquType type) {
         double[] range = equFreqMap.get(type);
         if (range == null) return true;
         return freqHz >= range[0] && freqHz <= range[1];
     }
 
-    /**
-     * Haversine 距离计算（单位：km）
-     */
+    // Haversine 计算两个坐标之间的距离（单位：km）
     private static double haversine(double lat1, double lon1, double lat2, double lon2) {
         double R = 6371.0;
         double dLat = Math.toRadians(lat2 - lat1);
@@ -331,9 +320,7 @@ public class SignalTargetMatcher {
         return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     }
 
-    /**
-     * 计算两个点之间的方位角（角度）
-     */
+    // 计算两个点之间的方位角（角度）
     private static double computeAzimuth(Dcts.Position from, Dcts.Position to) {
         double dLon = to.getLongitude() - from.getLongitude();
         double dLat = to.getLatitude() - from.getLatitude();

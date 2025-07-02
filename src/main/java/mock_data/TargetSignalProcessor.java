@@ -145,7 +145,6 @@ package mock_data;
 //    }
 //}
 
-
 import org.zeromq.ZMQ;
 import utils.SignalTargetMatcher;
 import zb.dcts.scenario.detection.Detection;
@@ -157,11 +156,16 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author 林跃
+ * @file TargetSignalProcessor.java
+ * @comment 解析目标和信号的组合数据，并调用SignalTargetMatcher类进行关联处理
+ * @date 2025/7/1
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 public class TargetSignalProcessor {
-
     private static final String SUB_ADDR = "tcp://localhost:5558";
     private static final String PUB_ADDR = "tcp://*:5560";
-
 
     // 数据缓存
     private static final List<zb.dcts.aeronaval.Aeronaval.Target> targetCache = Collections.synchronizedList(new ArrayList<>());
@@ -169,11 +173,10 @@ public class TargetSignalProcessor {
 
     public static void main(String[] args) throws IOException {
         // 1. 初始化 ZMQ
-        ZMQ.Context context = ZMQ.context(10);
+        ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket subscriber = context.socket(ZMQ.SUB);
         subscriber.connect(SUB_ADDR);
         subscriber.subscribe("Combined".getBytes());
-//        subscriber.subscribe("SignalList".getBytes());
 
         // 2. 初始化匹配器
         Map<zb.dcts.aeronaval.Aeronaval.EquType, double[]> freqMap = new HashMap<>();
@@ -181,12 +184,13 @@ public class TargetSignalProcessor {
         freqMap.put(zb.dcts.aeronaval.Aeronaval.EquType.SU27_EUT, new double[]{2.3e9, 2.5e9});
         freqMap.put(zb.dcts.aeronaval.Aeronaval.EquType.JC_SHJJ_EUT, new double[]{1.1e9, 1.3e9});
 
+        // 3. 传入各关联规则所需的参数，可根据实际需求调整
         SignalTargetMatcher matcher = new SignalTargetMatcher(
                 1, 200.0, 200.0,
                 freqMap, 4, PUB_ADDR
         );
 
-        // 3. 定时任务：每5秒触发一次匹配
+        // 4. 定时任务：每5秒触发一次匹配
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(10);
         scheduler.scheduleAtFixedRate(() -> {
             if (!targetCache.isEmpty() && !surveyCache.isEmpty()) {
@@ -200,9 +204,9 @@ public class TargetSignalProcessor {
                 targetCache.clear();
                 surveyCache.clear();
             }
-        }, 5, 5, TimeUnit.SECONDS);
+        }, 0, 1, TimeUnit.SECONDS);
 
-        // 4. 主循环：接收 Combined 消息并拆分为 Target 与 SignalList
+        // 5. 主循环：接收 Combined 消息并拆分为 Target 与 SignalList
         while (!Thread.currentThread().isInterrupted()) {
             String topic = subscriber.recvStr();
             byte[] data = subscriber.recv();
@@ -210,7 +214,6 @@ public class TargetSignalProcessor {
             if ("Combined".equals(topic)) {
                 try (ByteArrayInputStream in = new ByteArrayInputStream(data)) {
                     zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage combined = zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage.parseDelimitedFrom(in); // ✅ 正确方法
-
                     if (combined != null) {
                         zb.dcts.aeronaval.Aeronaval.Target target = combined.getAeronavalTarget();
                         List<Detection.SignalLayerSurvey> surveys = combined.getSignalLayerSurveysList();
@@ -227,35 +230,9 @@ public class TargetSignalProcessor {
                 }
             }
         }
-
+        // 6. 清理资源
         matcher.shutdown();
         subscriber.close();
         context.term();
-    }
-
-    private static List<zb.dcts.aeronaval.Aeronaval.Target> parseDelimitedTargets(byte[] data) {
-        List<zb.dcts.aeronaval.Aeronaval.Target> result = new ArrayList<>();
-        try (ByteArrayInputStream in = new ByteArrayInputStream(data)) {
-            while (in.available() > 0) {
-                zb.dcts.aeronaval.Aeronaval.Target t = zb.dcts.aeronaval.Aeronaval.Target.parseDelimitedFrom(in);
-                if (t != null) result.add(t);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    private static List<Detection.SignalLayerSurvey> parseDelimitedSurveys(byte[] data) {
-        List<zb.dcts.scenario.detection.Detection.SignalLayerSurvey> result = new ArrayList<>();
-        try (ByteArrayInputStream in = new ByteArrayInputStream(data)) {
-            while (in.available() > 0) {
-                zb.dcts.scenario.detection.Detection.SignalLayerSurvey s = zb.dcts.scenario.detection.Detection.SignalLayerSurvey.parseDelimitedFrom(in);
-                if (s != null) result.add(s);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return result;
     }
 }
