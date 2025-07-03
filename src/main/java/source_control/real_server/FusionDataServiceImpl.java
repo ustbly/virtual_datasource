@@ -3,6 +3,7 @@ package source_control.real_server;
 import com.google.protobuf.Any;
 import io.grpc.stub.ServerCallStreamObserver;
 import io.grpc.stub.StreamObserver;
+import mock_data.TargetSignalProcessor;
 import org.zeromq.ZMQ;
 import zb.dcts.fusion.airDomain.target.TargetOuterClass;
 import zb.dcts.fusion.fusiondata.Fusion;
@@ -22,6 +23,11 @@ public class FusionDataServiceImpl extends zb.dcts.fusion.fusiondata.FusionDataC
 
     private final ExecutorService listenerPool = Executors.newCachedThreadPool();
     private static final String ZMQ_ADDRESS = "tcp://localhost:5560";
+
+    public FusionDataServiceImpl() {
+        TargetSignalProcessor processor = new TargetSignalProcessor();
+        processor.start();
+    }
 
     @Override
     public void subscribeFusionData(Fusion.FusionDataRequest request, StreamObserver<Any> responseObserver) {

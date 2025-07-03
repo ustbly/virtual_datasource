@@ -9,8 +9,13 @@ import zb.dcts.scenario.detection.Detection;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.Instant;
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @file CombinePublisher.java
@@ -61,6 +66,7 @@ public class CombinePublisher {
 
                 System.out.printf("[CombinedPublisher] Published Target ID: %d with %d signals%n",
                         target.getId(), surveyList.get(0).getFixSignalListList().size());
+                System.out.println(msg);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -207,6 +213,5 @@ public class CombinePublisher {
 //        }
 //        publisher.startOnce(1); // 发布一次即可
     }
-
 }
 

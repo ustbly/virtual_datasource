@@ -75,8 +75,8 @@ public class SignalTargetMatcher {
         this.zmqPublisher.bind(zmqBindAddress); // 例如 "tcp://*:5560"
     }
 
-    // 匹配逻辑入口：输入多个 Survey 与多个 Target，输出匹配成功的 CombinedMessage 列表
-    public List<CombinedMessage> matchAndPublish(List<Detection.SignalLayerSurvey> surveys,
+    // 匹配逻辑入口：输入多个 Survey 与多个 Target，输出关联成功的 CombinedMessage 列表
+    public List<CombinedMessage> linkAndPublish(List<Detection.SignalLayerSurvey> surveys,
                                                  List<Aeronaval.Target> targets) {
         List<Future<CombinedMessage>> futures = new ArrayList<>();
         for (Aeronaval.Target tgt : targets) {
@@ -88,9 +88,11 @@ public class SignalTargetMatcher {
         for (Future<CombinedMessage> f : futures) {
             try {
                 CombinedMessage cm = f.get();
+
                 if (cm != null && cm.getSignalLayerSurveysCount() > 0) {
                     results.add(cm);
-
+                    String bussinessType = cm.getBussinessType();
+                    System.out.println("bussinessType" + bussinessType);
                     // 推送至 ZMQ
                     zmqPublisher.sendMore("Fusion_AirDomain");
                     zmqPublisher.send(cm.toByteArray());
@@ -214,7 +216,14 @@ public class SignalTargetMatcher {
         // 目标信息准备
         Instant t0 = Instant.ofEpochSecond(tgt.getTime().getSeconds(), tgt.getTime().getNanos());
         Dcts.Position tgtPos = tgt.getPosition();
-        CombinedMessage.Builder builder = CombinedMessage.newBuilder().setAeronavalTarget(tgt);
+        CombinedMessage.Builder builder = CombinedMessage.newBuilder()
+                .setAeronavalTarget(tgt)
+                .setBussinessType("Comm")
+                .setReliability(2)
+                .setImportance(1)
+                .setThrtLvl(Dcts.ThreatLevel.LOW)
+                .setPurpose("Test")
+                ;
 
         // 用于存放通过时间、空间、频率筛选的 Survey 以及对应的 DOA 信息
         List<Detection.SignalLayerSurvey> matchedSurveys = new ArrayList<>();

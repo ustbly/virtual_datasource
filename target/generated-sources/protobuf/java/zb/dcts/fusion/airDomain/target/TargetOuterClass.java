@@ -10456,6 +10456,85 @@ public final class TargetOuterClass {
      */
     zb.dcts.scenario.detection.Detection.SignalLayerSurveyOrBuilder getSignalLayerSurveysOrBuilder(
         int index);
+
+    /**
+     * <pre>
+     *业务类型
+     * </pre>
+     *
+     * <code>string bussiness_type = 3;</code>
+     * @return The bussinessType.
+     */
+    java.lang.String getBussinessType();
+    /**
+     * <pre>
+     *业务类型
+     * </pre>
+     *
+     * <code>string bussiness_type = 3;</code>
+     * @return The bytes for bussinessType.
+     */
+    com.google.protobuf.ByteString
+        getBussinessTypeBytes();
+
+    /**
+     * <pre>
+     *可信度
+     * </pre>
+     *
+     * <code>int32 reliability = 4;</code>
+     * @return The reliability.
+     */
+    int getReliability();
+
+    /**
+     * <pre>
+     *重要性等级
+     * </pre>
+     *
+     * <code>int32 importance = 5;</code>
+     * @return The importance.
+     */
+    int getImportance();
+
+    /**
+     * <pre>
+     *威胁等级
+     * </pre>
+     *
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+     * @return The enum numeric value on the wire for thrtLvl.
+     */
+    int getThrtLvlValue();
+    /**
+     * <pre>
+     *威胁等级
+     * </pre>
+     *
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+     * @return The thrtLvl.
+     */
+    zb.dcts.Dcts.ThreatLevel getThrtLvl();
+
+    /**
+     * <pre>
+     *用途
+     * </pre>
+     *
+     * <code>string purpose = 7;</code>
+     * @return The purpose.
+     */
+    java.lang.String getPurpose();
+    /**
+     * <pre>
+     *用途
+     * </pre>
+     *
+     * <code>string purpose = 7;</code>
+     * @return The bytes for purpose.
+     */
+    com.google.protobuf.ByteString
+        getPurposeBytes();
   }
   /**
    * Protobuf type {@code zb.dcts.fusion.airDomain.target.CombinedMessage}
@@ -10471,6 +10550,9 @@ public final class TargetOuterClass {
     }
     private CombinedMessage() {
       signalLayerSurveys_ = java.util.Collections.emptyList();
+      bussinessType_ = "";
+      thrtLvl_ = 0;
+      purpose_ = "";
     }
 
     @java.lang.Override
@@ -10524,6 +10606,34 @@ public final class TargetOuterClass {
               }
               signalLayerSurveys_.add(
                   input.readMessage(zb.dcts.scenario.detection.Detection.SignalLayerSurvey.parser(), extensionRegistry));
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              bussinessType_ = s;
+              break;
+            }
+            case 32: {
+
+              reliability_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              importance_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              int rawValue = input.readEnum();
+
+              thrtLvl_ = rawValue;
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              purpose_ = s;
               break;
             }
             default: {
@@ -10659,6 +10769,155 @@ public final class TargetOuterClass {
       return signalLayerSurveys_.get(index);
     }
 
+    public static final int BUSSINESS_TYPE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object bussinessType_;
+    /**
+     * <pre>
+     *业务类型
+     * </pre>
+     *
+     * <code>string bussiness_type = 3;</code>
+     * @return The bussinessType.
+     */
+    @java.lang.Override
+    public java.lang.String getBussinessType() {
+      java.lang.Object ref = bussinessType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        bussinessType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *业务类型
+     * </pre>
+     *
+     * <code>string bussiness_type = 3;</code>
+     * @return The bytes for bussinessType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBussinessTypeBytes() {
+      java.lang.Object ref = bussinessType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        bussinessType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RELIABILITY_FIELD_NUMBER = 4;
+    private int reliability_;
+    /**
+     * <pre>
+     *可信度
+     * </pre>
+     *
+     * <code>int32 reliability = 4;</code>
+     * @return The reliability.
+     */
+    @java.lang.Override
+    public int getReliability() {
+      return reliability_;
+    }
+
+    public static final int IMPORTANCE_FIELD_NUMBER = 5;
+    private int importance_;
+    /**
+     * <pre>
+     *重要性等级
+     * </pre>
+     *
+     * <code>int32 importance = 5;</code>
+     * @return The importance.
+     */
+    @java.lang.Override
+    public int getImportance() {
+      return importance_;
+    }
+
+    public static final int THRT_LVL_FIELD_NUMBER = 6;
+    private int thrtLvl_;
+    /**
+     * <pre>
+     *威胁等级
+     * </pre>
+     *
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+     * @return The enum numeric value on the wire for thrtLvl.
+     */
+    @java.lang.Override public int getThrtLvlValue() {
+      return thrtLvl_;
+    }
+    /**
+     * <pre>
+     *威胁等级
+     * </pre>
+     *
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+     * @return The thrtLvl.
+     */
+    @java.lang.Override public zb.dcts.Dcts.ThreatLevel getThrtLvl() {
+      @SuppressWarnings("deprecation")
+      zb.dcts.Dcts.ThreatLevel result = zb.dcts.Dcts.ThreatLevel.valueOf(thrtLvl_);
+      return result == null ? zb.dcts.Dcts.ThreatLevel.UNRECOGNIZED : result;
+    }
+
+    public static final int PURPOSE_FIELD_NUMBER = 7;
+    private volatile java.lang.Object purpose_;
+    /**
+     * <pre>
+     *用途
+     * </pre>
+     *
+     * <code>string purpose = 7;</code>
+     * @return The purpose.
+     */
+    @java.lang.Override
+    public java.lang.String getPurpose() {
+      java.lang.Object ref = purpose_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        purpose_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *用途
+     * </pre>
+     *
+     * <code>string purpose = 7;</code>
+     * @return The bytes for purpose.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPurposeBytes() {
+      java.lang.Object ref = purpose_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        purpose_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -10679,6 +10938,21 @@ public final class TargetOuterClass {
       for (int i = 0; i < signalLayerSurveys_.size(); i++) {
         output.writeMessage(2, signalLayerSurveys_.get(i));
       }
+      if (!getBussinessTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, bussinessType_);
+      }
+      if (reliability_ != 0) {
+        output.writeInt32(4, reliability_);
+      }
+      if (importance_ != 0) {
+        output.writeInt32(5, importance_);
+      }
+      if (thrtLvl_ != zb.dcts.Dcts.ThreatLevel.NONE.getNumber()) {
+        output.writeEnum(6, thrtLvl_);
+      }
+      if (!getPurposeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, purpose_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -10695,6 +10969,24 @@ public final class TargetOuterClass {
       for (int i = 0; i < signalLayerSurveys_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, signalLayerSurveys_.get(i));
+      }
+      if (!getBussinessTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, bussinessType_);
+      }
+      if (reliability_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, reliability_);
+      }
+      if (importance_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, importance_);
+      }
+      if (thrtLvl_ != zb.dcts.Dcts.ThreatLevel.NONE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(6, thrtLvl_);
+      }
+      if (!getPurposeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, purpose_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -10718,6 +11010,15 @@ public final class TargetOuterClass {
       }
       if (!getSignalLayerSurveysList()
           .equals(other.getSignalLayerSurveysList())) return false;
+      if (!getBussinessType()
+          .equals(other.getBussinessType())) return false;
+      if (getReliability()
+          != other.getReliability()) return false;
+      if (getImportance()
+          != other.getImportance()) return false;
+      if (thrtLvl_ != other.thrtLvl_) return false;
+      if (!getPurpose()
+          .equals(other.getPurpose())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -10737,6 +11038,16 @@ public final class TargetOuterClass {
         hash = (37 * hash) + SIGNAL_LAYER_SURVEYS_FIELD_NUMBER;
         hash = (53 * hash) + getSignalLayerSurveysList().hashCode();
       }
+      hash = (37 * hash) + BUSSINESS_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getBussinessType().hashCode();
+      hash = (37 * hash) + RELIABILITY_FIELD_NUMBER;
+      hash = (53 * hash) + getReliability();
+      hash = (37 * hash) + IMPORTANCE_FIELD_NUMBER;
+      hash = (53 * hash) + getImportance();
+      hash = (37 * hash) + THRT_LVL_FIELD_NUMBER;
+      hash = (53 * hash) + thrtLvl_;
+      hash = (37 * hash) + PURPOSE_FIELD_NUMBER;
+      hash = (53 * hash) + getPurpose().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10883,6 +11194,16 @@ public final class TargetOuterClass {
         } else {
           signalLayerSurveysBuilder_.clear();
         }
+        bussinessType_ = "";
+
+        reliability_ = 0;
+
+        importance_ = 0;
+
+        thrtLvl_ = 0;
+
+        purpose_ = "";
+
         return this;
       }
 
@@ -10924,6 +11245,11 @@ public final class TargetOuterClass {
         } else {
           result.signalLayerSurveys_ = signalLayerSurveysBuilder_.build();
         }
+        result.bussinessType_ = bussinessType_;
+        result.reliability_ = reliability_;
+        result.importance_ = importance_;
+        result.thrtLvl_ = thrtLvl_;
+        result.purpose_ = purpose_;
         onBuilt();
         return result;
       }
@@ -11000,6 +11326,23 @@ public final class TargetOuterClass {
               signalLayerSurveysBuilder_.addAllMessages(other.signalLayerSurveys_);
             }
           }
+        }
+        if (!other.getBussinessType().isEmpty()) {
+          bussinessType_ = other.bussinessType_;
+          onChanged();
+        }
+        if (other.getReliability() != 0) {
+          setReliability(other.getReliability());
+        }
+        if (other.getImportance() != 0) {
+          setImportance(other.getImportance());
+        }
+        if (other.thrtLvl_ != 0) {
+          setThrtLvlValue(other.getThrtLvlValue());
+        }
+        if (!other.getPurpose().isEmpty()) {
+          purpose_ = other.purpose_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -11497,6 +11840,358 @@ public final class TargetOuterClass {
         }
         return signalLayerSurveysBuilder_;
       }
+
+      private java.lang.Object bussinessType_ = "";
+      /**
+       * <pre>
+       *业务类型
+       * </pre>
+       *
+       * <code>string bussiness_type = 3;</code>
+       * @return The bussinessType.
+       */
+      public java.lang.String getBussinessType() {
+        java.lang.Object ref = bussinessType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          bussinessType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *业务类型
+       * </pre>
+       *
+       * <code>string bussiness_type = 3;</code>
+       * @return The bytes for bussinessType.
+       */
+      public com.google.protobuf.ByteString
+          getBussinessTypeBytes() {
+        java.lang.Object ref = bussinessType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          bussinessType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *业务类型
+       * </pre>
+       *
+       * <code>string bussiness_type = 3;</code>
+       * @param value The bussinessType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBussinessType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        bussinessType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *业务类型
+       * </pre>
+       *
+       * <code>string bussiness_type = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBussinessType() {
+        
+        bussinessType_ = getDefaultInstance().getBussinessType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *业务类型
+       * </pre>
+       *
+       * <code>string bussiness_type = 3;</code>
+       * @param value The bytes for bussinessType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBussinessTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        bussinessType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int reliability_ ;
+      /**
+       * <pre>
+       *可信度
+       * </pre>
+       *
+       * <code>int32 reliability = 4;</code>
+       * @return The reliability.
+       */
+      @java.lang.Override
+      public int getReliability() {
+        return reliability_;
+      }
+      /**
+       * <pre>
+       *可信度
+       * </pre>
+       *
+       * <code>int32 reliability = 4;</code>
+       * @param value The reliability to set.
+       * @return This builder for chaining.
+       */
+      public Builder setReliability(int value) {
+        
+        reliability_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *可信度
+       * </pre>
+       *
+       * <code>int32 reliability = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearReliability() {
+        
+        reliability_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int importance_ ;
+      /**
+       * <pre>
+       *重要性等级
+       * </pre>
+       *
+       * <code>int32 importance = 5;</code>
+       * @return The importance.
+       */
+      @java.lang.Override
+      public int getImportance() {
+        return importance_;
+      }
+      /**
+       * <pre>
+       *重要性等级
+       * </pre>
+       *
+       * <code>int32 importance = 5;</code>
+       * @param value The importance to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImportance(int value) {
+        
+        importance_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *重要性等级
+       * </pre>
+       *
+       * <code>int32 importance = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearImportance() {
+        
+        importance_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int thrtLvl_ = 0;
+      /**
+       * <pre>
+       *威胁等级
+       * </pre>
+       *
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+       * @return The enum numeric value on the wire for thrtLvl.
+       */
+      @java.lang.Override public int getThrtLvlValue() {
+        return thrtLvl_;
+      }
+      /**
+       * <pre>
+       *威胁等级
+       * </pre>
+       *
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+       * @param value The enum numeric value on the wire for thrtLvl to set.
+       * @return This builder for chaining.
+       */
+      public Builder setThrtLvlValue(int value) {
+        
+        thrtLvl_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *威胁等级
+       * </pre>
+       *
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+       * @return The thrtLvl.
+       */
+      @java.lang.Override
+      public zb.dcts.Dcts.ThreatLevel getThrtLvl() {
+        @SuppressWarnings("deprecation")
+        zb.dcts.Dcts.ThreatLevel result = zb.dcts.Dcts.ThreatLevel.valueOf(thrtLvl_);
+        return result == null ? zb.dcts.Dcts.ThreatLevel.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       *威胁等级
+       * </pre>
+       *
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+       * @param value The thrtLvl to set.
+       * @return This builder for chaining.
+       */
+      public Builder setThrtLvl(zb.dcts.Dcts.ThreatLevel value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        thrtLvl_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *威胁等级
+       * </pre>
+       *
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearThrtLvl() {
+        
+        thrtLvl_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object purpose_ = "";
+      /**
+       * <pre>
+       *用途
+       * </pre>
+       *
+       * <code>string purpose = 7;</code>
+       * @return The purpose.
+       */
+      public java.lang.String getPurpose() {
+        java.lang.Object ref = purpose_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          purpose_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *用途
+       * </pre>
+       *
+       * <code>string purpose = 7;</code>
+       * @return The bytes for purpose.
+       */
+      public com.google.protobuf.ByteString
+          getPurposeBytes() {
+        java.lang.Object ref = purpose_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          purpose_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *用途
+       * </pre>
+       *
+       * <code>string purpose = 7;</code>
+       * @param value The purpose to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPurpose(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        purpose_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *用途
+       * </pre>
+       *
+       * <code>string purpose = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPurpose() {
+        
+        purpose_ = getDefaultInstance().getPurpose();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *用途
+       * </pre>
+       *
+       * <code>string purpose = 7;</code>
+       * @param value The bytes for purpose to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPurposeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        purpose_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -11630,12 +12325,15 @@ public final class TargetOuterClass {
       "rDomain.target.JammingMode\"^\n\022JammingSta" +
       "tionList\022H\n\017jammingStations\030\001 \003(\0132/.zb.d" +
       "cts.fusion.airDomain.target.JammingStati" +
-      "on\"\223\001\n\017CombinedMessage\0223\n\020aeronaval_targ" +
+      "on\"\215\002\n\017CombinedMessage\0223\n\020aeronaval_targ" +
       "et\030\001 \001(\0132\031.zb.dcts.aeronaval.Target\022K\n\024s" +
       "ignal_layer_surveys\030\002 \003(\0132-.zb.dcts.scen" +
-      "ario.detection.SignalLayerSurvey*\'\n\013Jamm" +
-      "ingMode\022\n\n\006AIMING\020\000\022\014\n\010DISCRETE\020\001b\006proto" +
-      "3"
+      "ario.detection.SignalLayerSurvey\022\026\n\016buss" +
+      "iness_type\030\003 \001(\t\022\023\n\013reliability\030\004 \001(\005\022\022\n" +
+      "\nimportance\030\005 \001(\005\022&\n\010thrt_lvl\030\006 \001(\0162\024.zb" +
+      ".dcts.ThreatLevel\022\017\n\007purpose\030\007 \001(\t*\'\n\013Ja" +
+      "mmingMode\022\n\n\006AIMING\020\000\022\014\n\010DISCRETE\020\001b\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -11685,7 +12383,7 @@ public final class TargetOuterClass {
     internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_descriptor,
-        new java.lang.String[] { "AeronavalTarget", "SignalLayerSurveys", });
+        new java.lang.String[] { "AeronavalTarget", "SignalLayerSurveys", "BussinessType", "Reliability", "Importance", "ThrtLvl", "Purpose", });
     zb.dcts.Dcts.getDescriptor();
     zb.dcts.aeronaval.Aeronaval.getDescriptor();
     zb.dcts.scenario.detection.Detection.getDescriptor();
