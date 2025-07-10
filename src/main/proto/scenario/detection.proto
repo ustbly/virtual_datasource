@@ -169,10 +169,10 @@ message HopSignalDigest
 
 message HopSignalCluster
 {
-  string name = 1;                        //跳频系统
-  SignalActivity  activity = 2;           //信号活跃度
-  TimeSpan        emit_time_span = 3;     //信号出现的起始和终止时间
-  repeated HopSignalDigest freq_set = 4;  //频率集
+  string name = 1;                                //跳频系统
+  SignalActivity  activity = 2;                   //信号活跃度
+  TimeSpan        emit_time_span = 3;             //信号出现的起始和终止时间
+  repeated HopSignalDigest freq_set = 4;          //频率集
 }
 
 message FixSignalList
@@ -193,14 +193,14 @@ message DetectionRequest
 
 message AutoGatheringParam
 {
-  int32 time_span_in_msec = 1;            //信号收集的持续时长(以毫秒计)
-  repeated string signal_candidates = 2;  //要收集的信号
+  int32 time_span_in_msec = 1;                  //信号收集的持续时长(以毫秒计)
+  repeated string signal_candidates = 2;        //要收集的信号
 }
 
 message ManualGatheringParam
 {
   string id = 1;
-  int32 time_span_in_msec = 2;            //信号收集的持续时长(以毫秒计)
+  int32 time_span_in_msec = 2;                  //信号收集的持续时长(以毫秒计)
   spectrum.FrequencySpan freq_span = 3;
 }
 
@@ -233,12 +233,12 @@ message SignalTableQueryRequest
 
 message SignalTableQueryResponse
 {
-  source.SourceId data_source = 1; //数据源
-  int32 num_sweeps = 2;       //总扫描次数
-  int32 num_detects = 3;      //总检测次数
-  int32 num_total_signals = 4;    //总信号数量
-  int32 num_query_signals = 5;    //符合查询条件的信号数量
-  repeated SignalDigest fix_signal_list = 7;    //符合查询条件的定频信号摘要
+  source.SourceId data_source = 1;                //数据源
+  int32 num_sweeps = 2;                           //总扫描次数
+  int32 num_detects = 3;                          //总检测次数
+  int32 num_total_signals = 4;                    //总信号数量
+  int32 num_query_signals = 5;                    //符合查询条件的信号数量
+  repeated SignalDigest fix_signal_list = 7;      //符合查询条件的定频信号摘要
   repeated HopSignalCluster hop_signal_list = 8;  //符合查询条件的跳频系统
 }
 
@@ -279,8 +279,8 @@ message DeviceDetectResult
 message SignalLayerSurvey
 {
   source.SourceId result_from = 1;
-  Timestamp   time_stamp = 2;          //时间戳
-  Position position = 3;               //测向点的位置
+  Timestamp   time_stamp = 2;                     //时间戳
+  Position position = 3;                          //测向点的位置
   repeated SignalDigest fix_signal_list = 4;
   repeated HopSignalCluster hop_signal_list = 5;
 }

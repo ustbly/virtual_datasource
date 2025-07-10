@@ -27,6 +27,7 @@ public class SignalGenerator {
             zb.dcts.Dcts.Position.newBuilder().setLongitude(116.3).setLatitude(39.8).setAltitude(50).build(),
             zb.dcts.Dcts.Position.newBuilder().setLongitude(116.5).setLatitude(40.0).setAltitude(60).build()
     };
+    private static final String[] DESCS = {"LINK4A", "LINK11", "VU", "TACAN", "SW", "VSW"};
 
     public static void main(String[] args) throws IOException {
         // 创建 ZeroMQ 上下文和订阅者
@@ -113,7 +114,7 @@ public class SignalGenerator {
                         .setNumFeatures(10 + new Random().nextInt(10))
                         .setDirOfArrival(doa)
                         .setClassification("QPSK")
-                        .setDescription("X波段信号")
+                        .setDescription(DESCS[new Random().nextInt(DESCS.length)])
                         .build();
 
                 surveyBuilder.addFixSignalList(fixSignal);

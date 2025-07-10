@@ -195,7 +195,7 @@ public final class Detection {
     ACTIVE(1),
     /**
      * <pre>
-     *已不活跃 
+     *已不活跃
      * </pre>
      *
      * <code>INACTIVE = 2;</code>
@@ -203,7 +203,7 @@ public final class Detection {
     INACTIVE(2),
     /**
      * <pre>
-     *过时  
+     *过时
      * </pre>
      *
      * <code>DECAYED = 4;</code>
@@ -230,7 +230,7 @@ public final class Detection {
     public static final int ACTIVE_VALUE = 1;
     /**
      * <pre>
-     *已不活跃 
+     *已不活跃
      * </pre>
      *
      * <code>INACTIVE = 2;</code>
@@ -238,7 +238,7 @@ public final class Detection {
     public static final int INACTIVE_VALUE = 2;
     /**
      * <pre>
-     *过时  
+     *过时
      * </pre>
      *
      * <code>DECAYED = 4;</code>
@@ -14449,7 +14449,7 @@ public final class Detection {
 
     /**
      * <pre>
-     *信号出现的起始和终止时间 
+     *信号出现的起始和终止时间
      * </pre>
      *
      * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -14458,7 +14458,7 @@ public final class Detection {
     boolean hasEmitTimeSpan();
     /**
      * <pre>
-     *信号出现的起始和终止时间 
+     *信号出现的起始和终止时间
      * </pre>
      *
      * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -14467,7 +14467,7 @@ public final class Detection {
     zb.dcts.Dcts.TimeSpan getEmitTimeSpan();
     /**
      * <pre>
-     *信号出现的起始和终止时间 
+     *信号出现的起始和终止时间
      * </pre>
      *
      * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -14921,7 +14921,7 @@ public final class Detection {
     private zb.dcts.Dcts.TimeSpan emitTimeSpan_;
     /**
      * <pre>
-     *信号出现的起始和终止时间 
+     *信号出现的起始和终止时间
      * </pre>
      *
      * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -14933,7 +14933,7 @@ public final class Detection {
     }
     /**
      * <pre>
-     *信号出现的起始和终止时间 
+     *信号出现的起始和终止时间
      * </pre>
      *
      * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -14945,7 +14945,7 @@ public final class Detection {
     }
     /**
      * <pre>
-     *信号出现的起始和终止时间 
+     *信号出现的起始和终止时间
      * </pre>
      *
      * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -16263,7 +16263,7 @@ public final class Detection {
           zb.dcts.Dcts.TimeSpan, zb.dcts.Dcts.TimeSpan.Builder, zb.dcts.Dcts.TimeSpanOrBuilder> emitTimeSpanBuilder_;
       /**
        * <pre>
-       *信号出现的起始和终止时间 
+       *信号出现的起始和终止时间
        * </pre>
        *
        * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -16274,7 +16274,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号出现的起始和终止时间 
+       *信号出现的起始和终止时间
        * </pre>
        *
        * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -16289,7 +16289,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号出现的起始和终止时间 
+       *信号出现的起始和终止时间
        * </pre>
        *
        * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -16309,7 +16309,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号出现的起始和终止时间 
+       *信号出现的起始和终止时间
        * </pre>
        *
        * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -16327,7 +16327,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号出现的起始和终止时间 
+       *信号出现的起始和终止时间
        * </pre>
        *
        * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -16349,7 +16349,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号出现的起始和终止时间 
+       *信号出现的起始和终止时间
        * </pre>
        *
        * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -16367,7 +16367,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号出现的起始和终止时间 
+       *信号出现的起始和终止时间
        * </pre>
        *
        * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -16379,7 +16379,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号出现的起始和终止时间 
+       *信号出现的起始和终止时间
        * </pre>
        *
        * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -16394,7 +16394,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *信号出现的起始和终止时间 
+       *信号出现的起始和终止时间
        * </pre>
        *
        * <code>.zb.dcts.TimeSpan emit_time_span = 6;</code>
@@ -32563,7 +32563,7 @@ public final class Detection {
 
     /**
      * <pre>
-     *积累的频谱线                       
+     *积累的频谱线
      * </pre>
      *
      * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -32572,7 +32572,7 @@ public final class Detection {
         getRawSpectrumLinesList();
     /**
      * <pre>
-     *积累的频谱线                       
+     *积累的频谱线
      * </pre>
      *
      * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -32580,7 +32580,7 @@ public final class Detection {
     zb.dcts.scenario.spectrum.Spectrum.SpectrumLine getRawSpectrumLines(int index);
     /**
      * <pre>
-     *积累的频谱线                       
+     *积累的频谱线
      * </pre>
      *
      * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -32588,7 +32588,7 @@ public final class Detection {
     int getRawSpectrumLinesCount();
     /**
      * <pre>
-     *积累的频谱线                       
+     *积累的频谱线
      * </pre>
      *
      * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -32597,7 +32597,7 @@ public final class Detection {
         getRawSpectrumLinesOrBuilderList();
     /**
      * <pre>
-     *积累的频谱线                       
+     *积累的频谱线
      * </pre>
      *
      * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -32802,7 +32802,7 @@ public final class Detection {
     private java.util.List<zb.dcts.scenario.spectrum.Spectrum.SpectrumLine> rawSpectrumLines_;
     /**
      * <pre>
-     *积累的频谱线                       
+     *积累的频谱线
      * </pre>
      *
      * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -32813,7 +32813,7 @@ public final class Detection {
     }
     /**
      * <pre>
-     *积累的频谱线                       
+     *积累的频谱线
      * </pre>
      *
      * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -32825,7 +32825,7 @@ public final class Detection {
     }
     /**
      * <pre>
-     *积累的频谱线                       
+     *积累的频谱线
      * </pre>
      *
      * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -32836,7 +32836,7 @@ public final class Detection {
     }
     /**
      * <pre>
-     *积累的频谱线                       
+     *积累的频谱线
      * </pre>
      *
      * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -32847,7 +32847,7 @@ public final class Detection {
     }
     /**
      * <pre>
-     *积累的频谱线                       
+     *积累的频谱线
      * </pre>
      *
      * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33584,7 +33584,7 @@ public final class Detection {
 
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33598,7 +33598,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33612,7 +33612,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33626,7 +33626,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33647,7 +33647,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33665,7 +33665,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33685,7 +33685,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33706,7 +33706,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33724,7 +33724,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33742,7 +33742,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33761,7 +33761,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33778,7 +33778,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33795,7 +33795,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33806,7 +33806,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33820,7 +33820,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33835,7 +33835,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33846,7 +33846,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>
@@ -33858,7 +33858,7 @@ public final class Detection {
       }
       /**
        * <pre>
-       *积累的频谱线                       
+       *积累的频谱线
        * </pre>
        *
        * <code>repeated .zb.dcts.scenario.spectrum.SpectrumLine raw_spectrum_lines = 3;</code>

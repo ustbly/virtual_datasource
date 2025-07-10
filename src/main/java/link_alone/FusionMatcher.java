@@ -2,21 +2,22 @@ package link_alone;
 
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
+import utils.EquipmentMapper;
+import utils.EquipmentXmlParser;
 import zb.dcts.Dcts;
 import zb.dcts.aeronaval.Aeronaval;
 import zb.dcts.fusion.airDomain.target.TargetOuterClass;
 import zb.dcts.scenario.detection.Detection;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 /**
  * @file FusionMatcher.java
@@ -40,7 +41,7 @@ public class FusionMatcher {
     private ZMQ.Socket subscriber;
     private ZMQ.Socket fusionPublisher;
     private ExecutorService matcherExecutor;
-
+    List<EquipmentXmlParser.EquipmentConfig> configs = EquipmentXmlParser.parseConfig(new File("src/main/resources/equipment.xml"));
     private volatile boolean running = false;
 
     // 启动 FusionMatcher，连接 ZMQ、启动线程监听数据并执行匹配
@@ -85,7 +86,7 @@ public class FusionMatcher {
                         if (tgt != null) {
                             targetCache.add(tgt);
                             cleanExpiredTargets();  // 清除过期目标
-                            processFusion(tgt);     // 针对该目标尝试做匹配
+                            processFusion(tgt,configs);     // 针对该目标尝试做匹配
                         }
                         break;
                     case "SignalLayerSurvey":
@@ -104,8 +105,32 @@ public class FusionMatcher {
         }
     }
 
+    private static void extractType(String text, Set<String> sink) {
+        if (text == null) return;
+        // 以空格或符号分隔后取首词，符合你们的命名约定
+        String firstWord = text.trim().split("[\\s/\\-]+")[0].toUpperCase();
+        sink.add(firstWord);  // 例如 "LINK16"
+    }
+
+    private static Set<String> collectEquipmentTypes(List<Detection.SignalLayerSurvey> surveys) {
+        Set<String> types = new HashSet<>();
+        for (Detection.SignalLayerSurvey s : surveys) {
+            // 1) 定频信号
+            for (Detection.SignalDigest sd : s.getFixSignalListList()) {
+                String desc = sd.getDescription();
+                extractType(desc, types);
+            }
+            // 2) 跳频簇
+            for (Detection.HopSignalCluster hop : s.getHopSignalListList()) {
+                String name = hop.getName();
+                extractType(name, types);
+            }
+        }
+        return types;
+    }
+
     // 匹配逻辑：对当前输入目标，尝试从 survey 中找出两个不同测向站的数据进行 DOA 交叉定位
-    private void processFusion(Aeronaval.Target tgt) {
+    private void processFusion(Aeronaval.Target tgt,List<EquipmentXmlParser.EquipmentConfig> configs) {
         Instant tgtTime = Instant.ofEpochSecond(tgt.getTime().getSeconds(), tgt.getTime().getNanos());
 
         // 1. 找出时间上接近该目标的 Survey（滑动窗口内）
@@ -152,13 +177,37 @@ public class FusionMatcher {
 
         // 6. 若误差在容忍范围内，发布匹配结果
         if (errKm <= 200.0) {
-            TargetOuterClass.CombinedMessage msg = TargetOuterClass.CombinedMessage.newBuilder()
+            TargetOuterClass.CombinedMessage.Builder builder = TargetOuterClass.CombinedMessage.newBuilder()
                     .setAeronavalTarget(tgt)
                     .addAllSignalLayerSurveys(selected)
-                    .build();
+                    .setBussinessType("Communication")
+                    .setReliability(1)
+                    .setImportance(2)
+                    .setThrtLvl(Dcts.ThreatLevel.HIGH)
+                    .setPurpose("Test");
+
+            Set<String> wanted = collectEquipmentTypes(selected);
+
+            List<EquipmentXmlParser.EquipmentConfig> matchedCfg = configs.stream()
+                    .filter(cfg -> wanted.contains(cfg.type.toUpperCase()))
+                    .collect(Collectors.toList());
+
+            for (EquipmentXmlParser.EquipmentConfig cfg : matchedCfg) {
+                if (isLink(cfg.type)) {
+                    builder.addLinkEquipments(EquipmentMapper.toLinkEquipment(cfg));
+                } else {
+                    builder.addStationEquipments(EquipmentMapper.toStationEquipment(cfg));
+                }
+            }
+
+
             fusionPublisher.sendMore("Fusion_AirDomain");
-            fusionPublisher.send(msg.toByteArray());
+            fusionPublisher.send(builder.build().toByteArray());
         }
+    }
+
+    private static boolean isLink(String type) {
+        return type.startsWith("LINK") || type.equals("JIDS") || type.equals("NTDR") || type.equals("EPLRS");
     }
 
     // 清理缓存中超过时间窗口的目标

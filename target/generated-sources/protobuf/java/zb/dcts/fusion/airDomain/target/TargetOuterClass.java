@@ -10459,10 +10459,98 @@ public final class TargetOuterClass {
 
     /**
      * <pre>
+     *挂载的电台装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+     */
+    java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment> 
+        getStationEquipmentsList();
+    /**
+     * <pre>
+     *挂载的电台装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+     */
+    zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment getStationEquipments(int index);
+    /**
+     * <pre>
+     *挂载的电台装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+     */
+    int getStationEquipmentsCount();
+    /**
+     * <pre>
+     *挂载的电台装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+     */
+    java.util.List<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipmentOrBuilder> 
+        getStationEquipmentsOrBuilderList();
+    /**
+     * <pre>
+     *挂载的电台装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+     */
+    zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipmentOrBuilder getStationEquipmentsOrBuilder(
+        int index);
+
+    /**
+     * <pre>
+     *挂载的数据链装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+     */
+    java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment> 
+        getLinkEquipmentsList();
+    /**
+     * <pre>
+     *挂载的数据链装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+     */
+    zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment getLinkEquipments(int index);
+    /**
+     * <pre>
+     *挂载的数据链装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+     */
+    int getLinkEquipmentsCount();
+    /**
+     * <pre>
+     *挂载的数据链装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+     */
+    java.util.List<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipmentOrBuilder> 
+        getLinkEquipmentsOrBuilderList();
+    /**
+     * <pre>
+     *挂载的数据链装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+     */
+    zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipmentOrBuilder getLinkEquipmentsOrBuilder(
+        int index);
+
+    /**
+     * <pre>
      *业务类型
      * </pre>
      *
-     * <code>string bussiness_type = 3;</code>
+     * <code>string bussiness_type = 5;</code>
      * @return The bussinessType.
      */
     java.lang.String getBussinessType();
@@ -10471,7 +10559,7 @@ public final class TargetOuterClass {
      *业务类型
      * </pre>
      *
-     * <code>string bussiness_type = 3;</code>
+     * <code>string bussiness_type = 5;</code>
      * @return The bytes for bussinessType.
      */
     com.google.protobuf.ByteString
@@ -10482,7 +10570,7 @@ public final class TargetOuterClass {
      *可信度
      * </pre>
      *
-     * <code>int32 reliability = 4;</code>
+     * <code>int32 reliability = 6;</code>
      * @return The reliability.
      */
     int getReliability();
@@ -10492,7 +10580,7 @@ public final class TargetOuterClass {
      *重要性等级
      * </pre>
      *
-     * <code>int32 importance = 5;</code>
+     * <code>int32 importance = 7;</code>
      * @return The importance.
      */
     int getImportance();
@@ -10502,7 +10590,7 @@ public final class TargetOuterClass {
      *威胁等级
      * </pre>
      *
-     * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 8;</code>
      * @return The enum numeric value on the wire for thrtLvl.
      */
     int getThrtLvlValue();
@@ -10511,7 +10599,7 @@ public final class TargetOuterClass {
      *威胁等级
      * </pre>
      *
-     * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 8;</code>
      * @return The thrtLvl.
      */
     zb.dcts.Dcts.ThreatLevel getThrtLvl();
@@ -10521,7 +10609,7 @@ public final class TargetOuterClass {
      *用途
      * </pre>
      *
-     * <code>string purpose = 7;</code>
+     * <code>string purpose = 9;</code>
      * @return The purpose.
      */
     java.lang.String getPurpose();
@@ -10530,7 +10618,7 @@ public final class TargetOuterClass {
      *用途
      * </pre>
      *
-     * <code>string purpose = 7;</code>
+     * <code>string purpose = 9;</code>
      * @return The bytes for purpose.
      */
     com.google.protobuf.ByteString
@@ -10550,6 +10638,8 @@ public final class TargetOuterClass {
     }
     private CombinedMessage() {
       signalLayerSurveys_ = java.util.Collections.emptyList();
+      stationEquipments_ = java.util.Collections.emptyList();
+      linkEquipments_ = java.util.Collections.emptyList();
       bussinessType_ = "";
       thrtLvl_ = 0;
       purpose_ = "";
@@ -10609,28 +10699,46 @@ public final class TargetOuterClass {
               break;
             }
             case 26: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                stationEquipments_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              stationEquipments_.add(
+                  input.readMessage(zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.parser(), extensionRegistry));
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                linkEquipments_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              linkEquipments_.add(
+                  input.readMessage(zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.parser(), extensionRegistry));
+              break;
+            }
+            case 42: {
               java.lang.String s = input.readStringRequireUtf8();
 
               bussinessType_ = s;
               break;
             }
-            case 32: {
+            case 48: {
 
               reliability_ = input.readInt32();
               break;
             }
-            case 40: {
+            case 56: {
 
               importance_ = input.readInt32();
               break;
             }
-            case 48: {
+            case 64: {
               int rawValue = input.readEnum();
 
               thrtLvl_ = rawValue;
               break;
             }
-            case 58: {
+            case 74: {
               java.lang.String s = input.readStringRequireUtf8();
 
               purpose_ = s;
@@ -10653,6 +10761,12 @@ public final class TargetOuterClass {
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           signalLayerSurveys_ = java.util.Collections.unmodifiableList(signalLayerSurveys_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          stationEquipments_ = java.util.Collections.unmodifiableList(stationEquipments_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+          linkEquipments_ = java.util.Collections.unmodifiableList(linkEquipments_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -10769,14 +10883,134 @@ public final class TargetOuterClass {
       return signalLayerSurveys_.get(index);
     }
 
-    public static final int BUSSINESS_TYPE_FIELD_NUMBER = 3;
+    public static final int STATION_EQUIPMENTS_FIELD_NUMBER = 3;
+    private java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment> stationEquipments_;
+    /**
+     * <pre>
+     *挂载的电台装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment> getStationEquipmentsList() {
+      return stationEquipments_;
+    }
+    /**
+     * <pre>
+     *挂载的电台装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipmentOrBuilder> 
+        getStationEquipmentsOrBuilderList() {
+      return stationEquipments_;
+    }
+    /**
+     * <pre>
+     *挂载的电台装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+     */
+    @java.lang.Override
+    public int getStationEquipmentsCount() {
+      return stationEquipments_.size();
+    }
+    /**
+     * <pre>
+     *挂载的电台装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment getStationEquipments(int index) {
+      return stationEquipments_.get(index);
+    }
+    /**
+     * <pre>
+     *挂载的电台装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipmentOrBuilder getStationEquipmentsOrBuilder(
+        int index) {
+      return stationEquipments_.get(index);
+    }
+
+    public static final int LINK_EQUIPMENTS_FIELD_NUMBER = 4;
+    private java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment> linkEquipments_;
+    /**
+     * <pre>
+     *挂载的数据链装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+     */
+    @java.lang.Override
+    public java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment> getLinkEquipmentsList() {
+      return linkEquipments_;
+    }
+    /**
+     * <pre>
+     *挂载的数据链装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipmentOrBuilder> 
+        getLinkEquipmentsOrBuilderList() {
+      return linkEquipments_;
+    }
+    /**
+     * <pre>
+     *挂载的数据链装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+     */
+    @java.lang.Override
+    public int getLinkEquipmentsCount() {
+      return linkEquipments_.size();
+    }
+    /**
+     * <pre>
+     *挂载的数据链装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment getLinkEquipments(int index) {
+      return linkEquipments_.get(index);
+    }
+    /**
+     * <pre>
+     *挂载的数据链装备
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipmentOrBuilder getLinkEquipmentsOrBuilder(
+        int index) {
+      return linkEquipments_.get(index);
+    }
+
+    public static final int BUSSINESS_TYPE_FIELD_NUMBER = 5;
     private volatile java.lang.Object bussinessType_;
     /**
      * <pre>
      *业务类型
      * </pre>
      *
-     * <code>string bussiness_type = 3;</code>
+     * <code>string bussiness_type = 5;</code>
      * @return The bussinessType.
      */
     @java.lang.Override
@@ -10797,7 +11031,7 @@ public final class TargetOuterClass {
      *业务类型
      * </pre>
      *
-     * <code>string bussiness_type = 3;</code>
+     * <code>string bussiness_type = 5;</code>
      * @return The bytes for bussinessType.
      */
     @java.lang.Override
@@ -10815,14 +11049,14 @@ public final class TargetOuterClass {
       }
     }
 
-    public static final int RELIABILITY_FIELD_NUMBER = 4;
+    public static final int RELIABILITY_FIELD_NUMBER = 6;
     private int reliability_;
     /**
      * <pre>
      *可信度
      * </pre>
      *
-     * <code>int32 reliability = 4;</code>
+     * <code>int32 reliability = 6;</code>
      * @return The reliability.
      */
     @java.lang.Override
@@ -10830,14 +11064,14 @@ public final class TargetOuterClass {
       return reliability_;
     }
 
-    public static final int IMPORTANCE_FIELD_NUMBER = 5;
+    public static final int IMPORTANCE_FIELD_NUMBER = 7;
     private int importance_;
     /**
      * <pre>
      *重要性等级
      * </pre>
      *
-     * <code>int32 importance = 5;</code>
+     * <code>int32 importance = 7;</code>
      * @return The importance.
      */
     @java.lang.Override
@@ -10845,14 +11079,14 @@ public final class TargetOuterClass {
       return importance_;
     }
 
-    public static final int THRT_LVL_FIELD_NUMBER = 6;
+    public static final int THRT_LVL_FIELD_NUMBER = 8;
     private int thrtLvl_;
     /**
      * <pre>
      *威胁等级
      * </pre>
      *
-     * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 8;</code>
      * @return The enum numeric value on the wire for thrtLvl.
      */
     @java.lang.Override public int getThrtLvlValue() {
@@ -10863,7 +11097,7 @@ public final class TargetOuterClass {
      *威胁等级
      * </pre>
      *
-     * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 8;</code>
      * @return The thrtLvl.
      */
     @java.lang.Override public zb.dcts.Dcts.ThreatLevel getThrtLvl() {
@@ -10872,14 +11106,14 @@ public final class TargetOuterClass {
       return result == null ? zb.dcts.Dcts.ThreatLevel.UNRECOGNIZED : result;
     }
 
-    public static final int PURPOSE_FIELD_NUMBER = 7;
+    public static final int PURPOSE_FIELD_NUMBER = 9;
     private volatile java.lang.Object purpose_;
     /**
      * <pre>
      *用途
      * </pre>
      *
-     * <code>string purpose = 7;</code>
+     * <code>string purpose = 9;</code>
      * @return The purpose.
      */
     @java.lang.Override
@@ -10900,7 +11134,7 @@ public final class TargetOuterClass {
      *用途
      * </pre>
      *
-     * <code>string purpose = 7;</code>
+     * <code>string purpose = 9;</code>
      * @return The bytes for purpose.
      */
     @java.lang.Override
@@ -10938,20 +11172,26 @@ public final class TargetOuterClass {
       for (int i = 0; i < signalLayerSurveys_.size(); i++) {
         output.writeMessage(2, signalLayerSurveys_.get(i));
       }
+      for (int i = 0; i < stationEquipments_.size(); i++) {
+        output.writeMessage(3, stationEquipments_.get(i));
+      }
+      for (int i = 0; i < linkEquipments_.size(); i++) {
+        output.writeMessage(4, linkEquipments_.get(i));
+      }
       if (!getBussinessTypeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, bussinessType_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, bussinessType_);
       }
       if (reliability_ != 0) {
-        output.writeInt32(4, reliability_);
+        output.writeInt32(6, reliability_);
       }
       if (importance_ != 0) {
-        output.writeInt32(5, importance_);
+        output.writeInt32(7, importance_);
       }
       if (thrtLvl_ != zb.dcts.Dcts.ThreatLevel.NONE.getNumber()) {
-        output.writeEnum(6, thrtLvl_);
+        output.writeEnum(8, thrtLvl_);
       }
       if (!getPurposeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, purpose_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, purpose_);
       }
       unknownFields.writeTo(output);
     }
@@ -10970,23 +11210,31 @@ public final class TargetOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, signalLayerSurveys_.get(i));
       }
+      for (int i = 0; i < stationEquipments_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, stationEquipments_.get(i));
+      }
+      for (int i = 0; i < linkEquipments_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, linkEquipments_.get(i));
+      }
       if (!getBussinessTypeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, bussinessType_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, bussinessType_);
       }
       if (reliability_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, reliability_);
+          .computeInt32Size(6, reliability_);
       }
       if (importance_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, importance_);
+          .computeInt32Size(7, importance_);
       }
       if (thrtLvl_ != zb.dcts.Dcts.ThreatLevel.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(6, thrtLvl_);
+          .computeEnumSize(8, thrtLvl_);
       }
       if (!getPurposeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, purpose_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, purpose_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -11010,6 +11258,10 @@ public final class TargetOuterClass {
       }
       if (!getSignalLayerSurveysList()
           .equals(other.getSignalLayerSurveysList())) return false;
+      if (!getStationEquipmentsList()
+          .equals(other.getStationEquipmentsList())) return false;
+      if (!getLinkEquipmentsList()
+          .equals(other.getLinkEquipmentsList())) return false;
       if (!getBussinessType()
           .equals(other.getBussinessType())) return false;
       if (getReliability()
@@ -11037,6 +11289,14 @@ public final class TargetOuterClass {
       if (getSignalLayerSurveysCount() > 0) {
         hash = (37 * hash) + SIGNAL_LAYER_SURVEYS_FIELD_NUMBER;
         hash = (53 * hash) + getSignalLayerSurveysList().hashCode();
+      }
+      if (getStationEquipmentsCount() > 0) {
+        hash = (37 * hash) + STATION_EQUIPMENTS_FIELD_NUMBER;
+        hash = (53 * hash) + getStationEquipmentsList().hashCode();
+      }
+      if (getLinkEquipmentsCount() > 0) {
+        hash = (37 * hash) + LINK_EQUIPMENTS_FIELD_NUMBER;
+        hash = (53 * hash) + getLinkEquipmentsList().hashCode();
       }
       hash = (37 * hash) + BUSSINESS_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + getBussinessType().hashCode();
@@ -11177,6 +11437,8 @@ public final class TargetOuterClass {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getSignalLayerSurveysFieldBuilder();
+          getStationEquipmentsFieldBuilder();
+          getLinkEquipmentsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -11193,6 +11455,18 @@ public final class TargetOuterClass {
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           signalLayerSurveysBuilder_.clear();
+        }
+        if (stationEquipmentsBuilder_ == null) {
+          stationEquipments_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          stationEquipmentsBuilder_.clear();
+        }
+        if (linkEquipmentsBuilder_ == null) {
+          linkEquipments_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          linkEquipmentsBuilder_.clear();
         }
         bussinessType_ = "";
 
@@ -11244,6 +11518,24 @@ public final class TargetOuterClass {
           result.signalLayerSurveys_ = signalLayerSurveys_;
         } else {
           result.signalLayerSurveys_ = signalLayerSurveysBuilder_.build();
+        }
+        if (stationEquipmentsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            stationEquipments_ = java.util.Collections.unmodifiableList(stationEquipments_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.stationEquipments_ = stationEquipments_;
+        } else {
+          result.stationEquipments_ = stationEquipmentsBuilder_.build();
+        }
+        if (linkEquipmentsBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0)) {
+            linkEquipments_ = java.util.Collections.unmodifiableList(linkEquipments_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.linkEquipments_ = linkEquipments_;
+        } else {
+          result.linkEquipments_ = linkEquipmentsBuilder_.build();
         }
         result.bussinessType_ = bussinessType_;
         result.reliability_ = reliability_;
@@ -11324,6 +11616,58 @@ public final class TargetOuterClass {
                    getSignalLayerSurveysFieldBuilder() : null;
             } else {
               signalLayerSurveysBuilder_.addAllMessages(other.signalLayerSurveys_);
+            }
+          }
+        }
+        if (stationEquipmentsBuilder_ == null) {
+          if (!other.stationEquipments_.isEmpty()) {
+            if (stationEquipments_.isEmpty()) {
+              stationEquipments_ = other.stationEquipments_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureStationEquipmentsIsMutable();
+              stationEquipments_.addAll(other.stationEquipments_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.stationEquipments_.isEmpty()) {
+            if (stationEquipmentsBuilder_.isEmpty()) {
+              stationEquipmentsBuilder_.dispose();
+              stationEquipmentsBuilder_ = null;
+              stationEquipments_ = other.stationEquipments_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              stationEquipmentsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getStationEquipmentsFieldBuilder() : null;
+            } else {
+              stationEquipmentsBuilder_.addAllMessages(other.stationEquipments_);
+            }
+          }
+        }
+        if (linkEquipmentsBuilder_ == null) {
+          if (!other.linkEquipments_.isEmpty()) {
+            if (linkEquipments_.isEmpty()) {
+              linkEquipments_ = other.linkEquipments_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureLinkEquipmentsIsMutable();
+              linkEquipments_.addAll(other.linkEquipments_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.linkEquipments_.isEmpty()) {
+            if (linkEquipmentsBuilder_.isEmpty()) {
+              linkEquipmentsBuilder_.dispose();
+              linkEquipmentsBuilder_ = null;
+              linkEquipments_ = other.linkEquipments_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              linkEquipmentsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getLinkEquipmentsFieldBuilder() : null;
+            } else {
+              linkEquipmentsBuilder_.addAllMessages(other.linkEquipments_);
             }
           }
         }
@@ -11841,13 +12185,637 @@ public final class TargetOuterClass {
         return signalLayerSurveysBuilder_;
       }
 
+      private java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment> stationEquipments_ =
+        java.util.Collections.emptyList();
+      private void ensureStationEquipmentsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          stationEquipments_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment>(stationEquipments_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment, zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipmentOrBuilder> stationEquipmentsBuilder_;
+
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment> getStationEquipmentsList() {
+        if (stationEquipmentsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(stationEquipments_);
+        } else {
+          return stationEquipmentsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public int getStationEquipmentsCount() {
+        if (stationEquipmentsBuilder_ == null) {
+          return stationEquipments_.size();
+        } else {
+          return stationEquipmentsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment getStationEquipments(int index) {
+        if (stationEquipmentsBuilder_ == null) {
+          return stationEquipments_.get(index);
+        } else {
+          return stationEquipmentsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public Builder setStationEquipments(
+          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment value) {
+        if (stationEquipmentsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStationEquipmentsIsMutable();
+          stationEquipments_.set(index, value);
+          onChanged();
+        } else {
+          stationEquipmentsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public Builder setStationEquipments(
+          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.Builder builderForValue) {
+        if (stationEquipmentsBuilder_ == null) {
+          ensureStationEquipmentsIsMutable();
+          stationEquipments_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          stationEquipmentsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public Builder addStationEquipments(zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment value) {
+        if (stationEquipmentsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStationEquipmentsIsMutable();
+          stationEquipments_.add(value);
+          onChanged();
+        } else {
+          stationEquipmentsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public Builder addStationEquipments(
+          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment value) {
+        if (stationEquipmentsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStationEquipmentsIsMutable();
+          stationEquipments_.add(index, value);
+          onChanged();
+        } else {
+          stationEquipmentsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public Builder addStationEquipments(
+          zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.Builder builderForValue) {
+        if (stationEquipmentsBuilder_ == null) {
+          ensureStationEquipmentsIsMutable();
+          stationEquipments_.add(builderForValue.build());
+          onChanged();
+        } else {
+          stationEquipmentsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public Builder addStationEquipments(
+          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.Builder builderForValue) {
+        if (stationEquipmentsBuilder_ == null) {
+          ensureStationEquipmentsIsMutable();
+          stationEquipments_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          stationEquipmentsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public Builder addAllStationEquipments(
+          java.lang.Iterable<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment> values) {
+        if (stationEquipmentsBuilder_ == null) {
+          ensureStationEquipmentsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, stationEquipments_);
+          onChanged();
+        } else {
+          stationEquipmentsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public Builder clearStationEquipments() {
+        if (stationEquipmentsBuilder_ == null) {
+          stationEquipments_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          stationEquipmentsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public Builder removeStationEquipments(int index) {
+        if (stationEquipmentsBuilder_ == null) {
+          ensureStationEquipmentsIsMutable();
+          stationEquipments_.remove(index);
+          onChanged();
+        } else {
+          stationEquipmentsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.Builder getStationEquipmentsBuilder(
+          int index) {
+        return getStationEquipmentsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipmentOrBuilder getStationEquipmentsOrBuilder(
+          int index) {
+        if (stationEquipmentsBuilder_ == null) {
+          return stationEquipments_.get(index);  } else {
+          return stationEquipmentsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public java.util.List<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipmentOrBuilder> 
+           getStationEquipmentsOrBuilderList() {
+        if (stationEquipmentsBuilder_ != null) {
+          return stationEquipmentsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(stationEquipments_);
+        }
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.Builder addStationEquipmentsBuilder() {
+        return getStationEquipmentsFieldBuilder().addBuilder(
+            zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.Builder addStationEquipmentsBuilder(
+          int index) {
+        return getStationEquipmentsFieldBuilder().addBuilder(
+            index, zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *挂载的电台装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.StationEquipment station_equipments = 3;</code>
+       */
+      public java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.Builder> 
+           getStationEquipmentsBuilderList() {
+        return getStationEquipmentsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment, zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipmentOrBuilder> 
+          getStationEquipmentsFieldBuilder() {
+        if (stationEquipmentsBuilder_ == null) {
+          stationEquipmentsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment, zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipment.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.StationEquipmentOrBuilder>(
+                  stationEquipments_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          stationEquipments_ = null;
+        }
+        return stationEquipmentsBuilder_;
+      }
+
+      private java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment> linkEquipments_ =
+        java.util.Collections.emptyList();
+      private void ensureLinkEquipmentsIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          linkEquipments_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment>(linkEquipments_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment, zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipmentOrBuilder> linkEquipmentsBuilder_;
+
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment> getLinkEquipmentsList() {
+        if (linkEquipmentsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(linkEquipments_);
+        } else {
+          return linkEquipmentsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public int getLinkEquipmentsCount() {
+        if (linkEquipmentsBuilder_ == null) {
+          return linkEquipments_.size();
+        } else {
+          return linkEquipmentsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment getLinkEquipments(int index) {
+        if (linkEquipmentsBuilder_ == null) {
+          return linkEquipments_.get(index);
+        } else {
+          return linkEquipmentsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public Builder setLinkEquipments(
+          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment value) {
+        if (linkEquipmentsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLinkEquipmentsIsMutable();
+          linkEquipments_.set(index, value);
+          onChanged();
+        } else {
+          linkEquipmentsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public Builder setLinkEquipments(
+          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.Builder builderForValue) {
+        if (linkEquipmentsBuilder_ == null) {
+          ensureLinkEquipmentsIsMutable();
+          linkEquipments_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          linkEquipmentsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public Builder addLinkEquipments(zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment value) {
+        if (linkEquipmentsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLinkEquipmentsIsMutable();
+          linkEquipments_.add(value);
+          onChanged();
+        } else {
+          linkEquipmentsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public Builder addLinkEquipments(
+          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment value) {
+        if (linkEquipmentsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLinkEquipmentsIsMutable();
+          linkEquipments_.add(index, value);
+          onChanged();
+        } else {
+          linkEquipmentsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public Builder addLinkEquipments(
+          zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.Builder builderForValue) {
+        if (linkEquipmentsBuilder_ == null) {
+          ensureLinkEquipmentsIsMutable();
+          linkEquipments_.add(builderForValue.build());
+          onChanged();
+        } else {
+          linkEquipmentsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public Builder addLinkEquipments(
+          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.Builder builderForValue) {
+        if (linkEquipmentsBuilder_ == null) {
+          ensureLinkEquipmentsIsMutable();
+          linkEquipments_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          linkEquipmentsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public Builder addAllLinkEquipments(
+          java.lang.Iterable<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment> values) {
+        if (linkEquipmentsBuilder_ == null) {
+          ensureLinkEquipmentsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, linkEquipments_);
+          onChanged();
+        } else {
+          linkEquipmentsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public Builder clearLinkEquipments() {
+        if (linkEquipmentsBuilder_ == null) {
+          linkEquipments_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          linkEquipmentsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public Builder removeLinkEquipments(int index) {
+        if (linkEquipmentsBuilder_ == null) {
+          ensureLinkEquipmentsIsMutable();
+          linkEquipments_.remove(index);
+          onChanged();
+        } else {
+          linkEquipmentsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.Builder getLinkEquipmentsBuilder(
+          int index) {
+        return getLinkEquipmentsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipmentOrBuilder getLinkEquipmentsOrBuilder(
+          int index) {
+        if (linkEquipmentsBuilder_ == null) {
+          return linkEquipments_.get(index);  } else {
+          return linkEquipmentsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public java.util.List<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipmentOrBuilder> 
+           getLinkEquipmentsOrBuilderList() {
+        if (linkEquipmentsBuilder_ != null) {
+          return linkEquipmentsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(linkEquipments_);
+        }
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.Builder addLinkEquipmentsBuilder() {
+        return getLinkEquipmentsFieldBuilder().addBuilder(
+            zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.Builder addLinkEquipmentsBuilder(
+          int index) {
+        return getLinkEquipmentsFieldBuilder().addBuilder(
+            index, zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *挂载的数据链装备
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.target.LinkEquipment link_equipments = 4;</code>
+       */
+      public java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.Builder> 
+           getLinkEquipmentsBuilderList() {
+        return getLinkEquipmentsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment, zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipmentOrBuilder> 
+          getLinkEquipmentsFieldBuilder() {
+        if (linkEquipmentsBuilder_ == null) {
+          linkEquipmentsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment, zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipment.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.LinkEquipmentOrBuilder>(
+                  linkEquipments_,
+                  ((bitField0_ & 0x00000004) != 0),
+                  getParentForChildren(),
+                  isClean());
+          linkEquipments_ = null;
+        }
+        return linkEquipmentsBuilder_;
+      }
+
       private java.lang.Object bussinessType_ = "";
       /**
        * <pre>
        *业务类型
        * </pre>
        *
-       * <code>string bussiness_type = 3;</code>
+       * <code>string bussiness_type = 5;</code>
        * @return The bussinessType.
        */
       public java.lang.String getBussinessType() {
@@ -11867,7 +12835,7 @@ public final class TargetOuterClass {
        *业务类型
        * </pre>
        *
-       * <code>string bussiness_type = 3;</code>
+       * <code>string bussiness_type = 5;</code>
        * @return The bytes for bussinessType.
        */
       public com.google.protobuf.ByteString
@@ -11888,7 +12856,7 @@ public final class TargetOuterClass {
        *业务类型
        * </pre>
        *
-       * <code>string bussiness_type = 3;</code>
+       * <code>string bussiness_type = 5;</code>
        * @param value The bussinessType to set.
        * @return This builder for chaining.
        */
@@ -11907,7 +12875,7 @@ public final class TargetOuterClass {
        *业务类型
        * </pre>
        *
-       * <code>string bussiness_type = 3;</code>
+       * <code>string bussiness_type = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearBussinessType() {
@@ -11921,7 +12889,7 @@ public final class TargetOuterClass {
        *业务类型
        * </pre>
        *
-       * <code>string bussiness_type = 3;</code>
+       * <code>string bussiness_type = 5;</code>
        * @param value The bytes for bussinessType to set.
        * @return This builder for chaining.
        */
@@ -11943,7 +12911,7 @@ public final class TargetOuterClass {
        *可信度
        * </pre>
        *
-       * <code>int32 reliability = 4;</code>
+       * <code>int32 reliability = 6;</code>
        * @return The reliability.
        */
       @java.lang.Override
@@ -11955,7 +12923,7 @@ public final class TargetOuterClass {
        *可信度
        * </pre>
        *
-       * <code>int32 reliability = 4;</code>
+       * <code>int32 reliability = 6;</code>
        * @param value The reliability to set.
        * @return This builder for chaining.
        */
@@ -11970,7 +12938,7 @@ public final class TargetOuterClass {
        *可信度
        * </pre>
        *
-       * <code>int32 reliability = 4;</code>
+       * <code>int32 reliability = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearReliability() {
@@ -11986,7 +12954,7 @@ public final class TargetOuterClass {
        *重要性等级
        * </pre>
        *
-       * <code>int32 importance = 5;</code>
+       * <code>int32 importance = 7;</code>
        * @return The importance.
        */
       @java.lang.Override
@@ -11998,7 +12966,7 @@ public final class TargetOuterClass {
        *重要性等级
        * </pre>
        *
-       * <code>int32 importance = 5;</code>
+       * <code>int32 importance = 7;</code>
        * @param value The importance to set.
        * @return This builder for chaining.
        */
@@ -12013,7 +12981,7 @@ public final class TargetOuterClass {
        *重要性等级
        * </pre>
        *
-       * <code>int32 importance = 5;</code>
+       * <code>int32 importance = 7;</code>
        * @return This builder for chaining.
        */
       public Builder clearImportance() {
@@ -12029,7 +12997,7 @@ public final class TargetOuterClass {
        *威胁等级
        * </pre>
        *
-       * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 8;</code>
        * @return The enum numeric value on the wire for thrtLvl.
        */
       @java.lang.Override public int getThrtLvlValue() {
@@ -12040,7 +13008,7 @@ public final class TargetOuterClass {
        *威胁等级
        * </pre>
        *
-       * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 8;</code>
        * @param value The enum numeric value on the wire for thrtLvl to set.
        * @return This builder for chaining.
        */
@@ -12055,7 +13023,7 @@ public final class TargetOuterClass {
        *威胁等级
        * </pre>
        *
-       * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 8;</code>
        * @return The thrtLvl.
        */
       @java.lang.Override
@@ -12069,7 +13037,7 @@ public final class TargetOuterClass {
        *威胁等级
        * </pre>
        *
-       * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 8;</code>
        * @param value The thrtLvl to set.
        * @return This builder for chaining.
        */
@@ -12087,7 +13055,7 @@ public final class TargetOuterClass {
        *威胁等级
        * </pre>
        *
-       * <code>.zb.dcts.ThreatLevel thrt_lvl = 6;</code>
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearThrtLvl() {
@@ -12103,7 +13071,7 @@ public final class TargetOuterClass {
        *用途
        * </pre>
        *
-       * <code>string purpose = 7;</code>
+       * <code>string purpose = 9;</code>
        * @return The purpose.
        */
       public java.lang.String getPurpose() {
@@ -12123,7 +13091,7 @@ public final class TargetOuterClass {
        *用途
        * </pre>
        *
-       * <code>string purpose = 7;</code>
+       * <code>string purpose = 9;</code>
        * @return The bytes for purpose.
        */
       public com.google.protobuf.ByteString
@@ -12144,7 +13112,7 @@ public final class TargetOuterClass {
        *用途
        * </pre>
        *
-       * <code>string purpose = 7;</code>
+       * <code>string purpose = 9;</code>
        * @param value The purpose to set.
        * @return This builder for chaining.
        */
@@ -12163,7 +13131,7 @@ public final class TargetOuterClass {
        *用途
        * </pre>
        *
-       * <code>string purpose = 7;</code>
+       * <code>string purpose = 9;</code>
        * @return This builder for chaining.
        */
       public Builder clearPurpose() {
@@ -12177,7 +13145,7 @@ public final class TargetOuterClass {
        *用途
        * </pre>
        *
-       * <code>string purpose = 7;</code>
+       * <code>string purpose = 9;</code>
        * @param value The bytes for purpose to set.
        * @return This builder for chaining.
        */
@@ -12325,15 +13293,18 @@ public final class TargetOuterClass {
       "rDomain.target.JammingMode\"^\n\022JammingSta" +
       "tionList\022H\n\017jammingStations\030\001 \003(\0132/.zb.d" +
       "cts.fusion.airDomain.target.JammingStati" +
-      "on\"\215\002\n\017CombinedMessage\0223\n\020aeronaval_targ" +
+      "on\"\245\003\n\017CombinedMessage\0223\n\020aeronaval_targ" +
       "et\030\001 \001(\0132\031.zb.dcts.aeronaval.Target\022K\n\024s" +
       "ignal_layer_surveys\030\002 \003(\0132-.zb.dcts.scen" +
-      "ario.detection.SignalLayerSurvey\022\026\n\016buss" +
-      "iness_type\030\003 \001(\t\022\023\n\013reliability\030\004 \001(\005\022\022\n" +
-      "\nimportance\030\005 \001(\005\022&\n\010thrt_lvl\030\006 \001(\0162\024.zb" +
-      ".dcts.ThreatLevel\022\017\n\007purpose\030\007 \001(\t*\'\n\013Ja" +
-      "mmingMode\022\n\n\006AIMING\020\000\022\014\n\010DISCRETE\020\001b\006pro" +
-      "to3"
+      "ario.detection.SignalLayerSurvey\022M\n\022stat" +
+      "ion_equipments\030\003 \003(\01321.zb.dcts.fusion.ai" +
+      "rDomain.target.StationEquipment\022G\n\017link_" +
+      "equipments\030\004 \003(\0132..zb.dcts.fusion.airDom" +
+      "ain.target.LinkEquipment\022\026\n\016bussiness_ty" +
+      "pe\030\005 \001(\t\022\023\n\013reliability\030\006 \001(\005\022\022\n\nimporta" +
+      "nce\030\007 \001(\005\022&\n\010thrt_lvl\030\010 \001(\0162\024.zb.dcts.Th" +
+      "reatLevel\022\017\n\007purpose\030\t \001(\t*\'\n\013JammingMod" +
+      "e\022\n\n\006AIMING\020\000\022\014\n\010DISCRETE\020\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12383,7 +13354,7 @@ public final class TargetOuterClass {
     internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_descriptor,
-        new java.lang.String[] { "AeronavalTarget", "SignalLayerSurveys", "BussinessType", "Reliability", "Importance", "ThrtLvl", "Purpose", });
+        new java.lang.String[] { "AeronavalTarget", "SignalLayerSurveys", "StationEquipments", "LinkEquipments", "BussinessType", "Reliability", "Importance", "ThrtLvl", "Purpose", });
     zb.dcts.Dcts.getDescriptor();
     zb.dcts.aeronaval.Aeronaval.getDescriptor();
     zb.dcts.scenario.detection.Detection.getDescriptor();
