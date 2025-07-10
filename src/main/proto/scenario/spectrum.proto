@@ -8,10 +8,10 @@ import "scenario/scenario.proto";
 
 
 //频率范围
-message FrequencySpan 
+message FrequencySpan
 {
     double start_freq = 1;    //起始频率
-    double stop_freq  = 2;    //终止频率
+    double stop_freq = 2;     //终止频率
 }
 
 message FrequencySegment
@@ -61,7 +61,7 @@ enum DataHoldType
 
 message DataHoldRequest
 {
-    ScenarioTaskId responser = 1;    
+    ScenarioTaskId responser = 1;
     DataHoldType data_hold_type = 2;
 }
 
@@ -78,9 +78,9 @@ message SpectrumBlock
 }
 
 //观测频谱近景的请求
-message ZoomInRequest 
+message ZoomInRequest
 {
-    ScenarioTaskId responser = 1;       
+    ScenarioTaskId responser = 1;
     FrequencySegment zoom_in_part = 2;           //要重点监测的近景范围
 }
 
@@ -103,11 +103,11 @@ message Header
 message SegmentHeader
 {
     source.SourceId result_from = 1;        //结果来源
-    uint64		sequence_number = 3;    //顺序号
-    uint64		sweep_index = 4;        //扫描次数索引
-    uint32		segment_index = 5;      //频点索引
-    double      start_frequency = 6; 
-    double      frequency_step = 7; 
+    uint64        sequence_number = 3;    //顺序号
+    uint64        sweep_index = 4;        //扫描次数索引
+    uint32        segment_index = 5;      //频点索引
+    double      start_frequency = 6;
+    double      frequency_step = 7;
     uint32      num_points = 8;
     Timestamp   time_stamp = 12;        //时间戳
     Position    position = 15;          //采集时所处的位置

@@ -7,7 +7,7 @@ import "scenario/spectrum.proto";
 import "scenario/kh/KhCommDirectionAcq.proto";
 
 //创建场景请求
-message CommScanDirectionCreateScenarioRequest 
+message CommScanDirectionCreateScenarioRequest
 {
     CommDirectionAcqSource source_param = 1;
     CommDirectionAcqParam acq_param = 2;       //SCAN、SEARCH、MULTIPLE(离散)

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package zb.dcts.scenario; 
+package zb.dcts.scenario;
 
 import "dcts.proto";
 import "source/source.proto";
@@ -14,7 +14,7 @@ message ScenarioId
 }
 
 //任务Id
-message TaskId 
+message TaskId
 {
     uint32 value = 1;
 }
@@ -32,17 +32,17 @@ message ScenarioTaskId
 //81-100 replays
 enum TaskType
 {
-    SELF_TEST = 0;        
+    SELF_TEST = 0;
     CAL1 = 1;                   //校准
     CAL2 = 2;
     EXAMPLE = 3;
 
     PSCAN = 16;         //全景扫描
     IF_SCAN = 17;                //中频扫描
-    PULSE_ANALYSIS = 18;	     //脉冲分析
-    PULSE_ANALYSIS_2 = 19;	     //脉冲分析2
+    PULSE_ANALYSIS = 18;         //脉冲分析
+    PULSE_ANALYSIS_2 = 19;         //脉冲分析2
     OSCILLOSCOPE = 20;           //示波器
-    VECTOR_SIGNAL_ANALYSIS=21;   //矢量分析	
+    VECTOR_SIGNAL_ANALYSIS = 21;   //矢量分析
     IQ_RECORDER = 22;            //IQ记盘
     SIGNAL_GENERATOR = 23;       //信号产生
 
@@ -69,17 +69,17 @@ enum TaskType
 }
 
 //任务状态
-enum TaskStatus 
+enum TaskStatus
 {
-    T_READY  = 0; //就绪
-    T_RUN    = 1; //运行
-    T_ABORT  = 2; //终止
+    T_READY = 0; //就绪
+    T_RUN = 1; //运行
+    T_ABORT = 2; //终止
     T_FINISH = 3; //完成
     T_PAUSED = 4; //挂起
 }
 
 //任务摘要
-message TaskSummary 
+message TaskSummary
 {
     TaskId id = 1;          //任务id
     TaskType type = 2;      //任务类型
@@ -87,9 +87,9 @@ message TaskSummary
     Timestamp start_time = 5;//起始时刻
     repeated Topic topics = 6;  //任务正在发布的主题
 }
-  
+
 //场景信息
-message ScenarioInfo 
+message ScenarioInfo
 {
     ScenarioId id = 1;                          //场景id
     repeated TaskSummary tasks = 6;             //场景正在运行的任务列表
@@ -116,7 +116,7 @@ message SubscribeRequest
 }
 
 // 通用管理的API
-service GeneralService 
+service GeneralService
 {
     rpc ListAllScenarios(google.protobuf.Empty) returns (ScenariosInfo) {}// 枚举所有场景
     rpc ListAllSources(google.protobuf.Empty) returns (source.SourceSetInfo) {} //枚举所有设备

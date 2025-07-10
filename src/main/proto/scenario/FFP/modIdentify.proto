@@ -15,12 +15,12 @@ message ModSource
 
 message ModIdentifyParam
 {
-	spectrum.DDCBank bank = 3;      //设备的中心频率和采样率
+    spectrum.DDCBank bank = 3;      //设备的中心频率和采样率
 }
 
 message ModIdentifyResult
 {
-	message Header
+    message Header
     {
         source.SourceId result_from = 1;         //数据来源
         uint32 sequence_number = 2;         //顺序号，每个任务执行者维护自身的顺序号
@@ -28,67 +28,67 @@ message ModIdentifyResult
         Position device_position = 4;       //设备位置
     }
 
-	enum ModType
-	{
-		UNKNOWN = 0;
-		AM = 1;
-		AMSC = 2;
-		AMTC = 3;
-		SSB = 4;
-		DSB = 5;
-		VSB = 6;
-		LSB = 7;
-		USB = 8;
-		FM = 11;
-		ASK = 21;
-		ASK2 = 22;
-		ASK4 = 23;
-		ASK8 = 24;
-		ASK16 = 25;
-		FSK = 31;
-		FSK2 = 32;
-		FSK4 = 33;
-		FSK8 = 34;
-		FSK16 = 35;
-		MSK = 36;
-		PSK = 41;
-		BPSK = 42;
-		OQPSK = 43;
-		QPSK = 44;
-		Pi4QPSK = 45;
-		PSK8 = 46;
-		PSK16 = 47;
-		D8PSK = 48;
-		QAM = 51;
-		QAM16 = 52;
-		QAM32 = 53;
-		QAM64 = 54;
-		QAM128 = 55;
-		QAM256 = 56;
-		QAM512 = 57;
-		QAM1024 = 58;
-		CW = 70;
-		Noise = 80;
-	}
-	Header header = 1;
+    enum ModType
+    {
+        UNKNOWN = 0;
+        AM = 1;
+        AMSC = 2;
+        AMTC = 3;
+        SSB = 4;
+        DSB = 5;
+        VSB = 6;
+        LSB = 7;
+        USB = 8;
+        FM = 11;
+        ASK = 21;
+        ASK2 = 22;
+        ASK4 = 23;
+        ASK8 = 24;
+        ASK16 = 25;
+        FSK = 31;
+        FSK2 = 32;
+        FSK4 = 33;
+        FSK8 = 34;
+        FSK16 = 35;
+        MSK = 36;
+        PSK = 41;
+        BPSK = 42;
+        OQPSK = 43;
+        QPSK = 44;
+        Pi4QPSK = 45;
+        PSK8 = 46;
+        PSK16 = 47;
+        D8PSK = 48;
+        QAM = 51;
+        QAM16 = 52;
+        QAM32 = 53;
+        QAM64 = 54;
+        QAM128 = 55;
+        QAM256 = 56;
+        QAM512 = 57;
+        QAM1024 = 58;
+        CW = 70;
+        Noise = 80;
+    }
+    Header header = 1;
     ModType mod_type = 2;
     double center_frequency = 3;
     double bandwidth = 4;
     double snr = 5;
-	  repeated float spectrum_samples = 6; //频谱信息
+    repeated float spectrum_samples = 6; //频谱信息
 }
 
 message ModIdentifyRequest
 {
     ScenarioId scenario = 1;
     ModSource source = 2;
-		ModIdentifyParam param = 3;
+    ModIdentifyParam param = 3;
 }
 
 service ModulationIdentifyService
 {
     rpc StartModIdentifyTask(ModIdentifyRequest) returns (ScenarioReply){}
     //rpc GetModIdentifyResult(ScenarioTaskId) returns (ModIdentifyResult) {}
-	//rpc GetModIdentifySpectrum(ScenarioTaskId) returns (stream ModIdentifyResult) {}
+    //rpc GetModIdentifySpectrum(ScenarioTaskId) returns (stream ModIdentifyResult) {}
     rpc StopModIdentifyTask(ScenarioTaskId) returns (ScenarioReply) {}
 }

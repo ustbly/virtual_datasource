@@ -6,7 +6,7 @@ import "scenario/scenario.proto";;
 import "scenario/kh/KhCommDirectionAcq.proto";
 
 //任务请求
-message CommDirectionCaliTaskRequest 
+message CommDirectionCaliTaskRequest
 {
     source.SourceId source_id = 1;
     CommDirectionAcqSource source_param = 2;
@@ -32,7 +32,7 @@ message CaliChangeRequest {
     double center_freq = 4;         //中心频率
 }
 
-service CommDirectionCaliService 
+service CommDirectionCaliService
 {
     rpc StartTask(CommDirectionCaliTaskRequest) returns (ScenarioReply) {} //开始任务
     rpc GetFixResult(ScenarioTaskId) returns (stream CommDirectionResult) {}     //获取结果

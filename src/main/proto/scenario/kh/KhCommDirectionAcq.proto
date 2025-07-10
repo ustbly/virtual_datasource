@@ -14,34 +14,34 @@ message CommDirectionAcqSource
 
 enum DirectionMode
 {
-    SINGLE = 0;		//单点模式
-    MULTIPLE = 1;	//多点模式
-    SCAN = 2;       //扫描模式
-    SEARCH = 3;     //搜索模式 
+    SINGLE = 0;        //单点模式
+    MULTIPLE = 1;      //多点模式
+    SCAN = 2;          //扫描模式
+    SEARCH = 3;        //搜索模式
 }
 
 enum DFThresholdMode
 {
-  AUTO = 0; //自动门限
-  MANUAL = 1;
-  NORMAL = 2;
+    AUTO = 0; //自动门限
+    MANUAL = 1;
+    NORMAL = 2;
 }
 
 //采集参数
-message CommDirectionAcqParam 
+message CommDirectionAcqParam
 {
     DirectionMode       mode = 1;                   //测向模式。SINGLE、SCAN、SEARCH、MULTIPLE(离散)
     spectrum.FrequencySpan freq_span = 2;           //频率范围,单位Hz。对SCAN、SEARCH为频率范围。对SINGLE、MULTIPLE由中心频率和带宽计算
     double rbw = 4;                                 //分辨率,单位Hz
-    double df_bandwidth = 5;	                    //测向带宽（单位：Hz） 
+    double df_bandwidth = 5;                        //测向带宽（单位：Hz）
     source.kh.DetectMode detect_mode = 6;           //轨迹检波模式       
     source.kh.ChannelMode channel_mode = 7;         //通道模式
     double attenuation_gain = 8;                    //衰减增益[0, 50]，按1递增
     source.kh.AntennaControlMode antenna_mode = 9;  //天线模式，只支持： 2 一级放大 3 二级放大 
     source.kh.GainControlMode gc_mode = 10;           //增益控制方式
     source.kh.GainControlParam gain_param = 11;       //增益控制方式为自动时的参数
-    DFThresholdMode threshold_mode = 12; 	//门限模式 0-连续模式，1-GATE模式 2-NORMAL
-	int32  threshold_value = 13; 	        //门限值
+    DFThresholdMode threshold_mode = 12;    //门限模式 0-连续模式，1-GATE模式 2-NORMAL
+    int32  threshold_value = 13;            //门限值
     int32  output_pow = 14;                 //多通道校准源输出功率-50~0，目前设置为0 
     source.kh.WindowParams win_params = 15; //窗口参数
     int32  average_time = 16;               //平均时间ms
@@ -58,14 +58,14 @@ message CommDirectionAcqParam
 enum ParamIndex
 {
     THRESHOLD_VALUE = 0;            //修改门限值
-    THRESHOLD_MODE  = 1;            //修改门限模式
-    AVERAGE_TIME    = 2;            //平均时间
-    CENTER_FREQ     = 3;            //FFM中心频率，仅单点、多点方式支持
-    ANTENNA_MODE    = 4;            //天线控制方式，仅单点、多点方式支持
-    CHANNEL_MODE    = 5;            //通道模式，仅单点、多点方式支持
-    GIAN_MODE       = 6;            //增益控制模式
-    ATT_GAIN        = 7;            //修改增益值
-    GAIN_PARAM      = 8;            //自动增益参数，包括保持时间和步进
+    THRESHOLD_MODE = 1;            //修改门限模式
+    AVERAGE_TIME = 2;            //平均时间
+    CENTER_FREQ = 3;            //FFM中心频率，仅单点、多点方式支持
+    ANTENNA_MODE = 4;            //天线控制方式，仅单点、多点方式支持
+    CHANNEL_MODE = 5;            //通道模式，仅单点、多点方式支持
+    GIAN_MODE = 6;            //增益控制模式
+    ATT_GAIN = 7;            //修改增益值
+    GAIN_PARAM = 8;            //自动增益参数，包括保持时间和步进
 }
 
 //change request

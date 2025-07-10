@@ -13,8 +13,8 @@ message SpectrumAcqSource
 
 enum RunMode
 {
-    REALTIME = 0;		//实时模式，无间隔传输数据，带宽可选，分辨率联动，点数有上限。
-    SWEEP = 1;			//全景扫频模式，大带宽，本振移动，点数带宽无限制。
+    REALTIME = 0;        //实时模式，无间隔传输数据，带宽可选，分辨率联动，点数有上限。
+    SWEEP = 1;            //全景扫频模式，大带宽，本振移动，点数带宽无限制。
     SEAMLESS = 2;       //无缝频谱（跳频）。
     HSCAN = 3;          //硬件全景扫频模式，由硬件完成扫频过程，并检波。(桂林项目和空工大三期项目全景使用这种方式)
     SEARCH = 4;         //频段扫描模式。
@@ -27,7 +27,7 @@ message FequecyPoints
 }
 
 //采集参数
-message SpectrumAcqParam 
+message SpectrumAcqParam
 {
     RunMode       mode = 1;                         //频谱模式。
     oneof frequency

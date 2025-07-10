@@ -7,24 +7,24 @@ import "scenario/kh/KhSpectrumAcq.proto";
 
 enum CalType
 {
-    CRYSTAL_CALIBRATE= 0;		            //晶振校准
-    FREQ_RESPONSE = 1;	                    //频响校准
-    IN_BAND_FLAT = 2;			            //带内平坦度校准
-    RF_FREQ_RESPONSE = 3;                   //短波频响
-    WINDOW_FUNC = 4;	                    //窗函数   
-    MODULE_TEST = 5;                        //模块测试  
-    BANDWIDTH_GAIN = 6;			            //带宽增益校准   
-    ZERO_FREQ = 7;                          //零频校准  		
+    CRYSTAL_CALIBRATE = 0;                    //晶振校准
+    FREQ_RESPONSE = 1;                        //频响校准
+    IN_BAND_FLAT = 2;                         //带内平坦度校准
+    RF_FREQ_RESPONSE = 3;                     //短波频响
+    WINDOW_FUNC = 4;                          //窗函数
+    MODULE_TEST = 5;                          //模块测试
+    BANDWIDTH_GAIN = 6;                       //带宽增益校准
+    ZERO_FREQ = 7;                            //零频校准
 }
-  
+
 enum ChannelType
 {
     SPECTRUM = 0;
-	DIRECTION = 1;
+    DIRECTION = 1;
 }
 
 //任务请求
-message CommChannelCaliTaskRequest 
+message CommChannelCaliTaskRequest
 {
     source.SourceId   source_id = 1;
     SpectrumAcqSource source_param = 2;
@@ -69,6 +69,6 @@ message ChangeRequest {
 service CommChannelCaliService {
     rpc StartTask(CommChannelCaliTaskRequest) returns (ScenarioReply) {}
     rpc GetResult(ScenarioTaskId) returns (stream SpectrumAcqResult) {}
-    rpc StopTask(ScenarioTaskId) returns (ScenarioReply) {} 
+    rpc StopTask(ScenarioTaskId) returns (ScenarioReply) {}
     rpc Change(ChangeRequest) returns (ScenarioReply) {}
 }

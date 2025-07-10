@@ -6,7 +6,7 @@ import "scenario/spectrum.proto";
 import "scenario/kh/KhIQDataAcq.proto";
 
 //任务请求
-message CommSpreadSpectrumTaskRequest 
+message CommSpreadSpectrumTaskRequest
 {
     ScenarioId scenario = 1;
     commIqData.CommIQAcqSource source_param = 2;
@@ -20,11 +20,11 @@ message CommSpreadSpectrumResult
     double freq = 3;                            //频率，Hz
     double code_speed = 4;                      //码速率 Mbps 
     int32 signal_type = 5;                      //信号类型，目前有 ： 0 非扩频 1 扩频
-    double   level = 6;			                //dBuV
-	double   bw = 7;			                //99%beta带宽
-	double   pn_period = 8;		                //PN周期  us
-	int64    pn_length = 9;		                //PN码长 
-	double   pn_chip_rate = 10;	                //码速率
+    double   level = 6;                            //dBuV
+    double   bw = 7;                            //99%beta带宽
+    double   pn_period = 8;                        //PN周期  us
+    int64    pn_length = 9;                        //PN码长
+    double   pn_chip_rate = 10;                    //码速率
 }
 
 

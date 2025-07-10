@@ -9,7 +9,7 @@ import "scenario/detection.proto";
 import "scenario/kh/KhSpectrumAcq.proto";
 
 //任务请求
-message FixTaskRequest 
+message FixTaskRequest
 {
     ScenarioId scenario = 1;
     SpectrumAcqSource source_param = 2;

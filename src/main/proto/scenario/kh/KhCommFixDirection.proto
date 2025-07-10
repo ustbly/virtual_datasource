@@ -6,7 +6,7 @@ import "scenario/spectrum.proto";
 import "scenario/kh/KhCommDirectionAcq.proto";
 
 //任务请求
-message CommFixDirectionTaskRequest 
+message CommFixDirectionTaskRequest
 {
     ScenarioId scenario = 1;
     CommDirectionAcqSource source_param = 2;

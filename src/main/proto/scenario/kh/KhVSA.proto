@@ -8,7 +8,7 @@ import "scenario/kh/KhIQDataAcq.proto";
 import "scenario/FFP/VSA.proto";
 
 //任务请求
-message CommVSATaskRequest 
+message CommVSATaskRequest
 {
     ScenarioId scenario = 1;
     commIqData.CommIQAcqSource source_param = 2;
@@ -42,7 +42,7 @@ message Recognize
 //音频结果
 message AudioBlock
 {
-  repeated int32 pcm_bitstream = 1;     
+    repeated int32 pcm_bitstream = 1;
 }
 
 //解码结果
@@ -55,7 +55,7 @@ message DecodeResult
 
 message CommVSAResult
 {
-	message Header
+    message Header
     {
         source.SourceId result_from = 1;    //数据来源
         uint32 sequence_number = 2;         //顺序号，每个任务执行者维护自身的顺序号
@@ -67,7 +67,7 @@ message CommVSAResult
     bytes  symbols = 3;                     //码元
     Recognize recognize = 4;
     DecodeResult decode = 5;                //解码信息
-	//DigitalModulateError digital_demod_error = 4;  //调制误差计算结果
+    //DigitalModulateError digital_demod_error = 4;  //调制误差计算结果
 }
 
 service VSAService

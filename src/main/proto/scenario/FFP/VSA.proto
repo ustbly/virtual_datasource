@@ -16,119 +16,119 @@ message VSASource
 enum DigitalDemodType  //数字解调类型
 {
     OOK = 0;
-		FSK2 = 1;
-		FSK4 = 2;
-		FSK8 = 3;
-		FSK16 = 4;
-		MSK = 5;
-		BPSK = 6;
-		QPSK = 7;
-		CQPSK = 8;
-		PSK8 = 9;
-		PSK16 = 10;
-		PI4QPSK = 11;
+    FSK2 = 1;
+    FSK4 = 2;
+    FSK8 = 3;
+    FSK16 = 4;
+    MSK = 5;
+    BPSK = 6;
+    QPSK = 7;
+    CQPSK = 8;
+    PSK8 = 9;
+    PSK16 = 10;
+    PI4QPSK = 11;
     PI4DQPSK = 12;
-		QAM16 = 16;      //QAM调制
+    QAM16 = 16;      //QAM调制
     QAM32 = 17;
     QAM64 = 18;
-		ASK = 21;
-		ASK2 = 22;
-		ASK4 = 23;
+    ASK = 21;
+    ASK2 = 22;
+    ASK4 = 23;
 }
 
 //输入数据类型
 enum DataType
 {
-	COMPLEX_F32 = 0;
-	COMPLEX_I32 = 1;
-	COMPLEX_I16 = 2;
-	REAL_I16 = 3;
-	REAL_F32 = 4;
+    COMPLEX_F32 = 0;
+    COMPLEX_I32 = 1;
+    COMPLEX_I16 = 2;
+    REAL_I16 = 3;
+    REAL_F32 = 4;
 };
 
 message ChannelizerParam
 {
-	double bankSampleRate = 1;			//IQ采样率
-	double chFrequency = 2;				//通道的中心频率,  (-fs/2 + bw/2) <= demodFrequency <= (fs/2 - bw/2)
-	double chSampleRate = 3;			//通道输出的采样率
-	double chBandwidth = 4;				//通道低通滤波的通带宽度，对应窄带信号的带宽
-	uint32	decimation = 5;					//抽取倍数 ≥1
+    double bankSampleRate = 1;            //IQ采样率
+    double chFrequency = 2;                //通道的中心频率,  (-fs/2 + bw/2) <= demodFrequency <= (fs/2 - bw/2)
+    double chSampleRate = 3;            //通道输出的采样率
+    double chBandwidth = 4;                //通道低通滤波的通带宽度，对应窄带信号的带宽
+    uint32    decimation = 5;                    //抽取倍数 ≥1
 };
 
 message PulseShapingFilter
 {
-	enum Type
-	{
-		NONE = 0;
-		RRC = 1;//根升余弦滤波器
-	}
-	Type type = 1;
-	float exceedBw = 2;	//滚降系数（0~1）
+    enum Type
+    {
+        NONE = 0;
+        RRC = 1;//根升余弦滤波器
+    }
+    Type type = 1;
+    float exceedBw = 2;    //滚降系数（0~1）
 };
 
 message BaseParam
 {
-	DataType dataType = 2;				//输入的数据类型
-	ChannelizerParam chParam = 3;		//信道化参数
-	PulseShapingFilter filter = 4;		//滤波器参数
-	float samplesPerSymbol = 5;			//采样率除以码元速率
-	uint32 minOutputSize = 6;				//每次输出所要求的最少样点数
+    DataType dataType = 2;                //输入的数据类型
+    ChannelizerParam chParam = 3;        //信道化参数
+    PulseShapingFilter filter = 4;        //滤波器参数
+    float samplesPerSymbol = 5;            //采样率除以码元速率
+    uint32 minOutputSize = 6;                //每次输出所要求的最少样点数
 }
 
 message OOKParam
 {
-	BaseParam baseParam = 1;			//解调基本参数
-	float threshold = 2;				//OOK门限值
+    BaseParam baseParam = 1;            //解调基本参数
+    float threshold = 2;                //OOK门限值
 }
 
 message FSKParam
 {
-	BaseParam baseParam = 1;			//解调基本参数
-	float maxDev = 2;	//频率偏移，应在信号带宽之内
+    BaseParam baseParam = 1;            //解调基本参数
+    float maxDev = 2;    //频率偏移，应在信号带宽之内
 }
 
 message PSKParam
 {
-	BaseParam baseParam = 1;			//解调基本参数
+    BaseParam baseParam = 1;            //解调基本参数
 }
 
 //IQ数据
 message IQData
 {
-	repeated float data_i = 1;             //I路数据
-	repeated float data_q = 2;             //Q路数据
-} 
+    repeated float data_i = 1;             //I路数据
+    repeated float data_q = 2;             //Q路数据
+}
 
 //矢量分析所需参数
 message VSAParam
 {
-	spectrum.DDCBank bank = 1;      //设备的中心频率和采样率
-	DigitalDemodType type = 2;
+    spectrum.DDCBank bank = 1;      //设备的中心频率和采样率
+    DigitalDemodType type = 2;
     OOKParam ook_param = 3;
     FSKParam fsk_param = 4;
-	PSKParam psk_param = 5;
+    PSKParam psk_param = 5;
 }
 
 message VSARequest
 {
-	ScenarioId scenario = 1;
+    ScenarioId scenario = 1;
     VSASource source = 2;
-	VSAParam param = 3;
+    VSAParam param = 3;
 }
 
 message VSAResult
 {
-	message Header
+    message Header
     {
         source.SourceId result_from = 1;         //数据来源
         uint32 sequence_number = 2;         //顺序号，每个任务执行者维护自身的顺序号
         TimeSpan time_span = 3;             //当前上报周期内的首段和末端采集时刻（由设备提供的时间）
         Position device_position = 4;       //设备位置
     }
-	Header header = 1;
-	IQData demod_result = 2;              //解调得到的IQ数据
-	bytes  symbols = 3;               //码元
-	//DigitalModulateError digital_demod_error = 4;  //调制误差计算结果
+    Header header = 1;
+    IQData demod_result = 2;              //解调得到的IQ数据
+    bytes  symbols = 3;               //码元
+    //DigitalModulateError digital_demod_error = 4;  //调制误差计算结果
 }
 
 service VSAService

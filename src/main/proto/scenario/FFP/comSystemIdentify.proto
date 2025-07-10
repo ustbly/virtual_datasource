@@ -15,12 +15,12 @@ message ComSystemSource
 
 message  ComSystemParam
 {
-	  spectrum.DDCBank bank = 3;      //设备的中心频率和采样率
+    spectrum.DDCBank bank = 3;      //设备的中心频率和采样率
 }
 
 message ComSystemIdentifyResult
 {
-	message Header
+    message Header
     {
         source.SourceId result_from = 1;         //数据来源
         uint32 sequence_number = 2;         //顺序号，每个任务执行者维护自身的顺序号
@@ -28,18 +28,18 @@ message ComSystemIdentifyResult
         Position device_position = 4;       //设备位置
     }
 
-	enum ComSystemType
-	{
-		UNKNOWN = 0;
-		DME = 1;
-		TACAN = 2;
-    Link4A = 3;
-		Link11 = 4;
-		Link16 = 5;		
-	}
-	Header header = 1;
+    enum ComSystemType
+    {
+        UNKNOWN = 0;
+        DME = 1;
+        TACAN = 2;
+        Link4A = 3;
+        Link11 = 4;
+        Link16 = 5;
+    }
+    Header header = 1;
     ComSystemType type = 2;
-	repeated float spectrum_samples = 3; //频谱信息
+    repeated float spectrum_samples = 3; //频谱信息
 }
 
 message ComSystemRequest

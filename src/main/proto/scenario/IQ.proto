@@ -40,14 +40,14 @@ message TimeTriggerParam
     }
     Type            trigger_type = 1;   //触发类型
     Timestamp       trigger_time = 2;   //触发时刻
-    int32		    sweep_interval = 3;     //扫描间隔,单位ms 大于500ms
-    int32		    segment_interval = 4;   //频点间隔,单位ms 大于100ms
+    int32            sweep_interval = 3;     //扫描间隔,单位ms 大于500ms
+    int32            segment_interval = 4;   //频点间隔,单位ms 大于100ms
 }
 
 message AdvancedAcqParam
 {
     int32       num_sweeps = 1;            //扫描次数[0,max_uint32]
-	int32	    num_samples_per_segment = 2;
+    int32        num_samples_per_segment = 2;
     IQType      data_type = 3;
     repeated spectrum.DDCBank segments = 4;
     TimeTriggerParam trigger_param = 5;     //时间触发（可选）
@@ -57,13 +57,13 @@ message AdvancedAcqParam
 message IQHeader
 {
     source.SourceId    result_from = 1;        //结果来源
-    uint64		sequence_number = 3;    //顺序号
-    uint64		sweep_index = 4;        //扫描次数索引
-    uint32		segment_index = 5;      //频点索引
+    uint64        sequence_number = 3;    //顺序号
+    uint64        sweep_index = 4;        //扫描次数索引
+    uint32        segment_index = 5;      //频点索引
     IQType      data_type = 6;
     uint32      truncate_bits = 7;       //截位数(16位iq有效)
-    double		center_frequency = 9;   //中心频率,单位Hz
-    double		sample_rate = 10;       //采样率,单位Hz
+    double        center_frequency = 9;   //中心频率,单位Hz
+    double        sample_rate = 10;       //采样率,单位Hz
     double      scale_to_volts = 11;    //电压比例尺,具体请参照文档换算
     Timestamp   time_stamp = 12;        //时间戳
     Position    position = 15;          //采集时所处的位置

@@ -6,7 +6,7 @@ import "scenario/kh/KhIQDataAcq.proto";
 import "scenario/FFP/modIdentify.proto";
 
 //任务请求
-message CommTargetClassifyTaskRequest 
+message CommTargetClassifyTaskRequest
 {
     ScenarioId scenario = 1;
     commIqData.CommIQAcqSource source_param = 2;

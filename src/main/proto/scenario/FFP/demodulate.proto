@@ -15,13 +15,13 @@ message DemodSource
 
 enum AnalogModType
 {
-    AM = 0;	    //调幅
-    FM = 1;		//调频
-    PM = 2;		//调相
-    CW = 3;		//连续波，电报
-    LSB = 4;	//下边带
-    USB = 5;	//上边带
-    PULSE = 6;	//脉冲			
+    AM = 0;        //调幅
+    FM = 1;        //调频
+    PM = 2;        //调相
+    CW = 3;        //连续波，电报
+    LSB = 4;    //下边带
+    USB = 5;    //上边带
+    PULSE = 6;    //脉冲
 }
 
 message DemodChannel
@@ -34,7 +34,7 @@ message DemodChannel
 //音频结果
 message AudioBlock
 {
-  repeated int32 pcm_bitstream = 3;      //音频PCM码流, 16位单声道audio_sr速率，2个样点拼接成一个int32
+    repeated int32 pcm_bitstream = 3;      //音频PCM码流, 16位单声道audio_sr速率，2个样点拼接成一个int32
 }
 
 message ChannelAudio

@@ -16,7 +16,7 @@ message MultiSource
 }
 
 //启动请求
-message MultiTaskStartRequest 
+message MultiTaskStartRequest
 {
     ScenarioId scenario = 1;
     MultiSource source_param = 2;
@@ -27,12 +27,12 @@ message MultiTaskStartRequest
 //窄带通路数据
 message NarrowChannelData
 {
-	int32 channel_id = 2;					//通道号（0-15）
-	double cent_freq = 4;                   //中心频率
+    int32 channel_id = 2;                    //通道号（0-15）
+    double cent_freq = 4;                   //中心频率
     double samp_rate = 6;                   //IQ采样率 单位为Hz
     Timestamp time_stamp = 7;               //时间
-	repeated float data_i = 8;             	//I路数据
-	repeated float data_q = 9;             	//Q路数据
+    repeated float data_i = 8;                //I路数据
+    repeated float data_q = 9;                //Q路数据
     repeated float spectrum = 11;           //频谱数据
     scenario.FFP.ChannelAudio channel_audio = 12;        //音频结果
 }
@@ -45,7 +45,7 @@ message MultiResult
     spectrum.View panorama_view = 3;                //宽带全景视角的数据
     spectrum.View closeshot_view = 4;               //宽带近景视角的数据
     repeated NarrowChannelData channel_data = 5;    //多通道窄带数据
-} 
+}
 
 enum ParamIndex
 {
@@ -54,11 +54,11 @@ enum ParamIndex
 }
 
 //通道修改请求
-message ChannelChangeRequest 
+message ChannelChangeRequest
 {
     ScenarioTaskId responser = 1;
     ParamIndex index = 2;
-    repeated NarrowChannel channels= 4;         //窄通道的工作参数
+    repeated NarrowChannel channels = 4;         //窄通道的工作参数
 }
 
 service MultiChannelService

@@ -9,7 +9,7 @@ import "scenario/detection.proto";
 import "scenario/kh/KhSpectrumAcq.proto";
 
 //创建场景请求
-message CommPScanCreateScenarioRequest 
+message CommPScanCreateScenarioRequest
 {
     SpectrumAcqSource source_param = 1;
     SpectrumAcqParam acq_param = 2;

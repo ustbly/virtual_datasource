@@ -9,88 +9,88 @@ import "scenario/kh/KhIQDataAcq.proto";
 //电平参考
 enum LevelMode
 {
-	PEAK=0;         //峰值电平
-    NOISE=1;        //噪底电平
-    ABS=2;          //绝对电平
+    PEAK = 0;         //峰值电平
+    NOISE = 1;        //噪底电平
+    ABS = 2;          //绝对电平
 }
 
 //脉冲分析参数
 message AnalysisParam
 {
-	double maxwidth =4;       						//最大限定脉宽 ...分析参数
-	double minwidth =5;       						//最小限定脉宽
-	LevelMode lvlmode=6;   							//脉冲幅度比对类型
-	float lvldata=7;   								//用户提供的比对幅度值
-	int32 maxpulse_count=8;      					//最大脉冲计数
-	uint32 histogrambins=9;  						//直方图Bins
-	double start_time=10;       					//瞬时分析脉冲的起始时间（us）
-	double stop_time=11;							//瞬时分析脉冲的停止时间
+    double maxwidth = 4;                            //最大限定脉宽 ...分析参数
+    double minwidth = 5;                            //最小限定脉宽
+    LevelMode lvlmode = 6;                            //脉冲幅度比对类型
+    float lvldata = 7;                                //用户提供的比对幅度值
+    int32 maxpulse_count = 8;                        //最大脉冲计数
+    uint32 histogrambins = 9;                        //直方图Bins
+    double start_time = 10;                        //瞬时分析脉冲的起始时间（us）
+    double stop_time = 11;                            //瞬时分析脉冲的停止时间
 }
 
 //任务请求
-message CommPulseAnalysisTaskRequest 
+message CommPulseAnalysisTaskRequest
 {
     ScenarioId scenario = 1;
     commIqData.CommIQAcqSource source_param = 2;
-    commIqData.CommIQAcquireParam acq_param = 3;  	//采集参数
-	AnalysisParam analysis_param = 4;
+    commIqData.CommIQAcquireParam acq_param = 3;    //采集参数
+    AnalysisParam analysis_param = 4;
 }
 
 //修改参数索引
 enum ParamIndex
 {
-	ANALYSIS_PARAM = 0;		//分析参数
+    ANALYSIS_PARAM = 0;        //分析参数
 }
 
 //修改请求参数
 message ChangePulseRequest
 {
-	TaskId task_id = 1;
-	ParamIndex param_index=2;  			//修改参数索引。
-	AnalysisParam analysis_param = 3; 
+    TaskId task_id = 1;
+    ParamIndex param_index = 2;            //修改参数索引。
+    AnalysisParam analysis_param = 3;
 }
 
 //脉冲参数分析结果
 message PulseParamsAnalysisResult
 {
-	float peakPower=1;	     //峰值功率
-    float minPower=2;        //最小功率
-	float avgOnPower=3;      //平均功率
-	double riseTime=4;       //上升时间
-	double fallTime=5;       //下降时间     
-	double PW=6;             //脉冲宽度 
-	double PRI=7;            //脉冲重复间隔
-	uint64 TOA = 8;  		 //脉冲到达时刻
+    float peakPower = 1;         //峰值功率
+    float minPower = 2;        //最小功率
+    float avgOnPower = 3;      //平均功率
+    double riseTime = 4;       //上升时间
+    double fallTime = 5;       //下降时间
+    double PW = 6;             //脉冲宽度
+    double PRI = 7;            //脉冲重复间隔
+    uint64 TOA = 8;         //脉冲到达时刻
 }
 
 //脉冲瞬时分析数据
 message PulseTransientAnalysisData
 {
-	repeated float amplitude=1; //瞬时幅度数据
-	repeated float phase=2;     //瞬时相位数据
-	repeated float frequency=3; //瞬时频率数据
-	repeated PulseParamsAnalysisResult paramsResult=4; //脉冲参数结果。
+    repeated float amplitude = 1; //瞬时幅度数据
+    repeated float phase = 2;     //瞬时相位数据
+    repeated float frequency = 3; //瞬时频率数据
+    repeated PulseParamsAnalysisResult paramsResult = 4; //脉冲参数结果。
 }
 
 //设备数据
 message CommPulseResult
 {
-	message Header
+    message Header
     {
         source.SourceId result_from = 1;    //数据来源
         uint32 sequence_number = 2;         //顺序号，每个任务执行者维护自身的顺序号
         TimeSpan time_span = 3;             //当前上报周期内的首段和末端采集时刻（由设备提供的时间）
         Position device_position = 4;       //设备位置
     }
-	Header header = 1;
-	repeated float raw_trace = 2;      			  //IQ数据; 
-	PulseTransientAnalysisData transient_data =3; //瞬时分析结果数据，脉冲参数分析
+    Header header = 1;
+    repeated float raw_trace = 2;                  //IQ数据;
+    PulseTransientAnalysisData transient_data = 3; //瞬时分析结果数据，脉冲参数分析
 }
 
 service PulseAnalysisService
 {
-	rpc StartTask(CommPulseAnalysisTaskRequest) returns (ScenarioReply) {}          	//启动实时任务
+    rpc StartTask(CommPulseAnalysisTaskRequest) returns (ScenarioReply) {}            //启动实时任务
     rpc GetResult(ScenarioTaskId) returns (stream CommPulseResult) {}                   //获取结果
-    rpc ChangeParam(ChangePulseRequest) returns (ScenarioReply) {}               		//修改参数
-    rpc StopTask(ScenarioTaskId) returns(ScenarioReply){}                          		//停止任务
+    rpc ChangeParam(ChangePulseRequest) returns (ScenarioReply) {}                    //修改参数
+    rpc StopTask(ScenarioTaskId) returns(ScenarioReply){}                                //停止任务
 }
