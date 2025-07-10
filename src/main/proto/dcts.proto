@@ -230,8 +230,8 @@ message CommandReply
 // 威胁程度
 enum ThreatLevel
 {
-  NONE = 0;          //无
+  NONE = 0;         //无
   LOW = 1;          //低
-  MIDDLE = 2;            //中
-  HIGH = 3;          //高
+  MIDDLE = 2;       //中
+  HIGH = 3;         //高
 }

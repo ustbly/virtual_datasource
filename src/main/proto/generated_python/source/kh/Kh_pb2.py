@@ -274,7 +274,7 @@ _CLUSTERCONFIG = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='link', full_name='zb.dcts.source.kh.ClusterConfig.link', index=0,
+      name='link_combine', full_name='zb.dcts.source.kh.ClusterConfig.link_combine', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -375,7 +375,7 @@ _NODEDEVICE.fields_by_name['device_id'].message_type = source_dot_source__pb2._S
 _DEVICECONFIG.fields_by_name['type'].enum_type = source_dot_source__pb2._SOURCETYPE
 _DEVICECONFIG.fields_by_name['address'].message_type = dcts__pb2._IPV4ADDRESS
 _DEVICECONFIG.fields_by_name['id'].message_type = source_dot_source__pb2._SOURCEID
-_CLUSTERCONFIG.fields_by_name['link'].message_type = dcts__pb2._ZEROMQLINKCFG
+_CLUSTERCONFIG.fields_by_name['link_combine'].message_type = dcts__pb2._ZEROMQLINKCFG
 _CLUSTERCONFIG.fields_by_name['stream'].message_type = dcts__pb2._ZEROMQLINKCFG
 _CLUSTERCONFIG.fields_by_name['selftest'].message_type = dcts__pb2._ZEROMQLINKCFG
 _CLUSTERCONFIG.fields_by_name['devices'].message_type = _DEVICECONFIG

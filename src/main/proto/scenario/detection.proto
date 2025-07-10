@@ -7,280 +7,280 @@ import "scenario/scenario.proto";
 //----------------------------能量检测--------------------//
 //门限设置/门限判别结果
 message ThresholdSector
-{      
-    spectrum.FrequencySpan freq_span = 1;  //门限判别的起始终止频率
-    float level = 2;              //门限电平，单位dBm
+{
+  spectrum.FrequencySpan freq_span = 1;  //门限判别的起始终止频率
+  float level = 2;              //门限电平，单位dBm
 }
 
 //用户自定义门限
 message UserThresholdParam
 {
-    repeated ThresholdSector sectors = 1;   //自定义门限是在若干频段内指定的水平电平值，频段可重叠，可乱序
+  repeated ThresholdSector sectors = 1;   //自定义门限是在若干频段内指定的水平电平值，频段可重叠，可乱序
 }
 
 //历史门限
 message HistoryThresholdParam
 {
-    TimeSpan span = 1;
-    int32 max_load_count = 3;   //最大读取记录个数，因为记录过多，历史门限的生成时间会很长
-    float offset = 4;
+  TimeSpan span = 1;
+  int32 max_load_count = 3;   //最大读取记录个数，因为记录过多，历史门限的生成时间会很长
+  float offset = 4;
 }
 
 //自适应门限
 message AdaptiveThresholdParam
 {
-    enum PartitionMode
-    {
-        PM_STANDARD = 0;    //标准模式
-        PM_AGGRESIVE = 1;   //激进模式，将采用更细的粒度统计
-        PM_FAST = 2;        //快速模式，将采用较粗的粒度统计
-    }
-    int32 average_count = 1;    //迭代次数
-    PartitionMode partition_mode = 2;   //分段模式
-    float offset = 3;           //门限偏移
+  enum PartitionMode
+  {
+    PM_STANDARD = 0;    //标准模式
+    PM_AGGRESIVE = 1;   //激进模式，将采用更细的粒度统计
+    PM_FAST = 2;        //快速模式，将采用较粗的粒度统计
+  }
+  int32 average_count = 1;    //迭代次数
+  PartitionMode partition_mode = 2;   //分段模式
+  float offset = 3;           //门限偏移
 }
 
 //邻值比较门限
 message NeighborVarThresholdParam
 {
-    float noise_variance_scale = 1;         //区分信噪的噪声标准差差倍数
-    float noise_max_variance = 2;	        //计算噪声标准差时，噪声偏移阈值
-    float offset = 3;                       //门限偏移
-    double lookup_freq_span = 4;			 //估计噪声方差的频段宽度
-    int32 smooth_range = 5;                  //平滑点数范围
+  float noise_variance_scale = 1;         //区分信噪的噪声标准差差倍数
+  float noise_max_variance = 2;          //计算噪声标准差时，噪声偏移阈值
+  float offset = 3;                       //门限偏移
+  double lookup_freq_span = 4;       //估计噪声方差的频段宽度
+  int32 smooth_range = 5;                  //平滑点数范围
 }
 
 enum ThresholdType
 {
-    HISTORY = 0;        //历史门限
-    USER_DEFINE = 1;    //用户自定义门限
-    ADAPTIVE = 2;       //自适应门限
-    NEIGHBOR = 3;       //邻值比较门限
+  HISTORY = 0;        //历史门限
+  USER_DEFINE = 1;    //用户自定义门限
+  ADAPTIVE = 2;       //自适应门限
+  NEIGHBOR = 3;       //邻值比较门限
 }
 
 message EnergyDetectionParam
 {
-    enum LogicType
-    {
-        LT_AND = 0;     //所有门限都超过，才算
-        LT_OR = 1;      //只要超过任意门限，就算
-    }
-    repeated ThresholdType active_types = 1; //使能的门限类型，可复选历史、用户定义、自适应
-    LogicType logic = 2;                    //复合门限的逻辑关系
-    HistoryThresholdParam history_threshold = 5;
-    UserThresholdParam user_threshold = 6;
-    AdaptiveThresholdParam adaptive_threshold = 7;
-    NeighborVarThresholdParam neighbor_threshold = 9;
+  enum LogicType
+  {
+    LT_AND = 0;     //所有门限都超过，才算
+    LT_OR = 1;      //只要超过任意门限，就算
+  }
+  repeated ThresholdType active_types = 1; //使能的门限类型，可复选历史、用户定义、自适应
+  LogicType logic = 2;                    //复合门限的逻辑关系
+  HistoryThresholdParam history_threshold = 5;
+  UserThresholdParam user_threshold = 6;
+  AdaptiveThresholdParam adaptive_threshold = 7;
+  NeighborVarThresholdParam neighbor_threshold = 9;
 }
 
 message ThresholdTrace    //生成的门限线
 {
-    ThresholdType type = 1;
-    repeated float threshold_trace = 2;
+  ThresholdType type = 1;
+  repeated float threshold_trace = 2;
 }
 
-message FreqSpanFilter    
+message FreqSpanFilter
 {
-    repeated spectrum.FrequencySpan freq_spans = 1;
+  repeated spectrum.FrequencySpan freq_spans = 1;
 }
 
 message SignalSegmentationParam   //信号分离的准则
 {
-    float  freq_center_jitter_tolerance = 1;       //允许的中心频率抖动，百分比(0,1)
-    float  freq_border_blur_tolerance = 2;          //相邻信号融合，允许的边界模糊区（Hz）
-    float  min_rss = 3;                             //允许的最小信号接收强度(dBm)
-    int32  time_gap_tolerance = 4;                  //时间间隙，单位ms
+  float  freq_center_jitter_tolerance = 1;       //允许的中心频率抖动，百分比(0,1)
+  float  freq_border_blur_tolerance = 2;          //相邻信号融合，允许的边界模糊区（Hz）
+  float  min_rss = 3;                             //允许的最小信号接收强度(dBm)
+  int32  time_gap_tolerance = 4;                  //时间间隙，单位ms
 }
 
 message HopSignalClusterParam
 {
-    string name = 1;        //跳频通信系统的名称 例如Link16 71电台 J链 bluetooth
-    spectrum.FrequencySpan frequency_range = 2; //跳频信号所处的频率区间
-    DRange band_width_range = 3;          //跳频信号单跳的带宽允许范围
-    float freq_jitter_tolerance = 4;           //单跳中心频率抖动的允许范围
+  string name = 1;        //跳频通信系统的名称 例如Link16 71电台 J链 bluetooth
+  spectrum.FrequencySpan frequency_range = 2; //跳频信号所处的频率区间
+  DRange band_width_range = 3;          //跳频信号单跳的带宽允许范围
+  float freq_jitter_tolerance = 4;           //单跳中心频率抖动的允许范围
 }
 
 message HopSignalDetectionParam
 {
-    repeated HopSignalClusterParam hop_signal_clusters = 1;    //基于频谱做跳频信号检测，只关心跳频信号的频域特征
+  repeated HopSignalClusterParam hop_signal_clusters = 1;    //基于频谱做跳频信号检测，只关心跳频信号的频域特征
 }
 
 message SignalDetectParam
 {
-    FreqSpanFilter white_list = 1;      //频段过滤器(位于白名单的频率区间将忽略检测)
-    SignalSegmentationParam signal_segmenation_param = 2;      //信号分离参数
-    HopSignalDetectionParam hop_signal_detection_param = 3;    //跳频检测参数
+  FreqSpanFilter white_list = 1;      //频段过滤器(位于白名单的频率区间将忽略检测)
+  SignalSegmentationParam signal_segmenation_param = 2;      //信号分离参数
+  HopSignalDetectionParam hop_signal_detection_param = 3;    //跳频检测参数
 }
 
 message DetectionParam
 {
-    int32         result_interval = 1;              //信号检测的回传间隔,单位ms，0代表每次扫描均上传
-    EnergyDetectionParam energy_detect_param = 2;   //能量检测参数
-    SignalDetectParam signal_detect_param = 3;      //信号检测参数
+  int32         result_interval = 1;              //信号检测的回传间隔,单位ms，0代表每次扫描均上传
+  EnergyDetectionParam energy_detect_param = 2;   //能量检测参数
+  SignalDetectParam signal_detect_param = 3;      //信号检测参数
 }
 
 //信号活跃度
 enum SignalActivity
 {
-    UNKNOWN = 0;
-    ACTIVE = 0x1;     //当前活跃
-    INACTIVE = 0x2;   //已不活跃 
-    DECAYED = 0x4;    //过时  
-    REMOVED = 0x8;     
+  UNKNOWN = 0;
+  ACTIVE = 0x1;     //当前活跃
+  INACTIVE = 0x2;   //已不活跃
+  DECAYED = 0x4;    //过时
+  REMOVED = 0x8;
 }
 
-message SignalFeature 
+message SignalFeature
 {
-    int32 sequence_number = 1;               //所属的检测顺序号
-    spectrum.SignalBand signal_band = 2;    //信号的频率范围
-    StatisticVal amplitude = 4;
-    StatisticVal hits = 5;                    
+  int32 sequence_number = 1;               //所属的检测顺序号
+  spectrum.SignalBand signal_band = 2;    //信号的频率范围
+  StatisticVal amplitude = 4;
+  StatisticVal hits = 5;
 }
 
 // 信号摘要
 message SignalDigest
 {
-    string          id = 1;                          //信号id
-    SignalActivity  activity = 2;                    //信号活跃度
-    StatisticVal    center_freq = 3;                 //中心频率，单位Hz
-    StatisticVal    band_width = 4;                  //带宽，单位Hz
-    StatisticVal    amplitude = 5;                   //幅度，单位dBm
-    TimeSpan        emit_time_span = 6;              //信号出现的起始和终止时间 
-    int32           num_features = 7;                //该信号feature计数
-    DOA             dir_of_arrival = 9;              //信号的到达角，测向信息
-    string          classification = 10;             //信号分类，一般为调制识别或体制识别的结果
-    string          description = 11;                //信号描述，一般为信号所处频段的名称
+  string          id = 1;                          //信号id
+  SignalActivity  activity = 2;                    //信号活跃度
+  StatisticVal    center_freq = 3;                 //中心频率，单位Hz
+  StatisticVal    band_width = 4;                  //带宽，单位Hz
+  StatisticVal    amplitude = 5;                   //幅度，单位dBm
+  TimeSpan        emit_time_span = 6;              //信号出现的起始和终止时间
+  int32           num_features = 7;                //该信号feature计数
+  DOA             dir_of_arrival = 9;              //信号的到达角，测向信息
+  string          classification = 10;             //信号分类，一般为调制识别或体制识别的结果
+  string          description = 11;                //信号描述，一般为信号所处频段的名称
 }
 
 //信号片段
 message SignalSegment
 {
-    SignalDigest digest = 1;
-    repeated SignalFeature feature_details = 2;
+  SignalDigest digest = 1;
+  repeated SignalFeature feature_details = 2;
 }
 
 message HopSignalDigest
 {
-    StatisticVal    center_freq = 1;                 //中心频率，单位Hz
-    StatisticVal    band_width = 2;                  //带宽，单位Hz
-    StatisticVal    amplitude = 3;                   //幅度，单位dBm
-    int32           num_features = 5;                //该信号feature计数
+  StatisticVal    center_freq = 1;                 //中心频率，单位Hz
+  StatisticVal    band_width = 2;                  //带宽，单位Hz
+  StatisticVal    amplitude = 3;                   //幅度，单位dBm
+  int32           num_features = 5;                //该信号feature计数
 }
 
 message HopSignalCluster
 {
-    string name = 1;                        //跳频系统
-    SignalActivity  activity = 2;           //信号活跃度
-    TimeSpan        emit_time_span = 3;     //信号出现的起始和终止时间
-    repeated HopSignalDigest freq_set = 4;  //频率集
+  string name = 1;                        //跳频系统
+  SignalActivity  activity = 2;           //信号活跃度
+  TimeSpan        emit_time_span = 3;     //信号出现的起始和终止时间
+  repeated HopSignalDigest freq_set = 4;  //频率集
 }
 
 message FixSignalList
 {
-    repeated SignalSegment fix_signals = 1; 
+  repeated SignalSegment fix_signals = 1;
 }
 
 message HopSignalList
 {
-    repeated HopSignalCluster hop_signal_clusters = 1;   //跳频信号检测结果
+  repeated HopSignalCluster hop_signal_clusters = 1;   //跳频信号检测结果
 }
 
 message DetectionRequest
 {
-    ScenarioTaskId responser = 1;    
-    DetectionParam detection_param = 2;
+  ScenarioTaskId responser = 1;
+  DetectionParam detection_param = 2;
 }
 
 message AutoGatheringParam
 {
-    int32 time_span_in_msec = 1;            //信号收集的持续时长(以毫秒计)
-    repeated string signal_candidates = 2;  //要收集的信号
+  int32 time_span_in_msec = 1;            //信号收集的持续时长(以毫秒计)
+  repeated string signal_candidates = 2;  //要收集的信号
 }
 
 message ManualGatheringParam
 {
-    string id = 1;
-    int32 time_span_in_msec = 2;            //信号收集的持续时长(以毫秒计)
-    spectrum.FrequencySpan freq_span = 3;
+  string id = 1;
+  int32 time_span_in_msec = 2;            //信号收集的持续时长(以毫秒计)
+  spectrum.FrequencySpan freq_span = 3;
 }
 
 message SignalGatheringRequest
-{ 
-    ScenarioTaskId responser = 1;    
-    AutoGatheringParam auto_gathering_param = 2;
-    ManualGatheringParam manual_gathering_param = 3;
+{
+  ScenarioTaskId responser = 1;
+  AutoGatheringParam auto_gathering_param = 2;
+  ManualGatheringParam manual_gathering_param = 3;
 }
 
 message SignalSample    //信号样本
 {
-    string id = 1;
-    spectrum.SpectrumBlock sample_block = 2;
+  string id = 1;
+  spectrum.SpectrumBlock sample_block = 2;
 }
 
 message SignalSampleList
 {
-    repeated SignalSample samples = 1;
+  repeated SignalSample samples = 1;
 }
 
 message SignalTableQueryRequest
 {
-    ScenarioTaskId responser = 1;    
-    source.SourceId data_source = 2;        //必须设置数据源
-    Integer activiy_mask = 3;               //根据活动属性查询（可选）
-    spectrum.FrequencySpan freq_range = 4;  //根据频率范围查询（可选）
-    TimeSpan time_range = 5;                //根据时间范围查询（可选）
+  ScenarioTaskId responser = 1;
+  source.SourceId data_source = 2;        //必须设置数据源
+  Integer activiy_mask = 3;               //根据活动属性查询（可选）
+  spectrum.FrequencySpan freq_range = 4;  //根据频率范围查询（可选）
+  TimeSpan time_range = 5;                //根据时间范围查询（可选）
 }
 
 message SignalTableQueryResponse
 {
-    source.SourceId data_source = 1; //数据源
-    int32 num_sweeps = 2;       //总扫描次数
-    int32 num_detects = 3;      //总检测次数
-    int32 num_total_signals = 4;    //总信号数量
-    int32 num_query_signals = 5;    //符合查询条件的信号数量
-    repeated SignalDigest fix_signal_list = 7;    //符合查询条件的定频信号摘要
-    repeated HopSignalCluster hop_signal_list = 8;  //符合查询条件的跳频系统
+  source.SourceId data_source = 1; //数据源
+  int32 num_sweeps = 2;       //总扫描次数
+  int32 num_detects = 3;      //总检测次数
+  int32 num_total_signals = 4;    //总信号数量
+  int32 num_query_signals = 5;    //符合查询条件的信号数量
+  repeated SignalDigest fix_signal_list = 7;    //符合查询条件的定频信号摘要
+  repeated HopSignalCluster hop_signal_list = 8;  //符合查询条件的跳频系统
 }
 
 //--------------------------for internal purpose--------------------//
 message Header
 {
-    source.SourceId result_from = 1;    //数据来源
-    uint32 sequence_number = 3;         //顺序号，每个任务执行者维护自身的顺序号
-    uint32 sweep_count = 4;             //当前上报周期内的扫描次数
-    TimeSpan time_span = 5;             //当前上报周期内的首次末次扫描时刻（由设备提供的时间）
-    Position device_position = 6;       //设备位置
+  source.SourceId result_from = 1;    //数据来源
+  uint32 sequence_number = 3;         //顺序号，每个任务执行者维护自身的顺序号
+  uint32 sweep_count = 4;             //当前上报周期内的扫描次数
+  TimeSpan time_span = 5;             //当前上报周期内的首次末次扫描时刻（由设备提供的时间）
+  Position device_position = 6;       //设备位置
 }
 
 message RawBody
 {
-    spectrum.FrequencySegment freq_seg = 1;                         //频率范围及点数
-    spectrum.SpectrumLine over_threshold_hits = 2;                  //超限命中次数
-    repeated spectrum.SpectrumLine raw_spectrum_lines = 3;          //积累的频谱线                       
+  spectrum.FrequencySegment freq_seg = 1;                         //频率范围及点数
+  spectrum.SpectrumLine over_threshold_hits = 2;                  //超限命中次数
+  repeated spectrum.SpectrumLine raw_spectrum_lines = 3;          //积累的频谱线
 }
 
 message RawData
 {
-    Header header = 1;
-    RawBody body = 2;
-    repeated IRange signal_segments = 3;            //信号片段，闭开区间
+  Header header = 1;
+  RawBody body = 2;
+  repeated IRange signal_segments = 3;            //信号片段，闭开区间
 }
 
 //设备端周期性上报的检测结果
 message DeviceDetectResult
 {
-    Header header = 1;
-    FixSignalList fix_signal_list = 3;              //当前上报周期内的信号列表
-    HopSignalList hop_signal_list = 4;              //跳频信号检测结果
-    SignalSampleList signal_sample_list = 5;        //信号时频图样本
+  Header header = 1;
+  FixSignalList fix_signal_list = 3;              //当前上报周期内的信号列表
+  HopSignalList hop_signal_list = 4;              //跳频信号检测结果
+  SignalSampleList signal_sample_list = 5;        //信号时频图样本
 }
 
 //信号层面的测量报告
 message SignalLayerSurvey
 {
-    source.SourceId result_from = 1;
-    Timestamp   time_stamp = 2;          //时间戳
-    Position position = 3;               //测向点的位置
-    repeated SignalDigest fix_signal_list = 4;    
-    repeated HopSignalCluster hop_signal_list = 5;
+  source.SourceId result_from = 1;
+  Timestamp   time_stamp = 2;          //时间戳
+  Position position = 3;               //测向点的位置
+  repeated SignalDigest fix_signal_list = 4;
+  repeated HopSignalCluster hop_signal_list = 5;
 }

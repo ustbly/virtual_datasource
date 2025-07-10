@@ -1,4 +1,4 @@
-package mock_data;
+package link_combine;
 
 
 ///** 必须启动该程序，下面的非注释版已经集成到 FusionDataServiceImpl.java 中
@@ -105,15 +105,15 @@ public class TargetSignalProcessor {
     private static final String SUB_ADDR = "tcp://localhost:5558";
     private static final String PUB_ADDR = "tcp://*:5560";
 
-    private final List<zb.dcts.aeronaval.Aeronaval.Target> targetCache = Collections.synchronizedList(new ArrayList<>());
+    private final List<Aeronaval.Target> targetCache = Collections.synchronizedList(new ArrayList<>());
     private final List<Detection.SignalLayerSurvey> surveyCache = Collections.synchronizedList(new ArrayList<>());
     private final SignalTargetMatcher matcher;
 
     public TargetSignalProcessor() {
         Map<Aeronaval.EquType, double[]> freqMap = new HashMap<>();
-        freqMap.put(zb.dcts.aeronaval.Aeronaval.EquType.AIRCAFT_EUT, new double[]{850e6, 950e6});
-        freqMap.put(zb.dcts.aeronaval.Aeronaval.EquType.SU27_EUT, new double[]{2.3e9, 2.5e9});
-        freqMap.put(zb.dcts.aeronaval.Aeronaval.EquType.JC_SHJJ_EUT, new double[]{1.1e9, 1.3e9});
+        freqMap.put(Aeronaval.EquType.AIRCAFT_EUT, new double[]{850e6, 950e6});
+        freqMap.put(Aeronaval.EquType.SU27_EUT, new double[]{2.3e9, 2.5e9});
+        freqMap.put(Aeronaval.EquType.JC_SHJJ_EUT, new double[]{1.1e9, 1.3e9});
 
         matcher = new SignalTargetMatcher(
                 1, 200.0, 200.0, freqMap, 4, PUB_ADDR
@@ -130,8 +130,8 @@ public class TargetSignalProcessor {
             ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(2);
             scheduler.scheduleAtFixedRate(() -> {
                 if (!targetCache.isEmpty() && !surveyCache.isEmpty()) {
-                    List<zb.dcts.aeronaval.Aeronaval.Target> targetsCopy = new ArrayList<>(targetCache);
-                    List<zb.dcts.scenario.detection.Detection.SignalLayerSurvey> surveysCopy = new ArrayList<>(surveyCache);
+                    List<Aeronaval.Target> targetsCopy = new ArrayList<>(targetCache);
+                    List<Detection.SignalLayerSurvey> surveysCopy = new ArrayList<>(surveyCache);
                     matcher.linkAndPublish(surveysCopy, targetsCopy);
                     targetCache.clear();
                     surveyCache.clear();

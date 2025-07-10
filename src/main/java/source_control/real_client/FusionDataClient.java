@@ -4,7 +4,9 @@ import com.google.protobuf.Any;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass;
+import utils.MessageToJsonUtil;
+import zb.dcts.fusion.fusiondata.Fusion;
+import zb.dcts.fusion.fusiondata.FusionDataControlServiceGrpc;
 
 /**
  * @author 林跃
@@ -23,11 +25,10 @@ public class FusionDataClient {
                 .usePlaintext()
                 .build();
 
-        zb.dcts.fusion.fusiondata.FusionDataControlServiceGrpc.FusionDataControlServiceStub stub =
-                zb.dcts.fusion.fusiondata.FusionDataControlServiceGrpc.newStub(channel);
+       FusionDataControlServiceGrpc.FusionDataControlServiceStub stub = FusionDataControlServiceGrpc.newStub(channel);
 
         // 2. 构造请求（订阅 "Fusion_AirDomain"）
-        zb.dcts.fusion.fusiondata.Fusion.FusionDataRequest request = zb.dcts.fusion.fusiondata.Fusion.FusionDataRequest.newBuilder()
+        Fusion.FusionDataRequest request = Fusion.FusionDataRequest.newBuilder()
                 .setTopic("Fusion_AirDomain")
                 .build();
 
@@ -36,12 +37,16 @@ public class FusionDataClient {
             @Override
             public void onNext(Any value) {
                 try {
-                    if (value.is(TargetOuterClass.CombinedMessage.class)) {
-                        TargetOuterClass.CombinedMessage cm = value.unpack(TargetOuterClass.CombinedMessage.class);
-                        System.out.printf("[✓] 接收到 CombinedMessage：%s%n", cm);
-                    } else {
-                        System.out.println("[×] 未识别的消息类型");
-                    }
+//                    if (value.is(TargetOuterClass.CombinedMessage.class)) {
+//                        TargetOuterClass.CombinedMessage cm = value.unpack(TargetOuterClass.CombinedMessage.class);
+//                        System.out.printf("[✓] 接收到 CombinedMessage：%s%n", cm);
+//                    } else {
+//                        System.out.println("[×] 未识别的消息类型");
+//                    }
+
+                    // 解包 Any 类型的消息
+                    String json = MessageToJsonUtil.parseAnyToJson(value);
+                    System.out.println("解析结果: \n" + json);
                 } catch (Exception e) {
                     System.err.println("[异常] 解包失败：" + e.getMessage());
                 }

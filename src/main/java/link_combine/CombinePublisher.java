@@ -1,4 +1,4 @@
-package mock_data;
+package link_combine;
 
 import org.zeromq.ZMQ;
 import zb.dcts.Dcts;
@@ -18,11 +18,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * @author 林跃
  * @file CombinePublisher.java
  * @comment 该类负责向 ZeroMQ 总线发布装备目标和频域信号的组合消息，
- *          它模拟了多个测向站对目标的检测，并将结果发布到指定的 ZeroMQ 地址。
+ * 它模拟了多个测向站对目标的检测，并将结果发布到指定的 ZeroMQ 地址。
  * @date 2025/7/2
- * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 public class CombinePublisher {
@@ -204,7 +204,7 @@ public class CombinePublisher {
     // 启动CombinePublisher
     public static void main(String[] args) {
         CombinePublisher publisher = new CombinePublisher("tcp://*:5558", 3000);
-         publisher.start();
+        publisher.start();
 
 //        try {
 //            Thread.sleep(1000); // 等待 subscriber 完成订阅

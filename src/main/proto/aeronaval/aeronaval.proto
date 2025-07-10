@@ -216,13 +216,13 @@ message Velocity
 
 message Target
 {
-		Timestamp time = 1;		//消息时间
-		uint32 id = 2;			//目标ID
-		string name = 3;		//名称
-		Camp camp = 4;			//阵营
-		AirSpace air_space = 5;	//空域
-		EquType equ_type = 6;	//目标类型
-		Position position = 7;	//位置信息
-		Posture posture = 8;	//姿态信息
-		Velocity velocity = 9;	//速度信息
+		Timestamp time = 1;				//消息时间
+		uint32 id = 2;						//目标ID
+		string name = 3;					//名称
+		Camp camp = 4;						//阵营
+		AirSpace air_space = 5;		//空域
+		EquType equ_type = 6;			//目标类型
+		Position position = 7;		//位置信息
+		Posture posture = 8;			//姿态信息
+		Velocity velocity = 9;		//速度信息
 }

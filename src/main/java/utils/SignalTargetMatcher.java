@@ -1,5 +1,6 @@
 package utils;
 
+import org.zeromq.SocketType;
 import zb.dcts.Dcts;
 import zb.dcts.aeronaval.Aeronaval;
 import zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage;
@@ -19,7 +20,8 @@ import java.util.concurrent.*;
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 public class SignalTargetMatcher {
-    // 常量：预定义测向站位置（经纬度）
+    // ==== 常量定义 ====
+    // 预定义测向站位置（经纬度）
     private static final zb.dcts.Dcts.Position[] STATION_POS = {
             zb.dcts.Dcts.Position.newBuilder().setLongitude(116.3).setLatitude(39.8).build(),
             zb.dcts.Dcts.Position.newBuilder().setLongitude(116.5).setLatitude(40.0).build()
@@ -32,8 +34,10 @@ public class SignalTargetMatcher {
     private final ZMQ.Context zmqContext;     // ZeroMQ 上下文
     private final ZMQ.Socket zmqPublisher;    // ZeroMQ 发布器
 
-
-    // 静态内部类：表示测向站的测向数据
+    // ==== 内部类：测向数据容器 ====
+    /**
+     * 存储单个测向站的测量数据
+     */
     static class DOAMeasurement {
         double lat;   // 测向站纬度
         double lon;   // 测向站经度
@@ -46,7 +50,10 @@ public class SignalTargetMatcher {
         }
     }
 
-    // 静态内部类：表示经纬度坐标
+    // ==== 内部类：经纬度坐标 ====
+    /**
+     * 表示地理坐标的简单容器
+     */
     static class LatLon {
         double lat;
         double lon;
@@ -57,30 +64,46 @@ public class SignalTargetMatcher {
         }
     }
 
-
-    // 构造函数：初始化匹配参数与 ZeroMQ 发布通道
+    /**
+     * 构造函数：初始化匹配参数与ZeroMQ发布通道
+     *
+     * @param maxTimeDiffSec 最大时间差阈值(秒)
+     * @param maxDistanceKm  最大空间距离阈值(公里)
+     * @param maxDoaDiffDeg  最大DOA定位误差阈值(公里)
+     * @param equFreqMap     装备类型-频段映射表
+     * @param threadPoolSize 线程池大小
+     * @param zmqBindAddress ZeroMQ绑定地址(如"tcp://*:5560")
+     */
     public SignalTargetMatcher(double maxTimeDiffSec, double maxDistanceKm, double maxDoaDiffDeg,
                                Map<Aeronaval.EquType, double[]> equFreqMap,
                                int threadPoolSize, String zmqBindAddress) {
-
+        // 初始化匹配阈值参数
         this.maxTimeDiffSec = maxTimeDiffSec;
         this.maxDistanceKm = maxDistanceKm;
         this.maxDoaDiffDeg = maxDoaDiffDeg;
         this.equFreqMap = equFreqMap;
+
+        // 创建固定大小线程池
         this.executor = Executors.newFixedThreadPool(threadPoolSize);
 
-        // 初始化 ZMQ 发布器
+        // 初始化ZeroMQ PUB-SUB模式
         this.zmqContext = ZMQ.context(1);
-        this.zmqPublisher = zmqContext.socket(ZMQ.PUB);
+        this.zmqPublisher = zmqContext.socket(SocketType.PUB);
         this.zmqPublisher.bind(zmqBindAddress); // 例如 "tcp://*:5560"
     }
 
-    // 匹配逻辑入口：输入多个 Survey 与多个 Target，输出关联成功的 CombinedMessage 列表
+    /**
+     * 匹配逻辑入口：输入多个 Survey 与多个 Target，输出关联成功的 CombinedMessage 列表
+     *
+     * @param surveys 信号侦察数据列表
+     * @param targets 目标列表
+     * @return 关联成功的CombinedMessage集合
+     */
     public List<CombinedMessage> linkAndPublish(List<Detection.SignalLayerSurvey> surveys,
-                                                 List<Aeronaval.Target> targets) {
+                                                List<Aeronaval.Target> targets) {
         List<Future<CombinedMessage>> futures = new ArrayList<>();
+        // 并发处理每个目标的匹配任务
         for (Aeronaval.Target tgt : targets) {
-            // 对每个目标并发处理匹配任务
             futures.add(executor.submit(() -> matchSingleTarget(tgt, surveys)));
         }
 
@@ -88,14 +111,14 @@ public class SignalTargetMatcher {
         for (Future<CombinedMessage> f : futures) {
             try {
                 CombinedMessage cm = f.get();
-
+                // 仅处理有效匹配结果
                 if (cm != null && cm.getSignalLayerSurveysCount() > 0) {
                     results.add(cm);
                     String bussinessType = cm.getBussinessType();
                     System.out.println("bussinessType" + bussinessType);
-                    // 推送至 ZMQ
-                    zmqPublisher.sendMore("Fusion_AirDomain");
-                    zmqPublisher.send(cm.toByteArray());
+                    // 通过ZeroMQ发布关联结果
+                    zmqPublisher.sendMore("Fusion_AirDomain");  // 主题标签
+                    zmqPublisher.send(cm.toByteArray());        // 协议缓冲区数据
                     System.out.printf("[推送] 已发布关联结果：Target ID = %d，信号数 = %d%n",
                             cm.getAeronavalTarget().getId(), cm.getSignalLayerSurveysCount());
                 }
@@ -106,7 +129,13 @@ public class SignalTargetMatcher {
         return results;
     }
 
-    // 通过两个测向站的测向数据（双站DOA定位）估计目标位置
+    /**
+     * 双站DOA定位算法
+     *
+     * @param m1 测向站1的测量数据
+     * @param m2 测向站2的测量数据
+     * @return 估算的目标位置(LatLon)
+     */
     private static LatLon estimatePositionFromDOA(DOAMeasurement m1, DOAMeasurement m2) {
         // 将 azimuth 转为弧度
         double theta1 = Math.toRadians(m1.az);
@@ -121,22 +150,19 @@ public class SignalTargetMatcher {
         double dx2 = Math.sin(theta2), dy2 = Math.cos(theta2);
 
         // 解两个方向向量组成的射线方程交点
-        // x1 + t1*dx1 = x2 + t2*dx2
-        // y1 + t1*dy1 = y2 + t2*dy2
         double denominator = dx1 * dy2 - dy1 * dx2;
         if (Math.abs(denominator) < 1e-6) {
             // 平行或接近平行，无解，用中点近似
             return new LatLon((y1 + y2) / 2, (x1 + x2) / 2);
         }
 
+        // 计算交点坐标
         double t1 = ((x2 - x1) * dy2 - (y2 - y1) * dx2) / denominator;
-
         double interX = x1 + t1 * dx1;
         double interY = y1 + t1 * dy1;
 
         return new LatLon(interY, interX); // y = lat, x = lon
     }
-
 
     //    private CombinedMessage matchSingleTarget(Aeronaval.Target tgt,
 //                                              List<Detection.SignalLayerSurvey> surveys) {
@@ -212,28 +238,36 @@ public class SignalTargetMatcher {
 //        return null;
 //    }
     // 关联装备目标与信号列表的逻辑
+    /**
+     * 单目标匹配核心逻辑
+     *
+     * @param tgt     待匹配目标
+     * @param surveys 可用信号侦察数据
+     * @return 包含关联结果的CombinedMessage（匹配失败返回null）
+     */
     private CombinedMessage matchSingleTarget(Aeronaval.Target tgt, List<Detection.SignalLayerSurvey> surveys) {
-        // 目标信息准备
+        // 目标时空信息提取
         Instant t0 = Instant.ofEpochSecond(tgt.getTime().getSeconds(), tgt.getTime().getNanos());
         Dcts.Position tgtPos = tgt.getPosition();
+
+        // 构建结果消息（设置业务元数据）
         CombinedMessage.Builder builder = CombinedMessage.newBuilder()
                 .setAeronavalTarget(tgt)
                 .setBussinessType("Comm")
                 .setReliability(2)
                 .setImportance(1)
                 .setThrtLvl(Dcts.ThreatLevel.LOW)
-                .setPurpose("Test")
-                ;
+                .setPurpose("Test");
 
         // 用于存放通过时间、空间、频率筛选的 Survey 以及对应的 DOA 信息
         List<Detection.SignalLayerSurvey> matchedSurveys = new ArrayList<>();
         List<DOAMeasurement> doaMeasurements = new ArrayList<>();
-        Set<Integer> uniqueStations = new HashSet<>();
+        Set<Integer> uniqueStations = new HashSet<>();  // 避免重复处理同一测向站
 
         System.out.printf("%n[Matcher] 开始处理目标 ID=%d，位置=(%.5f, %.5f)%n",
                 tgt.getId(), tgtPos.getLatitude(), tgtPos.getLongitude());
 
-        // 遍历所有测向站 Survey
+        // ==== 多级过滤流程 ====
         for (Detection.SignalLayerSurvey survey : surveys) {
             // 1. 时间过滤
             Instant surveyTime = Instant.ofEpochSecond(
@@ -253,7 +287,7 @@ public class SignalTargetMatcher {
                 continue;
             }
 
-            // 3. 提取 DOA，只允许每个测向站一条
+            // 3. 测向站去重
             int sourceId = survey.getResultFrom().getValue();
             if (uniqueStations.contains(sourceId)) {
                 System.out.printf("[跳过] 测向站 %d 已处理过，跳过重复 Survey%n", sourceId);
@@ -274,6 +308,7 @@ public class SignalTargetMatcher {
                     survey.getPosition().getLongitude(),
                     azimuth));
 
+            // 记录有效survey
             uniqueStations.add(sourceId);
             matchedSurveys.add(survey);
 
@@ -284,6 +319,7 @@ public class SignalTargetMatcher {
 
         // 检查是否有足够的 DOA 来定位
         if (doaMeasurements.size() >= 2) {
+            // 双站定位估算
             LatLon est = estimatePositionFromDOA(doaMeasurements.get(0), doaMeasurements.get(1));
             double errDist = haversine(
                     tgtPos.getLatitude(), tgtPos.getLongitude(),
@@ -293,8 +329,9 @@ public class SignalTargetMatcher {
                     tgtPos.getLatitude(), tgtPos.getLongitude(),
                     est.lat, est.lon, errDist);
 
+            // 误差阈值判断
             if (errDist <= maxDoaDiffDeg) {
-                builder.addAllSignalLayerSurveys(matchedSurveys);
+                builder.addAllSignalLayerSurveys(matchedSurveys);       // 注入关联信号
                 System.out.printf("[✓] 目标 %d 匹配成功，共 %d 条信号，误差 %.3f km%n",
                         tgt.getId(), matchedSurveys.size(), errDist);
                 return builder.build();
@@ -306,7 +343,7 @@ public class SignalTargetMatcher {
             System.out.printf("[×] 目标 %d DOA 观测不足，仅收集到 %d 条%n",
                     tgt.getId(), doaMeasurements.size());
         }
-
+        // 关联失败
         return null;
     }
 
@@ -329,17 +366,15 @@ public class SignalTargetMatcher {
         return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     }
 
-    // 计算两个点之间的方位角（角度）
-    private static double computeAzimuth(Dcts.Position from, Dcts.Position to) {
-        double dLon = to.getLongitude() - from.getLongitude();
-        double dLat = to.getLatitude() - from.getLatitude();
-        double az = Math.toDegrees(Math.atan2(dLon, dLat));
-        return (az + 360) % 360;
-    }
+//    // 计算两个点之间的方位角（角度）
+//    private static double computeAzimuth(Dcts.Position from, Dcts.Position to) {
+//        double dLon = to.getLongitude() - from.getLongitude();
+//        double dLat = to.getLatitude() - from.getLatitude();
+//        double az = Math.toDegrees(Math.atan2(dLon, dLat));
+//        return (az + 360) % 360;
+//    }
 
-    /**
-     * 清理线程池与 ZeroMQ 资源
-     */
+    // 清理线程池与 ZeroMQ 资源
     public void shutdown() {
         executor.shutdownNow();
         zmqPublisher.close();

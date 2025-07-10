@@ -3,7 +3,7 @@ package source_control.real_server;
 import com.google.protobuf.Any;
 import io.grpc.stub.ServerCallStreamObserver;
 import io.grpc.stub.StreamObserver;
-import mock_data.TargetSignalProcessor;
+import link_alone.FusionMatcher;
 import org.zeromq.ZMQ;
 import zb.dcts.fusion.airDomain.target.TargetOuterClass;
 import zb.dcts.fusion.fusiondata.Fusion;
@@ -25,8 +25,11 @@ public class FusionDataServiceImpl extends zb.dcts.fusion.fusiondata.FusionDataC
     private static final String ZMQ_ADDRESS = "tcp://localhost:5560";
 
     public FusionDataServiceImpl() {
-        TargetSignalProcessor processor = new TargetSignalProcessor();
-        processor.start();
+//        TargetSignalProcessor processor = new TargetSignalProcessor();
+//        processor.start();
+
+        FusionMatcher fusionMatcher = new FusionMatcher();
+        fusionMatcher.start();
     }
 
     @Override
@@ -60,28 +63,28 @@ public class FusionDataServiceImpl extends zb.dcts.fusion.fusiondata.FusionDataC
                     String recvTopic = subscriber.recvStr();
                     byte[] payload = subscriber.recv();
 
-                    Any any = null;
+                    Any fusionMsg = null;
                     try {
                         switch (topic) {
                             case "Fusion_AirDomain":
                                 TargetOuterClass.CombinedMessage airMsg = TargetOuterClass.CombinedMessage.parseFrom(payload);
-                                any = Any.pack(airMsg);
+                                fusionMsg = Any.pack(airMsg);
                                 break;
                             case "Fusion_FreqDomain":
                                 // var freqMsg = SpectrumOuterClass.SpectrumFusionMessage.parseFrom(payload);
-                                // any = Any.pack(freqMsg);
+                                // fusionMsg = Any.pack(freqMsg);
                                 break;
                             case "Fusion_NetDomain":
                                 // var netMsg = CyberOuterClass.CyberFusionMessage.parseFrom(payload);
-                                // any = Any.pack(netMsg);
+                                // fusionMsg = Any.pack(netMsg);
                                 break;
                             default:
                                 System.err.println("[错误] 不支持的订阅主题：" + topic);
                                 return;
                         }
 
-                        if (!cancelled[0] && any != null) {
-                            responseObserver.onNext(any);
+                        if (!cancelled[0] && fusionMsg != null) {
+                            responseObserver.onNext(fusionMsg);
                         }
                     } catch (Exception ex) {
                         System.err.printf("[解析/推送异常] topic=%s, err=%s%n", topic, ex.getMessage());
