@@ -39,7 +39,7 @@ public class SignalGenerator {
         subscriber.subscribe("Target".getBytes());
         // 创建发布者
         ZMQ.Socket publisher = context.socket(SocketType.PUB);
-        // 绑定到发布地址
+        // 绑定到发布地址（同时发布 Target 和 SignalLayerSurvey）
         publisher.bind("tcp://*:5556");
 
         while (true) {

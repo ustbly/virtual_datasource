@@ -53,7 +53,7 @@ public final class KhCommChannelCali {
     RF_FREQ_RESPONSE(3),
     /**
      * <pre>
-     *窗函数   
+     *窗函数
      * </pre>
      *
      * <code>WINDOW_FUNC = 4;</code>
@@ -61,7 +61,7 @@ public final class KhCommChannelCali {
     WINDOW_FUNC(4),
     /**
      * <pre>
-     *模块测试  
+     *模块测试
      * </pre>
      *
      * <code>MODULE_TEST = 5;</code>
@@ -69,7 +69,7 @@ public final class KhCommChannelCali {
     MODULE_TEST(5),
     /**
      * <pre>
-     *带宽增益校准   
+     *带宽增益校准
      * </pre>
      *
      * <code>BANDWIDTH_GAIN = 6;</code>
@@ -77,7 +77,7 @@ public final class KhCommChannelCali {
     BANDWIDTH_GAIN(6),
     /**
      * <pre>
-     *零频校准  		
+     *零频校准
      * </pre>
      *
      * <code>ZERO_FREQ = 7;</code>
@@ -120,7 +120,7 @@ public final class KhCommChannelCali {
     public static final int RF_FREQ_RESPONSE_VALUE = 3;
     /**
      * <pre>
-     *窗函数   
+     *窗函数
      * </pre>
      *
      * <code>WINDOW_FUNC = 4;</code>
@@ -128,7 +128,7 @@ public final class KhCommChannelCali {
     public static final int WINDOW_FUNC_VALUE = 4;
     /**
      * <pre>
-     *模块测试  
+     *模块测试
      * </pre>
      *
      * <code>MODULE_TEST = 5;</code>
@@ -136,7 +136,7 @@ public final class KhCommChannelCali {
     public static final int MODULE_TEST_VALUE = 5;
     /**
      * <pre>
-     *带宽增益校准   
+     *带宽增益校准
      * </pre>
      *
      * <code>BANDWIDTH_GAIN = 6;</code>
@@ -144,7 +144,7 @@ public final class KhCommChannelCali {
     public static final int BANDWIDTH_GAIN_VALUE = 6;
     /**
      * <pre>
-     *零频校准  		
+     *零频校准
      * </pre>
      *
      * <code>ZERO_FREQ = 7;</code>

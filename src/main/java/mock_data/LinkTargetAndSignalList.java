@@ -24,7 +24,7 @@ public class LinkTargetAndSignalList {
             subscriber.recv(); // topic
             byte[] msgBytes = subscriber.recv();
             try {
-                TargetOuterClass.CombinedMessage cm = TargetOuterClass.CombinedMessage.parseFrom(msgBytes);
+                TargetOuterClass.FusionTargetList cm = TargetOuterClass.FusionTargetList.parseFrom(msgBytes);
                 Aeronaval.Target target = cm.getAeronavalTarget();
                 System.out.printf("Received Target ID %d at (%.4f, %.4f)\n",
                         target.getId(),

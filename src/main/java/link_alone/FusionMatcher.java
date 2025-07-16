@@ -177,7 +177,7 @@ public class FusionMatcher {
 
         // 6. 若误差在容忍范围内，发布匹配结果
         if (errKm <= 200.0) {
-            TargetOuterClass.CombinedMessage.Builder builder = TargetOuterClass.CombinedMessage.newBuilder()
+            TargetOuterClass.FusionTargetList.Builder builder = TargetOuterClass.FusionTargetList.newBuilder()
                     .setAeronavalTarget(tgt)
                     .addAllSignalLayerSurveys(selected)
                     .setBussinessType("Communication")

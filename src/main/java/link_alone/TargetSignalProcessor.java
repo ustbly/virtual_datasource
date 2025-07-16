@@ -3,6 +3,7 @@ package link_alone;
 import org.zeromq.ZMQ;
 import utils.SignalTargetMatcher;
 import zb.dcts.aeronaval.Aeronaval;
+import zb.dcts.fusion.airDomain.target.TargetOuterClass;
 import zb.dcts.scenario.detection.Detection;
 
 import java.io.ByteArrayInputStream;
@@ -61,7 +62,7 @@ public class TargetSignalProcessor {
                     byte[] data = subscriber.recv();
 
                     if ("Combined".equals(topic)) {
-                        zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage combined = zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage.parseDelimitedFrom(new ByteArrayInputStream(data));
+                        TargetOuterClass.FusionTargetList combined = TargetOuterClass.FusionTargetList.parseDelimitedFrom(new ByteArrayInputStream(data));
                         if (combined != null) {
                             targetCache.add(combined.getAeronavalTarget());
                             surveyCache.addAll(combined.getSignalLayerSurveysList());

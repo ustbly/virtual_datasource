@@ -10382,8 +10382,8 @@ public final class TargetOuterClass {
 
   }
 
-  public interface CombinedMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:zb.dcts.fusion.airDomain.target.CombinedMessage)
+  public interface FusionTargetListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:zb.dcts.fusion.airDomain.target.FusionTargetList)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -10625,18 +10625,18 @@ public final class TargetOuterClass {
         getPurposeBytes();
   }
   /**
-   * Protobuf type {@code zb.dcts.fusion.airDomain.target.CombinedMessage}
+   * Protobuf type {@code zb.dcts.fusion.airDomain.target.FusionTargetList}
    */
-  public static final class CombinedMessage extends
+  public static final class FusionTargetList extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:zb.dcts.fusion.airDomain.target.CombinedMessage)
-      CombinedMessageOrBuilder {
+      // @@protoc_insertion_point(message_implements:zb.dcts.fusion.airDomain.target.FusionTargetList)
+      FusionTargetListOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use CombinedMessage.newBuilder() to construct.
-    private CombinedMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use FusionTargetList.newBuilder() to construct.
+    private FusionTargetList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CombinedMessage() {
+    private FusionTargetList() {
       signalLayerSurveys_ = java.util.Collections.emptyList();
       stationEquipments_ = java.util.Collections.emptyList();
       linkEquipments_ = java.util.Collections.emptyList();
@@ -10649,7 +10649,7 @@ public final class TargetOuterClass {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new CombinedMessage();
+      return new FusionTargetList();
     }
 
     @java.lang.Override
@@ -10657,7 +10657,7 @@ public final class TargetOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private CombinedMessage(
+    private FusionTargetList(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10774,15 +10774,15 @@ public final class TargetOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return zb.dcts.fusion.airDomain.target.TargetOuterClass.internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_descriptor;
+      return zb.dcts.fusion.airDomain.target.TargetOuterClass.internal_static_zb_dcts_fusion_airDomain_target_FusionTargetList_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return zb.dcts.fusion.airDomain.target.TargetOuterClass.internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_fieldAccessorTable
+      return zb.dcts.fusion.airDomain.target.TargetOuterClass.internal_static_zb_dcts_fusion_airDomain_target_FusionTargetList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage.class, zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage.Builder.class);
+              zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.class, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder.class);
     }
 
     public static final int AERONAVAL_TARGET_FIELD_NUMBER = 1;
@@ -11246,10 +11246,10 @@ public final class TargetOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage)) {
+      if (!(obj instanceof zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList)) {
         return super.equals(obj);
       }
-      zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage other = (zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage) obj;
+      zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList other = (zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList) obj;
 
       if (hasAeronavalTarget() != other.hasAeronavalTarget()) return false;
       if (hasAeronavalTarget()) {
@@ -11313,69 +11313,69 @@ public final class TargetOuterClass {
       return hash;
     }
 
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseFrom(
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseFrom(
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseFrom(
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseFrom(
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseFrom(byte[] data)
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseFrom(
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseFrom(java.io.InputStream input)
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseFrom(
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseDelimitedFrom(java.io.InputStream input)
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseDelimitedFrom(
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseFrom(
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parseFrom(
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -11388,7 +11388,7 @@ public final class TargetOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage prototype) {
+    public static Builder newBuilder(zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -11404,26 +11404,26 @@ public final class TargetOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code zb.dcts.fusion.airDomain.target.CombinedMessage}
+     * Protobuf type {@code zb.dcts.fusion.airDomain.target.FusionTargetList}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:zb.dcts.fusion.airDomain.target.CombinedMessage)
-        zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessageOrBuilder {
+        // @@protoc_insertion_point(builder_implements:zb.dcts.fusion.airDomain.target.FusionTargetList)
+        zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetListOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return zb.dcts.fusion.airDomain.target.TargetOuterClass.internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_descriptor;
+        return zb.dcts.fusion.airDomain.target.TargetOuterClass.internal_static_zb_dcts_fusion_airDomain_target_FusionTargetList_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return zb.dcts.fusion.airDomain.target.TargetOuterClass.internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_fieldAccessorTable
+        return zb.dcts.fusion.airDomain.target.TargetOuterClass.internal_static_zb_dcts_fusion_airDomain_target_FusionTargetList_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage.class, zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage.Builder.class);
+                zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.class, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder.class);
       }
 
-      // Construct using zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage.newBuilder()
+      // Construct using zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -11484,17 +11484,17 @@ public final class TargetOuterClass {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return zb.dcts.fusion.airDomain.target.TargetOuterClass.internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_descriptor;
+        return zb.dcts.fusion.airDomain.target.TargetOuterClass.internal_static_zb_dcts_fusion_airDomain_target_FusionTargetList_descriptor;
       }
 
       @java.lang.Override
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage getDefaultInstanceForType() {
-        return zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage.getDefaultInstance();
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList getDefaultInstanceForType() {
+        return zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.getDefaultInstance();
       }
 
       @java.lang.Override
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage build() {
-        zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage result = buildPartial();
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList build() {
+        zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -11502,8 +11502,8 @@ public final class TargetOuterClass {
       }
 
       @java.lang.Override
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage buildPartial() {
-        zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage result = new zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage(this);
+      public zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList buildPartial() {
+        zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList result = new zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList(this);
         int from_bitField0_ = bitField0_;
         if (aeronavalTargetBuilder_ == null) {
           result.aeronavalTarget_ = aeronavalTarget_;
@@ -11580,16 +11580,16 @@ public final class TargetOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage) {
-          return mergeFrom((zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage)other);
+        if (other instanceof zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList) {
+          return mergeFrom((zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage other) {
-        if (other == zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList other) {
+        if (other == zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.getDefaultInstance()) return this;
         if (other.hasAeronavalTarget()) {
           mergeAeronavalTarget(other.getAeronavalTarget());
         }
@@ -11703,11 +11703,11 @@ public final class TargetOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage parsedMessage = null;
+        zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage) e.getUnfinishedMessage();
+          parsedMessage = (zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -13173,41 +13173,41 @@ public final class TargetOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:zb.dcts.fusion.airDomain.target.CombinedMessage)
+      // @@protoc_insertion_point(builder_scope:zb.dcts.fusion.airDomain.target.FusionTargetList)
     }
 
-    // @@protoc_insertion_point(class_scope:zb.dcts.fusion.airDomain.target.CombinedMessage)
-    private static final zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:zb.dcts.fusion.airDomain.target.FusionTargetList)
+    private static final zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage();
+      DEFAULT_INSTANCE = new zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList();
     }
 
-    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage getDefaultInstance() {
+    public static zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CombinedMessage>
-        PARSER = new com.google.protobuf.AbstractParser<CombinedMessage>() {
+    private static final com.google.protobuf.Parser<FusionTargetList>
+        PARSER = new com.google.protobuf.AbstractParser<FusionTargetList>() {
       @java.lang.Override
-      public CombinedMessage parsePartialFrom(
+      public FusionTargetList parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CombinedMessage(input, extensionRegistry);
+        return new FusionTargetList(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<CombinedMessage> parser() {
+    public static com.google.protobuf.Parser<FusionTargetList> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<CombinedMessage> getParserForType() {
+    public com.google.protobuf.Parser<FusionTargetList> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage getDefaultInstanceForType() {
+    public zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -13244,10 +13244,10 @@ public final class TargetOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_zb_dcts_fusion_airDomain_target_JammingStationList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_descriptor;
+    internal_static_zb_dcts_fusion_airDomain_target_FusionTargetList_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_fieldAccessorTable;
+      internal_static_zb_dcts_fusion_airDomain_target_FusionTargetList_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -13293,18 +13293,18 @@ public final class TargetOuterClass {
       "rDomain.target.JammingMode\"^\n\022JammingSta" +
       "tionList\022H\n\017jammingStations\030\001 \003(\0132/.zb.d" +
       "cts.fusion.airDomain.target.JammingStati" +
-      "on\"\245\003\n\017CombinedMessage\0223\n\020aeronaval_targ" +
-      "et\030\001 \001(\0132\031.zb.dcts.aeronaval.Target\022K\n\024s" +
-      "ignal_layer_surveys\030\002 \003(\0132-.zb.dcts.scen" +
-      "ario.detection.SignalLayerSurvey\022M\n\022stat" +
-      "ion_equipments\030\003 \003(\01321.zb.dcts.fusion.ai" +
-      "rDomain.target.StationEquipment\022G\n\017link_" +
-      "equipments\030\004 \003(\0132..zb.dcts.fusion.airDom" +
-      "ain.target.LinkEquipment\022\026\n\016bussiness_ty" +
-      "pe\030\005 \001(\t\022\023\n\013reliability\030\006 \001(\005\022\022\n\nimporta" +
-      "nce\030\007 \001(\005\022&\n\010thrt_lvl\030\010 \001(\0162\024.zb.dcts.Th" +
-      "reatLevel\022\017\n\007purpose\030\t \001(\t*\'\n\013JammingMod" +
-      "e\022\n\n\006AIMING\020\000\022\014\n\010DISCRETE\020\001b\006proto3"
+      "on\"\246\003\n\020FusionTargetList\0223\n\020aeronaval_tar" +
+      "get\030\001 \001(\0132\031.zb.dcts.aeronaval.Target\022K\n\024" +
+      "signal_layer_surveys\030\002 \003(\0132-.zb.dcts.sce" +
+      "nario.detection.SignalLayerSurvey\022M\n\022sta" +
+      "tion_equipments\030\003 \003(\01321.zb.dcts.fusion.a" +
+      "irDomain.target.StationEquipment\022G\n\017link" +
+      "_equipments\030\004 \003(\0132..zb.dcts.fusion.airDo" +
+      "main.target.LinkEquipment\022\026\n\016bussiness_t" +
+      "ype\030\005 \001(\t\022\023\n\013reliability\030\006 \001(\005\022\022\n\nimport" +
+      "ance\030\007 \001(\005\022&\n\010thrt_lvl\030\010 \001(\0162\024.zb.dcts.T" +
+      "hreatLevel\022\017\n\007purpose\030\t \001(\t*\'\n\013JammingMo" +
+      "de\022\n\n\006AIMING\020\000\022\014\n\010DISCRETE\020\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -13349,11 +13349,11 @@ public final class TargetOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_fusion_airDomain_target_JammingStationList_descriptor,
         new java.lang.String[] { "JammingStations", });
-    internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_descriptor =
+    internal_static_zb_dcts_fusion_airDomain_target_FusionTargetList_descriptor =
       getDescriptor().getMessageTypes().get(6);
-    internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_fieldAccessorTable = new
+    internal_static_zb_dcts_fusion_airDomain_target_FusionTargetList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_zb_dcts_fusion_airDomain_target_CombinedMessage_descriptor,
+        internal_static_zb_dcts_fusion_airDomain_target_FusionTargetList_descriptor,
         new java.lang.String[] { "AeronavalTarget", "SignalLayerSurveys", "StationEquipments", "LinkEquipments", "BussinessType", "Reliability", "Importance", "ThrtLvl", "Purpose", });
     zb.dcts.Dcts.getDescriptor();
     zb.dcts.aeronaval.Aeronaval.getDescriptor();

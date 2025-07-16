@@ -89,7 +89,7 @@ public final class Scenario {
     OSCILLOSCOPE(20),
     /**
      * <pre>
-     *矢量分析	
+     *矢量分析
      * </pre>
      *
      * <code>VECTOR_SIGNAL_ANALYSIS = 21;</code>
@@ -268,7 +268,7 @@ public final class Scenario {
     public static final int OSCILLOSCOPE_VALUE = 20;
     /**
      * <pre>
-     *矢量分析	
+     *矢量分析
      * </pre>
      *
      * <code>VECTOR_SIGNAL_ANALYSIS = 21;</code>

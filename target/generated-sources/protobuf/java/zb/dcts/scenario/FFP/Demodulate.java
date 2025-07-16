@@ -69,7 +69,7 @@ public final class Demodulate {
     USB(5),
     /**
      * <pre>
-     *脉冲			
+     *脉冲
      * </pre>
      *
      * <code>PULSE = 6;</code>
@@ -128,7 +128,7 @@ public final class Demodulate {
     public static final int USB_VALUE = 5;
     /**
      * <pre>
-     *脉冲			
+     *脉冲
      * </pre>
      *
      * <code>PULSE = 6;</code>

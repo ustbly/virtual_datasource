@@ -9,19 +9,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-
+/**
+ * @file BufferWriteController.java
+ * @comment 用于批量写入 Target 和 SignalLayerSurvey 数据到数据库。
+ *          通过线程安全的缓存队列和定时任务实现自动批量入库。
+ * @date 2025/7/11
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 public class BufferWriteController {
-    /**
-     * BufferWriteController 用于批量写入 Target 和 SignalLayerSurvey 数据到数据库。
-     * 通过线程安全的缓存队列和定时任务实现自动批量入库。
-     */
+    // 批次大小
     private final int batchSize;
+    // 数据库连接对象
     private final Connection connection;
-
     // 线程安全队列
     private final BlockingQueue<Aeronaval.Target> targetQueue = new LinkedBlockingQueue<>();
     private final BlockingQueue<Detection.SignalLayerSurvey> surveyQueue = new LinkedBlockingQueue<>();
-
+    // 定时任务调度器
     private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
 
     public BufferWriteController(Connection conn, int batchSize) {

@@ -46,11 +46,11 @@ public class MessageToJsonUtil {
             }
         });
 
-        // 注册 CombinedMessage 类型
-        parserRegistry.put(TargetOuterClass.CombinedMessage.getDescriptor().getFullName(), any -> {
+        // 注册 FusionTargetList 类型
+        parserRegistry.put(TargetOuterClass.FusionTargetList.getDescriptor().getFullName(), any -> {
             try {
-                // 尝试将 Any 类型解析为 CombinedMessage
-                TargetOuterClass.CombinedMessage msg = any.unpack(TargetOuterClass.CombinedMessage.class);
+                // 尝试将 Any 类型解析为 FusionTargetList
+                TargetOuterClass.FusionTargetList msg = any.unpack(TargetOuterClass.FusionTargetList.class);
                 return toJson(msg);
             } catch (InvalidProtocolBufferException e) {
                 return "[Error] Failed to parse CombinedMessage: " + e.getMessage();

@@ -18,7 +18,7 @@ import java.util.Random;
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 public class TargetPublisher {
-    private static final int TARGET_COUNT = 1;
+    private static final int TARGET_COUNT = 5;
     private static final Random RAND = new Random();
 
     public static void main(String[] args) throws InterruptedException, IOException {

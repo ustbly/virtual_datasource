@@ -1,16 +1,18 @@
 package utils;
 
 import org.zeromq.SocketType;
+import org.zeromq.ZMQ;
 import zb.dcts.Dcts;
 import zb.dcts.aeronaval.Aeronaval;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage;
+import zb.dcts.fusion.airDomain.target.TargetOuterClass;
 import zb.dcts.scenario.detection.Detection;
-import org.zeromq.ZMQ;
 
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * @author 林跃
@@ -99,18 +101,18 @@ public class SignalTargetMatcher {
      * @param targets 目标列表
      * @return 关联成功的CombinedMessage集合
      */
-    public List<CombinedMessage> linkAndPublish(List<Detection.SignalLayerSurvey> surveys,
-                                                List<Aeronaval.Target> targets) {
-        List<Future<CombinedMessage>> futures = new ArrayList<>();
+    public List<TargetOuterClass.FusionTargetList> linkAndPublish(List<Detection.SignalLayerSurvey> surveys,
+                                                                  List<Aeronaval.Target> targets) {
+        List<Future<TargetOuterClass.FusionTargetList>> futures = new ArrayList<>();
         // 并发处理每个目标的匹配任务
         for (Aeronaval.Target tgt : targets) {
             futures.add(executor.submit(() -> matchSingleTarget(tgt, surveys)));
         }
 
-        List<CombinedMessage> results = new ArrayList<>();
-        for (Future<CombinedMessage> f : futures) {
+        List<TargetOuterClass.FusionTargetList> results = new ArrayList<>();
+        for (Future<TargetOuterClass.FusionTargetList> f : futures) {
             try {
-                CombinedMessage cm = f.get();
+                TargetOuterClass.FusionTargetList cm = f.get();
                 // 仅处理有效匹配结果
                 if (cm != null && cm.getSignalLayerSurveysCount() > 0) {
                     results.add(cm);
@@ -245,13 +247,13 @@ public class SignalTargetMatcher {
      * @param surveys 可用信号侦察数据
      * @return 包含关联结果的CombinedMessage（匹配失败返回null）
      */
-    private CombinedMessage matchSingleTarget(Aeronaval.Target tgt, List<Detection.SignalLayerSurvey> surveys) {
+    private TargetOuterClass.FusionTargetList matchSingleTarget(Aeronaval.Target tgt, List<Detection.SignalLayerSurvey> surveys) {
         // 目标时空信息提取
         Instant t0 = Instant.ofEpochSecond(tgt.getTime().getSeconds(), tgt.getTime().getNanos());
         Dcts.Position tgtPos = tgt.getPosition();
 
         // 构建结果消息（设置业务元数据）
-        CombinedMessage.Builder builder = CombinedMessage.newBuilder()
+        TargetOuterClass.FusionTargetList.Builder builder = TargetOuterClass.FusionTargetList.newBuilder()
                 .setAeronavalTarget(tgt)
                 .setBussinessType("Comm")
                 .setReliability(2)

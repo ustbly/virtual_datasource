@@ -56,14 +56,14 @@ enum SourceStatus
 //源信息
 message SourceInfo 
 {
-    SourceId source_id = 1;        //源id
+    SourceId source_id = 1;          //源id
     SourceType type = 2;
     SourceCapability capability = 3;
-    SourceAttribute attribute = 4;        //属性（可复合）
+    SourceAttribute attribute = 4;   //属性（可复合）
     SourceStatus status = 6;
-    Position position = 7;  //源位置, wgs-84坐标系，弧度单位
-    Metrics metrics = 8;    //温度、电压等一些物理量
-    repeated Topic topics = 9;  //源正在发布的主题
+    Position position = 7;           //源位置, wgs-84坐标系，弧度单位
+    Metrics metrics = 8;             //温度、电压等一些物理量
+    repeated Topic topics = 9;       //源正在发布的主题
 }
 
 message SourceSetInfo
@@ -93,6 +93,6 @@ message SourceCommandReply
 service SourceControlService
 {
     rpc ListAllSources(google.protobuf.Empty) returns (SourceSetInfo) {} //枚举所有设备
-    rpc SendSourceCommand(SourceCommand) returns (SourceCommandReply) {} //
+    rpc SendSourceCommand(SourceCommand) returns (SourceCommandReply) {} //发送设备控制命令
     rpc SubscribeSourceMessage(SubscribeRequest) returns(stream google.protobuf.Any){}  //订阅数据源发布的消息（以主题形式分组消息）
 }

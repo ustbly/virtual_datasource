@@ -3798,7 +3798,7 @@ public final class KhPulseAnalysis {
 
     /**
      * <pre>
-     *下降时间     
+     *下降时间
      * </pre>
      *
      * <code>double fallTime = 5;</code>
@@ -3808,7 +3808,7 @@ public final class KhPulseAnalysis {
 
     /**
      * <pre>
-     *脉冲宽度 
+     *脉冲宽度
      * </pre>
      *
      * <code>double PW = 6;</code>
@@ -4021,7 +4021,7 @@ public final class KhPulseAnalysis {
     private double fallTime_;
     /**
      * <pre>
-     *下降时间     
+     *下降时间
      * </pre>
      *
      * <code>double fallTime = 5;</code>
@@ -4036,7 +4036,7 @@ public final class KhPulseAnalysis {
     private double pW_;
     /**
      * <pre>
-     *脉冲宽度 
+     *脉冲宽度
      * </pre>
      *
      * <code>double PW = 6;</code>
@@ -4692,7 +4692,7 @@ public final class KhPulseAnalysis {
       private double fallTime_ ;
       /**
        * <pre>
-       *下降时间     
+       *下降时间
        * </pre>
        *
        * <code>double fallTime = 5;</code>
@@ -4704,7 +4704,7 @@ public final class KhPulseAnalysis {
       }
       /**
        * <pre>
-       *下降时间     
+       *下降时间
        * </pre>
        *
        * <code>double fallTime = 5;</code>
@@ -4719,7 +4719,7 @@ public final class KhPulseAnalysis {
       }
       /**
        * <pre>
-       *下降时间     
+       *下降时间
        * </pre>
        *
        * <code>double fallTime = 5;</code>
@@ -4735,7 +4735,7 @@ public final class KhPulseAnalysis {
       private double pW_ ;
       /**
        * <pre>
-       *脉冲宽度 
+       *脉冲宽度
        * </pre>
        *
        * <code>double PW = 6;</code>
@@ -4747,7 +4747,7 @@ public final class KhPulseAnalysis {
       }
       /**
        * <pre>
-       *脉冲宽度 
+       *脉冲宽度
        * </pre>
        *
        * <code>double PW = 6;</code>
@@ -4762,7 +4762,7 @@ public final class KhPulseAnalysis {
       }
       /**
        * <pre>
-       *脉冲宽度 
+       *脉冲宽度
        * </pre>
        *
        * <code>double PW = 6;</code>
@@ -6574,7 +6574,7 @@ public final class KhPulseAnalysis {
 
     /**
      * <pre>
-     *IQ数据; 
+     *IQ数据;
      * </pre>
      *
      * <code>repeated float raw_trace = 2;</code>
@@ -6583,7 +6583,7 @@ public final class KhPulseAnalysis {
     java.util.List<java.lang.Float> getRawTraceList();
     /**
      * <pre>
-     *IQ数据; 
+     *IQ数据;
      * </pre>
      *
      * <code>repeated float raw_trace = 2;</code>
@@ -6592,7 +6592,7 @@ public final class KhPulseAnalysis {
     int getRawTraceCount();
     /**
      * <pre>
-     *IQ数据; 
+     *IQ数据;
      * </pre>
      *
      * <code>repeated float raw_trace = 2;</code>
@@ -8088,7 +8088,7 @@ public final class KhPulseAnalysis {
     private com.google.protobuf.Internal.FloatList rawTrace_;
     /**
      * <pre>
-     *IQ数据; 
+     *IQ数据;
      * </pre>
      *
      * <code>repeated float raw_trace = 2;</code>
@@ -8101,7 +8101,7 @@ public final class KhPulseAnalysis {
     }
     /**
      * <pre>
-     *IQ数据; 
+     *IQ数据;
      * </pre>
      *
      * <code>repeated float raw_trace = 2;</code>
@@ -8112,7 +8112,7 @@ public final class KhPulseAnalysis {
     }
     /**
      * <pre>
-     *IQ数据; 
+     *IQ数据;
      * </pre>
      *
      * <code>repeated float raw_trace = 2;</code>
@@ -8683,7 +8683,7 @@ public final class KhPulseAnalysis {
       }
       /**
        * <pre>
-       *IQ数据; 
+       *IQ数据;
        * </pre>
        *
        * <code>repeated float raw_trace = 2;</code>
@@ -8696,7 +8696,7 @@ public final class KhPulseAnalysis {
       }
       /**
        * <pre>
-       *IQ数据; 
+       *IQ数据;
        * </pre>
        *
        * <code>repeated float raw_trace = 2;</code>
@@ -8707,7 +8707,7 @@ public final class KhPulseAnalysis {
       }
       /**
        * <pre>
-       *IQ数据; 
+       *IQ数据;
        * </pre>
        *
        * <code>repeated float raw_trace = 2;</code>
@@ -8719,7 +8719,7 @@ public final class KhPulseAnalysis {
       }
       /**
        * <pre>
-       *IQ数据; 
+       *IQ数据;
        * </pre>
        *
        * <code>repeated float raw_trace = 2;</code>
@@ -8736,7 +8736,7 @@ public final class KhPulseAnalysis {
       }
       /**
        * <pre>
-       *IQ数据; 
+       *IQ数据;
        * </pre>
        *
        * <code>repeated float raw_trace = 2;</code>
@@ -8751,7 +8751,7 @@ public final class KhPulseAnalysis {
       }
       /**
        * <pre>
-       *IQ数据; 
+       *IQ数据;
        * </pre>
        *
        * <code>repeated float raw_trace = 2;</code>
@@ -8768,7 +8768,7 @@ public final class KhPulseAnalysis {
       }
       /**
        * <pre>
-       *IQ数据; 
+       *IQ数据;
        * </pre>
        *
        * <code>repeated float raw_trace = 2;</code>

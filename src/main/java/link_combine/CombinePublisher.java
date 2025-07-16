@@ -54,7 +54,7 @@ public class CombinePublisher {
                 Aeronaval.Target target = buildRandomTarget();
                 List<Detection.SignalLayerSurvey> surveyList = generateSignalList(target);
 
-                TargetOuterClass.CombinedMessage msg = TargetOuterClass.CombinedMessage.newBuilder()
+                TargetOuterClass.FusionTargetList msg = TargetOuterClass.FusionTargetList.newBuilder()
                         .setAeronavalTarget(target)
                         .addAllSignalLayerSurveys(surveyList)
                         .build();
@@ -80,7 +80,7 @@ public class CombinePublisher {
                 Aeronaval.Target target = buildRandomTarget();
                 List<Detection.SignalLayerSurvey> surveyList = generateSignalList(target);
 
-                TargetOuterClass.CombinedMessage msg = TargetOuterClass.CombinedMessage.newBuilder()
+                TargetOuterClass.FusionTargetList msg = TargetOuterClass.FusionTargetList.newBuilder()
                         .setAeronavalTarget(target)
                         .addAllSignalLayerSurveys(surveyList)
                         .build();

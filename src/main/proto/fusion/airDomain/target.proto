@@ -83,7 +83,7 @@ message JammingStationList
     repeated JammingStation jammingStations = 1;
 }
 
-message CombinedMessage
+message FusionTargetList
 {
     aeronaval.Target aeronaval_target = 1;                                          //海空情目标
     repeated zb.dcts.scenario.detection.SignalLayerSurvey signal_layer_surveys = 2; //信号层勘测

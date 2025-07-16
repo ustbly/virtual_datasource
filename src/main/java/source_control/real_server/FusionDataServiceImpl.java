@@ -3,24 +3,25 @@ package source_control.real_server;
 import com.google.protobuf.Any;
 import io.grpc.stub.ServerCallStreamObserver;
 import io.grpc.stub.StreamObserver;
-import link_alone.FusionMatcher;
+import link_alone.FusionMatcherByGRPC;
 import org.zeromq.ZMQ;
 import zb.dcts.fusion.airDomain.target.TargetOuterClass;
 import zb.dcts.fusion.fusiondata.Fusion;
+import zb.dcts.fusion.fusiondata.FusionDataControlServiceGrpc;
 
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * @author 林跃
  * @file FusionDataServiceImpl.java
  * @comment 获取融合后数据的gRPC服务器端实现
  * @date 2025/7/1
- * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
-public class FusionDataServiceImpl extends zb.dcts.fusion.fusiondata.FusionDataControlServiceGrpc.FusionDataControlServiceImplBase {
-
+public class FusionDataServiceImpl extends FusionDataControlServiceGrpc.FusionDataControlServiceImplBase {
+    private static final FusionMatcherByGRPC matcher = new FusionMatcherByGRPC();
     private final ExecutorService listenerPool = Executors.newCachedThreadPool();
     private static final String ZMQ_ADDRESS = "tcp://localhost:5560";
 
@@ -28,8 +29,16 @@ public class FusionDataServiceImpl extends zb.dcts.fusion.fusiondata.FusionDataC
 //        TargetSignalProcessor processor = new TargetSignalProcessor();
 //        processor.start();
 
-        FusionMatcher fusionMatcher = new FusionMatcher();
-        fusionMatcher.start();
+//        FusionMatcher fusionMatcher = new FusionMatcher();
+//        fusionMatcher.start();
+    }
+
+    static {
+        try {
+            matcher.start(); // 启动一次即可
+        } catch (Exception e) {
+            System.err.println("FusionMatcherByGRPC 启动失败: " + e.getMessage());
+        }
     }
 
     @Override
@@ -67,7 +76,7 @@ public class FusionDataServiceImpl extends zb.dcts.fusion.fusiondata.FusionDataC
                     try {
                         switch (topic) {
                             case "Fusion_AirDomain":
-                                TargetOuterClass.CombinedMessage airMsg = TargetOuterClass.CombinedMessage.parseFrom(payload);
+                                TargetOuterClass.FusionTargetList airMsg = TargetOuterClass.FusionTargetList.parseFrom(payload);
                                 fusionMsg = Any.pack(airMsg);
                                 break;
                             case "Fusion_FreqDomain":

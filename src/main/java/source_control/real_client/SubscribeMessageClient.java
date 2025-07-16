@@ -1,10 +1,10 @@
 package source_control.real_client;
 
+import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
-import com.google.protobuf.Any;
 import zb.dcts.Dcts;
 import zb.dcts.aeronaval.Aeronaval;
 import zb.dcts.scenario.detection.Detection;
@@ -36,15 +36,19 @@ public class SubscribeMessageClient {
 
         for (Source.SourceInfo sourceInfo : sourceInfoList) {
             long sourceId = sourceInfo.getSourceId().getValue();
+            System.out.println("数据源经纬度:" + sourceInfo.getPosition().getLatitude() + ", " + sourceInfo.getPosition().getLongitude());
             for (Dcts.Topic topic : sourceInfo.getTopicsList()) {
                 String topicStr = topic.getValue();
                 if (!topicStr.equals("")) {
-                    System.out.println("sourceId: " + sourceId);
+                    System.out.println("sourceId: " + String.format("%x", sourceId));
                     System.out.println("key: " + topic.getKey());
                     System.out.println("value: " + topicStr);
                     System.out.println("topicStr:" + topicStr);
                     // 执行订阅
-                    subscribeDevice(sourceId, topicStr);
+                    subscribeDevice(sourceId,topicStr);
+//                    subscribeDevice(1539162205, "Source#5bbdc05d#SignalDigest");
+                    // 该源没有在总线发布数据
+//                    subscribeDevice(434984621, "Source#19ed56ad#SignalDigest");
 
                 //     为每个订阅安排单独的取消任务
                 //    Executors.newSingleThreadScheduledExecutor().schedule(() -> {
@@ -71,7 +75,8 @@ public class SubscribeMessageClient {
      * 发起设备任务订阅
      */
     public static void subscribeDevice(long sourceId, String topicStr) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("192.168.1.21", 6161).usePlaintext().build();
+//        ManagedChannel channel = ManagedChannelBuilder.forAddress("192.168.1.21", 6161).usePlaintext().build();
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6161).usePlaintext().build();
         SourceControlServiceGrpc.SourceControlServiceStub stub = SourceControlServiceGrpc.newStub(channel);
 
         // 构建订阅请求
@@ -132,14 +137,18 @@ public class SubscribeMessageClient {
         }
 
         private void handleSignalLayerSurvey(Detection.SignalLayerSurvey sigSurvey) {
+            System.out.println(sigSurvey);
             // 处理定频信号列表
             if (sigSurvey.getFixSignalListCount() != 0) {
-                System.out.printf("[%s/%s] 收到定频数据（FixSignalList）:%n", sourceId, topicKey);
+//                System.out.printf("源：[%s]， 主题为[%s]的定频数据（FixSignalList）:%n", sigSurvey.getResultFrom().getValue(), topicKey);
+//                System.out.printf("源：[%s]，位置[%s,%s]，主题为[%s]的定频数据（FixSignalList）:%n", sourceId,
+//                        sigSurvey.getPosition().getLatitude(),sigSurvey.getPosition().getLongitude(),
+//                        topicKey);
                 for (Detection.SignalDigest signalDigest : sigSurvey.getFixSignalListList()) {
                     double freqMHz = signalDigest.getCenterFreq().getMean() / 1e6;
-                    double bandwidthKHz = signalDigest.getBandWidth().getMean() / 1e3;
+                    double bandwidthKHz = signalDigest.getBandWidth().getMean() / 1e6;
                     double azimuthDeg = signalDigest.getDirOfArrival().getAzimuth();
-                    System.out.printf(" -> 频率: %.3f MHz, 带宽: %.3f kHz, DOA方位: %.2f°%n", freqMHz, bandwidthKHz, azimuthDeg);
+//                    System.out.printf(" -> 频率: %.3f MHz, 带宽: %.3f MHz, DOA方位: %.2f°%n", freqMHz, bandwidthKHz, azimuthDeg);
                 }
             }
 
@@ -155,38 +164,41 @@ public class SubscribeMessageClient {
 
                     for (Detection.HopSignalDigest hopSignal : cluster.getFreqSetList()) {
                         double cfMHz = hopSignal.getCenterFreq().getMean() / 1e6;
-                        double bwKHz = hopSignal.getBandWidth().getMean() / 1e3;
+                        double bwKHz = hopSignal.getBandWidth().getMean() / 1e6;
                         double amp = hopSignal.getAmplitude().getMean(); // 单位 dBm
-                        System.out.printf("-> 跳频频点: 频率: %.3f MHz, 带宽: %.3f kHz, 幅度: %.2f dBm%n", cfMHz, bwKHz, amp);
+                        System.out.printf("-> 跳频频点: 频率: %.3f MHz, 带宽: %.3f MHz, 幅度: %.2f dBm%n", cfMHz, bwKHz, amp);
                     }
                 }
             }
         }
 
-        private void handleTarget(zb.dcts.aeronaval.Aeronaval.Target target) {
+        private void handleTarget(Aeronaval.Target target) {
             System.out.printf("[%s/%s] 收到Target信息:%n", sourceId, topicKey);
-            System.out.printf(" -> 目标ID: %d, 名称: %s, 阵营: %s, 类型: %s%n",
+
+            System.out.printf(" ->时间: %s 目标ID: %d, 名称: %s, 域: %s, 阵营: %s, 类型: %s%n",
+                    target.getTime().getSeconds(),
                     target.getId(),
                     target.getName(),
+                    target.getAirSpace().name(),
                     target.getCamp().name(),
                     target.getEquType().name());
 
             // 位置信息
             Dcts.Position pos = target.getPosition();
-            System.out.printf("位置: 经度 %.6f°, 纬度 %.6f°, 高度 %.2f m%n",
-                    Math.toDegrees(pos.getLongitude()),
-                    Math.toDegrees(pos.getLatitude()),
+            System.out.printf("位置: 经度 %.2f°, 纬度 %.2f°, 高度 %.2f m%n",
+                    pos.getLongitude(),
+                    pos.getLatitude(),
                     pos.getAltitude());
 
             // 姿态信息
             Dcts.Posture posture = target.getPosture();
             System.out.printf("姿态: 航向 %.2f°, 俯仰 %.2f°, 横滚 %.2f°%n",
-                    Math.toDegrees(posture.getYaw()),
-                    Math.toDegrees(posture.getPitch()),
-                    Math.toDegrees(posture.getRoll()));
+                    posture.getYaw(),
+                    posture.getPitch(),
+                    posture.getRoll());
 
             // 速度信息
-            zb.dcts.aeronaval.Aeronaval.Velocity vel = target.getVelocity();
+            Aeronaval.Velocity vel = target.getVelocity();
             System.out.printf("速度: 东 %.2f m/s, 北 %.2f m/s, 天 %.2f m/s%n",
                     vel.getEastVelocity(), vel.getNorthVelocity(), vel.getVerticalVelocity());
         }
@@ -196,13 +208,12 @@ public class SubscribeMessageClient {
             if (!active) return;
             try {
                 String typeUrl = value.getTypeUrl();
-
-                if (typeUrl.endsWith("Detection.SignalLayerSurvey")) {
+                if (typeUrl.endsWith("SignalLayerSurvey")) {
                     Detection.SignalLayerSurvey sigSurvey = value.unpack(Detection.SignalLayerSurvey.class);
                     handleSignalLayerSurvey(sigSurvey);
-                } else if (typeUrl.endsWith("Aeronaval.Target")) {
+                } else if (typeUrl.endsWith("Target")) {
                     Aeronaval.Target target = value.unpack(Aeronaval.Target.class);
-                    handleTarget(target);
+//                    handleTarget(target);
                 } else {
                     System.out.printf("[%s/%s] 未识别的消息类型: %s%n", sourceId, topicKey, typeUrl);
                 }

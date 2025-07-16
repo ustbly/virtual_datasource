@@ -2,7 +2,7 @@ package source_control.real_client;
 
 import org.zeromq.ZMQ;
 import zb.dcts.aeronaval.Aeronaval;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass.CombinedMessage;
+import zb.dcts.fusion.airDomain.target.TargetOuterClass;
 import zb.dcts.scenario.detection.Detection;
 
 /**
@@ -37,7 +37,7 @@ public class SubscribeAirDomain {
 
 //                ByteArrayInputStream in = new ByteArrayInputStream(data);
 //                CombinedMessage msg = CombinedMessage.parseDelimitedFrom(in);
-                CombinedMessage msg = CombinedMessage.parseFrom(data);
+                TargetOuterClass.FusionTargetList msg = TargetOuterClass.FusionTargetList.parseFrom(data);
                 if (msg == null) {
                     System.err.println("[错误] 无法解析 CombinedMessage");
                     continue;

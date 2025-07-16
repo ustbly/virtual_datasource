@@ -1229,7 +1229,7 @@ public final class KhSpreadSpectrum {
 
     /**
      * <pre>
-     *PN码长 
+     *PN码长
      * </pre>
      *
      * <code>int64 pn_length = 9;</code>
@@ -1560,7 +1560,7 @@ public final class KhSpreadSpectrum {
     private long pnLength_;
     /**
      * <pre>
-     *PN码长 
+     *PN码长
      * </pre>
      *
      * <code>int64 pn_length = 9;</code>
@@ -2651,7 +2651,7 @@ public final class KhSpreadSpectrum {
       private long pnLength_ ;
       /**
        * <pre>
-       *PN码长 
+       *PN码长
        * </pre>
        *
        * <code>int64 pn_length = 9;</code>
@@ -2663,7 +2663,7 @@ public final class KhSpreadSpectrum {
       }
       /**
        * <pre>
-       *PN码长 
+       *PN码长
        * </pre>
        *
        * <code>int64 pn_length = 9;</code>
@@ -2678,7 +2678,7 @@ public final class KhSpreadSpectrum {
       }
       /**
        * <pre>
-       *PN码长 
+       *PN码长
        * </pre>
        *
        * <code>int64 pn_length = 9;</code>

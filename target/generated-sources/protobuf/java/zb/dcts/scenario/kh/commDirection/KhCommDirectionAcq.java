@@ -45,7 +45,7 @@ public final class KhCommDirectionAcq {
     SCAN(2),
     /**
      * <pre>
-     *搜索模式 
+     *搜索模式
      * </pre>
      *
      * <code>SEARCH = 3;</code>
@@ -80,7 +80,7 @@ public final class KhCommDirectionAcq {
     public static final int SCAN_VALUE = 2;
     /**
      * <pre>
-     *搜索模式 
+     *搜索模式
      * </pre>
      *
      * <code>SEARCH = 3;</code>
@@ -1607,7 +1607,7 @@ public final class KhCommDirectionAcq {
 
     /**
      * <pre>
-     *测向带宽（单位：Hz） 
+     *测向带宽（单位：Hz）
      * </pre>
      *
      * <code>double df_bandwidth = 5;</code>
@@ -2200,7 +2200,7 @@ public final class KhCommDirectionAcq {
     private double dfBandwidth_;
     /**
      * <pre>
-     *测向带宽（单位：Hz） 
+     *测向带宽（单位：Hz）
      * </pre>
      *
      * <code>double df_bandwidth = 5;</code>
@@ -3600,7 +3600,7 @@ public final class KhCommDirectionAcq {
       private double dfBandwidth_ ;
       /**
        * <pre>
-       *测向带宽（单位：Hz） 
+       *测向带宽（单位：Hz）
        * </pre>
        *
        * <code>double df_bandwidth = 5;</code>
@@ -3612,7 +3612,7 @@ public final class KhCommDirectionAcq {
       }
       /**
        * <pre>
-       *测向带宽（单位：Hz） 
+       *测向带宽（单位：Hz）
        * </pre>
        *
        * <code>double df_bandwidth = 5;</code>
@@ -3627,7 +3627,7 @@ public final class KhCommDirectionAcq {
       }
       /**
        * <pre>
-       *测向带宽（单位：Hz） 
+       *测向带宽（单位：Hz）
        * </pre>
        *
        * <code>double df_bandwidth = 5;</code>
