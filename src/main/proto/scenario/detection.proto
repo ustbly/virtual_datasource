@@ -171,7 +171,7 @@ message HopSignalCluster
 {
     string name = 1;                                //跳频系统
     SignalActivity  activity = 2;                   //信号活跃度
-    TimeSpan        emit_time_span = 3;             //信号出现的起始和终止时间
+    TimeSpan emit_time_span = 3;                    //信号出现的起始和终止时间
     repeated HopSignalDigest freq_set = 4;          //频率集
 }
 

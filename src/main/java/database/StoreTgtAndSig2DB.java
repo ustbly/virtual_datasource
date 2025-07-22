@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class StoreTgtAndSig2DB {
-    private static final String SUB_ADDR = "tcp://localhost:5556";
+    private static final String SUB_ADDR = "tcp://localhost:5560";
     private static final String JDBC_URL = "jdbc:mysql://node1:9030/kgd?useSSL=false";
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASS = "123456";
@@ -20,7 +20,7 @@ public class StoreTgtAndSig2DB {
         ZMQ.Context context = ZMQ.context(10);
         ZMQ.Socket subscriber = context.socket(ZMQ.SUB);
         subscriber.connect(SUB_ADDR);
-        subscriber.subscribe("Combined".getBytes());
+        subscriber.subscribe("Fusion_AirDomain".getBytes());
 
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS)) {
             System.out.println("Connected to Doris successfully.");
@@ -32,14 +32,14 @@ public class StoreTgtAndSig2DB {
                 byte[] msgBytes = subscriber.recv();
 
                 try {
-                    TargetOuterClass.FusionTargetList cm = TargetOuterClass.FusionTargetList.parseFrom(msgBytes);
+                    TargetOuterClass.FusionTargetList fusionTargetList = TargetOuterClass.FusionTargetList.parseFrom(msgBytes);
 
                     // 加入 Target 缓冲
-                    Aeronaval.Target aeronavalTarget = cm.getAeronavalTarget();
+                    Aeronaval.Target aeronavalTarget = fusionTargetList.getAeronavalTarget();
                     bufferWriter.addTarget(aeronavalTarget);
 
-                    List<Detection.SignalLayerSurvey> signalLayerSurveysList = cm.getSignalLayerSurveysList();
-                    System.out.println(signalLayerSurveysList);
+                    List<Detection.SignalLayerSurvey> signalLayerSurveysList = fusionTargetList.getSignalLayerSurveysList();
+//                    System.out.println(signalLayerSurveysList);
 
                     // 加入 Survey 缓冲
                     for (Detection.SignalLayerSurvey survey : signalLayerSurveysList) {

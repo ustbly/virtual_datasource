@@ -1,7 +1,7 @@
 package database;
 
-import zb.dcts.scenario.detection.Detection;
 import zb.dcts.Dcts;
+import zb.dcts.scenario.detection.Detection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class SignalLayerSurveyDBWriter {
 
     public static void batchInsertSurveys(Connection conn, List<Detection.SignalLayerSurvey> surveys) throws SQLException {
         for (Detection.SignalLayerSurvey survey : surveys) {
-            String surveyId = UUID.randomUUID().toString();
+            String surveyId = UUID.randomUUID().toString().substring(0,8);
             insertSurveyMain(conn, survey, surveyId);
             batchInsertFixSignals(conn, survey.getFixSignalListList(), surveyId);
             batchInsertHopSignals(conn, survey.getHopSignalListList(), surveyId);
@@ -26,7 +26,7 @@ public class SignalLayerSurveyDBWriter {
         Dcts.Position pos = survey.getPosition();
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, surveyId);
-            ps.setString(2, String.valueOf(survey.getResultFrom().getValue()));
+            ps.setString(2, String.format("%x",survey.getResultFrom().getValue()));
             ps.setLong(3, survey.getTimeStamp().getSeconds());
             ps.setInt(4, survey.getTimeStamp().getNanos());
             ps.setDouble(5, pos.getLatitude());
@@ -48,7 +48,25 @@ public class SignalLayerSurveyDBWriter {
             for (Detection.SignalDigest sig : signals) {
                 ps.setString(1, surveyId);
                 ps.setString(2, sig.getId());
-                ps.setInt(3, sig.getActivity().getNumber());
+
+                Detection.SignalActivity activity = sig.getActivity();
+                int activityValue;
+
+                if (activity == Detection.SignalActivity.UNRECOGNIZED) {
+                    activityValue = Detection.SignalActivity.UNKNOWN.getNumber(); // 回退
+                } else {
+                    int rawValue = activity.getNumber();
+                    switch (rawValue) {
+                        case 1: case 2: case 4: case 8:
+                            activityValue = rawValue;
+                            break;
+                        default:
+                            activityValue = Detection.SignalActivity.UNKNOWN.getNumber();
+                    }
+                }
+
+                ps.setInt(3, activityValue);
+
                 // 频率
                 ps.setDouble(4, sig.getCenterFreq().getUp());
                 ps.setDouble(5, sig.getCenterFreq().getDown());

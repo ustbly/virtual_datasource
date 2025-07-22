@@ -5,8 +5,9 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import utils.MessageToJsonUtil;
-import zb.dcts.fusion.fusiondata.Fusion;
-import zb.dcts.fusion.fusiondata.FusionDataControlServiceGrpc;
+import zb.dcts.Dcts;
+import zb.dcts.source.Source;
+import zb.dcts.source.SourceControlServiceGrpc;
 
 /**
  * @author 林跃
@@ -25,15 +26,20 @@ public class FusionDataClient {
                 .usePlaintext()
                 .build();
 
-       FusionDataControlServiceGrpc.FusionDataControlServiceStub stub = FusionDataControlServiceGrpc.newStub(channel);
+        SourceControlServiceGrpc.SourceControlServiceStub stub = SourceControlServiceGrpc.newStub(channel);
 
         // 2. 构造请求（订阅 "Fusion_AirDomain"）
-        Fusion.FusionDataRequest request = Fusion.FusionDataRequest.newBuilder()
-                .setTopic("Fusion_AirDomain")
+        Source.SubscribeRequest request = Source.SubscribeRequest.newBuilder()
+                .setTopic(
+                        Dcts.Topic.newBuilder()
+                                .setKey("")
+                                .setValue("Fusion_AirDomain")
+                                .build()
+                )
                 .build();
 
         // 3. 发起订阅
-        stub.subscribeFusionData(request, new StreamObserver<Any>() {
+        stub.subscribeSourceMessage(request, new StreamObserver<Any>() {
             @Override
             public void onNext(Any value) {
                 try {

@@ -18,19 +18,21 @@ import zb.dcts.source.Source;
 import zb.dcts.source.SourceControlServiceGrpc;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
+ * @author 林跃
  * @file FusionMatcherByGRPC.java
  * @comment 该类负责从gRPC接口订阅总线上的装备目标和频域信号的消息，并按照指定规则进行关联
- * @date 2025/7/11
- * @author 林跃
+ * @date 2025/7/22
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 public class FusionMatcherByGRPC {
@@ -39,8 +41,13 @@ public class FusionMatcherByGRPC {
     // 信号缓存：用于暂存近期的信号列表（每条 Survey 来自某个测向站）
     private final ConcurrentLinkedQueue<Detection.SignalLayerSurvey> surveyCache = new ConcurrentLinkedQueue<>();
     private static final long TIME_WINDOW_SEC = 1;
-    // 地球半径 (单位: 米)
-    private static final double EARTH_RADIUS = 6371000.0;
+
+    Dcts.ThreatLevel[] levels = {
+            Dcts.ThreatLevel.LOW,
+            Dcts.ThreatLevel.MIDDLE,
+            Dcts.ThreatLevel.HIGH
+    };
+
 
     private final List<EquipmentXmlParser.EquipmentConfig> configs =
             EquipmentXmlParser.parseConfig(new File("src/main/resources/equipment.xml"));
@@ -57,23 +64,24 @@ public class FusionMatcherByGRPC {
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
             cleanExpiredTargets();
             cleanExpiredSurveys();
-        }, 1, 1, TimeUnit.SECONDS);
+        }, 1, 10, TimeUnit.SECONDS);
 
         System.out.println("[FusionMatcher] Started.");
     }
 
     /**
      * 查询所有源的状态信息
+     *
      * @throws InterruptedException
      */
     private void startGrpcSubscriptions() throws InterruptedException {
         Source.SourceSetInfo sources = ListAllSourcesClient.listAllSources();
         for (Source.SourceInfo sourceInfo : sources.getSourceInfoList()) {
-            long sid = sourceInfo.getSourceId().getValue();
+            int sid = sourceInfo.getSourceId().getValue();
             for (Dcts.Topic topic : sourceInfo.getTopicsList()) {
                 String topicStr = topic.getValue();
                 if (!topicStr.isEmpty()) {
-                    System.out.println("sid: " + sid + " 订阅主题: " + topicStr);
+                    System.out.println("sourceId: " + String.format("%x", sid) + ", Topic: " + topicStr);
                     subscribeGrpcStream(sid, topicStr);
                 }
             }
@@ -82,10 +90,12 @@ public class FusionMatcherByGRPC {
 
     /**
      * 根据源的id和主题字符串订阅源发布的消息
+     *
      * @param sourceId
      * @param topicStr
      */
     private void subscribeGrpcStream(long sourceId, String topicStr) {
+//        ManagedChannel channel = ManagedChannelBuilder.forAddress("192.168.1.21", 6161).usePlaintext().build();
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6161).usePlaintext().build();
         SourceControlServiceGrpc.SourceControlServiceStub stub = SourceControlServiceGrpc.newStub(channel);
 
@@ -112,12 +122,14 @@ public class FusionMatcherByGRPC {
                 }
             }
 
-            @Override public void onError(Throwable t) {
+            @Override
+            public void onError(Throwable t) {
                 System.err.printf("订阅异常 [%d-%s]: %s%n", sourceId, topicStr, t.getMessage());
                 channel.shutdown();
             }
 
-            @Override public void onCompleted() {
+            @Override
+            public void onCompleted() {
                 System.out.printf("订阅完成 [%d-%s]%n", sourceId, topicStr);
                 channel.shutdown();
             }
@@ -128,14 +140,23 @@ public class FusionMatcherByGRPC {
         Instant tgtTime = Instant.ofEpochSecond(tgt.getTime().getSeconds(), tgt.getTime().getNanos());
 //        System.out.println(tgtTime);
 
+//        List<Detection.SignalLayerSurvey> validSurveys = surveyCache.stream()
+//                .filter(s -> Math.abs(Duration.between(tgtTime,
+//                        Instant.ofEpochSecond(s.getFixSignalList(0).getEmitTimeSpan().getStopTime().getSeconds(), s.getFixSignalList(0).getEmitTimeSpan().getStopTime().getNanos())).getSeconds()) <= TIME_WINDOW_SEC)
+//                .collect(Collectors.toList());
         List<Detection.SignalLayerSurvey> validSurveys = surveyCache.stream()
-                .filter(s -> Math.abs(Duration.between(tgtTime,
-                        Instant.ofEpochSecond(s.getTimeStamp().getSeconds(), s.getTimeStamp().getNanos())).getSeconds()) <= TIME_WINDOW_SEC)
+                .filter(s -> {
+                    Instant stopTime = Instant.ofEpochSecond(
+                            s.getFixSignalList(0).getEmitTimeSpan().getStopTime().getSeconds(),
+                            s.getFixSignalList(0).getEmitTimeSpan().getStopTime().getNanos()
+                    );
+                    long diffNanos = Math.abs(Duration.between(tgtTime, stopTime).toNanos());
+                    return diffNanos <= TIME_WINDOW_SEC;  // 转为纳秒比较
+                })
                 .collect(Collectors.toList());
 //        System.out.println(validSurveys.size() + " valid surveys found for target at " + tgtTime);
         Map<Integer, Detection.SignalLayerSurvey> uniqueStations = new HashMap<>();
-
-
+//        System.out.println("signal.size():" + validSurveys.get(0).getFixSignalListList().size())
 
         for (Detection.SignalLayerSurvey s : validSurveys) {
             int stationId = s.getResultFrom().getValue();
@@ -152,6 +173,10 @@ public class FusionMatcherByGRPC {
         if (uniqueStations.size() < 2) return;
 
         List<Detection.SignalLayerSurvey> selected = new ArrayList<>(uniqueStations.values());
+//        for (Detection.SignalDigest signalDigest : selected.get(0).getFixSignalListList()) {
+//            System.out.println("信号编号：" + signalDigest.getId());
+//            System.out.println("信号DOA：" + signalDigest.getDirOfArrival());
+//        }
         double doa1 = selected.get(0).getFixSignalList(0).getDirOfArrival().getAzimuth();
         double doa2 = selected.get(1).getFixSignalList(0).getDirOfArrival().getAzimuth();
         Dcts.Position p1 = selected.get(0).getPosition();
@@ -166,19 +191,24 @@ public class FusionMatcherByGRPC {
 
 
         LatLon est = estimateFromDOA(p1, doa1, p2, doa2);
-        System.out.println("Estimated position: " + est.lat + ", " + est.lon);
-        double errKm = haversine(tgt.getPosition().getLatitude(), tgt.getPosition().getLongitude(), est.lat, est.lon);
-        System.out.println("tgt position: " + tgt.getPosition().getLatitude()+ ", " + tgt.getPosition().getLongitude());
-        System.out.printf("Estimated position error: %.2f km%n", errKm);
-        if (errKm <= 50.0) {
+//        System.out.println("Estimated position: " + est.lat + ", " + est.lon);
+        BigDecimal errKm = haversine(tgt.getPosition().getLatitude(), tgt.getPosition().getLongitude(), est.lat, est.lon);
+//        System.out.println("tgt position: " + tgt.getPosition().getLatitude() + ", " + tgt.getPosition().getLongitude());
+//        System.out.printf("Estimated position error: %.20f km%n", errKm);
+        BigDecimal tolerance = new BigDecimal("0.001"); // 1 微米
+        if (errKm.abs().compareTo(tolerance) < 0) { //定位误差小于1m
             TargetOuterClass.FusionTargetList.Builder builder = TargetOuterClass.FusionTargetList.newBuilder()
                     .setAeronavalTarget(tgt)
-                    .addAllSignalLayerSurveys(selected)
-                    .setBussinessType("Communication")
-                    .setReliability(1).setImportance(2)
-                    .setThrtLvl(Dcts.ThreatLevel.HIGH)
-                    .setPurpose("Test");
-
+                    .addAllSignalLayerSurveys(selected);
+            if (tgt.getCampValue() == 1) {
+                builder.setReliability(ThreadLocalRandom.current().nextInt(5) + 1)
+                        .setImportance(ThreadLocalRandom.current().nextInt(5) + 1) // 随机重要性 1-5
+                        .setPurpose("RED CAMP");
+            } else if (tgt.getCampValue() == 2){
+                builder.setReliability(ThreadLocalRandom.current().nextInt(5) + 1)
+                        .setThrtLvl(levels[ThreadLocalRandom.current().nextInt(levels.length)])
+                        .setPurpose("BLUE CAMP");
+            }
             Set<String> types = collectEquipmentTypes(selected);
             configs.stream().filter(cfg -> types.contains(cfg.type.toUpperCase()))
                     .forEach(cfg -> {
@@ -222,17 +252,17 @@ public class FusionMatcherByGRPC {
                 s.getTimeStamp().getSeconds(), s.getTimeStamp().getNanos()), now).getSeconds() > TIME_WINDOW_SEC);
     }
 
-    private static double haversine(double lat1, double lon1, double lat2, double lon2) {
+    private static BigDecimal haversine(double lat1, double lon1, double lat2, double lon2) {
         double R = 6371.0;
         double dLat = Math.toRadians(lat2 - lat1);
         double dLon = Math.toRadians(lon2 - lon1);
         double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
                 + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
                 * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-        return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return new BigDecimal(2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
     }
 
-    private static LatLon estimateFromDOA(zb.dcts.Dcts.Position p1, double doa1, zb.dcts.Dcts.Position p2, double doa2) {
+    private static LatLon estimateFromDOA(Dcts.Position p1, double doa1, Dcts.Position p2, double doa2) {
         double theta1 = Math.toRadians(doa1), theta2 = Math.toRadians(doa2);
         double x1 = p1.getLongitude(), y1 = p1.getLatitude();
         double x2 = p2.getLongitude(), y2 = p2.getLatitude();
@@ -245,11 +275,12 @@ public class FusionMatcherByGRPC {
     }
 
     private static boolean isLink(String type) {
-        return type.startsWith("LINK") || type.equals("JIDS") || type.equals("NTDR") || type.equals("EPLRS");
+        return type.startsWith("LINK") || type.equals("JIDS") || type.equals("VU");
     }
 
     static class LatLon {
         double lat, lon;
+
         LatLon(double lat, double lon) {
             this.lat = lat;
             this.lon = lon;

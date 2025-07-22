@@ -36,6 +36,7 @@ public class SubscribeMessageClient {
 
         for (Source.SourceInfo sourceInfo : sourceInfoList) {
             long sourceId = sourceInfo.getSourceId().getValue();
+//            String sourceId = String.format("%x", sourceInfo.getSourceId().getValue())
             System.out.println("数据源经纬度:" + sourceInfo.getPosition().getLatitude() + ", " + sourceInfo.getPosition().getLongitude());
             for (Dcts.Topic topic : sourceInfo.getTopicsList()) {
                 String topicStr = topic.getValue();
@@ -81,7 +82,7 @@ public class SubscribeMessageClient {
 
         // 构建订阅请求
         Source.SubscribeRequest request = Source.SubscribeRequest.newBuilder()
-                .setSourceId(Source.SourceId.newBuilder().setValue((int) sourceId))
+                .setSourceId(Source.SourceId.newBuilder().setValue((int)sourceId))
                 .setTopic(zb.dcts.Dcts.Topic.newBuilder().setValue(topicStr))
                 .build();
 
@@ -213,7 +214,7 @@ public class SubscribeMessageClient {
                     handleSignalLayerSurvey(sigSurvey);
                 } else if (typeUrl.endsWith("Target")) {
                     Aeronaval.Target target = value.unpack(Aeronaval.Target.class);
-//                    handleTarget(target);
+                    handleTarget(target);
                 } else {
                     System.out.printf("[%s/%s] 未识别的消息类型: %s%n", sourceId, topicKey, typeUrl);
                 }

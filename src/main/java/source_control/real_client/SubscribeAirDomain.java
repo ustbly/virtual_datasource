@@ -36,21 +36,21 @@ public class SubscribeAirDomain {
                 }
 
 //                ByteArrayInputStream in = new ByteArrayInputStream(data);
-//                CombinedMessage msg = CombinedMessage.parseDelimitedFrom(in);
+//                FusionTargetList msg = FusionTargetList.parseDelimitedFrom(in);
                 TargetOuterClass.FusionTargetList msg = TargetOuterClass.FusionTargetList.parseFrom(data);
                 if (msg == null) {
-                    System.err.println("[错误] 无法解析 CombinedMessage");
+                    System.err.println("[错误] 无法解析 FusionTargetList");
                     continue;
                 }
 
                 Aeronaval.Target tgt = msg.getAeronavalTarget();
-                System.out.printf("[✔] 接收到融合目标：ID = %d，Name = %s，SignalLayerSurvey数量 = %d%n",
+                System.out.printf("[✔] 接收到融合目标：ID = %s，Name = %s，SignalLayerSurvey数量 = %d%n",
                         tgt.getId(), tgt.getName(), msg.getSignalLayerSurveysCount());
 
                 for (Detection.SignalLayerSurvey survey : msg.getSignalLayerSurveysList()) {
-//                    System.out.printf("  ↪ 来自源 %d，信号数 = %d， 信号列表%s：%n",
+//                    System.out.printf("来自源 %d，信号数 = %d， 信号列表%s：%n",
 //                            survey.getResultFrom().getValue(), survey.getFixSignalListCount(), survey.getFixSignalListList());
-                    System.out.printf("  ↪ 来自源 %d，信号数 = %d%n",
+                    System.out.printf("来自源 %x，信号数 = %d%n",
                             survey.getResultFrom().getValue(), survey.getFixSignalListCount());
                 }
             } catch (Exception e) {

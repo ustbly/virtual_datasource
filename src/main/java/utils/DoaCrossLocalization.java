@@ -79,18 +79,19 @@ public class DoaCrossLocalization {
 //        double[] station2LatLon = {26.5, 125.0};
 //        double[] targetLatLon   = {25.5, 125.0};
 
-        double[] station1LatLon = {24.99999273242272, 119.99960915158952};
-        double[] station2LatLon = {24.999974802204598, 120.00368002134833};
-        double[] targetLatLon = {26.5,121.47633361816406};
+//        double[] station1LatLon = {25.000009122379222, 119.99497077214882};
+//        double[] station2LatLon = {24.99996091848166, 119.99943766446688};
+        double[] targetLatLon = {26.489999771118164, 123.52000427246094};
 
-        double doa1 = computeDOA(station1LatLon, targetLatLon);
-        double doa2 = computeDOA(station2LatLon, targetLatLon);
-//        double doa1 = 29.96970979197704;
-//        double doa2 = 29.965618277085582;
+//        double doa1 = computeDOA(station1LatLon, targetLatLon);
+//        double doa2 = computeDOA(station2LatLon, targetLatLon);
+        double doa1 = 37.4314811019986;
+        double doa2 = 37.21927425614666;
 
-
-        Point2D.Double p1 = latLonToMeters(station1LatLon[0], station1LatLon[1]);
-        Point2D.Double p2 = latLonToMeters(station2LatLon[0], station2LatLon[1]);
+//        Point2D.Double p1 = latLonToMeters(station1LatLon[0], station1LatLon[1]);
+//        Point2D.Double p2 = latLonToMeters(station2LatLon[0], station2LatLon[1]);
+        Point2D.Double p1 = new Point2D.Double(25.00000092125286, 119.99852509758014);
+        Point2D.Double p2 = new Point2D.Double(24.99998936556054, 120.00730190981244);
 
         Point2D.Double estMeters = computeIntersection(p1, doa1, p2, doa2);
 

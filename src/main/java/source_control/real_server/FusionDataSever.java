@@ -16,7 +16,7 @@ import java.io.IOException;
 public class FusionDataSever {
     public static void main(String[] args) throws IOException, InterruptedException {
         Server server = ServerBuilder.forPort(50050)
-                .addService(new FusionDataServiceImpl())
+                .addService(new FusionAirDomainServiceImpl())
                 .build()
                 .start();
 
