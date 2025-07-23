@@ -81,7 +81,7 @@ public class BufferWriteController {
     }
 
     private void startAutoFlush() {
-        scheduler.scheduleAtFixedRate(this::flushAll, 10, 5, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(this::flushAll, 10, 3, TimeUnit.SECONDS);
     }
 
     public void shutdown() {

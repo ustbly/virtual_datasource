@@ -8,18 +8,19 @@ import "aeronaval/aeronaval.proto";
 message Network
 {
     uint32 id = 1;
-    aeronaval.Camp camp = 2;                            //阵营
-    string type = 3;                                    //网络类型
-    string topology = 4;                                //有中心，无中心
-    airDomain.target.Target key_target = 5;             //关键节点
-    airDomain.target.Target relay_target = 6;           //中继节点
-    repeated airDomain.target.Target targets = 7;       //用户
-    string   purposes = 8;                              //用途
-    ThreatLevel  thrt_lvl = 9;                          //威胁等级
-    uint32  reliability = 10;                           //可信度
-    uint32  importance = 11;                            //重要性
-    Timestamp start_time = 12;                          //起始时间
-    Timestamp stop_time = 13;                           //终止时间
+    aeronaval.Camp camp = 2;                                        //阵营
+    string type = 3;                                                //网络类型
+    string topology = 4;                                            //有中心，无中心
+    airDomain.target.Target key_target = 5;                         //关键节点
+    airDomain.target.Target relay_target = 6;                       //中继节点
+    repeated airDomain.target.FusionTargetList targets = 7;         //用户
+    repeated double freq = 8;                                       //频率集
+    string   purposes = 9;                                          //用途
+    ThreatLevel  thrt_lvl = 10;                                     //威胁等级
+    uint32  reliability = 11;                                       //可信度
+    uint32  importance = 12;                                        //重要性
+    Timestamp start_time = 13;                                      //起始时间
+    Timestamp stop_time = 14;                                       //终止时间
 }
 
 //网络列表

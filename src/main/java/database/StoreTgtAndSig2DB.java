@@ -25,7 +25,8 @@ public class StoreTgtAndSig2DB {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS)) {
             System.out.println("Connected to Doris successfully.");
             // 创建入库控制器（建议 batchSize: 50~200，根据实际 TPS 决定）
-            BufferWriteController bufferWriter = new BufferWriteController(conn, 50);
+            BufferWriteController targetBufferWriter = new BufferWriteController(conn, 20);
+            BufferWriteController signalBufferWriter = new BufferWriteController(conn, 50);
 
             while (!Thread.currentThread().isInterrupted()) {
                 subscriber.recv();
@@ -36,21 +37,22 @@ public class StoreTgtAndSig2DB {
 
                     // 加入 Target 缓冲
                     Aeronaval.Target aeronavalTarget = fusionTargetList.getAeronavalTarget();
-                    bufferWriter.addTarget(aeronavalTarget);
+                    targetBufferWriter.addTarget(aeronavalTarget);
 
                     List<Detection.SignalLayerSurvey> signalLayerSurveysList = fusionTargetList.getSignalLayerSurveysList();
 //                    System.out.println(signalLayerSurveysList);
 
                     // 加入 Survey 缓冲
                     for (Detection.SignalLayerSurvey survey : signalLayerSurveysList) {
-                        bufferWriter.addSurvey(survey);
+                        signalBufferWriter.addSurvey(survey);
                     }
                 } catch (Exception e) {
                     System.err.println("Failed to parse CombinedMessage");
                     e.printStackTrace();
                 }
                 // 程序结束或退出前调用
-                Runtime.getRuntime().addShutdownHook(new Thread(bufferWriter::shutdown));
+                Runtime.getRuntime().addShutdownHook(new Thread(targetBufferWriter::shutdown));
+                Runtime.getRuntime().addShutdownHook(new Thread(signalBufferWriter::shutdown));
             }
         } catch (SQLException e) {
             System.err.println("Doris connection failed.");
