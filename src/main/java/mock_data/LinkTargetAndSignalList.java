@@ -3,7 +3,7 @@ package mock_data;
 import org.zeromq.ZMQ;
 import zb.dcts.Dcts;
 import zb.dcts.aeronaval.Aeronaval;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass;
+import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.scenario.detection.Detection;
 
 import static java.lang.Math.*;
@@ -27,7 +27,7 @@ public class LinkTargetAndSignalList {
             subscriber.recv(); // topic
             byte[] msgBytes = subscriber.recv();
             try {
-                TargetOuterClass.FusionTargetList fusionTargetList = TargetOuterClass.FusionTargetList.parseFrom(msgBytes);
+                Target.FusionTarget fusionTargetList = Target.FusionTarget.parseFrom(msgBytes);
                 Aeronaval.Target target = fusionTargetList.getAeronavalTarget();
                 System.out.printf("Received Target ID %d at (%.4f, %.4f)\n",
                         target.getId(),

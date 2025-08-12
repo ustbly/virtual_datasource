@@ -6,7 +6,7 @@ import utils.EquipmentMapper;
 import utils.EquipmentXmlParser;
 import zb.dcts.Dcts;
 import zb.dcts.aeronaval.Aeronaval;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass;
+import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.scenario.detection.Detection;
 
 import java.io.ByteArrayInputStream;
@@ -177,7 +177,7 @@ public class FusionMatcher {
 
         // 6. 若误差在容忍范围内，发布匹配结果
         if (errKm <= 200.0) {
-            TargetOuterClass.FusionTargetList.Builder builder = TargetOuterClass.FusionTargetList.newBuilder()
+            Target.FusionTarget.Builder builder = Target.FusionTarget.newBuilder()
                     .setAeronavalTarget(tgt)
                     .addAllSignalLayerSurveys(selected)
                     .setBussinessType("Communication")

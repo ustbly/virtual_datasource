@@ -86,7 +86,7 @@ package link_combine;
 import org.zeromq.ZMQ;
 import utils.SignalTargetMatcher;
 import zb.dcts.aeronaval.Aeronaval;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass;
+import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.scenario.detection.Detection;
 
 import java.io.ByteArrayInputStream;
@@ -96,12 +96,12 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
-  * @author 林跃
-  * @file TargetSignalProcessor.java
-  * @comment 解析目标和信号的组合数据，并调用SignalTargetMatcher类进行关联处理
-  * @date 2025/7/1
-  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
-  */
+ * @author 林跃
+ * @file TargetSignalProcessor.java
+ * @comment 解析目标和信号的组合数据，并调用SignalTargetMatcher类进行关联处理
+ * @date 2025/7/1
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 public class TargetSignalProcessor {
     private static final String SUB_ADDR = "tcp://localhost:5558";
     private static final String PUB_ADDR = "tcp://*:5560";
@@ -145,7 +145,7 @@ public class TargetSignalProcessor {
                     byte[] data = subscriber.recv();
 
                     if ("Combined".equals(topic)) {
-                        TargetOuterClass.FusionTargetList combined = TargetOuterClass.FusionTargetList.parseDelimitedFrom(new ByteArrayInputStream(data));
+                        Target.FusionTarget combined = Target.FusionTarget.parseDelimitedFrom(new ByteArrayInputStream(data));
                         if (combined != null) {
                             targetCache.add(combined.getAeronavalTarget());
                             surveyCache.addAll(combined.getSignalLayerSurveysList());

@@ -1,6 +1,6 @@
 package utils;
 
-import zb.dcts.fusion.airDomain.target.TargetOuterClass;
+import zb.dcts.fusion.airDomain.target.Target;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,8 +9,8 @@ public class EquipmentMapper {
 
     private static int idCounter = 1;
 
-    public static TargetOuterClass.LinkEquipment toLinkEquipment(EquipmentXmlParser.EquipmentConfig cfg) {
-        return TargetOuterClass.LinkEquipment.newBuilder()
+    public static Target.LinkEquipment toLinkEquipment(EquipmentXmlParser.EquipmentConfig cfg) {
+        return Target.LinkEquipment.newBuilder()
                 .setId(idCounter++)
                 .setName(cfg.type)
                 .setMode(cfg.workMode.equalsIgnoreCase("Fixed") ? "定频" : "跳频")
@@ -20,9 +20,9 @@ public class EquipmentMapper {
                 .setModulation(cfg.modulation)
                 .build();
     }
-    public static TargetOuterClass.StationEquipment toStationEquipment(EquipmentXmlParser.EquipmentConfig cfg) {
+    public static Target.StationEquipment toStationEquipment(EquipmentXmlParser.EquipmentConfig cfg) {
         List<Double> freqList = Arrays.asList(cfg.minFreq, cfg.maxFreq);
-        return TargetOuterClass.StationEquipment.newBuilder()
+        return Target.StationEquipment.newBuilder()
                 .setId(idCounter++)
                 .setName(cfg.type)
                 .setWorkMode(cfg.workMode)

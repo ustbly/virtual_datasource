@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package zb.dcts.database;
+
+/*
+* 访问数据库的动作类型 
+*/
+enum RequestMethod
+{
+    M_GET = 0;
+    M_POST = 1;
+    M_PUT  = 2;
+    M_PATCH = 3;
+    M_DELETE = 4;
+}
+/*
+* 访问数据库的参数
+*/
+message QueryParam
+{
+    string key = 1;
+    string value = 2;
+}

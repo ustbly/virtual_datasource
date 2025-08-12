@@ -7,20 +7,20 @@ import "fusion/airDomain/target.proto";
 // 通联状态
 enum CommunState
 {
-    COMMUNICATION = 0;                                // 联通
-    SILENCE = 1;                                      // 静默
+    COMMUNICATION = 0;               // 联通
+    SILENCE = 1;                     // 静默
 }
 
 // 通信关系
 message CommunLink
 {
-    uint32  unId = 1;                                 // 通信ID
-    target.Target  src_target = 2;                    // 源实体
-    target.Target  des_target = 3;                    // 目标实体
-    CommunState commun_state = 4;                     // 通联状态
+    uint32  unId = 1;                   // 通信ID
+    target.FusionTarget  src_target = 2;     // 源实体
+    target.FusionTarget  des_target = 3;     // 目标实体
+    CommunState commun_state = 4;       // 通联状态
 }
 
-message CommunLikeList
+message CommunLinKList
 {
     repeated CommunLink  commun_link_list = 1;         //通联关系
 }

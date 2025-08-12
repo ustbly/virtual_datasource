@@ -6,7 +6,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import zb.dcts.Dcts;
 import zb.dcts.aeronaval.Aeronaval;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass;
+import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.fusion.networkDomain.NetworkDomain;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -14,6 +14,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @file NetworkDomainBuilder.java
+ * @comment 读取配置文件中融合后网域数据，解析后推送至态势显示分系统
+ * @date 2025/7/24
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 public class NetworkDomainBuilder {
 
     public static NetworkDomain.NetworkList buildFromXml(String xmlPath) throws Exception {
@@ -25,27 +32,38 @@ public class NetworkDomainBuilder {
 
         for (int i = 0; i < networkNodes.getLength(); i++) {
             Element netElement = (Element) networkNodes.item(i);
+            // 起始频率与终止频率
+            Element freqRangeElem = (Element) netElement.getElementsByTagName("频率范围").item(0);
 
             NetworkDomain.Network.Builder networkBuilder = NetworkDomain.Network.newBuilder()
                     .setId(parseInt(netElement, "id"))
                     .setCamp(parseCamp(netElement, "阵营"))
                     .setType(getText(netElement, "类型"))
+                    .setModulation(getText(netElement, "调制方式"))
+                    .setWorkMode(getText(netElement, "工作模式"))
                     .setTopology(parseTopology(getText(netElement, "拓扑结构")))
                     .setPurposes(getText(netElement, "用途"))
                     .setThrtLvl(parseThreatLevel(netElement))
                     .setReliability(parseInt(netElement, "可信度", 80))
                     .setImportance(parseInt(netElement, "重要性", 0));
 
+            if (freqRangeElem != null) {
+                double freqStart = parseDouble(freqRangeElem, "起始频率", 0);
+                double freqEnd = parseDouble(freqRangeElem, "终止频率", 0);
+                networkBuilder.setStartFreq(freqStart);
+                networkBuilder.setStopFreq(freqEnd);
+            }
+
             // 关键节点
-            TargetOuterClass.Target keyTarget = parseTarget(netElement, "关键节点");
+            Target.FusionTarget keyTarget = parseTarget(netElement, "关键节点");
             if (keyTarget != null) networkBuilder.setKeyTarget(keyTarget);
 
             // 中继节点
-            TargetOuterClass.Target relayTarget = parseTarget(netElement, "网关节点");
+            Target.FusionTarget relayTarget = parseTarget(netElement, "网关节点");
             if (relayTarget != null) networkBuilder.setRelayTarget(relayTarget);
 
             // 一般节点
-            List<TargetOuterClass.FusionTargetList> users = parseUsers(netElement);
+            List<Target.FusionTarget> users = parseUsers(netElement);
             networkBuilder.addAllTargets(users);
 
             // 频率集
@@ -71,22 +89,32 @@ public class NetworkDomainBuilder {
         return freqs;
     }
 
+
     private static int parseInt(Element parent, String tag) {
         return parseInt(parent, tag, 0);
     }
 
-    private static int parseInt(Element parent, String tag, int defaultValue) {
+    private static int parseInt(Element parent, String tag, int defaultVal) {
         try {
             String val = getText(parent, tag);
-            return (val == null || val.isEmpty()) ? defaultValue : Integer.parseInt(val);
+            return (val == null || val.isEmpty()) ? defaultVal : Integer.parseInt(val);
         } catch (Exception e) {
-            return defaultValue;
+            return defaultVal;
+        }
+    }
+
+    private static double parseDouble(Element parent, String tag, double defaultVal) {
+        try {
+            String val = getText(parent, tag);
+            return (val == null || val.isEmpty()) ? defaultVal : Double.parseDouble(val);
+        } catch (Exception e) {
+            return defaultVal;
         }
     }
 
     private static Aeronaval.Camp parseCamp(Element parent, String tag) {
         int val = parseInt(parent, tag);
-        return (val == 1) ? Aeronaval.Camp.RED_CAMP : Aeronaval.Camp.BLUE_CAMP;
+        return (val == 1) ? Aeronaval.Camp.BLUE_CAMP : Aeronaval.Camp.RED_CAMP;
     }
 
     private static Dcts.ThreatLevel parseThreatLevel(Element parent) {
@@ -112,7 +140,7 @@ public class NetworkDomainBuilder {
         return null;
     }
 
-    private static TargetOuterClass.Target parseTarget(Element parent, String tagName) {
+    private static Target.FusionTarget parseTarget(Element parent, String tagName) {
         NodeList list = parent.getElementsByTagName(tagName);
         if (list.getLength() == 0) return null;
         Element node = (Element) list.item(0);
@@ -121,14 +149,14 @@ public class NetworkDomainBuilder {
         int id = parseInt(node, "id");
         String name = getText(node, "名称");
 
-        return TargetOuterClass.Target.newBuilder()
-                .setId(id)
-                .setName(name == null ? "" : name)
+        return Target.FusionTarget.newBuilder()
+//                .setId(id)
+//                .setName(name == null ? "" : name)
                 .build();
     }
 
-    private static List<TargetOuterClass.FusionTargetList> parseUsers(Element parent) {
-        List<TargetOuterClass.FusionTargetList> users = new ArrayList<>();
+    private static List<Target.FusionTarget> parseUsers(Element parent) {
+        List<Target.FusionTarget> users = new ArrayList<>();
 
         NodeList equips = parent.getElementsByTagName("装备");
         for (int i = 0; i < equips.getLength(); i++) {
@@ -141,7 +169,7 @@ public class NetworkDomainBuilder {
                     .setName(name == null ? "" : name)
                     .build();
 
-            TargetOuterClass.FusionTargetList list = TargetOuterClass.FusionTargetList.newBuilder()
+            Target.FusionTarget list = Target.FusionTarget.newBuilder()
                     .setAeronavalTarget(target)
                     .build();
 

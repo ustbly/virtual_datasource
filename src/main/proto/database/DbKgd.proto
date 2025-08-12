@@ -1,0 +1,90 @@
+syntax = "proto3";
+package zb.dcts.database;
+import  "database/dataAccesslayer.proto";
+import  "scenario/spectrum.proto";
+
+message SignalFreqSpan
+{
+    string   id = 1;
+    scenario.spectrum.FrequencySpan  signal_span = 2;//信号频率范围
+}
+
+message SignalPropQueryRequest
+{
+    repeated SignalFreqSpan  signal_param = 1; //多组信号
+}
+
+message SignalPropInfo
+{   
+    string   id = 1;
+    map<string,string>  info = 2; 
+}
+
+message SignalPropResponse
+{
+    repeated SignalPropInfo  signal_prop = 1; //多组信号结果
+}
+
+// 关键字： 
+// 起始时间：startTime  终止时间:  stopTime
+// 起始频率：startFreq  终止频率： stopFreq  
+// 最大带宽：maxBw  最小带宽：minBw
+// 时段起始：startPeriod  时段终止：stopPeriod
+// 时间粒度：timeGranu (值：‘MIN’-分钟 ‘HOUR’-小时 ‘DAY’-天)
+// 频率步进: freqStep
+// 电平门限: levelThreshold
+// 分析类型： taskType  (值：‘1‘-通信 ‘2’-雷达 ‘3’- 两者) 
+// 保存路径（用于数据库导入导出）:savePath (如/home/cetc/exportdata)
+// 清空数据库：clearDB (值：'YES')
+// 实时统计：realTime(值：‘YES’) 
+// 统计分析参数
+message QueryRequest
+{
+    repeated QueryParam  param =1;
+}
+
+message SignalProperty
+{
+    string id =1;
+    scenario.spectrum.FrequencySpan  signal_span = 2;
+    double amplitude = 3;
+    string  name =4;
+    int32   type =5;
+}
+
+message SignalPropertyRequest
+{
+    RequestMethod method =1;
+    repeated QueryParam query =2;
+    repeated SignalProperty body =3;
+}
+
+message SignalPropertyResponse
+{
+    int32 statuscode =1;
+    string info =2;
+    repeated SignalProperty body =3;
+}
+
+message FusionTimeResponse
+{
+    uint64 startTime =1; 
+}
+
+message FusionProcResponse
+{
+    int32 statuscode = 1;
+    string info = 2;
+    float  progress = 3;
+}
+
+message DbStatsResponse
+{
+    float storageSize =1; //MByte
+}
+
+message Response
+{
+    int32 statuscode =1;
+    string info = 2;
+}

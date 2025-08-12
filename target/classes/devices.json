@@ -1,0 +1,35 @@
+{
+  "devices" : [ {
+    "device_id" : {
+      "value" : "1"
+    },
+    "device_name" : "Device_A",
+    "device_type" : "SENSOR_3900",
+    "status" : "S_ENGAGED",
+    "is_physical" : true
+  }, {
+    "device_id" : {
+      "value" : "2"
+    },
+    "device_name" : "Device_B",
+    "device_type" : "SENSOR_3900",
+    "status" : "S_ENGAGED",
+    "is_physical" : true
+  }, {
+    "device_id" : {
+      "value" : "3"
+    },
+    "device_name" : "Device_C",
+    "device_type" : "SENSOR_3900",
+    "status" : "S_ENGAGED",
+    "is_physical" : false
+  }, {
+    "device_id" : {
+      "value" : "4"
+    },
+    "device_name" : "Device_D",
+    "device_type" : "SENSOR_3900",
+    "status" : "S_IDLE",
+    "is_physical" : false
+  } ]
+}

@@ -5,7 +5,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.util.JsonFormat;
 import zb.dcts.aeronaval.Aeronaval;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass;
+import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.fusion.networkDomain.NetworkDomain;
 import zb.dcts.scenario.detection.Detection;
 
@@ -48,10 +48,10 @@ public class MessageAndJsonUtil {
         });
 
         // 注册 FusionTargetList 类型（融合后空域数据）
-        parserRegistry.put(TargetOuterClass.FusionTargetList.getDescriptor().getFullName(), any -> {
+        parserRegistry.put(Target.FusionTarget.getDescriptor().getFullName(), any -> {
             try {
                 // 尝试将 Any 类型解析为 FusionTargetList
-                TargetOuterClass.FusionTargetList msg = any.unpack(TargetOuterClass.FusionTargetList.class);
+                Target.FusionTarget msg = any.unpack(Target.FusionTarget.class);
                 return toJson(msg);
             } catch (InvalidProtocolBufferException e) {
                 return "[Error] Failed to parse FusionTargetList: " + e.getMessage();

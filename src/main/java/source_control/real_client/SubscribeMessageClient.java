@@ -138,10 +138,12 @@ public class SubscribeMessageClient {
         }
 
         private void handleSignalLayerSurvey(Detection.SignalLayerSurvey sigSurvey) {
-            System.out.println(sigSurvey);
+//            System.out.println(sigSurvey);
+
             // 处理定频信号列表
             if (sigSurvey.getFixSignalListCount() != 0) {
 //                System.out.printf("源：[%s]， 主题为[%s]的定频数据（FixSignalList）:%n", sigSurvey.getResultFrom().getValue(), topicKey);
+//                System.out.println("定频时间：" + sigSurvey.getFixSignalList(0).getEmitTimeSpan().getStopTime());
 //                System.out.printf("源：[%s]，位置[%s,%s]，主题为[%s]的定频数据（FixSignalList）:%n", sourceId,
 //                        sigSurvey.getPosition().getLatitude(),sigSurvey.getPosition().getLongitude(),
 //                        topicKey);
@@ -149,19 +151,20 @@ public class SubscribeMessageClient {
                     double freqMHz = signalDigest.getCenterFreq().getMean() / 1e6;
                     double bandwidthKHz = signalDigest.getBandWidth().getMean() / 1e6;
                     double azimuthDeg = signalDigest.getDirOfArrival().getAzimuth();
-//                    System.out.printf(" -> 频率: %.3f MHz, 带宽: %.3f MHz, DOA方位: %.2f°%n", freqMHz, bandwidthKHz, azimuthDeg);
+                    System.out.printf(" -> 定频频率: %.3f MHz, 带宽: %.3f MHz, DOA方位: %.2f°%n", freqMHz, bandwidthKHz, azimuthDeg);
                 }
             }
 
             // 处理跳频信号列表
             if (sigSurvey.getHopSignalListCount() != 0) {
-                System.out.printf("[%s/%s] 收到跳频数据（HopSignalList）:%n", sourceId, topicKey);
+//                System.out.printf("[%s/%s] 收到跳频数据（HopSignalList）:%n", sourceId, topicKey);
+//                System.out.println("跳频时间：" + sigSurvey.getHopSignalList(0).getEmitTimeSpan().getStopTime());
                 for (Detection.HopSignalCluster cluster : sigSurvey.getHopSignalListList()) {
-                    System.out.printf("-> [跳频] 系统名称: %s, 活跃度: %s%n", cluster.getName(), cluster.getActivity().name());
+//                    System.out.printf("-> [跳频] 系统名称: %s, 活跃度: %s%n", cluster.getName(), cluster.getActivity().name());
 
                     String emitStart = cluster.getEmitTimeSpan().getStartTime().getSeconds() + "s";
                     String emitEnd = cluster.getEmitTimeSpan().getStopTime().getSeconds() + "s";
-                    System.out.printf("发射时间段: [%s ~ %s]%n", emitStart, emitEnd);
+//                    System.out.printf("发射时间段: [%s ~ %s]%n", emitStart, emitEnd);
 
                     for (Detection.HopSignalDigest hopSignal : cluster.getFreqSetList()) {
                         double cfMHz = hopSignal.getCenterFreq().getMean() / 1e6;
@@ -184,24 +187,25 @@ public class SubscribeMessageClient {
                     target.getCamp().name(),
                     target.getEquType().name());
 
-            // 位置信息
-            Dcts.Position pos = target.getPosition();
-            System.out.printf("位置: 经度 %.2f°, 纬度 %.2f°, 高度 %.2f m%n",
-                    pos.getLongitude(),
-                    pos.getLatitude(),
-                    pos.getAltitude());
-
-            // 姿态信息
-            Dcts.Posture posture = target.getPosture();
-            System.out.printf("姿态: 航向 %.2f°, 俯仰 %.2f°, 横滚 %.2f°%n",
-                    posture.getYaw(),
-                    posture.getPitch(),
-                    posture.getRoll());
-
-            // 速度信息
-            Aeronaval.Velocity vel = target.getVelocity();
-            System.out.printf("速度: 东 %.2f m/s, 北 %.2f m/s, 天 %.2f m/s%n",
-                    vel.getEastVelocity(), vel.getNorthVelocity(), vel.getVerticalVelocity());
+//            // 位置信息
+//            Dcts.Position pos = target.getPosition();
+//            System.out.printf("位置: 经度 %.2f°, 纬度 %.2f°, 高度 %.2f m%n",
+//                    pos.getLongitude(),
+//                    pos.getLatitude(),
+//                    pos.getAltitude());
+//
+//            // 姿态信息
+//            Dcts.Posture posture = target.getPosture();
+//            System.out.printf("姿态: 航向 %.2f°, 俯仰 %.2f°, 横滚 %.2f°%n",
+//                    posture.getYaw(),
+//                    posture.getPitch(),
+//                    posture.getRoll());
+//
+//            // 速度信息
+//            Aeronaval.Velocity vel = target.getVelocity();
+//            System.out.printf("速度: 东 %.2f m/s, 北 %.2f m/s, 天 %.2f m/s%n",
+//                    vel.getEastVelocity(), vel.getNorthVelocity(), vel.getVerticalVelocity());
+//            System.out.println(target);
         }
 
         @Override
@@ -211,10 +215,11 @@ public class SubscribeMessageClient {
                 String typeUrl = value.getTypeUrl();
                 if (typeUrl.endsWith("SignalLayerSurvey")) {
                     Detection.SignalLayerSurvey sigSurvey = value.unpack(Detection.SignalLayerSurvey.class);
+
                     handleSignalLayerSurvey(sigSurvey);
                 } else if (typeUrl.endsWith("Target")) {
                     Aeronaval.Target target = value.unpack(Aeronaval.Target.class);
-                    handleTarget(target);
+//                    handleTarget(target);
                 } else {
                     System.out.printf("[%s/%s] 未识别的消息类型: %s%n", sourceId, topicKey, typeUrl);
                 }

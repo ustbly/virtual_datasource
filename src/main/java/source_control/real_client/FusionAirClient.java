@@ -11,8 +11,8 @@ import zb.dcts.source.SourceControlServiceGrpc;
 
 /**
  * @author 林跃
- * @file FusionDataClient.java
- * @comment 订阅融合数据（空域、网域）的测试客户端
+ * @file FusionAirClient.java
+ * @comment 订阅融合数据空域的测试客户端
  * @date 2025/7/01
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */

@@ -2,7 +2,7 @@ package database;
 
 import org.zeromq.ZMQ;
 import zb.dcts.aeronaval.Aeronaval;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass;
+import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.scenario.detection.Detection;
 
 import java.sql.Connection;
@@ -33,7 +33,7 @@ public class StoreTgtAndSig2DB {
                 byte[] msgBytes = subscriber.recv();
 
                 try {
-                    TargetOuterClass.FusionTargetList fusionTargetList = TargetOuterClass.FusionTargetList.parseFrom(msgBytes);
+                    Target.FusionTarget fusionTargetList = Target.FusionTarget.parseFrom(msgBytes);
 
                     // 加入 Target 缓冲
                     Aeronaval.Target aeronavalTarget = fusionTargetList.getAeronavalTarget();

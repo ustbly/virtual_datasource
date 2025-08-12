@@ -8,8 +8,8 @@ import "scenario/detection.proto";
 //电台装备
 message StationEquipment
 {
-    uint32 id = 1;                                       //装备ID
-    string name = 2;                                     //装备名称
+    uint32 id = 1;                     //装备ID
+    string name = 2;                   //装备名称
     string work_mode = 3;                                //定频 跳频 自适应
     repeated double freq = 4;                            //频率集
     uint32 hp_rate = 5;                                  //跳速
@@ -23,67 +23,40 @@ message StationEquipment
 //数据链装备
 message LinkEquipment
 {
-    uint32 id = 1;                                       //装备ID
-    string name = 2;                                     //装备名称
-    string mode = 3;                                     //定频，跳频
-    double period = 4;                                   //跳频周期
-    double start_freq = 5;                               //起始频率
-    double stop_freq = 6;                                //终止频率
-    repeated double freq_set = 7;                        //频率集;
-    double band = 8;                                     //带宽
-    string modulation = 9;                               //调制方式
+    uint32 id = 1;                    //装备ID
+    string name = 2;                  //装备名称
+    string mode = 3;                                  //定频，跳频
+    double period = 4;                                //跳频周期
+    double start_freq = 5;                            //起始频率
+    double stop_freq = 6;                            //终止频率
+    repeated double freq_set = 7;                    //频率集;
+    double band = 8;                                  //带宽
+    string modulation = 9;                            //调制方式
     Timestamp start_time = 10;
     Timestamp stop_time = 11;
 }
 
-message Target
-{
-    uint32 id = 1;                                       //目标ID
-    aeronaval.EquType equtype = 2;               //目标类型
-    string name = 3;                                     //名称
-    repeated StationEquipment station_equipments = 4;    //挂载的电台装备
-    repeated LinkEquipment link_equipments = 5;          //挂载的数据链装备
-    aeronaval.Camp camp = 6;                     //阵营
-    Position        position = 7;                        //位置信息
-    Posture         posture = 8;                         //姿态信息
-    string bussiness_type = 9;                           //业务类型
-    int32 reliability = 10;                              //可信度
-    int32 importance = 11;                               //重要性等级
-    ThreatLevel  thrt_lvl = 12;                          //威胁等级
-    string purpose = 13;                                 //用途
-}
-
-message TargetList
-{
-    repeated Target targets = 1;
-}
 
 //干扰样式
 enum JammingMode
 {
-    AIMING = 0;                        //瞄准式
+    AIMING = 0;                      //瞄准式
     DISCRETE = 1;                      //离散式
 }
 
 //干扰站
 message JammingStation
 {
-    uint32 id = 1;                        //ID
-    string name = 2;                      //名称
-    Position        position = 3;         //位置信息
-    double start_freq = 4;                //起始频率
-    double stop_freq = 5;                 //终止频率
-    double power = 6;                     //干扰功率
-    JammingMode jamming_mode = 7;         //干扰样式
+    uint32 id = 1;                    //ID
+    string name = 2;                    //名称
+    Position        position = 3;            //位置信息
+    double start_freq = 4;                            //起始频率
+    double stop_freq = 5;                            //终止频率
+    double power = 6;                    //干扰功率
+    JammingMode jamming_mode = 7;              //干扰样式
 }
 
-//干扰站集合
-message JammingStationList
-{
-    repeated JammingStation jammingStations = 1;
-}
-
-message FusionTargetList
+message FusionTarget
 {
     aeronaval.Target aeronaval_target = 1;                                          //海空情目标
     repeated scenario.detection.SignalLayerSurvey signal_layer_surveys = 2;         //信号层勘测
@@ -92,6 +65,6 @@ message FusionTargetList
     string bussiness_type = 5;                                                      //业务类型
     int32 reliability = 6;                                                          //可信度
     int32 importance = 7;                                                           //重要性等级
-    ThreatLevel thrt_lvl = 8;                                                       //威胁等级
+    ThreatLevel  thrt_lvl = 8;                                                      //威胁等级
     string purpose = 9;                                                             //用途
 }

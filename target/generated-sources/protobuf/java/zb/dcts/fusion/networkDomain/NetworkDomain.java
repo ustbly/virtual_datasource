@@ -85,108 +85,70 @@ public final class NetworkDomain {
 
     /**
      * <pre>
-     *关键节点
+     *工作模式
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
-     * @return Whether the keyTarget field is set.
+     * <code>string work_mode = 5;</code>
+     * @return The workMode.
      */
-    boolean hasKeyTarget();
+    java.lang.String getWorkMode();
     /**
      * <pre>
-     *关键节点
+     *工作模式
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
-     * @return The keyTarget.
+     * <code>string work_mode = 5;</code>
+     * @return The bytes for workMode.
      */
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getKeyTarget();
-    /**
-     * <pre>
-     *关键节点
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
-     */
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getKeyTargetOrBuilder();
+    com.google.protobuf.ByteString
+        getWorkModeBytes();
 
     /**
      * <pre>
-     *中继节点
+     *调试方式
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
-     * @return Whether the relayTarget field is set.
+     * <code>string modulation = 6;</code>
+     * @return The modulation.
      */
-    boolean hasRelayTarget();
+    java.lang.String getModulation();
     /**
      * <pre>
-     *中继节点
+     *调试方式
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
-     * @return The relayTarget.
+     * <code>string modulation = 6;</code>
+     * @return The bytes for modulation.
      */
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getRelayTarget();
-    /**
-     * <pre>
-     *中继节点
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
-     */
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getRelayTargetOrBuilder();
+    com.google.protobuf.ByteString
+        getModulationBytes();
 
     /**
      * <pre>
-     *用户
+     *起始频率
      * </pre>
      *
-     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+     * <code>double start_freq = 7;</code>
+     * @return The startFreq.
      */
-    java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList> 
-        getTargetsList();
+    double getStartFreq();
+
     /**
      * <pre>
-     *用户
+     *终止频率
      * </pre>
      *
-     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+     * <code>double stop_freq = 8;</code>
+     * @return The stopFreq.
      */
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList getTargets(int index);
-    /**
-     * <pre>
-     *用户
-     * </pre>
-     *
-     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
-     */
-    int getTargetsCount();
-    /**
-     * <pre>
-     *用户
-     * </pre>
-     *
-     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
-     */
-    java.util.List<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetListOrBuilder> 
-        getTargetsOrBuilderList();
-    /**
-     * <pre>
-     *用户
-     * </pre>
-     *
-     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
-     */
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetListOrBuilder getTargetsOrBuilder(
-        int index);
+    double getStopFreq();
 
     /**
      * <pre>
      *频率集
      * </pre>
      *
-     * <code>repeated double freq = 8;</code>
+     * <code>repeated double freq = 9;</code>
      * @return A list containing the freq.
      */
     java.util.List<java.lang.Double> getFreqList();
@@ -195,7 +157,7 @@ public final class NetworkDomain {
      *频率集
      * </pre>
      *
-     * <code>repeated double freq = 8;</code>
+     * <code>repeated double freq = 9;</code>
      * @return The count of freq.
      */
     int getFreqCount();
@@ -204,7 +166,7 @@ public final class NetworkDomain {
      *频率集
      * </pre>
      *
-     * <code>repeated double freq = 8;</code>
+     * <code>repeated double freq = 9;</code>
      * @param index The index of the element to return.
      * @return The freq at the given index.
      */
@@ -212,10 +174,108 @@ public final class NetworkDomain {
 
     /**
      * <pre>
+     *关键节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
+     * @return Whether the keyTarget field is set.
+     */
+    boolean hasKeyTarget();
+    /**
+     * <pre>
+     *关键节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
+     * @return The keyTarget.
+     */
+    zb.dcts.fusion.airDomain.target.Target.FusionTarget getKeyTarget();
+    /**
+     * <pre>
+     *关键节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
+     */
+    zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getKeyTargetOrBuilder();
+
+    /**
+     * <pre>
+     *中继节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
+     * @return Whether the relayTarget field is set.
+     */
+    boolean hasRelayTarget();
+    /**
+     * <pre>
+     *中继节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
+     * @return The relayTarget.
+     */
+    zb.dcts.fusion.airDomain.target.Target.FusionTarget getRelayTarget();
+    /**
+     * <pre>
+     *中继节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
+     */
+    zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getRelayTargetOrBuilder();
+
+    /**
+     * <pre>
+     *用户
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
+     */
+    java.util.List<zb.dcts.fusion.airDomain.target.Target.FusionTarget> 
+        getTargetsList();
+    /**
+     * <pre>
+     *用户
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
+     */
+    zb.dcts.fusion.airDomain.target.Target.FusionTarget getTargets(int index);
+    /**
+     * <pre>
+     *用户
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
+     */
+    int getTargetsCount();
+    /**
+     * <pre>
+     *用户
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
+     */
+    java.util.List<? extends zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> 
+        getTargetsOrBuilderList();
+    /**
+     * <pre>
+     *用户
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
+     */
+    zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getTargetsOrBuilder(
+        int index);
+
+    /**
+     * <pre>
      *用途
      * </pre>
      *
-     * <code>string purposes = 9;</code>
+     * <code>string purposes = 13;</code>
      * @return The purposes.
      */
     java.lang.String getPurposes();
@@ -224,7 +284,7 @@ public final class NetworkDomain {
      *用途
      * </pre>
      *
-     * <code>string purposes = 9;</code>
+     * <code>string purposes = 13;</code>
      * @return The bytes for purposes.
      */
     com.google.protobuf.ByteString
@@ -235,7 +295,7 @@ public final class NetworkDomain {
      *威胁等级
      * </pre>
      *
-     * <code>.zb.dcts.ThreatLevel thrt_lvl = 10;</code>
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 14;</code>
      * @return The enum numeric value on the wire for thrtLvl.
      */
     int getThrtLvlValue();
@@ -244,7 +304,7 @@ public final class NetworkDomain {
      *威胁等级
      * </pre>
      *
-     * <code>.zb.dcts.ThreatLevel thrt_lvl = 10;</code>
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 14;</code>
      * @return The thrtLvl.
      */
     zb.dcts.Dcts.ThreatLevel getThrtLvl();
@@ -254,7 +314,7 @@ public final class NetworkDomain {
      *可信度
      * </pre>
      *
-     * <code>uint32 reliability = 11;</code>
+     * <code>uint32 reliability = 15;</code>
      * @return The reliability.
      */
     int getReliability();
@@ -264,7 +324,7 @@ public final class NetworkDomain {
      *重要性
      * </pre>
      *
-     * <code>uint32 importance = 12;</code>
+     * <code>uint32 importance = 16;</code>
      * @return The importance.
      */
     int getImportance();
@@ -274,7 +334,7 @@ public final class NetworkDomain {
      *起始时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp start_time = 13;</code>
+     * <code>.zb.dcts.Timestamp start_time = 17;</code>
      * @return Whether the startTime field is set.
      */
     boolean hasStartTime();
@@ -283,7 +343,7 @@ public final class NetworkDomain {
      *起始时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp start_time = 13;</code>
+     * <code>.zb.dcts.Timestamp start_time = 17;</code>
      * @return The startTime.
      */
     zb.dcts.Dcts.Timestamp getStartTime();
@@ -292,7 +352,7 @@ public final class NetworkDomain {
      *起始时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp start_time = 13;</code>
+     * <code>.zb.dcts.Timestamp start_time = 17;</code>
      */
     zb.dcts.Dcts.TimestampOrBuilder getStartTimeOrBuilder();
 
@@ -301,7 +361,7 @@ public final class NetworkDomain {
      *终止时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+     * <code>.zb.dcts.Timestamp stop_time = 18;</code>
      * @return Whether the stopTime field is set.
      */
     boolean hasStopTime();
@@ -310,7 +370,7 @@ public final class NetworkDomain {
      *终止时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+     * <code>.zb.dcts.Timestamp stop_time = 18;</code>
      * @return The stopTime.
      */
     zb.dcts.Dcts.Timestamp getStopTime();
@@ -319,7 +379,7 @@ public final class NetworkDomain {
      *终止时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+     * <code>.zb.dcts.Timestamp stop_time = 18;</code>
      */
     zb.dcts.Dcts.TimestampOrBuilder getStopTimeOrBuilder();
   }
@@ -343,8 +403,10 @@ public final class NetworkDomain {
       camp_ = 0;
       type_ = "";
       topology_ = "";
-      targets_ = java.util.Collections.emptyList();
+      workMode_ = "";
+      modulation_ = "";
       freq_ = emptyDoubleList();
+      targets_ = java.util.Collections.emptyList();
       purposes_ = "";
       thrtLvl_ = 0;
     }
@@ -404,54 +466,41 @@ public final class NetworkDomain {
               break;
             }
             case 42: {
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder subBuilder = null;
-              if (keyTarget_ != null) {
-                subBuilder = keyTarget_.toBuilder();
-              }
-              keyTarget_ = input.readMessage(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(keyTarget_);
-                keyTarget_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              workMode_ = s;
               break;
             }
             case 50: {
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder subBuilder = null;
-              if (relayTarget_ != null) {
-                subBuilder = relayTarget_.toBuilder();
-              }
-              relayTarget_ = input.readMessage(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(relayTarget_);
-                relayTarget_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              modulation_ = s;
               break;
             }
-            case 58: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                targets_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              targets_.add(
-                  input.readMessage(zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.parser(), extensionRegistry));
+            case 57: {
+
+              startFreq_ = input.readDouble();
               break;
             }
             case 65: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+
+              stopFreq_ = input.readDouble();
+              break;
+            }
+            case 73: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 freq_ = newDoubleList();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               freq_.addDouble(input.readDouble());
               break;
             }
-            case 66: {
+            case 74: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
                 freq_ = newDoubleList();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               while (input.getBytesUntilLimit() > 0) {
                 freq_.addDouble(input.readDouble());
@@ -459,29 +508,64 @@ public final class NetworkDomain {
               input.popLimit(limit);
               break;
             }
-            case 74: {
+            case 82: {
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder subBuilder = null;
+              if (keyTarget_ != null) {
+                subBuilder = keyTarget_.toBuilder();
+              }
+              keyTarget_ = input.readMessage(zb.dcts.fusion.airDomain.target.Target.FusionTarget.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(keyTarget_);
+                keyTarget_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 90: {
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder subBuilder = null;
+              if (relayTarget_ != null) {
+                subBuilder = relayTarget_.toBuilder();
+              }
+              relayTarget_ = input.readMessage(zb.dcts.fusion.airDomain.target.Target.FusionTarget.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(relayTarget_);
+                relayTarget_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 98: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                targets_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.target.Target.FusionTarget>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              targets_.add(
+                  input.readMessage(zb.dcts.fusion.airDomain.target.Target.FusionTarget.parser(), extensionRegistry));
+              break;
+            }
+            case 106: {
               java.lang.String s = input.readStringRequireUtf8();
 
               purposes_ = s;
               break;
             }
-            case 80: {
+            case 112: {
               int rawValue = input.readEnum();
 
               thrtLvl_ = rawValue;
               break;
             }
-            case 88: {
+            case 120: {
 
               reliability_ = input.readUInt32();
               break;
             }
-            case 96: {
+            case 128: {
 
               importance_ = input.readUInt32();
               break;
             }
-            case 106: {
+            case 138: {
               zb.dcts.Dcts.Timestamp.Builder subBuilder = null;
               if (startTime_ != null) {
                 subBuilder = startTime_.toBuilder();
@@ -494,7 +578,7 @@ public final class NetworkDomain {
 
               break;
             }
-            case 114: {
+            case 146: {
               zb.dcts.Dcts.Timestamp.Builder subBuilder = null;
               if (stopTime_ != null) {
                 subBuilder = stopTime_.toBuilder();
@@ -523,10 +607,10 @@ public final class NetworkDomain {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          targets_ = java.util.Collections.unmodifiableList(targets_);
+          freq_.makeImmutable(); // C
         }
         if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          freq_.makeImmutable(); // C
+          targets_ = java.util.Collections.unmodifiableList(targets_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -675,150 +759,136 @@ public final class NetworkDomain {
       }
     }
 
-    public static final int KEY_TARGET_FIELD_NUMBER = 5;
-    private zb.dcts.fusion.airDomain.target.TargetOuterClass.Target keyTarget_;
+    public static final int WORK_MODE_FIELD_NUMBER = 5;
+    private volatile java.lang.Object workMode_;
     /**
      * <pre>
-     *关键节点
+     *工作模式
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
-     * @return Whether the keyTarget field is set.
+     * <code>string work_mode = 5;</code>
+     * @return The workMode.
      */
     @java.lang.Override
-    public boolean hasKeyTarget() {
-      return keyTarget_ != null;
+    public java.lang.String getWorkMode() {
+      java.lang.Object ref = workMode_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        workMode_ = s;
+        return s;
+      }
     }
     /**
      * <pre>
-     *关键节点
+     *工作模式
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
-     * @return The keyTarget.
+     * <code>string work_mode = 5;</code>
+     * @return The bytes for workMode.
      */
     @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getKeyTarget() {
-      return keyTarget_ == null ? zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : keyTarget_;
-    }
-    /**
-     * <pre>
-     *关键节点
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
-     */
-    @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getKeyTargetOrBuilder() {
-      return getKeyTarget();
-    }
-
-    public static final int RELAY_TARGET_FIELD_NUMBER = 6;
-    private zb.dcts.fusion.airDomain.target.TargetOuterClass.Target relayTarget_;
-    /**
-     * <pre>
-     *中继节点
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
-     * @return Whether the relayTarget field is set.
-     */
-    @java.lang.Override
-    public boolean hasRelayTarget() {
-      return relayTarget_ != null;
-    }
-    /**
-     * <pre>
-     *中继节点
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
-     * @return The relayTarget.
-     */
-    @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getRelayTarget() {
-      return relayTarget_ == null ? zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : relayTarget_;
-    }
-    /**
-     * <pre>
-     *中继节点
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
-     */
-    @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getRelayTargetOrBuilder() {
-      return getRelayTarget();
+    public com.google.protobuf.ByteString
+        getWorkModeBytes() {
+      java.lang.Object ref = workMode_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        workMode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    public static final int TARGETS_FIELD_NUMBER = 7;
-    private java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList> targets_;
+    public static final int MODULATION_FIELD_NUMBER = 6;
+    private volatile java.lang.Object modulation_;
     /**
      * <pre>
-     *用户
+     *调试方式
      * </pre>
      *
-     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+     * <code>string modulation = 6;</code>
+     * @return The modulation.
      */
     @java.lang.Override
-    public java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList> getTargetsList() {
-      return targets_;
+    public java.lang.String getModulation() {
+      java.lang.Object ref = modulation_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        modulation_ = s;
+        return s;
+      }
     }
     /**
      * <pre>
-     *用户
+     *调试方式
      * </pre>
      *
-     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+     * <code>string modulation = 6;</code>
+     * @return The bytes for modulation.
      */
     @java.lang.Override
-    public java.util.List<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetListOrBuilder> 
-        getTargetsOrBuilderList() {
-      return targets_;
-    }
-    /**
-     * <pre>
-     *用户
-     * </pre>
-     *
-     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
-     */
-    @java.lang.Override
-    public int getTargetsCount() {
-      return targets_.size();
-    }
-    /**
-     * <pre>
-     *用户
-     * </pre>
-     *
-     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
-     */
-    @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList getTargets(int index) {
-      return targets_.get(index);
-    }
-    /**
-     * <pre>
-     *用户
-     * </pre>
-     *
-     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
-     */
-    @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetListOrBuilder getTargetsOrBuilder(
-        int index) {
-      return targets_.get(index);
+    public com.google.protobuf.ByteString
+        getModulationBytes() {
+      java.lang.Object ref = modulation_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        modulation_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    public static final int FREQ_FIELD_NUMBER = 8;
+    public static final int START_FREQ_FIELD_NUMBER = 7;
+    private double startFreq_;
+    /**
+     * <pre>
+     *起始频率
+     * </pre>
+     *
+     * <code>double start_freq = 7;</code>
+     * @return The startFreq.
+     */
+    @java.lang.Override
+    public double getStartFreq() {
+      return startFreq_;
+    }
+
+    public static final int STOP_FREQ_FIELD_NUMBER = 8;
+    private double stopFreq_;
+    /**
+     * <pre>
+     *终止频率
+     * </pre>
+     *
+     * <code>double stop_freq = 8;</code>
+     * @return The stopFreq.
+     */
+    @java.lang.Override
+    public double getStopFreq() {
+      return stopFreq_;
+    }
+
+    public static final int FREQ_FIELD_NUMBER = 9;
     private com.google.protobuf.Internal.DoubleList freq_;
     /**
      * <pre>
      *频率集
      * </pre>
      *
-     * <code>repeated double freq = 8;</code>
+     * <code>repeated double freq = 9;</code>
      * @return A list containing the freq.
      */
     @java.lang.Override
@@ -831,7 +901,7 @@ public final class NetworkDomain {
      *频率集
      * </pre>
      *
-     * <code>repeated double freq = 8;</code>
+     * <code>repeated double freq = 9;</code>
      * @return The count of freq.
      */
     public int getFreqCount() {
@@ -842,7 +912,7 @@ public final class NetworkDomain {
      *频率集
      * </pre>
      *
-     * <code>repeated double freq = 8;</code>
+     * <code>repeated double freq = 9;</code>
      * @param index The index of the element to return.
      * @return The freq at the given index.
      */
@@ -851,14 +921,150 @@ public final class NetworkDomain {
     }
     private int freqMemoizedSerializedSize = -1;
 
-    public static final int PURPOSES_FIELD_NUMBER = 9;
+    public static final int KEY_TARGET_FIELD_NUMBER = 10;
+    private zb.dcts.fusion.airDomain.target.Target.FusionTarget keyTarget_;
+    /**
+     * <pre>
+     *关键节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
+     * @return Whether the keyTarget field is set.
+     */
+    @java.lang.Override
+    public boolean hasKeyTarget() {
+      return keyTarget_ != null;
+    }
+    /**
+     * <pre>
+     *关键节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
+     * @return The keyTarget.
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.target.Target.FusionTarget getKeyTarget() {
+      return keyTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : keyTarget_;
+    }
+    /**
+     * <pre>
+     *关键节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getKeyTargetOrBuilder() {
+      return getKeyTarget();
+    }
+
+    public static final int RELAY_TARGET_FIELD_NUMBER = 11;
+    private zb.dcts.fusion.airDomain.target.Target.FusionTarget relayTarget_;
+    /**
+     * <pre>
+     *中继节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
+     * @return Whether the relayTarget field is set.
+     */
+    @java.lang.Override
+    public boolean hasRelayTarget() {
+      return relayTarget_ != null;
+    }
+    /**
+     * <pre>
+     *中继节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
+     * @return The relayTarget.
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.target.Target.FusionTarget getRelayTarget() {
+      return relayTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : relayTarget_;
+    }
+    /**
+     * <pre>
+     *中继节点
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getRelayTargetOrBuilder() {
+      return getRelayTarget();
+    }
+
+    public static final int TARGETS_FIELD_NUMBER = 12;
+    private java.util.List<zb.dcts.fusion.airDomain.target.Target.FusionTarget> targets_;
+    /**
+     * <pre>
+     *用户
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
+     */
+    @java.lang.Override
+    public java.util.List<zb.dcts.fusion.airDomain.target.Target.FusionTarget> getTargetsList() {
+      return targets_;
+    }
+    /**
+     * <pre>
+     *用户
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> 
+        getTargetsOrBuilderList() {
+      return targets_;
+    }
+    /**
+     * <pre>
+     *用户
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
+     */
+    @java.lang.Override
+    public int getTargetsCount() {
+      return targets_.size();
+    }
+    /**
+     * <pre>
+     *用户
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.target.Target.FusionTarget getTargets(int index) {
+      return targets_.get(index);
+    }
+    /**
+     * <pre>
+     *用户
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getTargetsOrBuilder(
+        int index) {
+      return targets_.get(index);
+    }
+
+    public static final int PURPOSES_FIELD_NUMBER = 13;
     private volatile java.lang.Object purposes_;
     /**
      * <pre>
      *用途
      * </pre>
      *
-     * <code>string purposes = 9;</code>
+     * <code>string purposes = 13;</code>
      * @return The purposes.
      */
     @java.lang.Override
@@ -879,7 +1085,7 @@ public final class NetworkDomain {
      *用途
      * </pre>
      *
-     * <code>string purposes = 9;</code>
+     * <code>string purposes = 13;</code>
      * @return The bytes for purposes.
      */
     @java.lang.Override
@@ -897,14 +1103,14 @@ public final class NetworkDomain {
       }
     }
 
-    public static final int THRT_LVL_FIELD_NUMBER = 10;
+    public static final int THRT_LVL_FIELD_NUMBER = 14;
     private int thrtLvl_;
     /**
      * <pre>
      *威胁等级
      * </pre>
      *
-     * <code>.zb.dcts.ThreatLevel thrt_lvl = 10;</code>
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 14;</code>
      * @return The enum numeric value on the wire for thrtLvl.
      */
     @java.lang.Override public int getThrtLvlValue() {
@@ -915,7 +1121,7 @@ public final class NetworkDomain {
      *威胁等级
      * </pre>
      *
-     * <code>.zb.dcts.ThreatLevel thrt_lvl = 10;</code>
+     * <code>.zb.dcts.ThreatLevel thrt_lvl = 14;</code>
      * @return The thrtLvl.
      */
     @java.lang.Override public zb.dcts.Dcts.ThreatLevel getThrtLvl() {
@@ -924,14 +1130,14 @@ public final class NetworkDomain {
       return result == null ? zb.dcts.Dcts.ThreatLevel.UNRECOGNIZED : result;
     }
 
-    public static final int RELIABILITY_FIELD_NUMBER = 11;
+    public static final int RELIABILITY_FIELD_NUMBER = 15;
     private int reliability_;
     /**
      * <pre>
      *可信度
      * </pre>
      *
-     * <code>uint32 reliability = 11;</code>
+     * <code>uint32 reliability = 15;</code>
      * @return The reliability.
      */
     @java.lang.Override
@@ -939,14 +1145,14 @@ public final class NetworkDomain {
       return reliability_;
     }
 
-    public static final int IMPORTANCE_FIELD_NUMBER = 12;
+    public static final int IMPORTANCE_FIELD_NUMBER = 16;
     private int importance_;
     /**
      * <pre>
      *重要性
      * </pre>
      *
-     * <code>uint32 importance = 12;</code>
+     * <code>uint32 importance = 16;</code>
      * @return The importance.
      */
     @java.lang.Override
@@ -954,14 +1160,14 @@ public final class NetworkDomain {
       return importance_;
     }
 
-    public static final int START_TIME_FIELD_NUMBER = 13;
+    public static final int START_TIME_FIELD_NUMBER = 17;
     private zb.dcts.Dcts.Timestamp startTime_;
     /**
      * <pre>
      *起始时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp start_time = 13;</code>
+     * <code>.zb.dcts.Timestamp start_time = 17;</code>
      * @return Whether the startTime field is set.
      */
     @java.lang.Override
@@ -973,7 +1179,7 @@ public final class NetworkDomain {
      *起始时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp start_time = 13;</code>
+     * <code>.zb.dcts.Timestamp start_time = 17;</code>
      * @return The startTime.
      */
     @java.lang.Override
@@ -985,21 +1191,21 @@ public final class NetworkDomain {
      *起始时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp start_time = 13;</code>
+     * <code>.zb.dcts.Timestamp start_time = 17;</code>
      */
     @java.lang.Override
     public zb.dcts.Dcts.TimestampOrBuilder getStartTimeOrBuilder() {
       return getStartTime();
     }
 
-    public static final int STOP_TIME_FIELD_NUMBER = 14;
+    public static final int STOP_TIME_FIELD_NUMBER = 18;
     private zb.dcts.Dcts.Timestamp stopTime_;
     /**
      * <pre>
      *终止时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+     * <code>.zb.dcts.Timestamp stop_time = 18;</code>
      * @return Whether the stopTime field is set.
      */
     @java.lang.Override
@@ -1011,7 +1217,7 @@ public final class NetworkDomain {
      *终止时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+     * <code>.zb.dcts.Timestamp stop_time = 18;</code>
      * @return The stopTime.
      */
     @java.lang.Override
@@ -1023,7 +1229,7 @@ public final class NetworkDomain {
      *终止时间
      * </pre>
      *
-     * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+     * <code>.zb.dcts.Timestamp stop_time = 18;</code>
      */
     @java.lang.Override
     public zb.dcts.Dcts.TimestampOrBuilder getStopTimeOrBuilder() {
@@ -1057,39 +1263,51 @@ public final class NetworkDomain {
       if (!getTopologyBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, topology_);
       }
-      if (keyTarget_ != null) {
-        output.writeMessage(5, getKeyTarget());
+      if (!getWorkModeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, workMode_);
       }
-      if (relayTarget_ != null) {
-        output.writeMessage(6, getRelayTarget());
+      if (!getModulationBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, modulation_);
       }
-      for (int i = 0; i < targets_.size(); i++) {
-        output.writeMessage(7, targets_.get(i));
+      if (startFreq_ != 0D) {
+        output.writeDouble(7, startFreq_);
+      }
+      if (stopFreq_ != 0D) {
+        output.writeDouble(8, stopFreq_);
       }
       if (getFreqList().size() > 0) {
-        output.writeUInt32NoTag(66);
+        output.writeUInt32NoTag(74);
         output.writeUInt32NoTag(freqMemoizedSerializedSize);
       }
       for (int i = 0; i < freq_.size(); i++) {
         output.writeDoubleNoTag(freq_.getDouble(i));
       }
+      if (keyTarget_ != null) {
+        output.writeMessage(10, getKeyTarget());
+      }
+      if (relayTarget_ != null) {
+        output.writeMessage(11, getRelayTarget());
+      }
+      for (int i = 0; i < targets_.size(); i++) {
+        output.writeMessage(12, targets_.get(i));
+      }
       if (!getPurposesBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, purposes_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 13, purposes_);
       }
       if (thrtLvl_ != zb.dcts.Dcts.ThreatLevel.NONE.getNumber()) {
-        output.writeEnum(10, thrtLvl_);
+        output.writeEnum(14, thrtLvl_);
       }
       if (reliability_ != 0) {
-        output.writeUInt32(11, reliability_);
+        output.writeUInt32(15, reliability_);
       }
       if (importance_ != 0) {
-        output.writeUInt32(12, importance_);
+        output.writeUInt32(16, importance_);
       }
       if (startTime_ != null) {
-        output.writeMessage(13, getStartTime());
+        output.writeMessage(17, getStartTime());
       }
       if (stopTime_ != null) {
-        output.writeMessage(14, getStopTime());
+        output.writeMessage(18, getStopTime());
       }
       unknownFields.writeTo(output);
     }
@@ -1114,17 +1332,19 @@ public final class NetworkDomain {
       if (!getTopologyBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, topology_);
       }
-      if (keyTarget_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getKeyTarget());
+      if (!getWorkModeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, workMode_);
       }
-      if (relayTarget_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getRelayTarget());
+      if (!getModulationBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, modulation_);
       }
-      for (int i = 0; i < targets_.size(); i++) {
+      if (startFreq_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, targets_.get(i));
+          .computeDoubleSize(7, startFreq_);
+      }
+      if (stopFreq_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(8, stopFreq_);
       }
       {
         int dataSize = 0;
@@ -1137,28 +1357,40 @@ public final class NetworkDomain {
         }
         freqMemoizedSerializedSize = dataSize;
       }
+      if (keyTarget_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, getKeyTarget());
+      }
+      if (relayTarget_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getRelayTarget());
+      }
+      for (int i = 0; i < targets_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, targets_.get(i));
+      }
       if (!getPurposesBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, purposes_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, purposes_);
       }
       if (thrtLvl_ != zb.dcts.Dcts.ThreatLevel.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(10, thrtLvl_);
+          .computeEnumSize(14, thrtLvl_);
       }
       if (reliability_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(11, reliability_);
+          .computeUInt32Size(15, reliability_);
       }
       if (importance_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(12, importance_);
+          .computeUInt32Size(16, importance_);
       }
       if (startTime_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(13, getStartTime());
+          .computeMessageSize(17, getStartTime());
       }
       if (stopTime_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(14, getStopTime());
+          .computeMessageSize(18, getStopTime());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1182,6 +1414,18 @@ public final class NetworkDomain {
           .equals(other.getType())) return false;
       if (!getTopology()
           .equals(other.getTopology())) return false;
+      if (!getWorkMode()
+          .equals(other.getWorkMode())) return false;
+      if (!getModulation()
+          .equals(other.getModulation())) return false;
+      if (java.lang.Double.doubleToLongBits(getStartFreq())
+          != java.lang.Double.doubleToLongBits(
+              other.getStartFreq())) return false;
+      if (java.lang.Double.doubleToLongBits(getStopFreq())
+          != java.lang.Double.doubleToLongBits(
+              other.getStopFreq())) return false;
+      if (!getFreqList()
+          .equals(other.getFreqList())) return false;
       if (hasKeyTarget() != other.hasKeyTarget()) return false;
       if (hasKeyTarget()) {
         if (!getKeyTarget()
@@ -1194,8 +1438,6 @@ public final class NetworkDomain {
       }
       if (!getTargetsList()
           .equals(other.getTargetsList())) return false;
-      if (!getFreqList()
-          .equals(other.getFreqList())) return false;
       if (!getPurposes()
           .equals(other.getPurposes())) return false;
       if (thrtLvl_ != other.thrtLvl_) return false;
@@ -1232,6 +1474,20 @@ public final class NetworkDomain {
       hash = (53 * hash) + getType().hashCode();
       hash = (37 * hash) + TOPOLOGY_FIELD_NUMBER;
       hash = (53 * hash) + getTopology().hashCode();
+      hash = (37 * hash) + WORK_MODE_FIELD_NUMBER;
+      hash = (53 * hash) + getWorkMode().hashCode();
+      hash = (37 * hash) + MODULATION_FIELD_NUMBER;
+      hash = (53 * hash) + getModulation().hashCode();
+      hash = (37 * hash) + START_FREQ_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getStartFreq()));
+      hash = (37 * hash) + STOP_FREQ_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getStopFreq()));
+      if (getFreqCount() > 0) {
+        hash = (37 * hash) + FREQ_FIELD_NUMBER;
+        hash = (53 * hash) + getFreqList().hashCode();
+      }
       if (hasKeyTarget()) {
         hash = (37 * hash) + KEY_TARGET_FIELD_NUMBER;
         hash = (53 * hash) + getKeyTarget().hashCode();
@@ -1243,10 +1499,6 @@ public final class NetworkDomain {
       if (getTargetsCount() > 0) {
         hash = (37 * hash) + TARGETS_FIELD_NUMBER;
         hash = (53 * hash) + getTargetsList().hashCode();
-      }
-      if (getFreqCount() > 0) {
-        hash = (37 * hash) + FREQ_FIELD_NUMBER;
-        hash = (53 * hash) + getFreqList().hashCode();
       }
       hash = (37 * hash) + PURPOSES_FIELD_NUMBER;
       hash = (53 * hash) + getPurposes().hashCode();
@@ -1410,6 +1662,16 @@ public final class NetworkDomain {
 
         topology_ = "";
 
+        workMode_ = "";
+
+        modulation_ = "";
+
+        startFreq_ = 0D;
+
+        stopFreq_ = 0D;
+
+        freq_ = emptyDoubleList();
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (keyTargetBuilder_ == null) {
           keyTarget_ = null;
         } else {
@@ -1424,12 +1686,10 @@ public final class NetworkDomain {
         }
         if (targetsBuilder_ == null) {
           targets_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           targetsBuilder_.clear();
         }
-        freq_ = emptyDoubleList();
-        bitField0_ = (bitField0_ & ~0x00000002);
         purposes_ = "";
 
         thrtLvl_ = 0;
@@ -1481,6 +1741,15 @@ public final class NetworkDomain {
         result.camp_ = camp_;
         result.type_ = type_;
         result.topology_ = topology_;
+        result.workMode_ = workMode_;
+        result.modulation_ = modulation_;
+        result.startFreq_ = startFreq_;
+        result.stopFreq_ = stopFreq_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          freq_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.freq_ = freq_;
         if (keyTargetBuilder_ == null) {
           result.keyTarget_ = keyTarget_;
         } else {
@@ -1492,19 +1761,14 @@ public final class NetworkDomain {
           result.relayTarget_ = relayTargetBuilder_.build();
         }
         if (targetsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
+          if (((bitField0_ & 0x00000002) != 0)) {
             targets_ = java.util.Collections.unmodifiableList(targets_);
-            bitField0_ = (bitField0_ & ~0x00000001);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.targets_ = targets_;
         } else {
           result.targets_ = targetsBuilder_.build();
         }
-        if (((bitField0_ & 0x00000002) != 0)) {
-          freq_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        }
-        result.freq_ = freq_;
         result.purposes_ = purposes_;
         result.thrtLvl_ = thrtLvl_;
         result.reliability_ = reliability_;
@@ -1581,6 +1845,30 @@ public final class NetworkDomain {
           topology_ = other.topology_;
           onChanged();
         }
+        if (!other.getWorkMode().isEmpty()) {
+          workMode_ = other.workMode_;
+          onChanged();
+        }
+        if (!other.getModulation().isEmpty()) {
+          modulation_ = other.modulation_;
+          onChanged();
+        }
+        if (other.getStartFreq() != 0D) {
+          setStartFreq(other.getStartFreq());
+        }
+        if (other.getStopFreq() != 0D) {
+          setStopFreq(other.getStopFreq());
+        }
+        if (!other.freq_.isEmpty()) {
+          if (freq_.isEmpty()) {
+            freq_ = other.freq_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureFreqIsMutable();
+            freq_.addAll(other.freq_);
+          }
+          onChanged();
+        }
         if (other.hasKeyTarget()) {
           mergeKeyTarget(other.getKeyTarget());
         }
@@ -1591,7 +1879,7 @@ public final class NetworkDomain {
           if (!other.targets_.isEmpty()) {
             if (targets_.isEmpty()) {
               targets_ = other.targets_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureTargetsIsMutable();
               targets_.addAll(other.targets_);
@@ -1604,7 +1892,7 @@ public final class NetworkDomain {
               targetsBuilder_.dispose();
               targetsBuilder_ = null;
               targets_ = other.targets_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000002);
               targetsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getTargetsFieldBuilder() : null;
@@ -1612,16 +1900,6 @@ public final class NetworkDomain {
               targetsBuilder_.addAllMessages(other.targets_);
             }
           }
-        }
-        if (!other.freq_.isEmpty()) {
-          if (freq_.isEmpty()) {
-            freq_ = other.freq_;
-            bitField0_ = (bitField0_ & ~0x00000002);
-          } else {
-            ensureFreqIsMutable();
-            freq_.addAll(other.freq_);
-          }
-          onChanged();
         }
         if (!other.getPurposes().isEmpty()) {
           purposes_ = other.purposes_;
@@ -1969,15 +2247,400 @@ public final class NetworkDomain {
         return this;
       }
 
-      private zb.dcts.fusion.airDomain.target.TargetOuterClass.Target keyTarget_;
+      private java.lang.Object workMode_ = "";
+      /**
+       * <pre>
+       *工作模式
+       * </pre>
+       *
+       * <code>string work_mode = 5;</code>
+       * @return The workMode.
+       */
+      public java.lang.String getWorkMode() {
+        java.lang.Object ref = workMode_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          workMode_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *工作模式
+       * </pre>
+       *
+       * <code>string work_mode = 5;</code>
+       * @return The bytes for workMode.
+       */
+      public com.google.protobuf.ByteString
+          getWorkModeBytes() {
+        java.lang.Object ref = workMode_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          workMode_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *工作模式
+       * </pre>
+       *
+       * <code>string work_mode = 5;</code>
+       * @param value The workMode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWorkMode(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        workMode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *工作模式
+       * </pre>
+       *
+       * <code>string work_mode = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearWorkMode() {
+        
+        workMode_ = getDefaultInstance().getWorkMode();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *工作模式
+       * </pre>
+       *
+       * <code>string work_mode = 5;</code>
+       * @param value The bytes for workMode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWorkModeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        workMode_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object modulation_ = "";
+      /**
+       * <pre>
+       *调试方式
+       * </pre>
+       *
+       * <code>string modulation = 6;</code>
+       * @return The modulation.
+       */
+      public java.lang.String getModulation() {
+        java.lang.Object ref = modulation_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          modulation_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *调试方式
+       * </pre>
+       *
+       * <code>string modulation = 6;</code>
+       * @return The bytes for modulation.
+       */
+      public com.google.protobuf.ByteString
+          getModulationBytes() {
+        java.lang.Object ref = modulation_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          modulation_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *调试方式
+       * </pre>
+       *
+       * <code>string modulation = 6;</code>
+       * @param value The modulation to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModulation(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        modulation_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *调试方式
+       * </pre>
+       *
+       * <code>string modulation = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModulation() {
+        
+        modulation_ = getDefaultInstance().getModulation();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *调试方式
+       * </pre>
+       *
+       * <code>string modulation = 6;</code>
+       * @param value The bytes for modulation to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModulationBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        modulation_ = value;
+        onChanged();
+        return this;
+      }
+
+      private double startFreq_ ;
+      /**
+       * <pre>
+       *起始频率
+       * </pre>
+       *
+       * <code>double start_freq = 7;</code>
+       * @return The startFreq.
+       */
+      @java.lang.Override
+      public double getStartFreq() {
+        return startFreq_;
+      }
+      /**
+       * <pre>
+       *起始频率
+       * </pre>
+       *
+       * <code>double start_freq = 7;</code>
+       * @param value The startFreq to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStartFreq(double value) {
+        
+        startFreq_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *起始频率
+       * </pre>
+       *
+       * <code>double start_freq = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStartFreq() {
+        
+        startFreq_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double stopFreq_ ;
+      /**
+       * <pre>
+       *终止频率
+       * </pre>
+       *
+       * <code>double stop_freq = 8;</code>
+       * @return The stopFreq.
+       */
+      @java.lang.Override
+      public double getStopFreq() {
+        return stopFreq_;
+      }
+      /**
+       * <pre>
+       *终止频率
+       * </pre>
+       *
+       * <code>double stop_freq = 8;</code>
+       * @param value The stopFreq to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStopFreq(double value) {
+        
+        stopFreq_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *终止频率
+       * </pre>
+       *
+       * <code>double stop_freq = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStopFreq() {
+        
+        stopFreq_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.DoubleList freq_ = emptyDoubleList();
+      private void ensureFreqIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          freq_ = mutableCopy(freq_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <pre>
+       *频率集
+       * </pre>
+       *
+       * <code>repeated double freq = 9;</code>
+       * @return A list containing the freq.
+       */
+      public java.util.List<java.lang.Double>
+          getFreqList() {
+        return ((bitField0_ & 0x00000001) != 0) ?
+                 java.util.Collections.unmodifiableList(freq_) : freq_;
+      }
+      /**
+       * <pre>
+       *频率集
+       * </pre>
+       *
+       * <code>repeated double freq = 9;</code>
+       * @return The count of freq.
+       */
+      public int getFreqCount() {
+        return freq_.size();
+      }
+      /**
+       * <pre>
+       *频率集
+       * </pre>
+       *
+       * <code>repeated double freq = 9;</code>
+       * @param index The index of the element to return.
+       * @return The freq at the given index.
+       */
+      public double getFreq(int index) {
+        return freq_.getDouble(index);
+      }
+      /**
+       * <pre>
+       *频率集
+       * </pre>
+       *
+       * <code>repeated double freq = 9;</code>
+       * @param index The index to set the value at.
+       * @param value The freq to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFreq(
+          int index, double value) {
+        ensureFreqIsMutable();
+        freq_.setDouble(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *频率集
+       * </pre>
+       *
+       * <code>repeated double freq = 9;</code>
+       * @param value The freq to add.
+       * @return This builder for chaining.
+       */
+      public Builder addFreq(double value) {
+        ensureFreqIsMutable();
+        freq_.addDouble(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *频率集
+       * </pre>
+       *
+       * <code>repeated double freq = 9;</code>
+       * @param values The freq to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllFreq(
+          java.lang.Iterable<? extends java.lang.Double> values) {
+        ensureFreqIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, freq_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *频率集
+       * </pre>
+       *
+       * <code>repeated double freq = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFreq() {
+        freq_ = emptyDoubleList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      private zb.dcts.fusion.airDomain.target.Target.FusionTarget keyTarget_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder> keyTargetBuilder_;
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> keyTargetBuilder_;
       /**
        * <pre>
        *关键节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
        * @return Whether the keyTarget field is set.
        */
       public boolean hasKeyTarget() {
@@ -1988,12 +2651,12 @@ public final class NetworkDomain {
        *关键节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
        * @return The keyTarget.
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getKeyTarget() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget getKeyTarget() {
         if (keyTargetBuilder_ == null) {
-          return keyTarget_ == null ? zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : keyTarget_;
+          return keyTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : keyTarget_;
         } else {
           return keyTargetBuilder_.getMessage();
         }
@@ -2003,9 +2666,9 @@ public final class NetworkDomain {
        *关键节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
        */
-      public Builder setKeyTarget(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target value) {
+      public Builder setKeyTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
         if (keyTargetBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2023,10 +2686,10 @@ public final class NetworkDomain {
        *关键节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
        */
       public Builder setKeyTarget(
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder builderForValue) {
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder builderForValue) {
         if (keyTargetBuilder_ == null) {
           keyTarget_ = builderForValue.build();
           onChanged();
@@ -2041,13 +2704,13 @@ public final class NetworkDomain {
        *关键节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
        */
-      public Builder mergeKeyTarget(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target value) {
+      public Builder mergeKeyTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
         if (keyTargetBuilder_ == null) {
           if (keyTarget_ != null) {
             keyTarget_ =
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.newBuilder(keyTarget_).mergeFrom(value).buildPartial();
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.newBuilder(keyTarget_).mergeFrom(value).buildPartial();
           } else {
             keyTarget_ = value;
           }
@@ -2063,7 +2726,7 @@ public final class NetworkDomain {
        *关键节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
        */
       public Builder clearKeyTarget() {
         if (keyTargetBuilder_ == null) {
@@ -2081,9 +2744,9 @@ public final class NetworkDomain {
        *关键节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder getKeyTargetBuilder() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder getKeyTargetBuilder() {
         
         onChanged();
         return getKeyTargetFieldBuilder().getBuilder();
@@ -2093,14 +2756,14 @@ public final class NetworkDomain {
        *关键节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getKeyTargetOrBuilder() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getKeyTargetOrBuilder() {
         if (keyTargetBuilder_ != null) {
           return keyTargetBuilder_.getMessageOrBuilder();
         } else {
           return keyTarget_ == null ?
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : keyTarget_;
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : keyTarget_;
         }
       }
       /**
@@ -2108,14 +2771,14 @@ public final class NetworkDomain {
        *关键节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target key_target = 5;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget key_target = 10;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder> 
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> 
           getKeyTargetFieldBuilder() {
         if (keyTargetBuilder_ == null) {
           keyTargetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder>(
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder>(
                   getKeyTarget(),
                   getParentForChildren(),
                   isClean());
@@ -2124,15 +2787,15 @@ public final class NetworkDomain {
         return keyTargetBuilder_;
       }
 
-      private zb.dcts.fusion.airDomain.target.TargetOuterClass.Target relayTarget_;
+      private zb.dcts.fusion.airDomain.target.Target.FusionTarget relayTarget_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder> relayTargetBuilder_;
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> relayTargetBuilder_;
       /**
        * <pre>
        *中继节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
        * @return Whether the relayTarget field is set.
        */
       public boolean hasRelayTarget() {
@@ -2143,12 +2806,12 @@ public final class NetworkDomain {
        *中继节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
        * @return The relayTarget.
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getRelayTarget() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget getRelayTarget() {
         if (relayTargetBuilder_ == null) {
-          return relayTarget_ == null ? zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : relayTarget_;
+          return relayTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : relayTarget_;
         } else {
           return relayTargetBuilder_.getMessage();
         }
@@ -2158,9 +2821,9 @@ public final class NetworkDomain {
        *中继节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
        */
-      public Builder setRelayTarget(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target value) {
+      public Builder setRelayTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
         if (relayTargetBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2178,10 +2841,10 @@ public final class NetworkDomain {
        *中继节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
        */
       public Builder setRelayTarget(
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder builderForValue) {
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder builderForValue) {
         if (relayTargetBuilder_ == null) {
           relayTarget_ = builderForValue.build();
           onChanged();
@@ -2196,13 +2859,13 @@ public final class NetworkDomain {
        *中继节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
        */
-      public Builder mergeRelayTarget(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target value) {
+      public Builder mergeRelayTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
         if (relayTargetBuilder_ == null) {
           if (relayTarget_ != null) {
             relayTarget_ =
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.newBuilder(relayTarget_).mergeFrom(value).buildPartial();
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.newBuilder(relayTarget_).mergeFrom(value).buildPartial();
           } else {
             relayTarget_ = value;
           }
@@ -2218,7 +2881,7 @@ public final class NetworkDomain {
        *中继节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
        */
       public Builder clearRelayTarget() {
         if (relayTargetBuilder_ == null) {
@@ -2236,9 +2899,9 @@ public final class NetworkDomain {
        *中继节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder getRelayTargetBuilder() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder getRelayTargetBuilder() {
         
         onChanged();
         return getRelayTargetFieldBuilder().getBuilder();
@@ -2248,14 +2911,14 @@ public final class NetworkDomain {
        *中继节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getRelayTargetOrBuilder() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getRelayTargetOrBuilder() {
         if (relayTargetBuilder_ != null) {
           return relayTargetBuilder_.getMessageOrBuilder();
         } else {
           return relayTarget_ == null ?
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : relayTarget_;
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : relayTarget_;
         }
       }
       /**
@@ -2263,14 +2926,14 @@ public final class NetworkDomain {
        *中继节点
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target relay_target = 6;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget relay_target = 11;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder> 
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> 
           getRelayTargetFieldBuilder() {
         if (relayTargetBuilder_ == null) {
           relayTargetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder>(
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder>(
                   getRelayTarget(),
                   getParentForChildren(),
                   isClean());
@@ -2279,26 +2942,26 @@ public final class NetworkDomain {
         return relayTargetBuilder_;
       }
 
-      private java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList> targets_ =
+      private java.util.List<zb.dcts.fusion.airDomain.target.Target.FusionTarget> targets_ =
         java.util.Collections.emptyList();
       private void ensureTargetsIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          targets_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList>(targets_);
-          bitField0_ |= 0x00000001;
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          targets_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.target.Target.FusionTarget>(targets_);
+          bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetListOrBuilder> targetsBuilder_;
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> targetsBuilder_;
 
       /**
        * <pre>
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
-      public java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList> getTargetsList() {
+      public java.util.List<zb.dcts.fusion.airDomain.target.Target.FusionTarget> getTargetsList() {
         if (targetsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(targets_);
         } else {
@@ -2310,7 +2973,7 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
       public int getTargetsCount() {
         if (targetsBuilder_ == null) {
@@ -2324,9 +2987,9 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList getTargets(int index) {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget getTargets(int index) {
         if (targetsBuilder_ == null) {
           return targets_.get(index);
         } else {
@@ -2338,10 +3001,10 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
       public Builder setTargets(
-          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList value) {
+          int index, zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
         if (targetsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2359,10 +3022,10 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
       public Builder setTargets(
-          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder builderForValue) {
+          int index, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder builderForValue) {
         if (targetsBuilder_ == null) {
           ensureTargetsIsMutable();
           targets_.set(index, builderForValue.build());
@@ -2377,9 +3040,9 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
-      public Builder addTargets(zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList value) {
+      public Builder addTargets(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
         if (targetsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2397,10 +3060,10 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
       public Builder addTargets(
-          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList value) {
+          int index, zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
         if (targetsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2418,10 +3081,10 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
       public Builder addTargets(
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder builderForValue) {
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder builderForValue) {
         if (targetsBuilder_ == null) {
           ensureTargetsIsMutable();
           targets_.add(builderForValue.build());
@@ -2436,10 +3099,10 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
       public Builder addTargets(
-          int index, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder builderForValue) {
+          int index, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder builderForValue) {
         if (targetsBuilder_ == null) {
           ensureTargetsIsMutable();
           targets_.add(index, builderForValue.build());
@@ -2454,10 +3117,10 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
       public Builder addAllTargets(
-          java.lang.Iterable<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList> values) {
+          java.lang.Iterable<? extends zb.dcts.fusion.airDomain.target.Target.FusionTarget> values) {
         if (targetsBuilder_ == null) {
           ensureTargetsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -2473,12 +3136,12 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
       public Builder clearTargets() {
         if (targetsBuilder_ == null) {
           targets_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           targetsBuilder_.clear();
@@ -2490,7 +3153,7 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
       public Builder removeTargets(int index) {
         if (targetsBuilder_ == null) {
@@ -2507,9 +3170,9 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder getTargetsBuilder(
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder getTargetsBuilder(
           int index) {
         return getTargetsFieldBuilder().getBuilder(index);
       }
@@ -2518,9 +3181,9 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetListOrBuilder getTargetsOrBuilder(
+      public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getTargetsOrBuilder(
           int index) {
         if (targetsBuilder_ == null) {
           return targets_.get(index);  } else {
@@ -2532,9 +3195,9 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
-      public java.util.List<? extends zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetListOrBuilder> 
+      public java.util.List<? extends zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> 
            getTargetsOrBuilderList() {
         if (targetsBuilder_ != null) {
           return targetsBuilder_.getMessageOrBuilderList();
@@ -2547,155 +3210,48 @@ public final class NetworkDomain {
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder addTargetsBuilder() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder addTargetsBuilder() {
         return getTargetsFieldBuilder().addBuilder(
-            zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.getDefaultInstance());
+            zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance());
       }
       /**
        * <pre>
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder addTargetsBuilder(
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder addTargetsBuilder(
           int index) {
         return getTargetsFieldBuilder().addBuilder(
-            index, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.getDefaultInstance());
+            index, zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance());
       }
       /**
        * <pre>
        *用户
        * </pre>
        *
-       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTargetList targets = 7;</code>
+       * <code>repeated .zb.dcts.fusion.airDomain.target.FusionTarget targets = 12;</code>
        */
-      public java.util.List<zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder> 
+      public java.util.List<zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder> 
            getTargetsBuilderList() {
         return getTargetsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetListOrBuilder> 
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> 
           getTargetsFieldBuilder() {
         if (targetsBuilder_ == null) {
           targetsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetList.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.FusionTargetListOrBuilder>(
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder>(
                   targets_,
-                  ((bitField0_ & 0x00000001) != 0),
+                  ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
                   isClean());
           targets_ = null;
         }
         return targetsBuilder_;
-      }
-
-      private com.google.protobuf.Internal.DoubleList freq_ = emptyDoubleList();
-      private void ensureFreqIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          freq_ = mutableCopy(freq_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-      /**
-       * <pre>
-       *频率集
-       * </pre>
-       *
-       * <code>repeated double freq = 8;</code>
-       * @return A list containing the freq.
-       */
-      public java.util.List<java.lang.Double>
-          getFreqList() {
-        return ((bitField0_ & 0x00000002) != 0) ?
-                 java.util.Collections.unmodifiableList(freq_) : freq_;
-      }
-      /**
-       * <pre>
-       *频率集
-       * </pre>
-       *
-       * <code>repeated double freq = 8;</code>
-       * @return The count of freq.
-       */
-      public int getFreqCount() {
-        return freq_.size();
-      }
-      /**
-       * <pre>
-       *频率集
-       * </pre>
-       *
-       * <code>repeated double freq = 8;</code>
-       * @param index The index of the element to return.
-       * @return The freq at the given index.
-       */
-      public double getFreq(int index) {
-        return freq_.getDouble(index);
-      }
-      /**
-       * <pre>
-       *频率集
-       * </pre>
-       *
-       * <code>repeated double freq = 8;</code>
-       * @param index The index to set the value at.
-       * @param value The freq to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFreq(
-          int index, double value) {
-        ensureFreqIsMutable();
-        freq_.setDouble(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *频率集
-       * </pre>
-       *
-       * <code>repeated double freq = 8;</code>
-       * @param value The freq to add.
-       * @return This builder for chaining.
-       */
-      public Builder addFreq(double value) {
-        ensureFreqIsMutable();
-        freq_.addDouble(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *频率集
-       * </pre>
-       *
-       * <code>repeated double freq = 8;</code>
-       * @param values The freq to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllFreq(
-          java.lang.Iterable<? extends java.lang.Double> values) {
-        ensureFreqIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, freq_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *频率集
-       * </pre>
-       *
-       * <code>repeated double freq = 8;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearFreq() {
-        freq_ = emptyDoubleList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
       }
 
       private java.lang.Object purposes_ = "";
@@ -2704,7 +3260,7 @@ public final class NetworkDomain {
        *用途
        * </pre>
        *
-       * <code>string purposes = 9;</code>
+       * <code>string purposes = 13;</code>
        * @return The purposes.
        */
       public java.lang.String getPurposes() {
@@ -2724,7 +3280,7 @@ public final class NetworkDomain {
        *用途
        * </pre>
        *
-       * <code>string purposes = 9;</code>
+       * <code>string purposes = 13;</code>
        * @return The bytes for purposes.
        */
       public com.google.protobuf.ByteString
@@ -2745,7 +3301,7 @@ public final class NetworkDomain {
        *用途
        * </pre>
        *
-       * <code>string purposes = 9;</code>
+       * <code>string purposes = 13;</code>
        * @param value The purposes to set.
        * @return This builder for chaining.
        */
@@ -2764,7 +3320,7 @@ public final class NetworkDomain {
        *用途
        * </pre>
        *
-       * <code>string purposes = 9;</code>
+       * <code>string purposes = 13;</code>
        * @return This builder for chaining.
        */
       public Builder clearPurposes() {
@@ -2778,7 +3334,7 @@ public final class NetworkDomain {
        *用途
        * </pre>
        *
-       * <code>string purposes = 9;</code>
+       * <code>string purposes = 13;</code>
        * @param value The bytes for purposes to set.
        * @return This builder for chaining.
        */
@@ -2800,7 +3356,7 @@ public final class NetworkDomain {
        *威胁等级
        * </pre>
        *
-       * <code>.zb.dcts.ThreatLevel thrt_lvl = 10;</code>
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 14;</code>
        * @return The enum numeric value on the wire for thrtLvl.
        */
       @java.lang.Override public int getThrtLvlValue() {
@@ -2811,7 +3367,7 @@ public final class NetworkDomain {
        *威胁等级
        * </pre>
        *
-       * <code>.zb.dcts.ThreatLevel thrt_lvl = 10;</code>
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 14;</code>
        * @param value The enum numeric value on the wire for thrtLvl to set.
        * @return This builder for chaining.
        */
@@ -2826,7 +3382,7 @@ public final class NetworkDomain {
        *威胁等级
        * </pre>
        *
-       * <code>.zb.dcts.ThreatLevel thrt_lvl = 10;</code>
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 14;</code>
        * @return The thrtLvl.
        */
       @java.lang.Override
@@ -2840,7 +3396,7 @@ public final class NetworkDomain {
        *威胁等级
        * </pre>
        *
-       * <code>.zb.dcts.ThreatLevel thrt_lvl = 10;</code>
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 14;</code>
        * @param value The thrtLvl to set.
        * @return This builder for chaining.
        */
@@ -2858,7 +3414,7 @@ public final class NetworkDomain {
        *威胁等级
        * </pre>
        *
-       * <code>.zb.dcts.ThreatLevel thrt_lvl = 10;</code>
+       * <code>.zb.dcts.ThreatLevel thrt_lvl = 14;</code>
        * @return This builder for chaining.
        */
       public Builder clearThrtLvl() {
@@ -2874,7 +3430,7 @@ public final class NetworkDomain {
        *可信度
        * </pre>
        *
-       * <code>uint32 reliability = 11;</code>
+       * <code>uint32 reliability = 15;</code>
        * @return The reliability.
        */
       @java.lang.Override
@@ -2886,7 +3442,7 @@ public final class NetworkDomain {
        *可信度
        * </pre>
        *
-       * <code>uint32 reliability = 11;</code>
+       * <code>uint32 reliability = 15;</code>
        * @param value The reliability to set.
        * @return This builder for chaining.
        */
@@ -2901,7 +3457,7 @@ public final class NetworkDomain {
        *可信度
        * </pre>
        *
-       * <code>uint32 reliability = 11;</code>
+       * <code>uint32 reliability = 15;</code>
        * @return This builder for chaining.
        */
       public Builder clearReliability() {
@@ -2917,7 +3473,7 @@ public final class NetworkDomain {
        *重要性
        * </pre>
        *
-       * <code>uint32 importance = 12;</code>
+       * <code>uint32 importance = 16;</code>
        * @return The importance.
        */
       @java.lang.Override
@@ -2929,7 +3485,7 @@ public final class NetworkDomain {
        *重要性
        * </pre>
        *
-       * <code>uint32 importance = 12;</code>
+       * <code>uint32 importance = 16;</code>
        * @param value The importance to set.
        * @return This builder for chaining.
        */
@@ -2944,7 +3500,7 @@ public final class NetworkDomain {
        *重要性
        * </pre>
        *
-       * <code>uint32 importance = 12;</code>
+       * <code>uint32 importance = 16;</code>
        * @return This builder for chaining.
        */
       public Builder clearImportance() {
@@ -2962,7 +3518,7 @@ public final class NetworkDomain {
        *起始时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp start_time = 13;</code>
+       * <code>.zb.dcts.Timestamp start_time = 17;</code>
        * @return Whether the startTime field is set.
        */
       public boolean hasStartTime() {
@@ -2973,7 +3529,7 @@ public final class NetworkDomain {
        *起始时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp start_time = 13;</code>
+       * <code>.zb.dcts.Timestamp start_time = 17;</code>
        * @return The startTime.
        */
       public zb.dcts.Dcts.Timestamp getStartTime() {
@@ -2988,7 +3544,7 @@ public final class NetworkDomain {
        *起始时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp start_time = 13;</code>
+       * <code>.zb.dcts.Timestamp start_time = 17;</code>
        */
       public Builder setStartTime(zb.dcts.Dcts.Timestamp value) {
         if (startTimeBuilder_ == null) {
@@ -3008,7 +3564,7 @@ public final class NetworkDomain {
        *起始时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp start_time = 13;</code>
+       * <code>.zb.dcts.Timestamp start_time = 17;</code>
        */
       public Builder setStartTime(
           zb.dcts.Dcts.Timestamp.Builder builderForValue) {
@@ -3026,7 +3582,7 @@ public final class NetworkDomain {
        *起始时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp start_time = 13;</code>
+       * <code>.zb.dcts.Timestamp start_time = 17;</code>
        */
       public Builder mergeStartTime(zb.dcts.Dcts.Timestamp value) {
         if (startTimeBuilder_ == null) {
@@ -3048,7 +3604,7 @@ public final class NetworkDomain {
        *起始时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp start_time = 13;</code>
+       * <code>.zb.dcts.Timestamp start_time = 17;</code>
        */
       public Builder clearStartTime() {
         if (startTimeBuilder_ == null) {
@@ -3066,7 +3622,7 @@ public final class NetworkDomain {
        *起始时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp start_time = 13;</code>
+       * <code>.zb.dcts.Timestamp start_time = 17;</code>
        */
       public zb.dcts.Dcts.Timestamp.Builder getStartTimeBuilder() {
         
@@ -3078,7 +3634,7 @@ public final class NetworkDomain {
        *起始时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp start_time = 13;</code>
+       * <code>.zb.dcts.Timestamp start_time = 17;</code>
        */
       public zb.dcts.Dcts.TimestampOrBuilder getStartTimeOrBuilder() {
         if (startTimeBuilder_ != null) {
@@ -3093,7 +3649,7 @@ public final class NetworkDomain {
        *起始时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp start_time = 13;</code>
+       * <code>.zb.dcts.Timestamp start_time = 17;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           zb.dcts.Dcts.Timestamp, zb.dcts.Dcts.Timestamp.Builder, zb.dcts.Dcts.TimestampOrBuilder> 
@@ -3117,7 +3673,7 @@ public final class NetworkDomain {
        *终止时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+       * <code>.zb.dcts.Timestamp stop_time = 18;</code>
        * @return Whether the stopTime field is set.
        */
       public boolean hasStopTime() {
@@ -3128,7 +3684,7 @@ public final class NetworkDomain {
        *终止时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+       * <code>.zb.dcts.Timestamp stop_time = 18;</code>
        * @return The stopTime.
        */
       public zb.dcts.Dcts.Timestamp getStopTime() {
@@ -3143,7 +3699,7 @@ public final class NetworkDomain {
        *终止时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+       * <code>.zb.dcts.Timestamp stop_time = 18;</code>
        */
       public Builder setStopTime(zb.dcts.Dcts.Timestamp value) {
         if (stopTimeBuilder_ == null) {
@@ -3163,7 +3719,7 @@ public final class NetworkDomain {
        *终止时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+       * <code>.zb.dcts.Timestamp stop_time = 18;</code>
        */
       public Builder setStopTime(
           zb.dcts.Dcts.Timestamp.Builder builderForValue) {
@@ -3181,7 +3737,7 @@ public final class NetworkDomain {
        *终止时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+       * <code>.zb.dcts.Timestamp stop_time = 18;</code>
        */
       public Builder mergeStopTime(zb.dcts.Dcts.Timestamp value) {
         if (stopTimeBuilder_ == null) {
@@ -3203,7 +3759,7 @@ public final class NetworkDomain {
        *终止时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+       * <code>.zb.dcts.Timestamp stop_time = 18;</code>
        */
       public Builder clearStopTime() {
         if (stopTimeBuilder_ == null) {
@@ -3221,7 +3777,7 @@ public final class NetworkDomain {
        *终止时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+       * <code>.zb.dcts.Timestamp stop_time = 18;</code>
        */
       public zb.dcts.Dcts.Timestamp.Builder getStopTimeBuilder() {
         
@@ -3233,7 +3789,7 @@ public final class NetworkDomain {
        *终止时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+       * <code>.zb.dcts.Timestamp stop_time = 18;</code>
        */
       public zb.dcts.Dcts.TimestampOrBuilder getStopTimeOrBuilder() {
         if (stopTimeBuilder_ != null) {
@@ -3248,7 +3804,7 @@ public final class NetworkDomain {
        *终止时间
        * </pre>
        *
-       * <code>.zb.dcts.Timestamp stop_time = 14;</code>
+       * <code>.zb.dcts.Timestamp stop_time = 18;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           zb.dcts.Dcts.Timestamp, zb.dcts.Dcts.Timestamp.Builder, zb.dcts.Dcts.TimestampOrBuilder> 
@@ -4139,27 +4695,29 @@ public final class NetworkDomain {
       "\n\032fusion/networkDomain.proto\022\034zb.dcts.fu" +
       "sion.networkDomain\032\ndcts.proto\032\035fusion/a" +
       "irDomain/target.proto\032\031aeronaval/aeronav" +
-      "al.proto\"\334\003\n\007Network\022\n\n\002id\030\001 \001(\r\022%\n\004camp" +
+      "al.proto\"\262\004\n\007Network\022\n\n\002id\030\001 \001(\r\022%\n\004camp" +
       "\030\002 \001(\0162\027.zb.dcts.aeronaval.Camp\022\014\n\004type\030" +
-      "\003 \001(\t\022\020\n\010topology\030\004 \001(\t\022;\n\nkey_target\030\005 " +
-      "\001(\0132\'.zb.dcts.fusion.airDomain.target.Ta" +
-      "rget\022=\n\014relay_target\030\006 \001(\0132\'.zb.dcts.fus" +
-      "ion.airDomain.target.Target\022B\n\007targets\030\007" +
-      " \003(\01321.zb.dcts.fusion.airDomain.target.F" +
-      "usionTargetList\022\014\n\004freq\030\010 \003(\001\022\020\n\010purpose" +
-      "s\030\t \001(\t\022&\n\010thrt_lvl\030\n \001(\0162\024.zb.dcts.Thre" +
-      "atLevel\022\023\n\013reliability\030\013 \001(\r\022\022\n\nimportan" +
-      "ce\030\014 \001(\r\022&\n\nstart_time\030\r \001(\0132\022.zb.dcts.T" +
-      "imestamp\022%\n\tstop_time\030\016 \001(\0132\022.zb.dcts.Ti" +
-      "mestamp\"F\n\013NetworkList\0227\n\010networks\030\001 \003(\013" +
-      "2%.zb.dcts.fusion.networkDomain.Networkb" +
-      "\006proto3"
+      "\003 \001(\t\022\020\n\010topology\030\004 \001(\t\022\021\n\twork_mode\030\005 \001" +
+      "(\t\022\022\n\nmodulation\030\006 \001(\t\022\022\n\nstart_freq\030\007 \001" +
+      "(\001\022\021\n\tstop_freq\030\010 \001(\001\022\014\n\004freq\030\t \003(\001\022A\n\nk" +
+      "ey_target\030\n \001(\0132-.zb.dcts.fusion.airDoma" +
+      "in.target.FusionTarget\022C\n\014relay_target\030\013" +
+      " \001(\0132-.zb.dcts.fusion.airDomain.target.F" +
+      "usionTarget\022>\n\007targets\030\014 \003(\0132-.zb.dcts.f" +
+      "usion.airDomain.target.FusionTarget\022\020\n\010p" +
+      "urposes\030\r \001(\t\022&\n\010thrt_lvl\030\016 \001(\0162\024.zb.dct" +
+      "s.ThreatLevel\022\023\n\013reliability\030\017 \001(\r\022\022\n\nim" +
+      "portance\030\020 \001(\r\022&\n\nstart_time\030\021 \001(\0132\022.zb." +
+      "dcts.Timestamp\022%\n\tstop_time\030\022 \001(\0132\022.zb.d" +
+      "cts.Timestamp\"F\n\013NetworkList\0227\n\010networks" +
+      "\030\001 \003(\0132%.zb.dcts.fusion.networkDomain.Ne" +
+      "tworkb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           zb.dcts.Dcts.getDescriptor(),
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.getDescriptor(),
+          zb.dcts.fusion.airDomain.target.Target.getDescriptor(),
           zb.dcts.aeronaval.Aeronaval.getDescriptor(),
         });
     internal_static_zb_dcts_fusion_networkDomain_Network_descriptor =
@@ -4167,7 +4725,7 @@ public final class NetworkDomain {
     internal_static_zb_dcts_fusion_networkDomain_Network_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_fusion_networkDomain_Network_descriptor,
-        new java.lang.String[] { "Id", "Camp", "Type", "Topology", "KeyTarget", "RelayTarget", "Targets", "Freq", "Purposes", "ThrtLvl", "Reliability", "Importance", "StartTime", "StopTime", });
+        new java.lang.String[] { "Id", "Camp", "Type", "Topology", "WorkMode", "Modulation", "StartFreq", "StopFreq", "Freq", "KeyTarget", "RelayTarget", "Targets", "Purposes", "ThrtLvl", "Reliability", "Importance", "StartTime", "StopTime", });
     internal_static_zb_dcts_fusion_networkDomain_NetworkList_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_zb_dcts_fusion_networkDomain_NetworkList_fieldAccessorTable = new
@@ -4175,7 +4733,7 @@ public final class NetworkDomain {
         internal_static_zb_dcts_fusion_networkDomain_NetworkList_descriptor,
         new java.lang.String[] { "Networks", });
     zb.dcts.Dcts.getDescriptor();
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.getDescriptor();
+    zb.dcts.fusion.airDomain.target.Target.getDescriptor();
     zb.dcts.aeronaval.Aeronaval.getDescriptor();
   }
 

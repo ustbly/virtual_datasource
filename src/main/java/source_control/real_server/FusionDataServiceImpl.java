@@ -6,7 +6,7 @@ import io.grpc.stub.StreamObserver;
 import link_alone.FusionDataPublisherByGRPC;
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass;
+import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.fusion.networkDomain.NetworkDomain;
 import zb.dcts.source.Source;
 import zb.dcts.source.SourceControlServiceGrpc;
@@ -88,7 +88,7 @@ public class FusionDataServiceImpl extends SourceControlServiceGrpc.SourceContro
                         switch (topic) {
                             case "Fusion_AirDomain":
 //                                System.out.printf("[AirDomain] 收到 ZMQ 消息，长度: %d 字节%n", payload.length);
-                                TargetOuterClass.FusionTargetList airMsg = TargetOuterClass.FusionTargetList.parseFrom(payload);
+                                Target.FusionTarget airMsg = Target.FusionTarget.parseFrom(payload);
                                 fusionMsg = Any.pack(airMsg);
                                 break;
                             case "Fusion_NetDomain":

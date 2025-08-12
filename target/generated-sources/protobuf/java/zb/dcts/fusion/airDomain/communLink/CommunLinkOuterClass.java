@@ -161,7 +161,7 @@ public final class CommunLinkOuterClass {
      * 源实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
      * @return Whether the srcTarget field is set.
      */
     boolean hasSrcTarget();
@@ -170,25 +170,25 @@ public final class CommunLinkOuterClass {
      * 源实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
      * @return The srcTarget.
      */
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getSrcTarget();
+    zb.dcts.fusion.airDomain.target.Target.FusionTarget getSrcTarget();
     /**
      * <pre>
      * 源实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
      */
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getSrcTargetOrBuilder();
+    zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getSrcTargetOrBuilder();
 
     /**
      * <pre>
      * 目标实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
      * @return Whether the desTarget field is set.
      */
     boolean hasDesTarget();
@@ -197,18 +197,18 @@ public final class CommunLinkOuterClass {
      * 目标实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
      * @return The desTarget.
      */
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getDesTarget();
+    zb.dcts.fusion.airDomain.target.Target.FusionTarget getDesTarget();
     /**
      * <pre>
      * 目标实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
      */
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getDesTargetOrBuilder();
+    zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getDesTargetOrBuilder();
 
     /**
      * <pre>
@@ -285,11 +285,11 @@ public final class CommunLinkOuterClass {
               break;
             }
             case 18: {
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder subBuilder = null;
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder subBuilder = null;
               if (srcTarget_ != null) {
                 subBuilder = srcTarget_.toBuilder();
               }
-              srcTarget_ = input.readMessage(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.parser(), extensionRegistry);
+              srcTarget_ = input.readMessage(zb.dcts.fusion.airDomain.target.Target.FusionTarget.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(srcTarget_);
                 srcTarget_ = subBuilder.buildPartial();
@@ -298,11 +298,11 @@ public final class CommunLinkOuterClass {
               break;
             }
             case 26: {
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder subBuilder = null;
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder subBuilder = null;
               if (desTarget_ != null) {
                 subBuilder = desTarget_.toBuilder();
               }
-              desTarget_ = input.readMessage(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.parser(), extensionRegistry);
+              desTarget_ = input.readMessage(zb.dcts.fusion.airDomain.target.Target.FusionTarget.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(desTarget_);
                 desTarget_ = subBuilder.buildPartial();
@@ -364,13 +364,13 @@ public final class CommunLinkOuterClass {
     }
 
     public static final int SRC_TARGET_FIELD_NUMBER = 2;
-    private zb.dcts.fusion.airDomain.target.TargetOuterClass.Target srcTarget_;
+    private zb.dcts.fusion.airDomain.target.Target.FusionTarget srcTarget_;
     /**
      * <pre>
      * 源实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
      * @return Whether the srcTarget field is set.
      */
     @java.lang.Override
@@ -382,33 +382,33 @@ public final class CommunLinkOuterClass {
      * 源实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
      * @return The srcTarget.
      */
     @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getSrcTarget() {
-      return srcTarget_ == null ? zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : srcTarget_;
+    public zb.dcts.fusion.airDomain.target.Target.FusionTarget getSrcTarget() {
+      return srcTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : srcTarget_;
     }
     /**
      * <pre>
      * 源实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
      */
     @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getSrcTargetOrBuilder() {
+    public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getSrcTargetOrBuilder() {
       return getSrcTarget();
     }
 
     public static final int DES_TARGET_FIELD_NUMBER = 3;
-    private zb.dcts.fusion.airDomain.target.TargetOuterClass.Target desTarget_;
+    private zb.dcts.fusion.airDomain.target.Target.FusionTarget desTarget_;
     /**
      * <pre>
      * 目标实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
      * @return Whether the desTarget field is set.
      */
     @java.lang.Override
@@ -420,22 +420,22 @@ public final class CommunLinkOuterClass {
      * 目标实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
      * @return The desTarget.
      */
     @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getDesTarget() {
-      return desTarget_ == null ? zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : desTarget_;
+    public zb.dcts.fusion.airDomain.target.Target.FusionTarget getDesTarget() {
+      return desTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : desTarget_;
     }
     /**
      * <pre>
      * 目标实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
      */
     @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getDesTargetOrBuilder() {
+    public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getDesTargetOrBuilder() {
       return getDesTarget();
     }
 
@@ -891,15 +891,15 @@ public final class CommunLinkOuterClass {
         return this;
       }
 
-      private zb.dcts.fusion.airDomain.target.TargetOuterClass.Target srcTarget_;
+      private zb.dcts.fusion.airDomain.target.Target.FusionTarget srcTarget_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder> srcTargetBuilder_;
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> srcTargetBuilder_;
       /**
        * <pre>
        * 源实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
        * @return Whether the srcTarget field is set.
        */
       public boolean hasSrcTarget() {
@@ -910,12 +910,12 @@ public final class CommunLinkOuterClass {
        * 源实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
        * @return The srcTarget.
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getSrcTarget() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget getSrcTarget() {
         if (srcTargetBuilder_ == null) {
-          return srcTarget_ == null ? zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : srcTarget_;
+          return srcTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : srcTarget_;
         } else {
           return srcTargetBuilder_.getMessage();
         }
@@ -925,9 +925,9 @@ public final class CommunLinkOuterClass {
        * 源实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
        */
-      public Builder setSrcTarget(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target value) {
+      public Builder setSrcTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
         if (srcTargetBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -945,10 +945,10 @@ public final class CommunLinkOuterClass {
        * 源实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
        */
       public Builder setSrcTarget(
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder builderForValue) {
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder builderForValue) {
         if (srcTargetBuilder_ == null) {
           srcTarget_ = builderForValue.build();
           onChanged();
@@ -963,13 +963,13 @@ public final class CommunLinkOuterClass {
        * 源实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
        */
-      public Builder mergeSrcTarget(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target value) {
+      public Builder mergeSrcTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
         if (srcTargetBuilder_ == null) {
           if (srcTarget_ != null) {
             srcTarget_ =
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.newBuilder(srcTarget_).mergeFrom(value).buildPartial();
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.newBuilder(srcTarget_).mergeFrom(value).buildPartial();
           } else {
             srcTarget_ = value;
           }
@@ -985,7 +985,7 @@ public final class CommunLinkOuterClass {
        * 源实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
        */
       public Builder clearSrcTarget() {
         if (srcTargetBuilder_ == null) {
@@ -1003,9 +1003,9 @@ public final class CommunLinkOuterClass {
        * 源实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder getSrcTargetBuilder() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder getSrcTargetBuilder() {
         
         onChanged();
         return getSrcTargetFieldBuilder().getBuilder();
@@ -1015,14 +1015,14 @@ public final class CommunLinkOuterClass {
        * 源实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getSrcTargetOrBuilder() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getSrcTargetOrBuilder() {
         if (srcTargetBuilder_ != null) {
           return srcTargetBuilder_.getMessageOrBuilder();
         } else {
           return srcTarget_ == null ?
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : srcTarget_;
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : srcTarget_;
         }
       }
       /**
@@ -1030,14 +1030,14 @@ public final class CommunLinkOuterClass {
        * 源实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target src_target = 2;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder> 
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> 
           getSrcTargetFieldBuilder() {
         if (srcTargetBuilder_ == null) {
           srcTargetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder>(
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder>(
                   getSrcTarget(),
                   getParentForChildren(),
                   isClean());
@@ -1046,15 +1046,15 @@ public final class CommunLinkOuterClass {
         return srcTargetBuilder_;
       }
 
-      private zb.dcts.fusion.airDomain.target.TargetOuterClass.Target desTarget_;
+      private zb.dcts.fusion.airDomain.target.Target.FusionTarget desTarget_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder> desTargetBuilder_;
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> desTargetBuilder_;
       /**
        * <pre>
        * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
        * @return Whether the desTarget field is set.
        */
       public boolean hasDesTarget() {
@@ -1065,12 +1065,12 @@ public final class CommunLinkOuterClass {
        * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
        * @return The desTarget.
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target getDesTarget() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget getDesTarget() {
         if (desTargetBuilder_ == null) {
-          return desTarget_ == null ? zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : desTarget_;
+          return desTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : desTarget_;
         } else {
           return desTargetBuilder_.getMessage();
         }
@@ -1080,9 +1080,9 @@ public final class CommunLinkOuterClass {
        * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
        */
-      public Builder setDesTarget(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target value) {
+      public Builder setDesTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
         if (desTargetBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1100,10 +1100,10 @@ public final class CommunLinkOuterClass {
        * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
        */
       public Builder setDesTarget(
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder builderForValue) {
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder builderForValue) {
         if (desTargetBuilder_ == null) {
           desTarget_ = builderForValue.build();
           onChanged();
@@ -1118,13 +1118,13 @@ public final class CommunLinkOuterClass {
        * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
        */
-      public Builder mergeDesTarget(zb.dcts.fusion.airDomain.target.TargetOuterClass.Target value) {
+      public Builder mergeDesTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
         if (desTargetBuilder_ == null) {
           if (desTarget_ != null) {
             desTarget_ =
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.newBuilder(desTarget_).mergeFrom(value).buildPartial();
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.newBuilder(desTarget_).mergeFrom(value).buildPartial();
           } else {
             desTarget_ = value;
           }
@@ -1140,7 +1140,7 @@ public final class CommunLinkOuterClass {
        * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
        */
       public Builder clearDesTarget() {
         if (desTargetBuilder_ == null) {
@@ -1158,9 +1158,9 @@ public final class CommunLinkOuterClass {
        * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder getDesTargetBuilder() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder getDesTargetBuilder() {
         
         onChanged();
         return getDesTargetFieldBuilder().getBuilder();
@@ -1170,14 +1170,14 @@ public final class CommunLinkOuterClass {
        * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
        */
-      public zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder getDesTargetOrBuilder() {
+      public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getDesTargetOrBuilder() {
         if (desTargetBuilder_ != null) {
           return desTargetBuilder_.getMessageOrBuilder();
         } else {
           return desTarget_ == null ?
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.getDefaultInstance() : desTarget_;
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : desTarget_;
         }
       }
       /**
@@ -1185,14 +1185,14 @@ public final class CommunLinkOuterClass {
        * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.Target des_target = 3;</code>
+       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder> 
+          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> 
           getDesTargetFieldBuilder() {
         if (desTargetBuilder_ == null) {
           desTargetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              zb.dcts.fusion.airDomain.target.TargetOuterClass.Target, zb.dcts.fusion.airDomain.target.TargetOuterClass.Target.Builder, zb.dcts.fusion.airDomain.target.TargetOuterClass.TargetOrBuilder>(
+              zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder>(
                   getDesTarget(),
                   getParentForChildren(),
                   isClean());
@@ -1327,8 +1327,8 @@ public final class CommunLinkOuterClass {
 
   }
 
-  public interface CommunLikeListOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:zb.dcts.fusion.airDomain.communLink.CommunLikeList)
+  public interface CommunLinKListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:zb.dcts.fusion.airDomain.communLink.CommunLinKList)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1376,18 +1376,18 @@ public final class CommunLinkOuterClass {
         int index);
   }
   /**
-   * Protobuf type {@code zb.dcts.fusion.airDomain.communLink.CommunLikeList}
+   * Protobuf type {@code zb.dcts.fusion.airDomain.communLink.CommunLinKList}
    */
-  public static final class CommunLikeList extends
+  public static final class CommunLinKList extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:zb.dcts.fusion.airDomain.communLink.CommunLikeList)
-      CommunLikeListOrBuilder {
+      // @@protoc_insertion_point(message_implements:zb.dcts.fusion.airDomain.communLink.CommunLinKList)
+      CommunLinKListOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use CommunLikeList.newBuilder() to construct.
-    private CommunLikeList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use CommunLinKList.newBuilder() to construct.
+    private CommunLinKList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CommunLikeList() {
+    private CommunLinKList() {
       communLinkList_ = java.util.Collections.emptyList();
     }
 
@@ -1395,7 +1395,7 @@ public final class CommunLinkOuterClass {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new CommunLikeList();
+      return new CommunLinKList();
     }
 
     @java.lang.Override
@@ -1403,7 +1403,7 @@ public final class CommunLinkOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private CommunLikeList(
+    private CommunLinKList(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1455,15 +1455,15 @@ public final class CommunLinkOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_CommunLikeList_descriptor;
+      return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_CommunLikeList_fieldAccessorTable
+      return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList.class, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList.Builder.class);
+              zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList.class, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList.Builder.class);
     }
 
     public static final int COMMUN_LINK_LIST_FIELD_NUMBER = 1;
@@ -1566,10 +1566,10 @@ public final class CommunLinkOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList)) {
+      if (!(obj instanceof zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList)) {
         return super.equals(obj);
       }
-      zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList other = (zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList) obj;
+      zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList other = (zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList) obj;
 
       if (!getCommunLinkListList()
           .equals(other.getCommunLinkListList())) return false;
@@ -1593,69 +1593,69 @@ public final class CommunLinkOuterClass {
       return hash;
     }
 
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseFrom(
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseFrom(
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseFrom(
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseFrom(
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseFrom(byte[] data)
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseFrom(
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseFrom(java.io.InputStream input)
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseFrom(
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseDelimitedFrom(java.io.InputStream input)
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseDelimitedFrom(
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseFrom(
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parseFrom(
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1668,7 +1668,7 @@ public final class CommunLinkOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList prototype) {
+    public static Builder newBuilder(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1684,26 +1684,26 @@ public final class CommunLinkOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code zb.dcts.fusion.airDomain.communLink.CommunLikeList}
+     * Protobuf type {@code zb.dcts.fusion.airDomain.communLink.CommunLinKList}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:zb.dcts.fusion.airDomain.communLink.CommunLikeList)
-        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeListOrBuilder {
+        // @@protoc_insertion_point(builder_implements:zb.dcts.fusion.airDomain.communLink.CommunLinKList)
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKListOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_CommunLikeList_descriptor;
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_CommunLikeList_fieldAccessorTable
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList.class, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList.Builder.class);
+                zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList.class, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList.Builder.class);
       }
 
-      // Construct using zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList.newBuilder()
+      // Construct using zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1734,17 +1734,17 @@ public final class CommunLinkOuterClass {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_CommunLikeList_descriptor;
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_descriptor;
       }
 
       @java.lang.Override
-      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList getDefaultInstanceForType() {
-        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList.getDefaultInstance();
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList getDefaultInstanceForType() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList.getDefaultInstance();
       }
 
       @java.lang.Override
-      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList build() {
-        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList result = buildPartial();
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList build() {
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1752,8 +1752,8 @@ public final class CommunLinkOuterClass {
       }
 
       @java.lang.Override
-      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList buildPartial() {
-        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList result = new zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList(this);
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList buildPartial() {
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList result = new zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList(this);
         int from_bitField0_ = bitField0_;
         if (communLinkListBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
@@ -1802,16 +1802,16 @@ public final class CommunLinkOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList) {
-          return mergeFrom((zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList)other);
+        if (other instanceof zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList) {
+          return mergeFrom((zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList other) {
-        if (other == zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList.getDefaultInstance()) return this;
+      public Builder mergeFrom(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList other) {
+        if (other == zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList.getDefaultInstance()) return this;
         if (communLinkListBuilder_ == null) {
           if (!other.communLinkList_.isEmpty()) {
             if (communLinkList_.isEmpty()) {
@@ -1853,11 +1853,11 @@ public final class CommunLinkOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList parsedMessage = null;
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList) e.getUnfinishedMessage();
+          parsedMessage = (zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2192,41 +2192,41 @@ public final class CommunLinkOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:zb.dcts.fusion.airDomain.communLink.CommunLikeList)
+      // @@protoc_insertion_point(builder_scope:zb.dcts.fusion.airDomain.communLink.CommunLinKList)
     }
 
-    // @@protoc_insertion_point(class_scope:zb.dcts.fusion.airDomain.communLink.CommunLikeList)
-    private static final zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:zb.dcts.fusion.airDomain.communLink.CommunLinKList)
+    private static final zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList();
+      DEFAULT_INSTANCE = new zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList();
     }
 
-    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList getDefaultInstance() {
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CommunLikeList>
-        PARSER = new com.google.protobuf.AbstractParser<CommunLikeList>() {
+    private static final com.google.protobuf.Parser<CommunLinKList>
+        PARSER = new com.google.protobuf.AbstractParser<CommunLinKList>() {
       @java.lang.Override
-      public CommunLikeList parsePartialFrom(
+      public CommunLinKList parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CommunLikeList(input, extensionRegistry);
+        return new CommunLinKList(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<CommunLikeList> parser() {
+    public static com.google.protobuf.Parser<CommunLinKList> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<CommunLikeList> getParserForType() {
+    public com.google.protobuf.Parser<CommunLinKList> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLikeList getDefaultInstanceForType() {
+    public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinKList getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2238,10 +2238,10 @@ public final class CommunLinkOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_zb_dcts_fusion_airDomain_communLink_CommunLink_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_zb_dcts_fusion_airDomain_communLink_CommunLikeList_descriptor;
+    internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_zb_dcts_fusion_airDomain_communLink_CommunLikeList_fieldAccessorTable;
+      internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2253,23 +2253,23 @@ public final class CommunLinkOuterClass {
     java.lang.String[] descriptorData = {
       "\n!fusion/airDomain/communLink.proto\022#zb." +
       "dcts.fusion.airDomain.communLink\032\ndcts.p" +
-      "roto\032\035fusion/airDomain/target.proto\"\334\001\n\n" +
-      "CommunLink\022\014\n\004unId\030\001 \001(\r\022;\n\nsrc_target\030\002" +
-      " \001(\0132\'.zb.dcts.fusion.airDomain.target.T" +
-      "arget\022;\n\ndes_target\030\003 \001(\0132\'.zb.dcts.fusi" +
-      "on.airDomain.target.Target\022F\n\014commun_sta" +
-      "te\030\004 \001(\01620.zb.dcts.fusion.airDomain.comm" +
-      "unLink.CommunState\"[\n\016CommunLikeList\022I\n\020" +
-      "commun_link_list\030\001 \003(\0132/.zb.dcts.fusion." +
-      "airDomain.communLink.CommunLink*-\n\013Commu" +
-      "nState\022\021\n\rCOMMUNICATION\020\000\022\013\n\007SILENCE\020\001b\006" +
-      "proto3"
+      "roto\032\035fusion/airDomain/target.proto\"\350\001\n\n" +
+      "CommunLink\022\014\n\004unId\030\001 \001(\r\022A\n\nsrc_target\030\002" +
+      " \001(\0132-.zb.dcts.fusion.airDomain.target.F" +
+      "usionTarget\022A\n\ndes_target\030\003 \001(\0132-.zb.dct" +
+      "s.fusion.airDomain.target.FusionTarget\022F" +
+      "\n\014commun_state\030\004 \001(\01620.zb.dcts.fusion.ai" +
+      "rDomain.communLink.CommunState\"[\n\016Commun" +
+      "LinKList\022I\n\020commun_link_list\030\001 \003(\0132/.zb." +
+      "dcts.fusion.airDomain.communLink.CommunL" +
+      "ink*-\n\013CommunState\022\021\n\rCOMMUNICATION\020\000\022\013\n" +
+      "\007SILENCE\020\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           zb.dcts.Dcts.getDescriptor(),
-          zb.dcts.fusion.airDomain.target.TargetOuterClass.getDescriptor(),
+          zb.dcts.fusion.airDomain.target.Target.getDescriptor(),
         });
     internal_static_zb_dcts_fusion_airDomain_communLink_CommunLink_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -2277,14 +2277,14 @@ public final class CommunLinkOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_fusion_airDomain_communLink_CommunLink_descriptor,
         new java.lang.String[] { "UnId", "SrcTarget", "DesTarget", "CommunState", });
-    internal_static_zb_dcts_fusion_airDomain_communLink_CommunLikeList_descriptor =
+    internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_zb_dcts_fusion_airDomain_communLink_CommunLikeList_fieldAccessorTable = new
+    internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_zb_dcts_fusion_airDomain_communLink_CommunLikeList_descriptor,
+        internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_descriptor,
         new java.lang.String[] { "CommunLinkList", });
     zb.dcts.Dcts.getDescriptor();
-    zb.dcts.fusion.airDomain.target.TargetOuterClass.getDescriptor();
+    zb.dcts.fusion.airDomain.target.Target.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

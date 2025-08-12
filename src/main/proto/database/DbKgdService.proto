@@ -1,0 +1,180 @@
+syntax = "proto3";
+package zb.dcts.database;
+import  "google/protobuf/empty.proto";
+import  "dcts.proto";
+import  "scenario/detection.proto";
+import  "database/DbKgd.proto";
+import  "scenario/spectrum.proto";
+import  "source/kh/KhContext.proto";
+import  "database/EquipmentDatabase.proto";
+import  "scenario/FFP/modIdentify.proto";
+import  "fusion/airDomain/target.proto";
+import  "aeronaval/aeronaval.proto";
+import  "fusion/freqDomain.proto";
+
+message SpectrumOccupancyResponse
+{
+    TimeSpan  time_span = 1; //信号实际出现时间段
+    repeated scenario.detection.SignalDigest  signal_digest=2;
+}
+
+message SignalParamPoint
+{
+    double center_freq = 1;
+    double band_width = 2;
+    double amplitude = 3;
+    Timestamp time_stamp = 4; 
+}
+message SignalCurve
+{
+    string      id = 1;
+    repeated  SignalParamPoint param_point = 2;
+}
+message SignalVariationResponse
+{
+    TimeSpan  time_span = 1; //信号实际出现时间段
+    repeated  SignalCurve  signal_curve = 2;
+}
+
+message SignalTypeDescription
+{
+    string name = 1;
+    uint32 cnt = 2;
+}
+
+message SignalTypesResponse
+{
+    TimeSpan  time_span = 1; //信号实际出现时间段
+    repeated  SignalTypeDescription  type_description = 2;
+}
+
+message FreqChOccupancy
+{
+    scenario.spectrum.FrequencySpan  freq_channel = 1;// 频道范围
+    float occupancy = 2;//占用度
+}
+
+message FreqBandOccupancyResponse
+{
+    repeated FreqChOccupancy   occupancys = 1; //频道占用度
+}
+
+message FreqConflictDayResponse
+{
+    SpectrumOccupancyResponse  spec_coccupancy = 1;//频谱占用时间
+    uint32  conflict = 2;// 用频冲突结果
+}
+
+message FreqConflictResponse
+{
+    TimeSpan  time_span = 1; // 分析日期
+    repeated  FreqConflictDayResponse  freq_conflicts = 2;
+}
+
+// 请求类型
+enum RequestType
+{	
+    STAT = 0;           //信号统计请求
+    TIME_SEQ = 1;       //时序关系分析请求
+    DISCIP = 2;         //信号规律分析请求
+    ABNORMAL = 3;       //异常信号查询请求
+}
+// 信号统计类型
+enum SignalStatType
+{
+    SIGNAL_ID = 0;      //信号ID
+    DIRECTION = 1;      //信号方向
+    CAMP = 2;           //阵地
+    SIGNAL_TYPE = 3;    //信号类型
+    TIME = 4;           //出现时间
+    FREQ = 5;           //频域
+    AIRSPACE = 6;       //空域/区域
+    POWER = 7;          //能量域
+}
+
+
+//空域/区域范围
+message AreaCoverage
+{
+    DRange longitude = 1;				//经度范围
+    DRange latitude = 2;                 //纬度范围
+}
+
+message SignalStatRequest
+{
+    string id = 1;                              //信号ID
+    repeated SignalStatType stat_Type = 2;      //信号统计类型 多个
+    TimeSpan time_span = 3;                     //查询的起始和终止时间
+    scenario.spectrum.FrequencySpan freq_Span = 4;       //频段范围
+    AreaCoverage area = 5;				        //空/区域范围
+    DRange direction = 6;                       //角度范围
+    DRange power_Limit = 7;                     //功率查询范围
+    aeronaval.Camp en_camp = 8;                           //阵地
+    scenario.FFP.ModIdentifyResult.ModType mod_Type = 9;             //调制类型
+    source.kh.LinkType link_type = 10;              //数据类型，需要增加类型是指:定频、跳频、扩频、link4A，Link11,Link16
+    RequestType req_type = 11;                  //请求类型
+}
+//每个类型的信号片段集合
+message SignalTypeWithListDescription 
+{
+    string typeName = 1;                                                //信号类型
+    float scale = 2;                                                    //信号密度
+    fusion.freqDomain.FusionSignalList signallist = 3;                  //该类型的信号list，List中可能包含多个ID
+}
+//信号统计结果，按方向/阵地/信号类型/出现时间等查询条件得出的查询结果
+message SignalStatResult
+{
+
+    repeated SignalTypeWithListDescription signalType = 1;           //每个类型的信号片段集合
+}
+//信号时序关系分析结果
+message SignalTimeSeqResult
+{   
+    TimeSpan  time_span = 1;                                  //信号实际出现时间段    
+    fusion.freqDomain.FusionSignalList signallist = 2;        //挖掘出来的信号List【包含多个融合后的信号片段】
+}
+//信号时间段占用度统计
+message DiscipOccupancy
+{
+	string type = 1;                            //信号类型
+	float occupancy = 2;                        //占用度
+	uint32 num  = 3;                            //信号个数
+}
+//信号分布规律分析结果
+message SignalDisciplinarianResult
+{
+    repeated DiscipOccupancy occp = 1;     //不同类型信号的占比
+    uint32 counts = 2;                     //信号总数，按照ID计算      
+}
+
+service DbKgdService
+{ 
+    rpc QuerySignalProperty(SignalPropQueryRequest) returns (SignalPropResponse) {}  //查询信号属性
+    rpc QuerySpectrumOccupancy(QueryRequest)returns(SpectrumOccupancyResponse){}//统计频谱占用时间
+    rpc QuerySignalVariation(QueryRequest)returns(SignalVariationResponse){}//统计信号参数变化
+    rpc QuerySignalTypes(QueryRequest)returns(SignalTypesResponse){}//统计信号类别
+    // rpc QuerySignalTimeSpanFeature(QueryRequest)returns(SignalTimeSpanFeatureResponse){}//统计信号参数
+    rpc AccessSignalProperty(SignalPropertyRequest) returns (SignalPropertyResponse) {}  //访问信号属性库
+    
+    rpc QueryFreqBandOccupancyTime(QueryRequest)returns(FreqBandOccupancyResponse){}//统计频段占用时间
+    rpc QueryFreqBandOccupancy(QueryRequest)returns(FreqBandOccupancyResponse){}//统计频段占用度
+    rpc QueryFreqConflict(QueryRequest)returns(FreqConflictResponse){}//用频冲突分析
+
+
+    rpc QueryRecentFusionTime(QueryRequest)returns(FusionTimeResponse){}//查询最近一次的融合时间
+    rpc StartFusionCommSignal(QueryRequest)returns(stream FusionProcResponse){}//开始融合通信信号
+    rpc StopFusionCommSignal(QueryRequest)returns(FusionProcResponse){}//停止融合通信信号
+
+    rpc ExportdbData(QueryRequest)returns(Response){}//将数据库中数据导出为JSON格式文件
+    rpc ImportdbData(QueryRequest)returns(Response){}//将JSON格式文件数据导入数据库
+    rpc CleardbData(QueryRequest)returns(Response){}//清空数据库
+    rpc GetdbStorageSize(QueryRequest)returns(DbStatsResponse){}//获取数据库存储容量(MByte)
+
+    rpc AccessCommEquInfo(CommEquInfoRequest)returns(CommEquInfoResponse){} //访问通信装备信息数据
+    rpc AccessCommCounterEquInfo(CommCounterEquInfoRequest)returns(CommCounterEquInfoResponse){} //访问通信对抗装备信息数据
+
+    //历史数据挖掘服务
+    rpc StartStatSignalResult(SignalStatRequest) returns(SignalStatResult){}                //获取信号密度/种类统计结果
+    rpc StartTimeSeqResult(SignalStatRequest) returns(SignalTimeSeqResult){}                   //获取信号时序关系分析结果
+    rpc StartDisciplinarianResult(SignalStatRequest) returns(SignalDisciplinarianResult){}     //获取信号分布规律分析结果
+}

@@ -3,7 +3,7 @@ package link_combine;
 import org.zeromq.ZMQ;
 import zb.dcts.Dcts;
 import zb.dcts.aeronaval.Aeronaval;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass;
+import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.scenario.detection.Detection;
 
 import java.io.ByteArrayOutputStream;
@@ -54,7 +54,7 @@ public class CombinePublisher {
                 Aeronaval.Target target = buildRandomTarget();
                 List<Detection.SignalLayerSurvey> surveyList = generateSignalList(target);
 
-                TargetOuterClass.FusionTargetList msg = TargetOuterClass.FusionTargetList.newBuilder()
+                Target.FusionTarget msg = Target.FusionTarget.newBuilder()
                         .setAeronavalTarget(target)
                         .addAllSignalLayerSurveys(surveyList)
                         .build();
@@ -80,7 +80,7 @@ public class CombinePublisher {
                 Aeronaval.Target target = buildRandomTarget();
                 List<Detection.SignalLayerSurvey> surveyList = generateSignalList(target);
 
-                TargetOuterClass.FusionTargetList msg = TargetOuterClass.FusionTargetList.newBuilder()
+                Target.FusionTarget msg = Target.FusionTarget.newBuilder()
                         .setAeronavalTarget(target)
                         .addAllSignalLayerSurveys(surveyList)
                         .build();

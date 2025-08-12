@@ -11,16 +11,20 @@ message Network
     aeronaval.Camp camp = 2;                                        //阵营
     string type = 3;                                                //网络类型
     string topology = 4;                                            //有中心，无中心
-    airDomain.target.Target key_target = 5;                         //关键节点
-    airDomain.target.Target relay_target = 6;                       //中继节点
-    repeated airDomain.target.FusionTargetList targets = 7;         //用户
-    repeated double freq = 8;                                       //频率集
-    string   purposes = 9;                                          //用途
-    ThreatLevel  thrt_lvl = 10;                                     //威胁等级
-    uint32  reliability = 11;                                       //可信度
-    uint32  importance = 12;                                        //重要性
-    Timestamp start_time = 13;                                      //起始时间
-    Timestamp stop_time = 14;                                       //终止时间
+    string work_mode = 5;                                            //工作模式
+    string modulation = 6;                                        //调试方式
+    double start_freq = 7;                                        //起始频率
+    double stop_freq = 8;                                            //终止频率
+    repeated double freq = 9;                                        //频率集
+    airDomain.target.FusionTarget key_target = 10;                //关键节点
+    airDomain.target.FusionTarget relay_target = 11;                //中继节点
+    repeated airDomain.target.FusionTarget targets = 12;            //用户
+    string   purposes = 13;                                          //用途
+    ThreatLevel  thrt_lvl = 14;                                     //威胁等级
+    uint32  reliability = 15;                                       //可信度
+    uint32  importance = 16;                                        //重要性
+    Timestamp start_time = 17;                                      //起始时间
+    Timestamp stop_time = 18;                                       //终止时间
 }
 
 //网络列表

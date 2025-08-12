@@ -4,7 +4,7 @@ import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 import zb.dcts.Dcts;
 import zb.dcts.aeronaval.Aeronaval;
-import zb.dcts.fusion.airDomain.target.TargetOuterClass;
+import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.scenario.detection.Detection;
 
 import java.time.Duration;
@@ -101,18 +101,18 @@ public class SignalTargetMatcher {
      * @param targets 目标列表
      * @return 关联成功的CombinedMessage集合
      */
-    public List<TargetOuterClass.FusionTargetList> linkAndPublish(List<Detection.SignalLayerSurvey> surveys,
-                                                                  List<Aeronaval.Target> targets) {
-        List<Future<TargetOuterClass.FusionTargetList>> futures = new ArrayList<>();
+    public List<Target.FusionTarget> linkAndPublish(List<Detection.SignalLayerSurvey> surveys,
+                                                    List<Aeronaval.Target> targets) {
+        List<Future<Target.FusionTarget>> futures = new ArrayList<>();
         // 并发处理每个目标的匹配任务
         for (Aeronaval.Target tgt : targets) {
             futures.add(executor.submit(() -> matchSingleTarget(tgt, surveys)));
         }
 
-        List<TargetOuterClass.FusionTargetList> results = new ArrayList<>();
-        for (Future<TargetOuterClass.FusionTargetList> f : futures) {
+        List<Target.FusionTarget> results = new ArrayList<>();
+        for (Future<Target.FusionTarget> f : futures) {
             try {
-                TargetOuterClass.FusionTargetList cm = f.get();
+                Target.FusionTarget cm = f.get();
                 // 仅处理有效匹配结果
                 if (cm != null && cm.getSignalLayerSurveysCount() > 0) {
                     results.add(cm);
@@ -247,13 +247,13 @@ public class SignalTargetMatcher {
      * @param surveys 可用信号侦察数据
      * @return 包含关联结果的CombinedMessage（匹配失败返回null）
      */
-    private TargetOuterClass.FusionTargetList matchSingleTarget(Aeronaval.Target tgt, List<Detection.SignalLayerSurvey> surveys) {
+    private Target.FusionTarget matchSingleTarget(Aeronaval.Target tgt, List<Detection.SignalLayerSurvey> surveys) {
         // 目标时空信息提取
         Instant t0 = Instant.ofEpochSecond(tgt.getTime().getSeconds(), tgt.getTime().getNanos());
         Dcts.Position tgtPos = tgt.getPosition();
 
         // 构建结果消息（设置业务元数据）
-        TargetOuterClass.FusionTargetList.Builder builder = TargetOuterClass.FusionTargetList.newBuilder()
+        Target.FusionTarget.Builder builder = Target.FusionTarget.newBuilder()
                 .setAeronavalTarget(tgt)
                 .setBussinessType("Comm")
                 .setReliability(2)

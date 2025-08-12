@@ -1,0 +1,142 @@
+syntax = "proto3";
+package zb.dcts.database;
+import "dcts.proto";
+import "scenario/spectrum.proto";
+import "database/dataAccesslayer.proto";
+
+
+// 调制样式
+enum ModuleType
+{
+	PW = 0;
+	FSK = 1;
+	PSK = 2;
+}
+
+// 干扰类型
+enum DisturbType
+{
+	AIMING_DISTURB = 0;
+	BARRAGE_DISTURB = 1;
+	COMB_DISTURB = 2;
+	DISCRETE_DISTURB = 3;
+}
+
+// 定频参数
+message FixedFreqParam
+{
+	double freq = 1;		//频率
+	double bandwidth = 2;	//带宽
+	double power = 3;		//功率
+	ModuleType type = 4;	//调制样式
+}
+
+// 跳频参数
+message FreqHoppingParam
+{
+	scenario.spectrum.FrequencySpan freq_span = 1;	//频率范围
+	double power = 2;		//功率
+	double interval = 3;	//间隔
+	int32 point_num = 4;	//频点个数
+}
+
+// 波道参数
+message ChannelParam
+{
+	int32 channel_id = 1;	//波道号
+	oneof freq_param
+	{
+		FixedFreqParam fixed_freq_param = 2;
+		FreqHoppingParam freq_hopping_param = 3;
+	}
+}
+
+// 基础装备信息
+message BaseEquInfo
+{
+
+    uint32 id = 1 ; //装备id
+    string name = 2; //装备名称
+	string pic = 3; //装备图片
+    string synopsis = 4; //装备简介
+    Timestamp update_time = 5; //数据更新时间
+
+}
+
+// 通信装备信息
+message CommEquInfo
+{
+	BaseEquInfo base_info = 1;				//基本信息
+    repeated ChannelParam channel_param = 2;//装备参数(多波道)
+}
+
+// 干扰参数
+message DisturbParam
+{
+	DisturbType disturb_type = 1;	//干扰类型
+	double freq = 2;			//频率
+	double bandwidth = 3;		//带宽
+	double power = 4;			//功率
+	double beam_width = 5;		//波束宽度(°)
+	double beam_yaw = 6;		//波束方位角朝向(°)
+	double ant_height = 7;		//天线高度
+	double ant_gain = 8;		//天线增益
+	double max_distance = 9;	//干扰最远距离
+}
+
+// 侦察参数
+message ScoutParam
+{
+	scenario.spectrum.FrequencySpan freq_span = 1;	//侦察频段
+	double max_distance = 2;		//侦察最远距离
+}
+
+// 测向参数
+message DirectionFindingParam
+{
+	bool is_direction_finding = 1;	//是否具备测向能力
+	double accuracy = 2;			//测向精度	
+}
+
+// 通信对抗装备信息
+message CommCounterEquInfo
+{
+	BaseEquInfo base_info = 1;		//基本信息
+    DisturbParam disturb_param = 2;	//干扰参数
+	ScoutParam scout_param = 3;		//侦察参数
+	DirectionFindingParam df_param = 4;	//测向参数
+}
+
+
+// 通信装备信息请求
+message CommEquInfoRequest
+{
+    RequestMethod method = 1;    //访问方法支持 M_GET M_POST M_PUT M_DELETE
+    repeated QueryParam  query = 2; //查询参数的关键词(键)支持 
+    repeated CommEquInfo  body =3;
+}
+
+// 通信装备信息响应
+message CommEquInfoResponse
+{
+    int32 statuscode =1;
+    string info = 2;
+    repeated CommEquInfo  body = 3;
+}
+
+// 通信对抗装备信息请求
+message CommCounterEquInfoRequest
+{
+    RequestMethod method = 1;    //访问方法支持 M_GET M_POST M_PUT M_DELETE
+    repeated QueryParam  query = 2; //查询参数的关键词(键)支持 
+    repeated  CommCounterEquInfo  body =3;
+
+}
+
+// 通信对抗装备信息响应
+message CommCounterEquInfoResponse
+{
+    int32 statuscode =1;
+    string info = 2;
+    repeated  CommCounterEquInfo  body = 3;
+}
