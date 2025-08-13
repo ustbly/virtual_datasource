@@ -4,8 +4,8 @@ import com.google.protobuf.Any;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
-import utils.MessageAndJsonUtil;
 import zb.dcts.Dcts;
+import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.source.Source;
 import zb.dcts.source.SourceControlServiceGrpc;
 
@@ -43,16 +43,20 @@ public class FusionAirClient {
             @Override
             public void onNext(Any value) {
                 try {
-//                    if (value.is(TargetOuterClass.CombinedMessage.class)) {
-//                        TargetOuterClass.CombinedMessage cm = value.unpack(TargetOuterClass.CombinedMessage.class);
-//                        System.out.printf("[✓] 接收到 CombinedMessage：%s%n", cm);
-//                    } else {
-//                        System.out.println("[×] 未识别的消息类型");
-//                    }
+                    if (value.is(Target.FusionTarget.class)) {
+                        Target.FusionTarget target = value.unpack(Target.FusionTarget.class);
+                        int campValue = target.getAeronavalTarget().getCampValue();
+                        if (campValue == 1) {
+                            System.out.println(target);
+                        }
+//                        System.out.printf("[✓] 接收到 FusionTarget：%s%n", target);
+                    } else {
+                        System.out.println("[×] 未识别的消息类型");
+                    }
 
                     // 解包 Any 类型的消息
-                    String json = MessageAndJsonUtil.parseAnyToJson(value);
-                    System.out.println("解析结果: \n" + json);
+//                    String json = MessageAndJsonUtil.parseAnyToJson(value);
+//                    System.out.println("解析结果: \n" + json);
                 } catch (Exception e) {
                     System.err.println("[异常] 解包失败：" + e.getMessage());
                 }

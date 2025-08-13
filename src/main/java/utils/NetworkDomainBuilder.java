@@ -1,6 +1,5 @@
 package utils;
 
-import com.google.protobuf.Any;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -12,7 +11,9 @@ import zb.dcts.fusion.networkDomain.NetworkDomain;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @file NetworkDomainBuilder.java
@@ -22,6 +23,15 @@ import java.util.List;
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 public class NetworkDomainBuilder {
+
+    public static Map<Integer, NetworkDomain.Network> buildNetworkMap() throws Exception {
+        NetworkDomain.NetworkList networkList = buildFromXml("src/main/resources/网络配置.xml");
+        Map<Integer, NetworkDomain.Network> networkMap = new HashMap<>();
+        for (NetworkDomain.Network network : networkList.getNetworksList()) {
+            networkMap.put(network.getId(),network);
+        }
+        return networkMap;
+    }
 
     public static NetworkDomain.NetworkList buildFromXml(String xmlPath) throws Exception {
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(xmlPath));
@@ -149,9 +159,13 @@ public class NetworkDomainBuilder {
         int id = parseInt(node, "id");
         String name = getText(node, "名称");
 
+        Aeronaval.Target target = Aeronaval.Target.newBuilder()
+                .setId(id)
+                .setName(name == null ? "" : name)
+                .build();
+
         return Target.FusionTarget.newBuilder()
-//                .setId(id)
-//                .setName(name == null ? "" : name)
+                .setAeronavalTarget(target)
                 .build();
     }
 
@@ -179,9 +193,9 @@ public class NetworkDomainBuilder {
     }
 
     public static void main(String[] args) throws Exception {
-        NetworkDomain.NetworkList netMsg = NetworkDomainBuilder.buildFromXml("src/main/resources/网络配置.xml");
-        Any msg = Any.pack(netMsg);
-        String s = MessageAndJsonUtil.parseAnyToJson(msg);
-        System.out.println(s);
+        Map<Integer, NetworkDomain.Network> networkMap = NetworkDomainBuilder.buildNetworkMap();
+        Target.FusionTarget relayTarget = networkMap.get(1).getRelayTarget();
+        System.out.println(relayTarget);
+
     }
 }

@@ -20653,6 +20653,953 @@ public final class Detection {
 
   }
 
+  public interface SignalOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:zb.dcts.scenario.detection.Signal)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+     * @return Whether the fixSignal field is set.
+     */
+    boolean hasFixSignal();
+    /**
+     * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+     * @return The fixSignal.
+     */
+    zb.dcts.scenario.detection.Detection.SignalDigest getFixSignal();
+    /**
+     * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+     */
+    zb.dcts.scenario.detection.Detection.SignalDigestOrBuilder getFixSignalOrBuilder();
+
+    /**
+     * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+     * @return Whether the hopSignal field is set.
+     */
+    boolean hasHopSignal();
+    /**
+     * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+     * @return The hopSignal.
+     */
+    zb.dcts.scenario.detection.Detection.HopSignalCluster getHopSignal();
+    /**
+     * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+     */
+    zb.dcts.scenario.detection.Detection.HopSignalClusterOrBuilder getHopSignalOrBuilder();
+
+    public zb.dcts.scenario.detection.Detection.Signal.SignalTypeCase getSignalTypeCase();
+  }
+  /**
+   * Protobuf type {@code zb.dcts.scenario.detection.Signal}
+   */
+  public static final class Signal extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:zb.dcts.scenario.detection.Signal)
+      SignalOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Signal.newBuilder() to construct.
+    private Signal(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Signal() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Signal();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Signal(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              zb.dcts.scenario.detection.Detection.SignalDigest.Builder subBuilder = null;
+              if (signalTypeCase_ == 1) {
+                subBuilder = ((zb.dcts.scenario.detection.Detection.SignalDigest) signalType_).toBuilder();
+              }
+              signalType_ =
+                  input.readMessage(zb.dcts.scenario.detection.Detection.SignalDigest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((zb.dcts.scenario.detection.Detection.SignalDigest) signalType_);
+                signalType_ = subBuilder.buildPartial();
+              }
+              signalTypeCase_ = 1;
+              break;
+            }
+            case 18: {
+              zb.dcts.scenario.detection.Detection.HopSignalCluster.Builder subBuilder = null;
+              if (signalTypeCase_ == 2) {
+                subBuilder = ((zb.dcts.scenario.detection.Detection.HopSignalCluster) signalType_).toBuilder();
+              }
+              signalType_ =
+                  input.readMessage(zb.dcts.scenario.detection.Detection.HopSignalCluster.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((zb.dcts.scenario.detection.Detection.HopSignalCluster) signalType_);
+                signalType_ = subBuilder.buildPartial();
+              }
+              signalTypeCase_ = 2;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return zb.dcts.scenario.detection.Detection.internal_static_zb_dcts_scenario_detection_Signal_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return zb.dcts.scenario.detection.Detection.internal_static_zb_dcts_scenario_detection_Signal_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              zb.dcts.scenario.detection.Detection.Signal.class, zb.dcts.scenario.detection.Detection.Signal.Builder.class);
+    }
+
+    private int signalTypeCase_ = 0;
+    private java.lang.Object signalType_;
+    public enum SignalTypeCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      FIX_SIGNAL(1),
+      HOP_SIGNAL(2),
+      SIGNALTYPE_NOT_SET(0);
+      private final int value;
+      private SignalTypeCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static SignalTypeCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static SignalTypeCase forNumber(int value) {
+        switch (value) {
+          case 1: return FIX_SIGNAL;
+          case 2: return HOP_SIGNAL;
+          case 0: return SIGNALTYPE_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public SignalTypeCase
+    getSignalTypeCase() {
+      return SignalTypeCase.forNumber(
+          signalTypeCase_);
+    }
+
+    public static final int FIX_SIGNAL_FIELD_NUMBER = 1;
+    /**
+     * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+     * @return Whether the fixSignal field is set.
+     */
+    @java.lang.Override
+    public boolean hasFixSignal() {
+      return signalTypeCase_ == 1;
+    }
+    /**
+     * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+     * @return The fixSignal.
+     */
+    @java.lang.Override
+    public zb.dcts.scenario.detection.Detection.SignalDigest getFixSignal() {
+      if (signalTypeCase_ == 1) {
+         return (zb.dcts.scenario.detection.Detection.SignalDigest) signalType_;
+      }
+      return zb.dcts.scenario.detection.Detection.SignalDigest.getDefaultInstance();
+    }
+    /**
+     * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.scenario.detection.Detection.SignalDigestOrBuilder getFixSignalOrBuilder() {
+      if (signalTypeCase_ == 1) {
+         return (zb.dcts.scenario.detection.Detection.SignalDigest) signalType_;
+      }
+      return zb.dcts.scenario.detection.Detection.SignalDigest.getDefaultInstance();
+    }
+
+    public static final int HOP_SIGNAL_FIELD_NUMBER = 2;
+    /**
+     * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+     * @return Whether the hopSignal field is set.
+     */
+    @java.lang.Override
+    public boolean hasHopSignal() {
+      return signalTypeCase_ == 2;
+    }
+    /**
+     * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+     * @return The hopSignal.
+     */
+    @java.lang.Override
+    public zb.dcts.scenario.detection.Detection.HopSignalCluster getHopSignal() {
+      if (signalTypeCase_ == 2) {
+         return (zb.dcts.scenario.detection.Detection.HopSignalCluster) signalType_;
+      }
+      return zb.dcts.scenario.detection.Detection.HopSignalCluster.getDefaultInstance();
+    }
+    /**
+     * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.scenario.detection.Detection.HopSignalClusterOrBuilder getHopSignalOrBuilder() {
+      if (signalTypeCase_ == 2) {
+         return (zb.dcts.scenario.detection.Detection.HopSignalCluster) signalType_;
+      }
+      return zb.dcts.scenario.detection.Detection.HopSignalCluster.getDefaultInstance();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (signalTypeCase_ == 1) {
+        output.writeMessage(1, (zb.dcts.scenario.detection.Detection.SignalDigest) signalType_);
+      }
+      if (signalTypeCase_ == 2) {
+        output.writeMessage(2, (zb.dcts.scenario.detection.Detection.HopSignalCluster) signalType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (signalTypeCase_ == 1) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, (zb.dcts.scenario.detection.Detection.SignalDigest) signalType_);
+      }
+      if (signalTypeCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, (zb.dcts.scenario.detection.Detection.HopSignalCluster) signalType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof zb.dcts.scenario.detection.Detection.Signal)) {
+        return super.equals(obj);
+      }
+      zb.dcts.scenario.detection.Detection.Signal other = (zb.dcts.scenario.detection.Detection.Signal) obj;
+
+      if (!getSignalTypeCase().equals(other.getSignalTypeCase())) return false;
+      switch (signalTypeCase_) {
+        case 1:
+          if (!getFixSignal()
+              .equals(other.getFixSignal())) return false;
+          break;
+        case 2:
+          if (!getHopSignal()
+              .equals(other.getHopSignal())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      switch (signalTypeCase_) {
+        case 1:
+          hash = (37 * hash) + FIX_SIGNAL_FIELD_NUMBER;
+          hash = (53 * hash) + getFixSignal().hashCode();
+          break;
+        case 2:
+          hash = (37 * hash) + HOP_SIGNAL_FIELD_NUMBER;
+          hash = (53 * hash) + getHopSignal().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static zb.dcts.scenario.detection.Detection.Signal parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.scenario.detection.Detection.Signal parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.scenario.detection.Detection.Signal parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.scenario.detection.Detection.Signal parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.scenario.detection.Detection.Signal parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.scenario.detection.Detection.Signal parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.scenario.detection.Detection.Signal parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static zb.dcts.scenario.detection.Detection.Signal parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static zb.dcts.scenario.detection.Detection.Signal parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static zb.dcts.scenario.detection.Detection.Signal parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static zb.dcts.scenario.detection.Detection.Signal parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static zb.dcts.scenario.detection.Detection.Signal parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(zb.dcts.scenario.detection.Detection.Signal prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code zb.dcts.scenario.detection.Signal}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:zb.dcts.scenario.detection.Signal)
+        zb.dcts.scenario.detection.Detection.SignalOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return zb.dcts.scenario.detection.Detection.internal_static_zb_dcts_scenario_detection_Signal_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return zb.dcts.scenario.detection.Detection.internal_static_zb_dcts_scenario_detection_Signal_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                zb.dcts.scenario.detection.Detection.Signal.class, zb.dcts.scenario.detection.Detection.Signal.Builder.class);
+      }
+
+      // Construct using zb.dcts.scenario.detection.Detection.Signal.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        signalTypeCase_ = 0;
+        signalType_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return zb.dcts.scenario.detection.Detection.internal_static_zb_dcts_scenario_detection_Signal_descriptor;
+      }
+
+      @java.lang.Override
+      public zb.dcts.scenario.detection.Detection.Signal getDefaultInstanceForType() {
+        return zb.dcts.scenario.detection.Detection.Signal.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public zb.dcts.scenario.detection.Detection.Signal build() {
+        zb.dcts.scenario.detection.Detection.Signal result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public zb.dcts.scenario.detection.Detection.Signal buildPartial() {
+        zb.dcts.scenario.detection.Detection.Signal result = new zb.dcts.scenario.detection.Detection.Signal(this);
+        if (signalTypeCase_ == 1) {
+          if (fixSignalBuilder_ == null) {
+            result.signalType_ = signalType_;
+          } else {
+            result.signalType_ = fixSignalBuilder_.build();
+          }
+        }
+        if (signalTypeCase_ == 2) {
+          if (hopSignalBuilder_ == null) {
+            result.signalType_ = signalType_;
+          } else {
+            result.signalType_ = hopSignalBuilder_.build();
+          }
+        }
+        result.signalTypeCase_ = signalTypeCase_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof zb.dcts.scenario.detection.Detection.Signal) {
+          return mergeFrom((zb.dcts.scenario.detection.Detection.Signal)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(zb.dcts.scenario.detection.Detection.Signal other) {
+        if (other == zb.dcts.scenario.detection.Detection.Signal.getDefaultInstance()) return this;
+        switch (other.getSignalTypeCase()) {
+          case FIX_SIGNAL: {
+            mergeFixSignal(other.getFixSignal());
+            break;
+          }
+          case HOP_SIGNAL: {
+            mergeHopSignal(other.getHopSignal());
+            break;
+          }
+          case SIGNALTYPE_NOT_SET: {
+            break;
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        zb.dcts.scenario.detection.Detection.Signal parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (zb.dcts.scenario.detection.Detection.Signal) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int signalTypeCase_ = 0;
+      private java.lang.Object signalType_;
+      public SignalTypeCase
+          getSignalTypeCase() {
+        return SignalTypeCase.forNumber(
+            signalTypeCase_);
+      }
+
+      public Builder clearSignalType() {
+        signalTypeCase_ = 0;
+        signalType_ = null;
+        onChanged();
+        return this;
+      }
+
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          zb.dcts.scenario.detection.Detection.SignalDigest, zb.dcts.scenario.detection.Detection.SignalDigest.Builder, zb.dcts.scenario.detection.Detection.SignalDigestOrBuilder> fixSignalBuilder_;
+      /**
+       * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+       * @return Whether the fixSignal field is set.
+       */
+      @java.lang.Override
+      public boolean hasFixSignal() {
+        return signalTypeCase_ == 1;
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+       * @return The fixSignal.
+       */
+      @java.lang.Override
+      public zb.dcts.scenario.detection.Detection.SignalDigest getFixSignal() {
+        if (fixSignalBuilder_ == null) {
+          if (signalTypeCase_ == 1) {
+            return (zb.dcts.scenario.detection.Detection.SignalDigest) signalType_;
+          }
+          return zb.dcts.scenario.detection.Detection.SignalDigest.getDefaultInstance();
+        } else {
+          if (signalTypeCase_ == 1) {
+            return fixSignalBuilder_.getMessage();
+          }
+          return zb.dcts.scenario.detection.Detection.SignalDigest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+       */
+      public Builder setFixSignal(zb.dcts.scenario.detection.Detection.SignalDigest value) {
+        if (fixSignalBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          signalType_ = value;
+          onChanged();
+        } else {
+          fixSignalBuilder_.setMessage(value);
+        }
+        signalTypeCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+       */
+      public Builder setFixSignal(
+          zb.dcts.scenario.detection.Detection.SignalDigest.Builder builderForValue) {
+        if (fixSignalBuilder_ == null) {
+          signalType_ = builderForValue.build();
+          onChanged();
+        } else {
+          fixSignalBuilder_.setMessage(builderForValue.build());
+        }
+        signalTypeCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+       */
+      public Builder mergeFixSignal(zb.dcts.scenario.detection.Detection.SignalDigest value) {
+        if (fixSignalBuilder_ == null) {
+          if (signalTypeCase_ == 1 &&
+              signalType_ != zb.dcts.scenario.detection.Detection.SignalDigest.getDefaultInstance()) {
+            signalType_ = zb.dcts.scenario.detection.Detection.SignalDigest.newBuilder((zb.dcts.scenario.detection.Detection.SignalDigest) signalType_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            signalType_ = value;
+          }
+          onChanged();
+        } else {
+          if (signalTypeCase_ == 1) {
+            fixSignalBuilder_.mergeFrom(value);
+          }
+          fixSignalBuilder_.setMessage(value);
+        }
+        signalTypeCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+       */
+      public Builder clearFixSignal() {
+        if (fixSignalBuilder_ == null) {
+          if (signalTypeCase_ == 1) {
+            signalTypeCase_ = 0;
+            signalType_ = null;
+            onChanged();
+          }
+        } else {
+          if (signalTypeCase_ == 1) {
+            signalTypeCase_ = 0;
+            signalType_ = null;
+          }
+          fixSignalBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+       */
+      public zb.dcts.scenario.detection.Detection.SignalDigest.Builder getFixSignalBuilder() {
+        return getFixSignalFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+       */
+      @java.lang.Override
+      public zb.dcts.scenario.detection.Detection.SignalDigestOrBuilder getFixSignalOrBuilder() {
+        if ((signalTypeCase_ == 1) && (fixSignalBuilder_ != null)) {
+          return fixSignalBuilder_.getMessageOrBuilder();
+        } else {
+          if (signalTypeCase_ == 1) {
+            return (zb.dcts.scenario.detection.Detection.SignalDigest) signalType_;
+          }
+          return zb.dcts.scenario.detection.Detection.SignalDigest.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.SignalDigest fix_signal = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          zb.dcts.scenario.detection.Detection.SignalDigest, zb.dcts.scenario.detection.Detection.SignalDigest.Builder, zb.dcts.scenario.detection.Detection.SignalDigestOrBuilder> 
+          getFixSignalFieldBuilder() {
+        if (fixSignalBuilder_ == null) {
+          if (!(signalTypeCase_ == 1)) {
+            signalType_ = zb.dcts.scenario.detection.Detection.SignalDigest.getDefaultInstance();
+          }
+          fixSignalBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              zb.dcts.scenario.detection.Detection.SignalDigest, zb.dcts.scenario.detection.Detection.SignalDigest.Builder, zb.dcts.scenario.detection.Detection.SignalDigestOrBuilder>(
+                  (zb.dcts.scenario.detection.Detection.SignalDigest) signalType_,
+                  getParentForChildren(),
+                  isClean());
+          signalType_ = null;
+        }
+        signalTypeCase_ = 1;
+        onChanged();;
+        return fixSignalBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          zb.dcts.scenario.detection.Detection.HopSignalCluster, zb.dcts.scenario.detection.Detection.HopSignalCluster.Builder, zb.dcts.scenario.detection.Detection.HopSignalClusterOrBuilder> hopSignalBuilder_;
+      /**
+       * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+       * @return Whether the hopSignal field is set.
+       */
+      @java.lang.Override
+      public boolean hasHopSignal() {
+        return signalTypeCase_ == 2;
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+       * @return The hopSignal.
+       */
+      @java.lang.Override
+      public zb.dcts.scenario.detection.Detection.HopSignalCluster getHopSignal() {
+        if (hopSignalBuilder_ == null) {
+          if (signalTypeCase_ == 2) {
+            return (zb.dcts.scenario.detection.Detection.HopSignalCluster) signalType_;
+          }
+          return zb.dcts.scenario.detection.Detection.HopSignalCluster.getDefaultInstance();
+        } else {
+          if (signalTypeCase_ == 2) {
+            return hopSignalBuilder_.getMessage();
+          }
+          return zb.dcts.scenario.detection.Detection.HopSignalCluster.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+       */
+      public Builder setHopSignal(zb.dcts.scenario.detection.Detection.HopSignalCluster value) {
+        if (hopSignalBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          signalType_ = value;
+          onChanged();
+        } else {
+          hopSignalBuilder_.setMessage(value);
+        }
+        signalTypeCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+       */
+      public Builder setHopSignal(
+          zb.dcts.scenario.detection.Detection.HopSignalCluster.Builder builderForValue) {
+        if (hopSignalBuilder_ == null) {
+          signalType_ = builderForValue.build();
+          onChanged();
+        } else {
+          hopSignalBuilder_.setMessage(builderForValue.build());
+        }
+        signalTypeCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+       */
+      public Builder mergeHopSignal(zb.dcts.scenario.detection.Detection.HopSignalCluster value) {
+        if (hopSignalBuilder_ == null) {
+          if (signalTypeCase_ == 2 &&
+              signalType_ != zb.dcts.scenario.detection.Detection.HopSignalCluster.getDefaultInstance()) {
+            signalType_ = zb.dcts.scenario.detection.Detection.HopSignalCluster.newBuilder((zb.dcts.scenario.detection.Detection.HopSignalCluster) signalType_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            signalType_ = value;
+          }
+          onChanged();
+        } else {
+          if (signalTypeCase_ == 2) {
+            hopSignalBuilder_.mergeFrom(value);
+          }
+          hopSignalBuilder_.setMessage(value);
+        }
+        signalTypeCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+       */
+      public Builder clearHopSignal() {
+        if (hopSignalBuilder_ == null) {
+          if (signalTypeCase_ == 2) {
+            signalTypeCase_ = 0;
+            signalType_ = null;
+            onChanged();
+          }
+        } else {
+          if (signalTypeCase_ == 2) {
+            signalTypeCase_ = 0;
+            signalType_ = null;
+          }
+          hopSignalBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+       */
+      public zb.dcts.scenario.detection.Detection.HopSignalCluster.Builder getHopSignalBuilder() {
+        return getHopSignalFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+       */
+      @java.lang.Override
+      public zb.dcts.scenario.detection.Detection.HopSignalClusterOrBuilder getHopSignalOrBuilder() {
+        if ((signalTypeCase_ == 2) && (hopSignalBuilder_ != null)) {
+          return hopSignalBuilder_.getMessageOrBuilder();
+        } else {
+          if (signalTypeCase_ == 2) {
+            return (zb.dcts.scenario.detection.Detection.HopSignalCluster) signalType_;
+          }
+          return zb.dcts.scenario.detection.Detection.HopSignalCluster.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.zb.dcts.scenario.detection.HopSignalCluster hop_signal = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          zb.dcts.scenario.detection.Detection.HopSignalCluster, zb.dcts.scenario.detection.Detection.HopSignalCluster.Builder, zb.dcts.scenario.detection.Detection.HopSignalClusterOrBuilder> 
+          getHopSignalFieldBuilder() {
+        if (hopSignalBuilder_ == null) {
+          if (!(signalTypeCase_ == 2)) {
+            signalType_ = zb.dcts.scenario.detection.Detection.HopSignalCluster.getDefaultInstance();
+          }
+          hopSignalBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              zb.dcts.scenario.detection.Detection.HopSignalCluster, zb.dcts.scenario.detection.Detection.HopSignalCluster.Builder, zb.dcts.scenario.detection.Detection.HopSignalClusterOrBuilder>(
+                  (zb.dcts.scenario.detection.Detection.HopSignalCluster) signalType_,
+                  getParentForChildren(),
+                  isClean());
+          signalType_ = null;
+        }
+        signalTypeCase_ = 2;
+        onChanged();;
+        return hopSignalBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:zb.dcts.scenario.detection.Signal)
+    }
+
+    // @@protoc_insertion_point(class_scope:zb.dcts.scenario.detection.Signal)
+    private static final zb.dcts.scenario.detection.Detection.Signal DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new zb.dcts.scenario.detection.Detection.Signal();
+    }
+
+    public static zb.dcts.scenario.detection.Detection.Signal getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Signal>
+        PARSER = new com.google.protobuf.AbstractParser<Signal>() {
+      @java.lang.Override
+      public Signal parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Signal(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Signal> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Signal> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public zb.dcts.scenario.detection.Detection.Signal getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface FixSignalListOrBuilder extends
       // @@protoc_insertion_point(interface_extends:zb.dcts.scenario.detection.FixSignalList)
       com.google.protobuf.MessageOrBuilder {
@@ -38656,6 +39603,11 @@ public final class Detection {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_zb_dcts_scenario_detection_HopSignalCluster_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_zb_dcts_scenario_detection_Signal_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_zb_dcts_scenario_detection_Signal_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_zb_dcts_scenario_detection_FixSignalList_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -38825,77 +39777,80 @@ public final class Detection {
       "tion.SignalActivity\022)\n\016emit_time_span\030\003 " +
       "\001(\0132\021.zb.dcts.TimeSpan\022=\n\010freq_set\030\004 \003(\013" +
       "2+.zb.dcts.scenario.detection.HopSignalD" +
-      "igest\"O\n\rFixSignalList\022>\n\013fix_signals\030\001 " +
-      "\003(\0132).zb.dcts.scenario.detection.SignalS" +
-      "egment\"Z\n\rHopSignalList\022I\n\023hop_signal_cl" +
-      "usters\030\001 \003(\0132,.zb.dcts.scenario.detectio" +
-      "n.HopSignalCluster\"\214\001\n\020DetectionRequest\022" +
-      "3\n\tresponser\030\001 \001(\0132 .zb.dcts.scenario.Sc" +
-      "enarioTaskId\022C\n\017detection_param\030\002 \001(\0132*." +
-      "zb.dcts.scenario.detection.DetectionPara" +
-      "m\"J\n\022AutoGatheringParam\022\031\n\021time_span_in_" +
-      "msec\030\001 \001(\005\022\031\n\021signal_candidates\030\002 \003(\t\"z\n" +
-      "\024ManualGatheringParam\022\n\n\002id\030\001 \001(\t\022\031\n\021tim" +
-      "e_span_in_msec\030\002 \001(\005\022;\n\tfreq_span\030\003 \001(\0132" +
-      "(.zb.dcts.scenario.spectrum.FrequencySpa" +
-      "n\"\355\001\n\026SignalGatheringRequest\0223\n\tresponse" +
-      "r\030\001 \001(\0132 .zb.dcts.scenario.ScenarioTaskI" +
-      "d\022L\n\024auto_gathering_param\030\002 \001(\0132..zb.dct" +
-      "s.scenario.detection.AutoGatheringParam\022" +
-      "P\n\026manual_gathering_param\030\003 \001(\01320.zb.dct" +
-      "s.scenario.detection.ManualGatheringPara" +
-      "m\"Z\n\014SignalSample\022\n\n\002id\030\001 \001(\t\022>\n\014sample_" +
-      "block\030\002 \001(\0132(.zb.dcts.scenario.spectrum." +
-      "SpectrumBlock\"M\n\020SignalSampleList\0229\n\007sam" +
-      "ples\030\001 \003(\0132(.zb.dcts.scenario.detection." +
-      "SignalSample\"\212\002\n\027SignalTableQueryRequest" +
-      "\0223\n\tresponser\030\001 \001(\0132 .zb.dcts.scenario.S" +
-      "cenarioTaskId\022-\n\013data_source\030\002 \001(\0132\030.zb." +
-      "dcts.source.SourceId\022&\n\014activiy_mask\030\003 \001" +
-      "(\0132\020.zb.dcts.Integer\022<\n\nfreq_range\030\004 \001(\013" +
-      "2(.zb.dcts.scenario.spectrum.FrequencySp" +
-      "an\022%\n\ntime_range\030\005 \001(\0132\021.zb.dcts.TimeSpa" +
-      "n\"\262\002\n\030SignalTableQueryResponse\022-\n\013data_s" +
-      "ource\030\001 \001(\0132\030.zb.dcts.source.SourceId\022\022\n" +
-      "\nnum_sweeps\030\002 \001(\005\022\023\n\013num_detects\030\003 \001(\005\022\031" +
-      "\n\021num_total_signals\030\004 \001(\005\022\031\n\021num_query_s" +
-      "ignals\030\005 \001(\005\022A\n\017fix_signal_list\030\007 \003(\0132(." +
-      "zb.dcts.scenario.detection.SignalDigest\022" +
-      "E\n\017hop_signal_list\030\010 \003(\0132,.zb.dcts.scena" +
-      "rio.detection.HopSignalCluster\"\267\001\n\006Heade" +
-      "r\022-\n\013result_from\030\001 \001(\0132\030.zb.dcts.source." +
-      "SourceId\022\027\n\017sequence_number\030\003 \001(\r\022\023\n\013swe" +
-      "ep_count\030\004 \001(\r\022$\n\ttime_span\030\005 \001(\0132\021.zb.d" +
-      "cts.TimeSpan\022*\n\017device_position\030\006 \001(\0132\021." +
-      "zb.dcts.Position\"\323\001\n\007RawBody\022=\n\010freq_seg" +
-      "\030\001 \001(\0132+.zb.dcts.scenario.spectrum.Frequ" +
-      "encySegment\022D\n\023over_threshold_hits\030\002 \001(\013" +
-      "2\'.zb.dcts.scenario.spectrum.SpectrumLin" +
-      "e\022C\n\022raw_spectrum_lines\030\003 \003(\0132\'.zb.dcts." +
-      "scenario.spectrum.SpectrumLine\"\232\001\n\007RawDa" +
-      "ta\0222\n\006header\030\001 \001(\0132\".zb.dcts.scenario.de" +
-      "tection.Header\0221\n\004body\030\002 \001(\0132#.zb.dcts.s" +
-      "cenario.detection.RawBody\022(\n\017signal_segm" +
-      "ents\030\003 \003(\0132\017.zb.dcts.IRange\"\232\002\n\022DeviceDe" +
-      "tectResult\0222\n\006header\030\001 \001(\0132\".zb.dcts.sce" +
-      "nario.detection.Header\022B\n\017fix_signal_lis" +
-      "t\030\003 \001(\0132).zb.dcts.scenario.detection.Fix" +
-      "SignalList\022B\n\017hop_signal_list\030\004 \001(\0132).zb" +
-      ".dcts.scenario.detection.HopSignalList\022H" +
-      "\n\022signal_sample_list\030\005 \001(\0132,.zb.dcts.sce" +
-      "nario.detection.SignalSampleList\"\231\002\n\021Sig" +
-      "nalLayerSurvey\022-\n\013result_from\030\001 \001(\0132\030.zb" +
-      ".dcts.source.SourceId\022&\n\ntime_stamp\030\002 \001(" +
-      "\0132\022.zb.dcts.Timestamp\022#\n\010position\030\003 \001(\0132" +
-      "\021.zb.dcts.Position\022A\n\017fix_signal_list\030\004 " +
-      "\003(\0132(.zb.dcts.scenario.detection.SignalD" +
-      "igest\022E\n\017hop_signal_list\030\005 \003(\0132,.zb.dcts" +
-      ".scenario.detection.HopSignalCluster*I\n\r" +
-      "ThresholdType\022\013\n\007HISTORY\020\000\022\017\n\013USER_DEFIN" +
-      "E\020\001\022\014\n\010ADAPTIVE\020\002\022\014\n\010NEIGHBOR\020\003*Q\n\016Signa" +
-      "lActivity\022\013\n\007UNKNOWN\020\000\022\n\n\006ACTIVE\020\001\022\014\n\010IN" +
-      "ACTIVE\020\002\022\013\n\007DECAYED\020\004\022\013\n\007REMOVED\020\010b\006prot" +
-      "o3"
+      "igest\"\233\001\n\006Signal\022>\n\nfix_signal\030\001 \001(\0132(.z" +
+      "b.dcts.scenario.detection.SignalDigestH\000" +
+      "\022B\n\nhop_signal\030\002 \001(\0132,.zb.dcts.scenario." +
+      "detection.HopSignalClusterH\000B\r\n\013signal_t" +
+      "ype\"O\n\rFixSignalList\022>\n\013fix_signals\030\001 \003(" +
+      "\0132).zb.dcts.scenario.detection.SignalSeg" +
+      "ment\"Z\n\rHopSignalList\022I\n\023hop_signal_clus" +
+      "ters\030\001 \003(\0132,.zb.dcts.scenario.detection." +
+      "HopSignalCluster\"\214\001\n\020DetectionRequest\0223\n" +
+      "\tresponser\030\001 \001(\0132 .zb.dcts.scenario.Scen" +
+      "arioTaskId\022C\n\017detection_param\030\002 \001(\0132*.zb" +
+      ".dcts.scenario.detection.DetectionParam\"" +
+      "J\n\022AutoGatheringParam\022\031\n\021time_span_in_ms" +
+      "ec\030\001 \001(\005\022\031\n\021signal_candidates\030\002 \003(\t\"z\n\024M" +
+      "anualGatheringParam\022\n\n\002id\030\001 \001(\t\022\031\n\021time_" +
+      "span_in_msec\030\002 \001(\005\022;\n\tfreq_span\030\003 \001(\0132(." +
+      "zb.dcts.scenario.spectrum.FrequencySpan\"" +
+      "\355\001\n\026SignalGatheringRequest\0223\n\tresponser\030" +
+      "\001 \001(\0132 .zb.dcts.scenario.ScenarioTaskId\022" +
+      "L\n\024auto_gathering_param\030\002 \001(\0132..zb.dcts." +
+      "scenario.detection.AutoGatheringParam\022P\n" +
+      "\026manual_gathering_param\030\003 \001(\01320.zb.dcts." +
+      "scenario.detection.ManualGatheringParam\"" +
+      "Z\n\014SignalSample\022\n\n\002id\030\001 \001(\t\022>\n\014sample_bl" +
+      "ock\030\002 \001(\0132(.zb.dcts.scenario.spectrum.Sp" +
+      "ectrumBlock\"M\n\020SignalSampleList\0229\n\007sampl" +
+      "es\030\001 \003(\0132(.zb.dcts.scenario.detection.Si" +
+      "gnalSample\"\212\002\n\027SignalTableQueryRequest\0223" +
+      "\n\tresponser\030\001 \001(\0132 .zb.dcts.scenario.Sce" +
+      "narioTaskId\022-\n\013data_source\030\002 \001(\0132\030.zb.dc" +
+      "ts.source.SourceId\022&\n\014activiy_mask\030\003 \001(\013" +
+      "2\020.zb.dcts.Integer\022<\n\nfreq_range\030\004 \001(\0132(" +
+      ".zb.dcts.scenario.spectrum.FrequencySpan" +
+      "\022%\n\ntime_range\030\005 \001(\0132\021.zb.dcts.TimeSpan\"" +
+      "\262\002\n\030SignalTableQueryResponse\022-\n\013data_sou" +
+      "rce\030\001 \001(\0132\030.zb.dcts.source.SourceId\022\022\n\nn" +
+      "um_sweeps\030\002 \001(\005\022\023\n\013num_detects\030\003 \001(\005\022\031\n\021" +
+      "num_total_signals\030\004 \001(\005\022\031\n\021num_query_sig" +
+      "nals\030\005 \001(\005\022A\n\017fix_signal_list\030\007 \003(\0132(.zb" +
+      ".dcts.scenario.detection.SignalDigest\022E\n" +
+      "\017hop_signal_list\030\010 \003(\0132,.zb.dcts.scenari" +
+      "o.detection.HopSignalCluster\"\267\001\n\006Header\022" +
+      "-\n\013result_from\030\001 \001(\0132\030.zb.dcts.source.So" +
+      "urceId\022\027\n\017sequence_number\030\003 \001(\r\022\023\n\013sweep" +
+      "_count\030\004 \001(\r\022$\n\ttime_span\030\005 \001(\0132\021.zb.dct" +
+      "s.TimeSpan\022*\n\017device_position\030\006 \001(\0132\021.zb" +
+      ".dcts.Position\"\323\001\n\007RawBody\022=\n\010freq_seg\030\001" +
+      " \001(\0132+.zb.dcts.scenario.spectrum.Frequen" +
+      "cySegment\022D\n\023over_threshold_hits\030\002 \001(\0132\'" +
+      ".zb.dcts.scenario.spectrum.SpectrumLine\022" +
+      "C\n\022raw_spectrum_lines\030\003 \003(\0132\'.zb.dcts.sc" +
+      "enario.spectrum.SpectrumLine\"\232\001\n\007RawData" +
+      "\0222\n\006header\030\001 \001(\0132\".zb.dcts.scenario.dete" +
+      "ction.Header\0221\n\004body\030\002 \001(\0132#.zb.dcts.sce" +
+      "nario.detection.RawBody\022(\n\017signal_segmen" +
+      "ts\030\003 \003(\0132\017.zb.dcts.IRange\"\232\002\n\022DeviceDete" +
+      "ctResult\0222\n\006header\030\001 \001(\0132\".zb.dcts.scena" +
+      "rio.detection.Header\022B\n\017fix_signal_list\030" +
+      "\003 \001(\0132).zb.dcts.scenario.detection.FixSi" +
+      "gnalList\022B\n\017hop_signal_list\030\004 \001(\0132).zb.d" +
+      "cts.scenario.detection.HopSignalList\022H\n\022" +
+      "signal_sample_list\030\005 \001(\0132,.zb.dcts.scena" +
+      "rio.detection.SignalSampleList\"\231\002\n\021Signa" +
+      "lLayerSurvey\022-\n\013result_from\030\001 \001(\0132\030.zb.d" +
+      "cts.source.SourceId\022&\n\ntime_stamp\030\002 \001(\0132" +
+      "\022.zb.dcts.Timestamp\022#\n\010position\030\003 \001(\0132\021." +
+      "zb.dcts.Position\022A\n\017fix_signal_list\030\004 \003(" +
+      "\0132(.zb.dcts.scenario.detection.SignalDig" +
+      "est\022E\n\017hop_signal_list\030\005 \003(\0132,.zb.dcts.s" +
+      "cenario.detection.HopSignalCluster*I\n\rTh" +
+      "resholdType\022\013\n\007HISTORY\020\000\022\017\n\013USER_DEFINE\020" +
+      "\001\022\014\n\010ADAPTIVE\020\002\022\014\n\010NEIGHBOR\020\003*Q\n\016SignalA" +
+      "ctivity\022\013\n\007UNKNOWN\020\000\022\n\n\006ACTIVE\020\001\022\014\n\010INAC" +
+      "TIVE\020\002\022\013\n\007DECAYED\020\004\022\013\n\007REMOVED\020\010b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -39013,92 +39968,98 @@ public final class Detection {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_HopSignalCluster_descriptor,
         new java.lang.String[] { "Name", "Activity", "EmitTimeSpan", "FreqSet", });
-    internal_static_zb_dcts_scenario_detection_FixSignalList_descriptor =
+    internal_static_zb_dcts_scenario_detection_Signal_descriptor =
       getDescriptor().getMessageTypes().get(18);
+    internal_static_zb_dcts_scenario_detection_Signal_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_zb_dcts_scenario_detection_Signal_descriptor,
+        new java.lang.String[] { "FixSignal", "HopSignal", "SignalType", });
+    internal_static_zb_dcts_scenario_detection_FixSignalList_descriptor =
+      getDescriptor().getMessageTypes().get(19);
     internal_static_zb_dcts_scenario_detection_FixSignalList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_FixSignalList_descriptor,
         new java.lang.String[] { "FixSignals", });
     internal_static_zb_dcts_scenario_detection_HopSignalList_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_zb_dcts_scenario_detection_HopSignalList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_HopSignalList_descriptor,
         new java.lang.String[] { "HopSignalClusters", });
     internal_static_zb_dcts_scenario_detection_DetectionRequest_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_zb_dcts_scenario_detection_DetectionRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_DetectionRequest_descriptor,
         new java.lang.String[] { "Responser", "DetectionParam", });
     internal_static_zb_dcts_scenario_detection_AutoGatheringParam_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_zb_dcts_scenario_detection_AutoGatheringParam_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_AutoGatheringParam_descriptor,
         new java.lang.String[] { "TimeSpanInMsec", "SignalCandidates", });
     internal_static_zb_dcts_scenario_detection_ManualGatheringParam_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_zb_dcts_scenario_detection_ManualGatheringParam_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_ManualGatheringParam_descriptor,
         new java.lang.String[] { "Id", "TimeSpanInMsec", "FreqSpan", });
     internal_static_zb_dcts_scenario_detection_SignalGatheringRequest_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_zb_dcts_scenario_detection_SignalGatheringRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_SignalGatheringRequest_descriptor,
         new java.lang.String[] { "Responser", "AutoGatheringParam", "ManualGatheringParam", });
     internal_static_zb_dcts_scenario_detection_SignalSample_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_zb_dcts_scenario_detection_SignalSample_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_SignalSample_descriptor,
         new java.lang.String[] { "Id", "SampleBlock", });
     internal_static_zb_dcts_scenario_detection_SignalSampleList_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_zb_dcts_scenario_detection_SignalSampleList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_SignalSampleList_descriptor,
         new java.lang.String[] { "Samples", });
     internal_static_zb_dcts_scenario_detection_SignalTableQueryRequest_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_zb_dcts_scenario_detection_SignalTableQueryRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_SignalTableQueryRequest_descriptor,
         new java.lang.String[] { "Responser", "DataSource", "ActiviyMask", "FreqRange", "TimeRange", });
     internal_static_zb_dcts_scenario_detection_SignalTableQueryResponse_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_zb_dcts_scenario_detection_SignalTableQueryResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_SignalTableQueryResponse_descriptor,
         new java.lang.String[] { "DataSource", "NumSweeps", "NumDetects", "NumTotalSignals", "NumQuerySignals", "FixSignalList", "HopSignalList", });
     internal_static_zb_dcts_scenario_detection_Header_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_zb_dcts_scenario_detection_Header_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_Header_descriptor,
         new java.lang.String[] { "ResultFrom", "SequenceNumber", "SweepCount", "TimeSpan", "DevicePosition", });
     internal_static_zb_dcts_scenario_detection_RawBody_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_zb_dcts_scenario_detection_RawBody_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_RawBody_descriptor,
         new java.lang.String[] { "FreqSeg", "OverThresholdHits", "RawSpectrumLines", });
     internal_static_zb_dcts_scenario_detection_RawData_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_zb_dcts_scenario_detection_RawData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_RawData_descriptor,
         new java.lang.String[] { "Header", "Body", "SignalSegments", });
     internal_static_zb_dcts_scenario_detection_DeviceDetectResult_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_zb_dcts_scenario_detection_DeviceDetectResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_DeviceDetectResult_descriptor,
         new java.lang.String[] { "Header", "FixSignalList", "HopSignalList", "SignalSampleList", });
     internal_static_zb_dcts_scenario_detection_SignalLayerSurvey_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_zb_dcts_scenario_detection_SignalLayerSurvey_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_scenario_detection_SignalLayerSurvey_descriptor,

@@ -175,6 +175,14 @@ message HopSignalCluster
     repeated HopSignalDigest freq_set = 4;          //频率集
 }
 
+message Signal
+{
+    oneof signal_type {
+        SignalDigest fix_signal = 1;
+        HopSignalCluster hop_signal = 2;
+    }
+}
+
 message FixSignalList
 {
     repeated SignalSegment fix_signals = 1;

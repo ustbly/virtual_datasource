@@ -142,92 +142,1034 @@ public final class CommunLinkOuterClass {
     // @@protoc_insertion_point(enum_scope:zb.dcts.fusion.airDomain.communLink.CommunState)
   }
 
+  public interface ConnectParamOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:zb.dcts.fusion.airDomain.communLink.ConnectParam)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * 0断开 1疑似通联 2联通
+     * </pre>
+     *
+     * <code>uint32 connet = 1;</code>
+     * @return The connet.
+     */
+    int getConnet();
+
+    /**
+     * <pre>
+     * 工作模式
+     * </pre>
+     *
+     * <code>string mode = 2;</code>
+     * @return The mode.
+     */
+    java.lang.String getMode();
+    /**
+     * <pre>
+     * 工作模式
+     * </pre>
+     *
+     * <code>string mode = 2;</code>
+     * @return The bytes for mode.
+     */
+    com.google.protobuf.ByteString
+        getModeBytes();
+
+    /**
+     * <pre>
+     * 带宽
+     * </pre>
+     *
+     * <code>uint32 bandwidth = 3;</code>
+     * @return The bandwidth.
+     */
+    int getBandwidth();
+
+    /**
+     * <pre>
+     * 调制样式
+     * </pre>
+     *
+     * <code>string modulation = 4;</code>
+     * @return The modulation.
+     */
+    java.lang.String getModulation();
+    /**
+     * <pre>
+     * 调制样式
+     * </pre>
+     *
+     * <code>string modulation = 4;</code>
+     * @return The bytes for modulation.
+     */
+    com.google.protobuf.ByteString
+        getModulationBytes();
+  }
+  /**
+   * <pre>
+   * 通联参数
+   * </pre>
+   *
+   * Protobuf type {@code zb.dcts.fusion.airDomain.communLink.ConnectParam}
+   */
+  public static final class ConnectParam extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:zb.dcts.fusion.airDomain.communLink.ConnectParam)
+      ConnectParamOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ConnectParam.newBuilder() to construct.
+    private ConnectParam(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ConnectParam() {
+      mode_ = "";
+      modulation_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ConnectParam();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ConnectParam(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              connet_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              mode_ = s;
+              break;
+            }
+            case 24: {
+
+              bandwidth_ = input.readUInt32();
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              modulation_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_ConnectParam_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_ConnectParam_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.class, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.Builder.class);
+    }
+
+    public static final int CONNET_FIELD_NUMBER = 1;
+    private int connet_;
+    /**
+     * <pre>
+     * 0断开 1疑似通联 2联通
+     * </pre>
+     *
+     * <code>uint32 connet = 1;</code>
+     * @return The connet.
+     */
+    @java.lang.Override
+    public int getConnet() {
+      return connet_;
+    }
+
+    public static final int MODE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object mode_;
+    /**
+     * <pre>
+     * 工作模式
+     * </pre>
+     *
+     * <code>string mode = 2;</code>
+     * @return The mode.
+     */
+    @java.lang.Override
+    public java.lang.String getMode() {
+      java.lang.Object ref = mode_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        mode_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 工作模式
+     * </pre>
+     *
+     * <code>string mode = 2;</code>
+     * @return The bytes for mode.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getModeBytes() {
+      java.lang.Object ref = mode_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        mode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BANDWIDTH_FIELD_NUMBER = 3;
+    private int bandwidth_;
+    /**
+     * <pre>
+     * 带宽
+     * </pre>
+     *
+     * <code>uint32 bandwidth = 3;</code>
+     * @return The bandwidth.
+     */
+    @java.lang.Override
+    public int getBandwidth() {
+      return bandwidth_;
+    }
+
+    public static final int MODULATION_FIELD_NUMBER = 4;
+    private volatile java.lang.Object modulation_;
+    /**
+     * <pre>
+     * 调制样式
+     * </pre>
+     *
+     * <code>string modulation = 4;</code>
+     * @return The modulation.
+     */
+    @java.lang.Override
+    public java.lang.String getModulation() {
+      java.lang.Object ref = modulation_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        modulation_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 调制样式
+     * </pre>
+     *
+     * <code>string modulation = 4;</code>
+     * @return The bytes for modulation.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getModulationBytes() {
+      java.lang.Object ref = modulation_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        modulation_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (connet_ != 0) {
+        output.writeUInt32(1, connet_);
+      }
+      if (!getModeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, mode_);
+      }
+      if (bandwidth_ != 0) {
+        output.writeUInt32(3, bandwidth_);
+      }
+      if (!getModulationBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, modulation_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (connet_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, connet_);
+      }
+      if (!getModeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, mode_);
+      }
+      if (bandwidth_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, bandwidth_);
+      }
+      if (!getModulationBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, modulation_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam)) {
+        return super.equals(obj);
+      }
+      zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam other = (zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam) obj;
+
+      if (getConnet()
+          != other.getConnet()) return false;
+      if (!getMode()
+          .equals(other.getMode())) return false;
+      if (getBandwidth()
+          != other.getBandwidth()) return false;
+      if (!getModulation()
+          .equals(other.getModulation())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CONNET_FIELD_NUMBER;
+      hash = (53 * hash) + getConnet();
+      hash = (37 * hash) + MODE_FIELD_NUMBER;
+      hash = (53 * hash) + getMode().hashCode();
+      hash = (37 * hash) + BANDWIDTH_FIELD_NUMBER;
+      hash = (53 * hash) + getBandwidth();
+      hash = (37 * hash) + MODULATION_FIELD_NUMBER;
+      hash = (53 * hash) + getModulation().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 通联参数
+     * </pre>
+     *
+     * Protobuf type {@code zb.dcts.fusion.airDomain.communLink.ConnectParam}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:zb.dcts.fusion.airDomain.communLink.ConnectParam)
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParamOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_ConnectParam_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_ConnectParam_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.class, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.Builder.class);
+      }
+
+      // Construct using zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        connet_ = 0;
+
+        mode_ = "";
+
+        bandwidth_ = 0;
+
+        modulation_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_ConnectParam_descriptor;
+      }
+
+      @java.lang.Override
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam getDefaultInstanceForType() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam build() {
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam buildPartial() {
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam result = new zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam(this);
+        result.connet_ = connet_;
+        result.mode_ = mode_;
+        result.bandwidth_ = bandwidth_;
+        result.modulation_ = modulation_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam) {
+          return mergeFrom((zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam other) {
+        if (other == zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.getDefaultInstance()) return this;
+        if (other.getConnet() != 0) {
+          setConnet(other.getConnet());
+        }
+        if (!other.getMode().isEmpty()) {
+          mode_ = other.mode_;
+          onChanged();
+        }
+        if (other.getBandwidth() != 0) {
+          setBandwidth(other.getBandwidth());
+        }
+        if (!other.getModulation().isEmpty()) {
+          modulation_ = other.modulation_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int connet_ ;
+      /**
+       * <pre>
+       * 0断开 1疑似通联 2联通
+       * </pre>
+       *
+       * <code>uint32 connet = 1;</code>
+       * @return The connet.
+       */
+      @java.lang.Override
+      public int getConnet() {
+        return connet_;
+      }
+      /**
+       * <pre>
+       * 0断开 1疑似通联 2联通
+       * </pre>
+       *
+       * <code>uint32 connet = 1;</code>
+       * @param value The connet to set.
+       * @return This builder for chaining.
+       */
+      public Builder setConnet(int value) {
+        
+        connet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 0断开 1疑似通联 2联通
+       * </pre>
+       *
+       * <code>uint32 connet = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearConnet() {
+        
+        connet_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object mode_ = "";
+      /**
+       * <pre>
+       * 工作模式
+       * </pre>
+       *
+       * <code>string mode = 2;</code>
+       * @return The mode.
+       */
+      public java.lang.String getMode() {
+        java.lang.Object ref = mode_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          mode_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 工作模式
+       * </pre>
+       *
+       * <code>string mode = 2;</code>
+       * @return The bytes for mode.
+       */
+      public com.google.protobuf.ByteString
+          getModeBytes() {
+        java.lang.Object ref = mode_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          mode_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 工作模式
+       * </pre>
+       *
+       * <code>string mode = 2;</code>
+       * @param value The mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMode(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        mode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 工作模式
+       * </pre>
+       *
+       * <code>string mode = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMode() {
+        
+        mode_ = getDefaultInstance().getMode();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 工作模式
+       * </pre>
+       *
+       * <code>string mode = 2;</code>
+       * @param value The bytes for mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        mode_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int bandwidth_ ;
+      /**
+       * <pre>
+       * 带宽
+       * </pre>
+       *
+       * <code>uint32 bandwidth = 3;</code>
+       * @return The bandwidth.
+       */
+      @java.lang.Override
+      public int getBandwidth() {
+        return bandwidth_;
+      }
+      /**
+       * <pre>
+       * 带宽
+       * </pre>
+       *
+       * <code>uint32 bandwidth = 3;</code>
+       * @param value The bandwidth to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBandwidth(int value) {
+        
+        bandwidth_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 带宽
+       * </pre>
+       *
+       * <code>uint32 bandwidth = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBandwidth() {
+        
+        bandwidth_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object modulation_ = "";
+      /**
+       * <pre>
+       * 调制样式
+       * </pre>
+       *
+       * <code>string modulation = 4;</code>
+       * @return The modulation.
+       */
+      public java.lang.String getModulation() {
+        java.lang.Object ref = modulation_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          modulation_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 调制样式
+       * </pre>
+       *
+       * <code>string modulation = 4;</code>
+       * @return The bytes for modulation.
+       */
+      public com.google.protobuf.ByteString
+          getModulationBytes() {
+        java.lang.Object ref = modulation_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          modulation_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 调制样式
+       * </pre>
+       *
+       * <code>string modulation = 4;</code>
+       * @param value The modulation to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModulation(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        modulation_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 调制样式
+       * </pre>
+       *
+       * <code>string modulation = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModulation() {
+        
+        modulation_ = getDefaultInstance().getModulation();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 调制样式
+       * </pre>
+       *
+       * <code>string modulation = 4;</code>
+       * @param value The bytes for modulation to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModulationBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        modulation_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:zb.dcts.fusion.airDomain.communLink.ConnectParam)
+    }
+
+    // @@protoc_insertion_point(class_scope:zb.dcts.fusion.airDomain.communLink.ConnectParam)
+    private static final zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam();
+    }
+
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ConnectParam>
+        PARSER = new com.google.protobuf.AbstractParser<ConnectParam>() {
+      @java.lang.Override
+      public ConnectParam parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ConnectParam(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ConnectParam> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ConnectParam> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface CommunLinkOrBuilder extends
       // @@protoc_insertion_point(interface_extends:zb.dcts.fusion.airDomain.communLink.CommunLink)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
-     * 通信ID
-     * </pre>
-     *
-     * <code>uint32 unId = 1;</code>
-     * @return The unId.
-     */
-    int getUnId();
-
-    /**
-     * <pre>
      * 源实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-     * @return Whether the srcTarget field is set.
+     * <code>uint32 src_id = 1;</code>
+     * @return The srcId.
      */
-    boolean hasSrcTarget();
-    /**
-     * <pre>
-     * 源实体
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-     * @return The srcTarget.
-     */
-    zb.dcts.fusion.airDomain.target.Target.FusionTarget getSrcTarget();
-    /**
-     * <pre>
-     * 源实体
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-     */
-    zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getSrcTargetOrBuilder();
+    int getSrcId();
 
     /**
      * <pre>
      * 目标实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-     * @return Whether the desTarget field is set.
+     * <code>uint32 des_id = 2;</code>
+     * @return The desId.
      */
-    boolean hasDesTarget();
-    /**
-     * <pre>
-     * 目标实体
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-     * @return The desTarget.
-     */
-    zb.dcts.fusion.airDomain.target.Target.FusionTarget getDesTarget();
-    /**
-     * <pre>
-     * 目标实体
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-     */
-    zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getDesTargetOrBuilder();
+    int getDesId();
 
     /**
      * <pre>
      * 通联状态
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.communLink.CommunState commun_state = 4;</code>
-     * @return The enum numeric value on the wire for communState.
+     * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
+     * @return Whether the communState field is set.
      */
-    int getCommunStateValue();
+    boolean hasCommunState();
     /**
      * <pre>
      * 通联状态
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.communLink.CommunState commun_state = 4;</code>
+     * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
      * @return The communState.
      */
-    zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState getCommunState();
+    zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam getCommunState();
+    /**
+     * <pre>
+     * 通联状态
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
+     */
+    zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParamOrBuilder getCommunStateOrBuilder();
   }
   /**
    * <pre>
@@ -246,7 +1188,6 @@ public final class CommunLinkOuterClass {
       super(builder);
     }
     private CommunLink() {
-      communState_ = 0;
     }
 
     @java.lang.Override
@@ -281,39 +1222,25 @@ public final class CommunLinkOuterClass {
               break;
             case 8: {
 
-              unId_ = input.readUInt32();
+              srcId_ = input.readUInt32();
               break;
             }
-            case 18: {
-              zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder subBuilder = null;
-              if (srcTarget_ != null) {
-                subBuilder = srcTarget_.toBuilder();
-              }
-              srcTarget_ = input.readMessage(zb.dcts.fusion.airDomain.target.Target.FusionTarget.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(srcTarget_);
-                srcTarget_ = subBuilder.buildPartial();
-              }
+            case 16: {
 
+              desId_ = input.readUInt32();
               break;
             }
             case 26: {
-              zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder subBuilder = null;
-              if (desTarget_ != null) {
-                subBuilder = desTarget_.toBuilder();
+              zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.Builder subBuilder = null;
+              if (communState_ != null) {
+                subBuilder = communState_.toBuilder();
               }
-              desTarget_ = input.readMessage(zb.dcts.fusion.airDomain.target.Target.FusionTarget.parser(), extensionRegistry);
+              communState_ = input.readMessage(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(desTarget_);
-                desTarget_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(communState_);
+                communState_ = subBuilder.buildPartial();
               }
 
-              break;
-            }
-            case 32: {
-              int rawValue = input.readEnum();
-
-              communState_ = rawValue;
               break;
             }
             default: {
@@ -348,122 +1275,72 @@ public final class CommunLinkOuterClass {
               zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.class, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.Builder.class);
     }
 
-    public static final int UNID_FIELD_NUMBER = 1;
-    private int unId_;
-    /**
-     * <pre>
-     * 通信ID
-     * </pre>
-     *
-     * <code>uint32 unId = 1;</code>
-     * @return The unId.
-     */
-    @java.lang.Override
-    public int getUnId() {
-      return unId_;
-    }
-
-    public static final int SRC_TARGET_FIELD_NUMBER = 2;
-    private zb.dcts.fusion.airDomain.target.Target.FusionTarget srcTarget_;
+    public static final int SRC_ID_FIELD_NUMBER = 1;
+    private int srcId_;
     /**
      * <pre>
      * 源实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-     * @return Whether the srcTarget field is set.
+     * <code>uint32 src_id = 1;</code>
+     * @return The srcId.
      */
     @java.lang.Override
-    public boolean hasSrcTarget() {
-      return srcTarget_ != null;
-    }
-    /**
-     * <pre>
-     * 源实体
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-     * @return The srcTarget.
-     */
-    @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.Target.FusionTarget getSrcTarget() {
-      return srcTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : srcTarget_;
-    }
-    /**
-     * <pre>
-     * 源实体
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-     */
-    @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getSrcTargetOrBuilder() {
-      return getSrcTarget();
+    public int getSrcId() {
+      return srcId_;
     }
 
-    public static final int DES_TARGET_FIELD_NUMBER = 3;
-    private zb.dcts.fusion.airDomain.target.Target.FusionTarget desTarget_;
+    public static final int DES_ID_FIELD_NUMBER = 2;
+    private int desId_;
     /**
      * <pre>
      * 目标实体
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-     * @return Whether the desTarget field is set.
+     * <code>uint32 des_id = 2;</code>
+     * @return The desId.
      */
     @java.lang.Override
-    public boolean hasDesTarget() {
-      return desTarget_ != null;
-    }
-    /**
-     * <pre>
-     * 目标实体
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-     * @return The desTarget.
-     */
-    @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.Target.FusionTarget getDesTarget() {
-      return desTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : desTarget_;
-    }
-    /**
-     * <pre>
-     * 目标实体
-     * </pre>
-     *
-     * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-     */
-    @java.lang.Override
-    public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getDesTargetOrBuilder() {
-      return getDesTarget();
+    public int getDesId() {
+      return desId_;
     }
 
-    public static final int COMMUN_STATE_FIELD_NUMBER = 4;
-    private int communState_;
+    public static final int COMMUN_STATE_FIELD_NUMBER = 3;
+    private zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam communState_;
     /**
      * <pre>
      * 通联状态
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.communLink.CommunState commun_state = 4;</code>
-     * @return The enum numeric value on the wire for communState.
+     * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
+     * @return Whether the communState field is set.
      */
-    @java.lang.Override public int getCommunStateValue() {
-      return communState_;
+    @java.lang.Override
+    public boolean hasCommunState() {
+      return communState_ != null;
     }
     /**
      * <pre>
      * 通联状态
      * </pre>
      *
-     * <code>.zb.dcts.fusion.airDomain.communLink.CommunState commun_state = 4;</code>
+     * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
      * @return The communState.
      */
-    @java.lang.Override public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState getCommunState() {
-      @SuppressWarnings("deprecation")
-      zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState result = zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState.valueOf(communState_);
-      return result == null ? zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState.UNRECOGNIZED : result;
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam getCommunState() {
+      return communState_ == null ? zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.getDefaultInstance() : communState_;
+    }
+    /**
+     * <pre>
+     * 通联状态
+     * </pre>
+     *
+     * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParamOrBuilder getCommunStateOrBuilder() {
+      return getCommunState();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -480,17 +1357,14 @@ public final class CommunLinkOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (unId_ != 0) {
-        output.writeUInt32(1, unId_);
+      if (srcId_ != 0) {
+        output.writeUInt32(1, srcId_);
       }
-      if (srcTarget_ != null) {
-        output.writeMessage(2, getSrcTarget());
+      if (desId_ != 0) {
+        output.writeUInt32(2, desId_);
       }
-      if (desTarget_ != null) {
-        output.writeMessage(3, getDesTarget());
-      }
-      if (communState_ != zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState.COMMUNICATION.getNumber()) {
-        output.writeEnum(4, communState_);
+      if (communState_ != null) {
+        output.writeMessage(3, getCommunState());
       }
       unknownFields.writeTo(output);
     }
@@ -501,21 +1375,17 @@ public final class CommunLinkOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (unId_ != 0) {
+      if (srcId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, unId_);
+          .computeUInt32Size(1, srcId_);
       }
-      if (srcTarget_ != null) {
+      if (desId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getSrcTarget());
+          .computeUInt32Size(2, desId_);
       }
-      if (desTarget_ != null) {
+      if (communState_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getDesTarget());
-      }
-      if (communState_ != zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState.COMMUNICATION.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, communState_);
+          .computeMessageSize(3, getCommunState());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -532,19 +1402,15 @@ public final class CommunLinkOuterClass {
       }
       zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink other = (zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink) obj;
 
-      if (getUnId()
-          != other.getUnId()) return false;
-      if (hasSrcTarget() != other.hasSrcTarget()) return false;
-      if (hasSrcTarget()) {
-        if (!getSrcTarget()
-            .equals(other.getSrcTarget())) return false;
+      if (getSrcId()
+          != other.getSrcId()) return false;
+      if (getDesId()
+          != other.getDesId()) return false;
+      if (hasCommunState() != other.hasCommunState()) return false;
+      if (hasCommunState()) {
+        if (!getCommunState()
+            .equals(other.getCommunState())) return false;
       }
-      if (hasDesTarget() != other.hasDesTarget()) return false;
-      if (hasDesTarget()) {
-        if (!getDesTarget()
-            .equals(other.getDesTarget())) return false;
-      }
-      if (communState_ != other.communState_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -556,18 +1422,14 @@ public final class CommunLinkOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + UNID_FIELD_NUMBER;
-      hash = (53 * hash) + getUnId();
-      if (hasSrcTarget()) {
-        hash = (37 * hash) + SRC_TARGET_FIELD_NUMBER;
-        hash = (53 * hash) + getSrcTarget().hashCode();
+      hash = (37 * hash) + SRC_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getSrcId();
+      hash = (37 * hash) + DES_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getDesId();
+      if (hasCommunState()) {
+        hash = (37 * hash) + COMMUN_STATE_FIELD_NUMBER;
+        hash = (53 * hash) + getCommunState().hashCode();
       }
-      if (hasDesTarget()) {
-        hash = (37 * hash) + DES_TARGET_FIELD_NUMBER;
-        hash = (53 * hash) + getDesTarget().hashCode();
-      }
-      hash = (37 * hash) + COMMUN_STATE_FIELD_NUMBER;
-      hash = (53 * hash) + communState_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -705,22 +1567,16 @@ public final class CommunLinkOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        unId_ = 0;
+        srcId_ = 0;
 
-        if (srcTargetBuilder_ == null) {
-          srcTarget_ = null;
-        } else {
-          srcTarget_ = null;
-          srcTargetBuilder_ = null;
-        }
-        if (desTargetBuilder_ == null) {
-          desTarget_ = null;
-        } else {
-          desTarget_ = null;
-          desTargetBuilder_ = null;
-        }
-        communState_ = 0;
+        desId_ = 0;
 
+        if (communStateBuilder_ == null) {
+          communState_ = null;
+        } else {
+          communState_ = null;
+          communStateBuilder_ = null;
+        }
         return this;
       }
 
@@ -747,18 +1603,13 @@ public final class CommunLinkOuterClass {
       @java.lang.Override
       public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink buildPartial() {
         zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink result = new zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink(this);
-        result.unId_ = unId_;
-        if (srcTargetBuilder_ == null) {
-          result.srcTarget_ = srcTarget_;
+        result.srcId_ = srcId_;
+        result.desId_ = desId_;
+        if (communStateBuilder_ == null) {
+          result.communState_ = communState_;
         } else {
-          result.srcTarget_ = srcTargetBuilder_.build();
+          result.communState_ = communStateBuilder_.build();
         }
-        if (desTargetBuilder_ == null) {
-          result.desTarget_ = desTarget_;
-        } else {
-          result.desTarget_ = desTargetBuilder_.build();
-        }
-        result.communState_ = communState_;
         onBuilt();
         return result;
       }
@@ -807,17 +1658,14 @@ public final class CommunLinkOuterClass {
 
       public Builder mergeFrom(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink other) {
         if (other == zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.getDefaultInstance()) return this;
-        if (other.getUnId() != 0) {
-          setUnId(other.getUnId());
+        if (other.getSrcId() != 0) {
+          setSrcId(other.getSrcId());
         }
-        if (other.hasSrcTarget()) {
-          mergeSrcTarget(other.getSrcTarget());
+        if (other.getDesId() != 0) {
+          setDesId(other.getDesId());
         }
-        if (other.hasDesTarget()) {
-          mergeDesTarget(other.getDesTarget());
-        }
-        if (other.communState_ != 0) {
-          setCommunStateValue(other.getCommunStateValue());
+        if (other.hasCommunState()) {
+          mergeCommunState(other.getCommunState());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -848,251 +1696,75 @@ public final class CommunLinkOuterClass {
         return this;
       }
 
-      private int unId_ ;
+      private int srcId_ ;
       /**
        * <pre>
-       * 通信ID
+       * 源实体
        * </pre>
        *
-       * <code>uint32 unId = 1;</code>
-       * @return The unId.
+       * <code>uint32 src_id = 1;</code>
+       * @return The srcId.
        */
       @java.lang.Override
-      public int getUnId() {
-        return unId_;
+      public int getSrcId() {
+        return srcId_;
       }
       /**
        * <pre>
-       * 通信ID
+       * 源实体
        * </pre>
        *
-       * <code>uint32 unId = 1;</code>
-       * @param value The unId to set.
+       * <code>uint32 src_id = 1;</code>
+       * @param value The srcId to set.
        * @return This builder for chaining.
        */
-      public Builder setUnId(int value) {
+      public Builder setSrcId(int value) {
         
-        unId_ = value;
+        srcId_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * 通信ID
+       * 源实体
        * </pre>
        *
-       * <code>uint32 unId = 1;</code>
+       * <code>uint32 src_id = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearUnId() {
+      public Builder clearSrcId() {
         
-        unId_ = 0;
+        srcId_ = 0;
         onChanged();
         return this;
       }
 
-      private zb.dcts.fusion.airDomain.target.Target.FusionTarget srcTarget_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> srcTargetBuilder_;
+      private int desId_ ;
       /**
        * <pre>
-       * 源实体
+       * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-       * @return Whether the srcTarget field is set.
+       * <code>uint32 des_id = 2;</code>
+       * @return The desId.
        */
-      public boolean hasSrcTarget() {
-        return srcTargetBuilder_ != null || srcTarget_ != null;
+      @java.lang.Override
+      public int getDesId() {
+        return desId_;
       }
       /**
        * <pre>
-       * 源实体
+       * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-       * @return The srcTarget.
+       * <code>uint32 des_id = 2;</code>
+       * @param value The desId to set.
+       * @return This builder for chaining.
        */
-      public zb.dcts.fusion.airDomain.target.Target.FusionTarget getSrcTarget() {
-        if (srcTargetBuilder_ == null) {
-          return srcTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : srcTarget_;
-        } else {
-          return srcTargetBuilder_.getMessage();
-        }
-      }
-      /**
-       * <pre>
-       * 源实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-       */
-      public Builder setSrcTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
-        if (srcTargetBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          srcTarget_ = value;
-          onChanged();
-        } else {
-          srcTargetBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <pre>
-       * 源实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-       */
-      public Builder setSrcTarget(
-          zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder builderForValue) {
-        if (srcTargetBuilder_ == null) {
-          srcTarget_ = builderForValue.build();
-          onChanged();
-        } else {
-          srcTargetBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <pre>
-       * 源实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-       */
-      public Builder mergeSrcTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
-        if (srcTargetBuilder_ == null) {
-          if (srcTarget_ != null) {
-            srcTarget_ =
-              zb.dcts.fusion.airDomain.target.Target.FusionTarget.newBuilder(srcTarget_).mergeFrom(value).buildPartial();
-          } else {
-            srcTarget_ = value;
-          }
-          onChanged();
-        } else {
-          srcTargetBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <pre>
-       * 源实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-       */
-      public Builder clearSrcTarget() {
-        if (srcTargetBuilder_ == null) {
-          srcTarget_ = null;
-          onChanged();
-        } else {
-          srcTarget_ = null;
-          srcTargetBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <pre>
-       * 源实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-       */
-      public zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder getSrcTargetBuilder() {
+      public Builder setDesId(int value) {
         
+        desId_ = value;
         onChanged();
-        return getSrcTargetFieldBuilder().getBuilder();
-      }
-      /**
-       * <pre>
-       * 源实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-       */
-      public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getSrcTargetOrBuilder() {
-        if (srcTargetBuilder_ != null) {
-          return srcTargetBuilder_.getMessageOrBuilder();
-        } else {
-          return srcTarget_ == null ?
-              zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : srcTarget_;
-        }
-      }
-      /**
-       * <pre>
-       * 源实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget src_target = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> 
-          getSrcTargetFieldBuilder() {
-        if (srcTargetBuilder_ == null) {
-          srcTargetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder>(
-                  getSrcTarget(),
-                  getParentForChildren(),
-                  isClean());
-          srcTarget_ = null;
-        }
-        return srcTargetBuilder_;
-      }
-
-      private zb.dcts.fusion.airDomain.target.Target.FusionTarget desTarget_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> desTargetBuilder_;
-      /**
-       * <pre>
-       * 目标实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-       * @return Whether the desTarget field is set.
-       */
-      public boolean hasDesTarget() {
-        return desTargetBuilder_ != null || desTarget_ != null;
-      }
-      /**
-       * <pre>
-       * 目标实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-       * @return The desTarget.
-       */
-      public zb.dcts.fusion.airDomain.target.Target.FusionTarget getDesTarget() {
-        if (desTargetBuilder_ == null) {
-          return desTarget_ == null ? zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : desTarget_;
-        } else {
-          return desTargetBuilder_.getMessage();
-        }
-      }
-      /**
-       * <pre>
-       * 目标实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-       */
-      public Builder setDesTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
-        if (desTargetBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          desTarget_ = value;
-          onChanged();
-        } else {
-          desTargetBuilder_.setMessage(value);
-        }
-
         return this;
       }
       /**
@@ -1100,164 +1772,63 @@ public final class CommunLinkOuterClass {
        * 目标实体
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
+       * <code>uint32 des_id = 2;</code>
+       * @return This builder for chaining.
        */
-      public Builder setDesTarget(
-          zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder builderForValue) {
-        if (desTargetBuilder_ == null) {
-          desTarget_ = builderForValue.build();
-          onChanged();
-        } else {
-          desTargetBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <pre>
-       * 目标实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-       */
-      public Builder mergeDesTarget(zb.dcts.fusion.airDomain.target.Target.FusionTarget value) {
-        if (desTargetBuilder_ == null) {
-          if (desTarget_ != null) {
-            desTarget_ =
-              zb.dcts.fusion.airDomain.target.Target.FusionTarget.newBuilder(desTarget_).mergeFrom(value).buildPartial();
-          } else {
-            desTarget_ = value;
-          }
-          onChanged();
-        } else {
-          desTargetBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <pre>
-       * 目标实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-       */
-      public Builder clearDesTarget() {
-        if (desTargetBuilder_ == null) {
-          desTarget_ = null;
-          onChanged();
-        } else {
-          desTarget_ = null;
-          desTargetBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <pre>
-       * 目标实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-       */
-      public zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder getDesTargetBuilder() {
+      public Builder clearDesId() {
         
+        desId_ = 0;
         onChanged();
-        return getDesTargetFieldBuilder().getBuilder();
-      }
-      /**
-       * <pre>
-       * 目标实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-       */
-      public zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder getDesTargetOrBuilder() {
-        if (desTargetBuilder_ != null) {
-          return desTargetBuilder_.getMessageOrBuilder();
-        } else {
-          return desTarget_ == null ?
-              zb.dcts.fusion.airDomain.target.Target.FusionTarget.getDefaultInstance() : desTarget_;
-        }
-      }
-      /**
-       * <pre>
-       * 目标实体
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.target.FusionTarget des_target = 3;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder> 
-          getDesTargetFieldBuilder() {
-        if (desTargetBuilder_ == null) {
-          desTargetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              zb.dcts.fusion.airDomain.target.Target.FusionTarget, zb.dcts.fusion.airDomain.target.Target.FusionTarget.Builder, zb.dcts.fusion.airDomain.target.Target.FusionTargetOrBuilder>(
-                  getDesTarget(),
-                  getParentForChildren(),
-                  isClean());
-          desTarget_ = null;
-        }
-        return desTargetBuilder_;
+        return this;
       }
 
-      private int communState_ = 0;
+      private zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam communState_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.Builder, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParamOrBuilder> communStateBuilder_;
       /**
        * <pre>
        * 通联状态
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.communLink.CommunState commun_state = 4;</code>
-       * @return The enum numeric value on the wire for communState.
+       * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
+       * @return Whether the communState field is set.
        */
-      @java.lang.Override public int getCommunStateValue() {
-        return communState_;
+      public boolean hasCommunState() {
+        return communStateBuilder_ != null || communState_ != null;
       }
       /**
        * <pre>
        * 通联状态
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.communLink.CommunState commun_state = 4;</code>
-       * @param value The enum numeric value on the wire for communState to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCommunStateValue(int value) {
-        
-        communState_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 通联状态
-       * </pre>
-       *
-       * <code>.zb.dcts.fusion.airDomain.communLink.CommunState commun_state = 4;</code>
+       * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
        * @return The communState.
        */
-      @java.lang.Override
-      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState getCommunState() {
-        @SuppressWarnings("deprecation")
-        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState result = zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState.valueOf(communState_);
-        return result == null ? zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState.UNRECOGNIZED : result;
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam getCommunState() {
+        if (communStateBuilder_ == null) {
+          return communState_ == null ? zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.getDefaultInstance() : communState_;
+        } else {
+          return communStateBuilder_.getMessage();
+        }
       }
       /**
        * <pre>
        * 通联状态
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.communLink.CommunState commun_state = 4;</code>
-       * @param value The communState to set.
-       * @return This builder for chaining.
+       * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
        */
-      public Builder setCommunState(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunState value) {
-        if (value == null) {
-          throw new NullPointerException();
+      public Builder setCommunState(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam value) {
+        if (communStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          communState_ = value;
+          onChanged();
+        } else {
+          communStateBuilder_.setMessage(value);
         }
-        
-        communState_ = value.getNumber();
-        onChanged();
+
         return this;
       }
       /**
@@ -1265,14 +1836,105 @@ public final class CommunLinkOuterClass {
        * 通联状态
        * </pre>
        *
-       * <code>.zb.dcts.fusion.airDomain.communLink.CommunState commun_state = 4;</code>
-       * @return This builder for chaining.
+       * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
+       */
+      public Builder setCommunState(
+          zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.Builder builderForValue) {
+        if (communStateBuilder_ == null) {
+          communState_ = builderForValue.build();
+          onChanged();
+        } else {
+          communStateBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * 通联状态
+       * </pre>
+       *
+       * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
+       */
+      public Builder mergeCommunState(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam value) {
+        if (communStateBuilder_ == null) {
+          if (communState_ != null) {
+            communState_ =
+              zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.newBuilder(communState_).mergeFrom(value).buildPartial();
+          } else {
+            communState_ = value;
+          }
+          onChanged();
+        } else {
+          communStateBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * 通联状态
+       * </pre>
+       *
+       * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
        */
       public Builder clearCommunState() {
-        
-        communState_ = 0;
-        onChanged();
+        if (communStateBuilder_ == null) {
+          communState_ = null;
+          onChanged();
+        } else {
+          communState_ = null;
+          communStateBuilder_ = null;
+        }
+
         return this;
+      }
+      /**
+       * <pre>
+       * 通联状态
+       * </pre>
+       *
+       * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.Builder getCommunStateBuilder() {
+        
+        onChanged();
+        return getCommunStateFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * 通联状态
+       * </pre>
+       *
+       * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParamOrBuilder getCommunStateOrBuilder() {
+        if (communStateBuilder_ != null) {
+          return communStateBuilder_.getMessageOrBuilder();
+        } else {
+          return communState_ == null ?
+              zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.getDefaultInstance() : communState_;
+        }
+      }
+      /**
+       * <pre>
+       * 通联状态
+       * </pre>
+       *
+       * <code>.zb.dcts.fusion.airDomain.communLink.ConnectParam commun_state = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.Builder, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParamOrBuilder> 
+          getCommunStateFieldBuilder() {
+        if (communStateBuilder_ == null) {
+          communStateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParam.Builder, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.ConnectParamOrBuilder>(
+                  getCommunState(),
+                  getParentForChildren(),
+                  isClean());
+          communState_ = null;
+        }
+        return communStateBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2232,6 +2894,2097 @@ public final class CommunLinkOuterClass {
 
   }
 
+  public interface NetworkCommunLikResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     *网络id
+     * </pre>
+     *
+     * <code>uint32 id = 1;</code>
+     * @return The id.
+     */
+    int getId();
+
+    /**
+     * <pre>
+     *网络类型 link  uv
+     * </pre>
+     *
+     * <code>string type = 2;</code>
+     * @return The type.
+     */
+    java.lang.String getType();
+    /**
+     * <pre>
+     *网络类型 link  uv
+     * </pre>
+     *
+     * <code>string type = 2;</code>
+     * @return The bytes for type.
+     */
+    com.google.protobuf.ByteString
+        getTypeBytes();
+
+    /**
+     * <pre>
+     *网内节点连接信息
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+     */
+    java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink> 
+        getCommunLinkResultList();
+    /**
+     * <pre>
+     *网内节点连接信息
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+     */
+    zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink getCommunLinkResult(int index);
+    /**
+     * <pre>
+     *网内节点连接信息
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+     */
+    int getCommunLinkResultCount();
+    /**
+     * <pre>
+     *网内节点连接信息
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+     */
+    java.util.List<? extends zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinkOrBuilder> 
+        getCommunLinkResultOrBuilderList();
+    /**
+     * <pre>
+     *网内节点连接信息
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+     */
+    zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinkOrBuilder getCommunLinkResultOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult}
+   */
+  public static final class NetworkCommunLikResult extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult)
+      NetworkCommunLikResultOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NetworkCommunLikResult.newBuilder() to construct.
+    private NetworkCommunLikResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    public NetworkCommunLikResult() {
+      type_ = "";
+      communLinkResult_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NetworkCommunLikResult();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private NetworkCommunLikResult(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              id_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              type_ = s;
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                communLinkResult_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              communLinkResult_.add(
+                  input.readMessage(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          communLinkResult_ = java.util.Collections.unmodifiableList(communLinkResult_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResult_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResult_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.class, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <pre>
+     *网络id
+     * </pre>
+     *
+     * <code>uint32 id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public int getId() {
+      return id_;
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object type_;
+    /**
+     * <pre>
+     *网络类型 link  uv
+     * </pre>
+     *
+     * <code>string type = 2;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public java.lang.String getType() {
+      java.lang.Object ref = type_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        type_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *网络类型 link  uv
+     * </pre>
+     *
+     * <code>string type = 2;</code>
+     * @return The bytes for type.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTypeBytes() {
+      java.lang.Object ref = type_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        type_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int COMMUN_LINK_RESULT_FIELD_NUMBER = 3;
+    private java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink> communLinkResult_;
+    /**
+     * <pre>
+     *网内节点连接信息
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink> getCommunLinkResultList() {
+      return communLinkResult_;
+    }
+    /**
+     * <pre>
+     *网内节点连接信息
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinkOrBuilder> 
+        getCommunLinkResultOrBuilderList() {
+      return communLinkResult_;
+    }
+    /**
+     * <pre>
+     *网内节点连接信息
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+     */
+    @java.lang.Override
+    public int getCommunLinkResultCount() {
+      return communLinkResult_.size();
+    }
+    /**
+     * <pre>
+     *网内节点连接信息
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink getCommunLinkResult(int index) {
+      return communLinkResult_.get(index);
+    }
+    /**
+     * <pre>
+     *网内节点连接信息
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinkOrBuilder getCommunLinkResultOrBuilder(
+        int index) {
+      return communLinkResult_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (id_ != 0) {
+        output.writeUInt32(1, id_);
+      }
+      if (!getTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, type_);
+      }
+      for (int i = 0; i < communLinkResult_.size(); i++) {
+        output.writeMessage(3, communLinkResult_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (id_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, id_);
+      }
+      if (!getTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, type_);
+      }
+      for (int i = 0; i < communLinkResult_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, communLinkResult_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult)) {
+        return super.equals(obj);
+      }
+      zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult other = (zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult) obj;
+
+      if (getId()
+          != other.getId()) return false;
+      if (!getType()
+          .equals(other.getType())) return false;
+      if (!getCommunLinkResultList()
+          .equals(other.getCommunLinkResultList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getType().hashCode();
+      if (getCommunLinkResultCount() > 0) {
+        hash = (37 * hash) + COMMUN_LINK_RESULT_FIELD_NUMBER;
+        hash = (53 * hash) + getCommunLinkResultList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult)
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResult_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResult_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.class, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder.class);
+      }
+
+      // Construct using zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getCommunLinkResultFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+
+        type_ = "";
+
+        if (communLinkResultBuilder_ == null) {
+          communLinkResult_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          communLinkResultBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResult_descriptor;
+      }
+
+      @java.lang.Override
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult getDefaultInstanceForType() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult build() {
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult buildPartial() {
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult result = new zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult(this);
+        int from_bitField0_ = bitField0_;
+        result.id_ = id_;
+        result.type_ = type_;
+        if (communLinkResultBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            communLinkResult_ = java.util.Collections.unmodifiableList(communLinkResult_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.communLinkResult_ = communLinkResult_;
+        } else {
+          result.communLinkResult_ = communLinkResultBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult) {
+          return mergeFrom((zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult other) {
+        if (other == zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.getDefaultInstance()) return this;
+        if (other.getId() != 0) {
+          setId(other.getId());
+        }
+        if (!other.getType().isEmpty()) {
+          type_ = other.type_;
+          onChanged();
+        }
+        if (communLinkResultBuilder_ == null) {
+          if (!other.communLinkResult_.isEmpty()) {
+            if (communLinkResult_.isEmpty()) {
+              communLinkResult_ = other.communLinkResult_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureCommunLinkResultIsMutable();
+              communLinkResult_.addAll(other.communLinkResult_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.communLinkResult_.isEmpty()) {
+            if (communLinkResultBuilder_.isEmpty()) {
+              communLinkResultBuilder_.dispose();
+              communLinkResultBuilder_ = null;
+              communLinkResult_ = other.communLinkResult_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              communLinkResultBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getCommunLinkResultFieldBuilder() : null;
+            } else {
+              communLinkResultBuilder_.addAllMessages(other.communLinkResult_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int id_ ;
+      /**
+       * <pre>
+       *网络id
+       * </pre>
+       *
+       * <code>uint32 id = 1;</code>
+       * @return The id.
+       */
+      @java.lang.Override
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <pre>
+       *网络id
+       * </pre>
+       *
+       * <code>uint32 id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(int value) {
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *网络id
+       * </pre>
+       *
+       * <code>uint32 id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object type_ = "";
+      /**
+       * <pre>
+       *网络类型 link  uv
+       * </pre>
+       *
+       * <code>string type = 2;</code>
+       * @return The type.
+       */
+      public java.lang.String getType() {
+        java.lang.Object ref = type_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          type_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *网络类型 link  uv
+       * </pre>
+       *
+       * <code>string type = 2;</code>
+       * @return The bytes for type.
+       */
+      public com.google.protobuf.ByteString
+          getTypeBytes() {
+        java.lang.Object ref = type_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          type_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *网络类型 link  uv
+       * </pre>
+       *
+       * <code>string type = 2;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
+       */
+      public Builder setType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *网络类型 link  uv
+       * </pre>
+       *
+       * <code>string type = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearType() {
+        
+        type_ = getDefaultInstance().getType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *网络类型 link  uv
+       * </pre>
+       *
+       * <code>string type = 2;</code>
+       * @param value The bytes for type to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        type_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink> communLinkResult_ =
+        java.util.Collections.emptyList();
+      private void ensureCommunLinkResultIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          communLinkResult_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink>(communLinkResult_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.Builder, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinkOrBuilder> communLinkResultBuilder_;
+
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink> getCommunLinkResultList() {
+        if (communLinkResultBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(communLinkResult_);
+        } else {
+          return communLinkResultBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public int getCommunLinkResultCount() {
+        if (communLinkResultBuilder_ == null) {
+          return communLinkResult_.size();
+        } else {
+          return communLinkResultBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink getCommunLinkResult(int index) {
+        if (communLinkResultBuilder_ == null) {
+          return communLinkResult_.get(index);
+        } else {
+          return communLinkResultBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public Builder setCommunLinkResult(
+          int index, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink value) {
+        if (communLinkResultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCommunLinkResultIsMutable();
+          communLinkResult_.set(index, value);
+          onChanged();
+        } else {
+          communLinkResultBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public Builder setCommunLinkResult(
+          int index, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.Builder builderForValue) {
+        if (communLinkResultBuilder_ == null) {
+          ensureCommunLinkResultIsMutable();
+          communLinkResult_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          communLinkResultBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public Builder addCommunLinkResult(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink value) {
+        if (communLinkResultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCommunLinkResultIsMutable();
+          communLinkResult_.add(value);
+          onChanged();
+        } else {
+          communLinkResultBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public Builder addCommunLinkResult(
+          int index, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink value) {
+        if (communLinkResultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCommunLinkResultIsMutable();
+          communLinkResult_.add(index, value);
+          onChanged();
+        } else {
+          communLinkResultBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public Builder addCommunLinkResult(
+          zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.Builder builderForValue) {
+        if (communLinkResultBuilder_ == null) {
+          ensureCommunLinkResultIsMutable();
+          communLinkResult_.add(builderForValue.build());
+          onChanged();
+        } else {
+          communLinkResultBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public Builder addCommunLinkResult(
+          int index, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.Builder builderForValue) {
+        if (communLinkResultBuilder_ == null) {
+          ensureCommunLinkResultIsMutable();
+          communLinkResult_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          communLinkResultBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public Builder addAllCommunLinkResult(
+          java.lang.Iterable<? extends zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink> values) {
+        if (communLinkResultBuilder_ == null) {
+          ensureCommunLinkResultIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, communLinkResult_);
+          onChanged();
+        } else {
+          communLinkResultBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public Builder clearCommunLinkResult() {
+        if (communLinkResultBuilder_ == null) {
+          communLinkResult_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          communLinkResultBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public Builder removeCommunLinkResult(int index) {
+        if (communLinkResultBuilder_ == null) {
+          ensureCommunLinkResultIsMutable();
+          communLinkResult_.remove(index);
+          onChanged();
+        } else {
+          communLinkResultBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.Builder getCommunLinkResultBuilder(
+          int index) {
+        return getCommunLinkResultFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinkOrBuilder getCommunLinkResultOrBuilder(
+          int index) {
+        if (communLinkResultBuilder_ == null) {
+          return communLinkResult_.get(index);  } else {
+          return communLinkResultBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public java.util.List<? extends zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinkOrBuilder> 
+           getCommunLinkResultOrBuilderList() {
+        if (communLinkResultBuilder_ != null) {
+          return communLinkResultBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(communLinkResult_);
+        }
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.Builder addCommunLinkResultBuilder() {
+        return getCommunLinkResultFieldBuilder().addBuilder(
+            zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.Builder addCommunLinkResultBuilder(
+          int index) {
+        return getCommunLinkResultFieldBuilder().addBuilder(
+            index, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *网内节点连接信息
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.CommunLink commun_link_result = 3;</code>
+       */
+      public java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.Builder> 
+           getCommunLinkResultBuilderList() {
+        return getCommunLinkResultFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.Builder, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinkOrBuilder> 
+          getCommunLinkResultFieldBuilder() {
+        if (communLinkResultBuilder_ == null) {
+          communLinkResultBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLink.Builder, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.CommunLinkOrBuilder>(
+                  communLinkResult_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          communLinkResult_ = null;
+        }
+        return communLinkResultBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult)
+    }
+
+    // @@protoc_insertion_point(class_scope:zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult)
+    private static final zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult();
+    }
+
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<NetworkCommunLikResult>
+        PARSER = new com.google.protobuf.AbstractParser<NetworkCommunLikResult>() {
+      @java.lang.Override
+      public NetworkCommunLikResult parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new NetworkCommunLikResult(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<NetworkCommunLikResult> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NetworkCommunLikResult> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NetworkCommunLikResultListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResultList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     *网络通联结果
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+     */
+    java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult> 
+        getComLnkRsltLstList();
+    /**
+     * <pre>
+     *网络通联结果
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+     */
+    zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult getComLnkRsltLst(int index);
+    /**
+     * <pre>
+     *网络通联结果
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+     */
+    int getComLnkRsltLstCount();
+    /**
+     * <pre>
+     *网络通联结果
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+     */
+    java.util.List<? extends zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultOrBuilder> 
+        getComLnkRsltLstOrBuilderList();
+    /**
+     * <pre>
+     *网络通联结果
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+     */
+    zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultOrBuilder getComLnkRsltLstOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResultList}
+   */
+  public static final class NetworkCommunLikResultList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResultList)
+      NetworkCommunLikResultListOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NetworkCommunLikResultList.newBuilder() to construct.
+    private NetworkCommunLikResultList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NetworkCommunLikResultList() {
+      comLnkRsltLst_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NetworkCommunLikResultList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private NetworkCommunLikResultList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                comLnkRsltLst_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              comLnkRsltLst_.add(
+                  input.readMessage(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          comLnkRsltLst_ = java.util.Collections.unmodifiableList(comLnkRsltLst_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResultList_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResultList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList.class, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList.Builder.class);
+    }
+
+    public static final int COM_LNK_RSLT_LST_FIELD_NUMBER = 1;
+    private java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult> comLnkRsltLst_;
+    /**
+     * <pre>
+     *网络通联结果
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult> getComLnkRsltLstList() {
+      return comLnkRsltLst_;
+    }
+    /**
+     * <pre>
+     *网络通联结果
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultOrBuilder> 
+        getComLnkRsltLstOrBuilderList() {
+      return comLnkRsltLst_;
+    }
+    /**
+     * <pre>
+     *网络通联结果
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+     */
+    @java.lang.Override
+    public int getComLnkRsltLstCount() {
+      return comLnkRsltLst_.size();
+    }
+    /**
+     * <pre>
+     *网络通联结果
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult getComLnkRsltLst(int index) {
+      return comLnkRsltLst_.get(index);
+    }
+    /**
+     * <pre>
+     *网络通联结果
+     * </pre>
+     *
+     * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+     */
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultOrBuilder getComLnkRsltLstOrBuilder(
+        int index) {
+      return comLnkRsltLst_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < comLnkRsltLst_.size(); i++) {
+        output.writeMessage(1, comLnkRsltLst_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < comLnkRsltLst_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, comLnkRsltLst_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList)) {
+        return super.equals(obj);
+      }
+      zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList other = (zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList) obj;
+
+      if (!getComLnkRsltLstList()
+          .equals(other.getComLnkRsltLstList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getComLnkRsltLstCount() > 0) {
+        hash = (37 * hash) + COM_LNK_RSLT_LST_FIELD_NUMBER;
+        hash = (53 * hash) + getComLnkRsltLstList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResultList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResultList)
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResultList_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResultList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList.class, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList.Builder.class);
+      }
+
+      // Construct using zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getComLnkRsltLstFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (comLnkRsltLstBuilder_ == null) {
+          comLnkRsltLst_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          comLnkRsltLstBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResultList_descriptor;
+      }
+
+      @java.lang.Override
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList getDefaultInstanceForType() {
+        return zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList build() {
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList buildPartial() {
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList result = new zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList(this);
+        int from_bitField0_ = bitField0_;
+        if (comLnkRsltLstBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            comLnkRsltLst_ = java.util.Collections.unmodifiableList(comLnkRsltLst_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.comLnkRsltLst_ = comLnkRsltLst_;
+        } else {
+          result.comLnkRsltLst_ = comLnkRsltLstBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList) {
+          return mergeFrom((zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList other) {
+        if (other == zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList.getDefaultInstance()) return this;
+        if (comLnkRsltLstBuilder_ == null) {
+          if (!other.comLnkRsltLst_.isEmpty()) {
+            if (comLnkRsltLst_.isEmpty()) {
+              comLnkRsltLst_ = other.comLnkRsltLst_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureComLnkRsltLstIsMutable();
+              comLnkRsltLst_.addAll(other.comLnkRsltLst_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.comLnkRsltLst_.isEmpty()) {
+            if (comLnkRsltLstBuilder_.isEmpty()) {
+              comLnkRsltLstBuilder_.dispose();
+              comLnkRsltLstBuilder_ = null;
+              comLnkRsltLst_ = other.comLnkRsltLst_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              comLnkRsltLstBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getComLnkRsltLstFieldBuilder() : null;
+            } else {
+              comLnkRsltLstBuilder_.addAllMessages(other.comLnkRsltLst_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult> comLnkRsltLst_ =
+        java.util.Collections.emptyList();
+      private void ensureComLnkRsltLstIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          comLnkRsltLst_ = new java.util.ArrayList<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult>(comLnkRsltLst_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultOrBuilder> comLnkRsltLstBuilder_;
+
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult> getComLnkRsltLstList() {
+        if (comLnkRsltLstBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(comLnkRsltLst_);
+        } else {
+          return comLnkRsltLstBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public int getComLnkRsltLstCount() {
+        if (comLnkRsltLstBuilder_ == null) {
+          return comLnkRsltLst_.size();
+        } else {
+          return comLnkRsltLstBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult getComLnkRsltLst(int index) {
+        if (comLnkRsltLstBuilder_ == null) {
+          return comLnkRsltLst_.get(index);
+        } else {
+          return comLnkRsltLstBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public Builder setComLnkRsltLst(
+          int index, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult value) {
+        if (comLnkRsltLstBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureComLnkRsltLstIsMutable();
+          comLnkRsltLst_.set(index, value);
+          onChanged();
+        } else {
+          comLnkRsltLstBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public Builder setComLnkRsltLst(
+          int index, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder builderForValue) {
+        if (comLnkRsltLstBuilder_ == null) {
+          ensureComLnkRsltLstIsMutable();
+          comLnkRsltLst_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          comLnkRsltLstBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public Builder addComLnkRsltLst(zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult value) {
+        if (comLnkRsltLstBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureComLnkRsltLstIsMutable();
+          comLnkRsltLst_.add(value);
+          onChanged();
+        } else {
+          comLnkRsltLstBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public Builder addComLnkRsltLst(
+          int index, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult value) {
+        if (comLnkRsltLstBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureComLnkRsltLstIsMutable();
+          comLnkRsltLst_.add(index, value);
+          onChanged();
+        } else {
+          comLnkRsltLstBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public Builder addComLnkRsltLst(
+          zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder builderForValue) {
+        if (comLnkRsltLstBuilder_ == null) {
+          ensureComLnkRsltLstIsMutable();
+          comLnkRsltLst_.add(builderForValue.build());
+          onChanged();
+        } else {
+          comLnkRsltLstBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public Builder addComLnkRsltLst(
+          int index, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder builderForValue) {
+        if (comLnkRsltLstBuilder_ == null) {
+          ensureComLnkRsltLstIsMutable();
+          comLnkRsltLst_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          comLnkRsltLstBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public Builder addAllComLnkRsltLst(
+          java.lang.Iterable<? extends zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult> values) {
+        if (comLnkRsltLstBuilder_ == null) {
+          ensureComLnkRsltLstIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, comLnkRsltLst_);
+          onChanged();
+        } else {
+          comLnkRsltLstBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public Builder clearComLnkRsltLst() {
+        if (comLnkRsltLstBuilder_ == null) {
+          comLnkRsltLst_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          comLnkRsltLstBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public Builder removeComLnkRsltLst(int index) {
+        if (comLnkRsltLstBuilder_ == null) {
+          ensureComLnkRsltLstIsMutable();
+          comLnkRsltLst_.remove(index);
+          onChanged();
+        } else {
+          comLnkRsltLstBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder getComLnkRsltLstBuilder(
+          int index) {
+        return getComLnkRsltLstFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultOrBuilder getComLnkRsltLstOrBuilder(
+          int index) {
+        if (comLnkRsltLstBuilder_ == null) {
+          return comLnkRsltLst_.get(index);  } else {
+          return comLnkRsltLstBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public java.util.List<? extends zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultOrBuilder> 
+           getComLnkRsltLstOrBuilderList() {
+        if (comLnkRsltLstBuilder_ != null) {
+          return comLnkRsltLstBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(comLnkRsltLst_);
+        }
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder addComLnkRsltLstBuilder() {
+        return getComLnkRsltLstFieldBuilder().addBuilder(
+            zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder addComLnkRsltLstBuilder(
+          int index) {
+        return getComLnkRsltLstFieldBuilder().addBuilder(
+            index, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       *网络通联结果
+       * </pre>
+       *
+       * <code>repeated .zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResult com_lnk_rslt_lst = 1;</code>
+       */
+      public java.util.List<zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder> 
+           getComLnkRsltLstBuilderList() {
+        return getComLnkRsltLstFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultOrBuilder> 
+          getComLnkRsltLstFieldBuilder() {
+        if (comLnkRsltLstBuilder_ == null) {
+          comLnkRsltLstBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder, zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultOrBuilder>(
+                  comLnkRsltLst_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          comLnkRsltLst_ = null;
+        }
+        return comLnkRsltLstBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResultList)
+    }
+
+    // @@protoc_insertion_point(class_scope:zb.dcts.fusion.airDomain.communLink.NetworkCommunLikResultList)
+    private static final zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList();
+    }
+
+    public static zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<NetworkCommunLikResultList>
+        PARSER = new com.google.protobuf.AbstractParser<NetworkCommunLikResultList>() {
+      @java.lang.Override
+      public NetworkCommunLikResultList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new NetworkCommunLikResultList(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<NetworkCommunLikResultList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NetworkCommunLikResultList> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResultList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_zb_dcts_fusion_airDomain_communLink_ConnectParam_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_zb_dcts_fusion_airDomain_communLink_ConnectParam_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_zb_dcts_fusion_airDomain_communLink_CommunLink_descriptor;
   private static final 
@@ -2242,6 +4995,16 @@ public final class CommunLinkOuterClass {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResult_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResult_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResultList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResultList_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2253,17 +5016,22 @@ public final class CommunLinkOuterClass {
     java.lang.String[] descriptorData = {
       "\n!fusion/airDomain/communLink.proto\022#zb." +
       "dcts.fusion.airDomain.communLink\032\ndcts.p" +
-      "roto\032\035fusion/airDomain/target.proto\"\350\001\n\n" +
-      "CommunLink\022\014\n\004unId\030\001 \001(\r\022A\n\nsrc_target\030\002" +
-      " \001(\0132-.zb.dcts.fusion.airDomain.target.F" +
-      "usionTarget\022A\n\ndes_target\030\003 \001(\0132-.zb.dct" +
-      "s.fusion.airDomain.target.FusionTarget\022F" +
-      "\n\014commun_state\030\004 \001(\01620.zb.dcts.fusion.ai" +
-      "rDomain.communLink.CommunState\"[\n\016Commun" +
-      "LinKList\022I\n\020commun_link_list\030\001 \003(\0132/.zb." +
-      "dcts.fusion.airDomain.communLink.CommunL" +
-      "ink*-\n\013CommunState\022\021\n\rCOMMUNICATION\020\000\022\013\n" +
-      "\007SILENCE\020\001b\006proto3"
+      "roto\032\035fusion/airDomain/target.proto\"S\n\014C" +
+      "onnectParam\022\016\n\006connet\030\001 \001(\r\022\014\n\004mode\030\002 \001(" +
+      "\t\022\021\n\tbandwidth\030\003 \001(\r\022\022\n\nmodulation\030\004 \001(\t" +
+      "\"u\n\nCommunLink\022\016\n\006src_id\030\001 \001(\r\022\016\n\006des_id" +
+      "\030\002 \001(\r\022G\n\014commun_state\030\003 \001(\01321.zb.dcts.f" +
+      "usion.airDomain.communLink.ConnectParam\"" +
+      "[\n\016CommunLinKList\022I\n\020commun_link_list\030\001 " +
+      "\003(\0132/.zb.dcts.fusion.airDomain.communLin" +
+      "k.CommunLink\"\177\n\026NetworkCommunLikResult\022\n" +
+      "\n\002id\030\001 \001(\r\022\014\n\004type\030\002 \001(\t\022K\n\022commun_link_" +
+      "result\030\003 \003(\0132/.zb.dcts.fusion.airDomain." +
+      "communLink.CommunLink\"s\n\032NetworkCommunLi" +
+      "kResultList\022U\n\020com_lnk_rslt_lst\030\001 \003(\0132;." +
+      "zb.dcts.fusion.airDomain.communLink.Netw" +
+      "orkCommunLikResult*-\n\013CommunState\022\021\n\rCOM" +
+      "MUNICATION\020\000\022\013\n\007SILENCE\020\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2271,18 +5039,36 @@ public final class CommunLinkOuterClass {
           zb.dcts.Dcts.getDescriptor(),
           zb.dcts.fusion.airDomain.target.Target.getDescriptor(),
         });
-    internal_static_zb_dcts_fusion_airDomain_communLink_CommunLink_descriptor =
+    internal_static_zb_dcts_fusion_airDomain_communLink_ConnectParam_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_zb_dcts_fusion_airDomain_communLink_ConnectParam_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_zb_dcts_fusion_airDomain_communLink_ConnectParam_descriptor,
+        new java.lang.String[] { "Connet", "Mode", "Bandwidth", "Modulation", });
+    internal_static_zb_dcts_fusion_airDomain_communLink_CommunLink_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_zb_dcts_fusion_airDomain_communLink_CommunLink_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_fusion_airDomain_communLink_CommunLink_descriptor,
-        new java.lang.String[] { "UnId", "SrcTarget", "DesTarget", "CommunState", });
+        new java.lang.String[] { "SrcId", "DesId", "CommunState", });
     internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_zb_dcts_fusion_airDomain_communLink_CommunLinKList_descriptor,
         new java.lang.String[] { "CommunLinkList", });
+    internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResult_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResult_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResult_descriptor,
+        new java.lang.String[] { "Id", "Type", "CommunLinkResult", });
+    internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResultList_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResultList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_zb_dcts_fusion_airDomain_communLink_NetworkCommunLikResultList_descriptor,
+        new java.lang.String[] { "ComLnkRsltLst", });
     zb.dcts.Dcts.getDescriptor();
     zb.dcts.fusion.airDomain.target.Target.getDescriptor();
   }

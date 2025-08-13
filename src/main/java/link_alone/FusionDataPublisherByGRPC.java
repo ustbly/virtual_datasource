@@ -138,6 +138,8 @@ public class FusionDataPublisherByGRPC {
                     }
                 } catch (InvalidProtocolBufferException e) {
                     System.err.printf("消息解包失败: %s%n", e.getMessage());
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
@@ -163,7 +165,13 @@ public class FusionDataPublisherByGRPC {
         fusionNetPublisher.send(payload);
     }
 
-    private void processAirFusion(Aeronaval.Target tgt) {
+
+//    Map<Integer, Target.FusionTarget> targetMap = new HashMap<>();
+    private void processAirFusion(Aeronaval.Target tgt) throws Exception {
+//        Target.FusionTarget fusionTarget = Target.FusionTarget.newBuilder()
+//                .setAeronavalTarget(tgt)
+//                .build();
+//        targetMap.put(tgt.getId(),fusionTarget);
         Instant tgtTime = Instant.ofEpochSecond(tgt.getTime().getSeconds(), tgt.getTime().getNanos());
 //        System.out.println(tgtTime);
 
@@ -222,7 +230,7 @@ public class FusionDataPublisherByGRPC {
         BigDecimal errKm = haversine(tgt.getPosition().getLatitude(), tgt.getPosition().getLongitude(), est.lat, est.lon);
         System.out.println("tgt position: " + tgt.getPosition().getLatitude() + ", " + tgt.getPosition().getLongitude());
         System.out.printf("Estimated position error: %.20f km%n", errKm);
-        BigDecimal tolerance = new BigDecimal("0.001"); // 1 微米
+        BigDecimal tolerance = new BigDecimal("0.001");
         if (errKm.abs().compareTo(tolerance) < 0) { //定位误差小于1m
             Target.FusionTarget.Builder builder = Target.FusionTarget.newBuilder()
                     .setAeronavalTarget(tgt)
@@ -278,6 +286,9 @@ public class FusionDataPublisherByGRPC {
 //                            builder.addStationEquipments(EquipmentMapper.toStationEquipment(cfg));
 //                        }
 //                    });
+//            CommunLinkPlanner planner = new CommunLinkPlanner(targetMap);
+//            List<String> planningState = planner.loadAndSchedule("src/main/resources/网络通联.xml");
+//            System.out.println("Planning state: " + planningState);
 
             fusionAirPublisher.sendMore("Fusion_AirDomain");
             fusionAirPublisher.send(builder.build().toByteArray());

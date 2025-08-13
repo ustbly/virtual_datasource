@@ -3,7 +3,7 @@ package source_control.real_server;
 import com.google.protobuf.Any;
 import io.grpc.stub.ServerCallStreamObserver;
 import io.grpc.stub.StreamObserver;
-import link_alone.FusionDataPublisherByGRPC;
+import link_alone.FusionDataPublisherByGRPC1;
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 import zb.dcts.fusion.airDomain.target.Target;
@@ -23,7 +23,7 @@ import java.util.concurrent.Executors;
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 public class FusionDataServiceImpl extends SourceControlServiceGrpc.SourceControlServiceImplBase {
-    private static final FusionDataPublisherByGRPC matcher = new FusionDataPublisherByGRPC();
+    private static final FusionDataPublisherByGRPC1 matcher = new FusionDataPublisherByGRPC1();
     private final ExecutorService listenerPool = Executors.newCachedThreadPool();
     private static final String ZMQ_ADDRESS1 = "tcp://localhost:5560";
     private static final String ZMQ_ADDRESS2 = "tcp://localhost:5561";

@@ -12,15 +12,46 @@ enum CommunState
 }
 
 // 通信关系
+//message CommunLink
+//{
+//    uint32  unId = 1;                        // 通信ID
+//    target.FusionTarget  src_target = 2;     // 源实体
+//    target.FusionTarget  des_target = 3;     // 目标实体
+//    CommunState commun_state = 4;            // 通联状态
+//}
+
+
+// 通联参数
+message ConnectParam
+{
+    uint32  connet = 1;						     // 0断开 1疑似通联 2联通
+    string  mode = 2;                            // 工作模式
+    uint32  bandwidth = 3;					     // 带宽
+    string  modulation = 4;                      // 调制样式
+}
+
+
+// 通信关系
 message CommunLink
 {
-    uint32  unId = 1;                   // 通信ID
-    target.FusionTarget  src_target = 2;     // 源实体
-    target.FusionTarget  des_target = 3;     // 目标实体
-    CommunState commun_state = 4;       // 通联状态
+    uint32                      src_id = 1;						   // 源实体
+    uint32                      des_id = 2;						   // 目标实体
+    ConnectParam	            commun_state = 3;				   // 通联状态
 }
 
 message CommunLinKList
 {
     repeated CommunLink  commun_link_list = 1;         //通联关系
+}
+
+message NetworkCommunLikResult
+{
+    uint32					   id = 1;                           //网络id
+    string                     type = 2;                         //网络类型 link  uv
+    repeated CommunLink		   commun_link_result = 3;           //网内节点连接信息
+}
+
+message NetworkCommunLikResultList
+{
+    repeated NetworkCommunLikResult		com_lnk_rslt_lst = 1;        //网络通联结果
 }

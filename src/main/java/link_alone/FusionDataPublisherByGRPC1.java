@@ -262,150 +262,230 @@ public class FusionDataPublisherByGRPC1 {
         fusionNetPublisher.send(payload);
     }
 
-    private void processAirFusion(Aeronaval.Target tgt) {
-        Instant tgtTime = Instant.ofEpochSecond(tgt.getTime().getSeconds(), tgt.getTime().getNanos());
-        List<Detection.SignalLayerSurvey> validSurveys = surveyCache.stream()
-                .filter(s -> {
-                    // 使用第一个 fix signal 的 stop time 做时间匹配（保留原逻辑）
-//                    if (s.getFixSignalListCount() == 0 || s.getHopSignalListCount() == 0) return false;
+//    private void processAirFusion(Aeronaval.Target tgt) throws Exception {
+//        Instant tgtTime = Instant.ofEpochSecond(tgt.getTime().getSeconds(), tgt.getTime().getNanos());
+//
+//        List<Detection.SignalLayerSurvey> validSurveys = surveyCache.stream()
+//                .filter(s -> {
 //                    Instant stopTime = Instant.ofEpochSecond(
 //                            s.getFixSignalList(0).getEmitTimeSpan().getStopTime().getSeconds(),
 //                            s.getFixSignalList(0).getEmitTimeSpan().getStopTime().getNanos()
 //                    );
 //                    long diffNanos = Math.abs(Duration.between(tgtTime, stopTime).toNanos());
-//                    return diffNanos <= TIME_WINDOW;
+//                    return diffNanos <= TIME_WINDOW;  // 转为纳秒比较
+//                })
+//                .collect(Collectors.toList());
+//        Map<Integer, Detection.SignalLayerSurvey> uniqueStations = new HashMap<>();
+//
+//        for (Detection.SignalLayerSurvey s : validSurveys) {
+//            int stationId = s.getResultFrom().getValue();
+//            if (!uniqueStations.containsKey(stationId)) {
+//                uniqueStations.put(stationId, s);
+//            }
+//            if (uniqueStations.size() >= 2) break;
+//        }
+//
+//
+//        if (uniqueStations.size() < 2) return;
+//
+//        List<Detection.SignalLayerSurvey> selected = new ArrayList<>(uniqueStations.values());
+//
+//        double doa1 = selected.get(0).getFixSignalList(0).getDirOfArrival().getAzimuth();
+//        double doa2 = selected.get(1).getFixSignalList(0).getDirOfArrival().getAzimuth();
+//        Dcts.Position p1 = selected.get(0).getPosition();
+//        Dcts.Position p2 = selected.get(1).getPosition();
+//
+////        Dcts.Position p1 = Dcts.Position.newBuilder().setLongitude(116.3).setLatitude(39.8).setAltitude(50).build();
+////        Dcts.Position p2 = Dcts.Position.newBuilder().setLongitude(116.5).setLatitude(40.0).setAltitude(60).build();
+//
+////        System.out.println("doa1: " + doa1 + ", doa2: " + doa2);
+////        System.out.println("p1: " + p1.getLatitude() + ", " + p1.getLongitude());
+////        System.out.println("p2: " + p2.getLatitude() + ", " + p2.getLongitude());
+//
+//
+//        LatLon est = estimateFromDOA(p1, doa1, p2, doa2);
+////        System.out.println("Estimated position: " + est.lat + ", " + est.lon);
+//        BigDecimal errKm = haversine(tgt.getPosition().getLatitude(), tgt.getPosition().getLongitude(), est.lat, est.lon);
+//        System.out.println("tgt position: " + tgt.getPosition().getLatitude() + ", " + tgt.getPosition().getLongitude());
+//        System.out.printf("Estimated position error: %.20f km%n", errKm);
+//        BigDecimal tolerance = new BigDecimal("0.001");
+//        if (errKm.abs().compareTo(tolerance) < 0) { //定位误差小于1m
+//            Target.FusionTarget.Builder builder = Target.FusionTarget.newBuilder()
+//                    .setAeronavalTarget(tgt)
+//                    .addAllSignalLayerSurveys(selected);
+//            if (tgt.getCampValue() == 1) {
+//                // 清空已有的LinkEquipments
+//                builder.setReliability(ThreadLocalRandom.current().nextInt(5) + 1)
+//                        .setImportance(ThreadLocalRandom.current().nextInt(5) + 1) // 随机重要性 1-5
+//                        .setPurpose("RED CAMP");
+//
+//                Set<String> types = collectEquipmentTypes(selected);
+//                configs.stream()
+//                        .filter(cfg -> types.contains(cfg.type.toUpperCase()))
+//                        .forEach(cfg -> {
+//                            if (isLink(cfg.type)) {
+//                                builder.addLinkEquipments(EquipmentMapper.toLinkEquipment(cfg));
+//                            } else {
+//                                builder.addStationEquipments(EquipmentMapper.toStationEquipment(cfg));
+//                            }
+//                        });
+//            } else if (tgt.getCampValue() == 2) {
+//                builder.setReliability(ThreadLocalRandom.current().nextInt(5) + 1)
+//                        .setThrtLvl(levels[ThreadLocalRandom.current().nextInt(levels.length)])
+//                        .setPurpose("BLUE CAMP");
+//
+//                Set<String> types = collectEquipmentTypes(selected);
+//                configs.stream()
+//                        .filter(cfg -> types.contains(cfg.type.toUpperCase()))
+//                        .forEach(cfg -> {
+//                            if (isLink(cfg.type)) {
+//                                builder.addLinkEquipments(EquipmentMapper.toLinkEquipment(cfg));
+//                            } else {
+//                                builder.addStationEquipments(EquipmentMapper.toStationEquipment(cfg));
+//                            }
+//                        });
+//            }
+//
+//            fusionAirPublisher.sendMore("Fusion_AirDomain");
+//            fusionAirPublisher.send(builder.build().toByteArray());
+//        }
+//    }
 
-                    boolean hasValidTime = false;
+    private void processAirFusion(Aeronaval.Target tgt) throws Exception {
+        Instant tgtTime = Instant.ofEpochSecond(tgt.getTime().getSeconds(), tgt.getTime().getNanos());
 
-                    // 检查定频信号时间
-                    for (Detection.SignalDigest sig : s.getFixSignalListList()) {
-                        if (sig.hasEmitTimeSpan() && sig.getEmitTimeSpan().hasStopTime()) {
+        // 筛选时间窗口内的信号
+        List<Detection.SignalLayerSurvey> timeMatchedSurveys = surveyCache.stream()
+                .filter(s -> {
+                    Any sig = getFirstAvailableSignal(s);
+                    if(sig == null) return false;
+                    String typeUrl = sig.getTypeUrl();
+                    if(typeUrl.endsWith("SignalDigest")) {
+                        try {
+                            Detection.SignalDigest signalDigest = sig.unpack(Detection.SignalDigest.class);
                             Instant stopTime = Instant.ofEpochSecond(
-                                    sig.getEmitTimeSpan().getStopTime().getSeconds(),
-                                    sig.getEmitTimeSpan().getStopTime().getNanos()
+                                    signalDigest.getEmitTimeSpan().getStopTime().getSeconds(),
+                                    signalDigest.getEmitTimeSpan().getStopTime().getNanos()
                             );
-                            long diffMillis = Math.abs(Duration.between(tgtTime, stopTime).toMillis());
-                            if (diffMillis <= TIME_WINDOW) {
-                                hasValidTime = true;
-                                break;
-                            }
+                            long diffNanos = Math.abs(Duration.between(tgtTime, stopTime).toNanos());
+                            return diffNanos <= TIME_WINDOW;
+                        } catch (InvalidProtocolBufferException e) {
+                            e.printStackTrace();
+                        }
+                    }else if(typeUrl.endsWith("HopSignalCluster")) {
+                        try {
+                            Detection.HopSignalCluster hopSignalCluster = sig.unpack(Detection.HopSignalCluster.class);
+                            Instant stopTime = Instant.ofEpochSecond(
+                                    hopSignalCluster.getEmitTimeSpan().getStopTime().getSeconds(),
+                                    hopSignalCluster.getEmitTimeSpan().getStopTime().getNanos()
+                            );
+                            long diffNanos = Math.abs(Duration.between(tgtTime, stopTime).toNanos());
+                            return diffNanos <= TIME_WINDOW;
+                        } catch (InvalidProtocolBufferException e) {
+                            e.printStackTrace();
                         }
                     }
-
-
-                    // 检查跳频信号时间（如果有）
-                    if (!hasValidTime) {
-                        for (Detection.HopSignalCluster hopSig : s.getHopSignalListList()) {
-                            if (hopSig.hasEmitTimeSpan() && hopSig.getEmitTimeSpan().hasStopTime()) {
-                                Instant stopTime = Instant.ofEpochSecond(
-                                        hopSig.getEmitTimeSpan().getStopTime().getSeconds(),
-                                        hopSig.getEmitTimeSpan().getStopTime().getNanos()
-                                );
-                                long diffMillis = Math.abs(Duration.between(tgtTime, stopTime).toMillis());
-                                if (diffMillis <= TIME_WINDOW) {
-                                    hasValidTime = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    return hasValidTime;
+                    return false;
                 })
                 .collect(Collectors.toList());
-//        System.out.println("validSurveys: " + validSurveys);
-        Map<Integer, Detection.SignalLayerSurvey> uniqueStations = new HashMap<>();
-        for (Detection.SignalLayerSurvey s : validSurveys) {
-            int stationId = s.getResultFrom().getValue();
-            if (!uniqueStations.containsKey(stationId)) {
-                uniqueStations.put(stationId, s);
+
+        // 分类：定频 vs 跳频
+        List<Detection.SignalLayerSurvey> fixFreqSurveys = timeMatchedSurveys.stream()
+                .filter(s -> s.getFixSignalListCount() > 0)
+                .collect(Collectors.toList());
+
+        List<Detection.SignalLayerSurvey> hopFreqSurveys = timeMatchedSurveys.stream()
+                .filter(s -> s.getHopSignalListCount() > 0 && s.getFixSignalListCount() == 0) // 纯跳频
+                .collect(Collectors.toList());
+
+        // --- 定频信号处理（双站定位） ---
+        if (fixFreqSurveys.size() >= 2) {
+            Map<Integer, Detection.SignalLayerSurvey> uniqueStations = new HashMap<>();
+            for (Detection.SignalLayerSurvey s : fixFreqSurveys) {
+                int stationId = s.getResultFrom().getValue();
+                if (!uniqueStations.containsKey(stationId)) {
+                    uniqueStations.put(stationId, s);
+                }
+                if (uniqueStations.size() >= 2) break;
             }
-            if (uniqueStations.size() >= 2) break;
+
+            if (uniqueStations.size() >= 2) {
+                List<Detection.SignalLayerSurvey> selected = new ArrayList<>(uniqueStations.values());
+                Detection.SignalDigest sig1 = selected.get(0).getFixSignalList(0);
+                Detection.SignalDigest sig2 = selected.get(1).getFixSignalList(0);
+
+                double doa1 = sig1.getDirOfArrival().getAzimuth();
+                double doa2 = sig2.getDirOfArrival().getAzimuth();
+                Dcts.Position p1 = selected.get(0).getPosition();
+                Dcts.Position p2 = selected.get(1).getPosition();
+
+                LatLon est = estimateFromDOA(p1, doa1, p2, doa2);
+
+                BigDecimal errKm = haversine(tgt.getPosition().getLatitude(), tgt.getPosition().getLongitude(), est.lat, est.lon);
+
+                System.out.println("tgt position: " + tgt.getPosition().getLatitude() + ", " + tgt.getPosition().getLongitude());
+                System.out.printf("Estimated position error: %.20f km%n", errKm);
+
+                BigDecimal tolerance = new BigDecimal("0.001"); // 1米
+                if (errKm.abs().compareTo(tolerance) < 0) {
+                    bindTargetWithSurveys(tgt, selected);
+                }
+            }
         }
 
-        if (uniqueStations.size() < 2) return;
+        // --- 跳频信号处理（仅时间匹配） ---
+        if (!hopFreqSurveys.isEmpty()) {
+            bindTargetWithSurveys(tgt, hopFreqSurveys);
+        }
+    }
 
-        List<Detection.SignalLayerSurvey> selected = new ArrayList<>(uniqueStations.values());
-        if (selected.get(0).getFixSignalListCount() > 0 && selected.get(1).getFixSignalListCount() > 0) {
-            double doa1 = selected.get(0).getFixSignalList(0).getDirOfArrival().getAzimuth();
-            double doa2 = selected.get(1).getFixSignalList(0).getDirOfArrival().getAzimuth();
-            Dcts.Position p1 = selected.get(0).getPosition();
-            Dcts.Position p2 = selected.get(1).getPosition();
+    /**
+     * 绑定信号与目标并发布
+     */
+    private void bindTargetWithSurveys(Aeronaval.Target tgt, List<Detection.SignalLayerSurvey> surveys) {
+        Target.FusionTarget.Builder builder = Target.FusionTarget.newBuilder()
+                .setAeronavalTarget(tgt)
+                .addAllSignalLayerSurveys(surveys);
 
-            System.out.println("doa1: " + doa1 + ", doa2: " + doa2);
-//            System.out.println("p1: " + selected.get(0).getFixSignalList(0).getEmitTimeSpan().getStopTime());
-//            System.out.println("p2: " + selected.get(1).getFixSignalList(0).getEmitTimeSpan().getStopTime());
-
-            LatLon est = estimateFromDOA(p1, doa1, p2, doa2);
-            BigDecimal errKm = haversine(tgt.getPosition().getLatitude(), tgt.getPosition().getLongitude(), est.lat, est.lon);
-            System.out.println("tgt position: " + tgt.getPosition().getLatitude() + ", " + tgt.getPosition().getLongitude());
-            System.out.printf("Estimated position error: %.20f km%n", errKm);
-            BigDecimal tolerance = new BigDecimal("0.001");
-            if (errKm.abs().compareTo(tolerance) < 0) {
-                Target.FusionTarget.Builder builder = Target.FusionTarget.newBuilder()
-                        .setAeronavalTarget(tgt)
-                        .addAllSignalLayerSurveys(selected);
-                if (tgt.getCampValue() == 1) {
-                    builder.setReliability(ThreadLocalRandom.current().nextInt(5) + 1)
-                            .setImportance(ThreadLocalRandom.current().nextInt(5) + 1)
-                            .setPurpose("RED CAMP");
-                } else if (tgt.getCampValue() == 2) {
-                    builder.setReliability(ThreadLocalRandom.current().nextInt(5) + 1)
-                            .setThrtLvl(levels[ThreadLocalRandom.current().nextInt(levels.length)])
-                            .setPurpose("BLUE CAMP");
-                }
-                Set<String> types = collectEquipmentTypes(selected);
-                configs.stream().filter(cfg -> types.contains(cfg.type.toUpperCase()))
-                        .forEach(cfg -> {
-                            if (isLink(cfg.type)) {
-                                builder.addLinkEquipments(EquipmentMapper.toLinkEquipment(cfg));
-                            } else {
-                                builder.addStationEquipments(EquipmentMapper.toStationEquipment(cfg));
-                            }
-                        });
-
-                fusionAirPublisher.sendMore("Fusion_AirDomain");
-                fusionAirPublisher.send(builder.build().toByteArray());
-            }
-        } else {
-            if (selected.get(0).getHopSignalListCount() > 0 && selected.get(1).getHopSignalListCount() > 0) {
-                String hopTypeName = selected.get(0).getHopSignalList(0).getName();
-                String targetName = TYPE_TARGET_MAP.get(hopTypeName.toUpperCase());
-//                    System.out.println(targetName);
-                if (tgt.getEquType().equals(targetName)) {
-                    Target.FusionTarget.Builder builder = Target.FusionTarget.newBuilder()
-                            .setAeronavalTarget(tgt)
-                            .addAllSignalLayerSurveys(selected);
-                    System.out.println("tgt.getEquType():" + tgt.getEquType() + ", targetName: " + targetName);
-//                        if (tgt.getCampValue() == 1) {
-//                            builder.setReliability(ThreadLocalRandom.current().nextInt(5) + 1)
-//                                    .setImportance(ThreadLocalRandom.current().nextInt(5) + 1)
-//                                    .setPurpose("RED CAMP");
-//                        } else if (tgt.getCampValue() == 2) {
-//                            builder.setReliability(ThreadLocalRandom.current().nextInt(5) + 1)
-//                                    .setThrtLvl(levels[ThreadLocalRandom.current().nextInt(levels.length)])
-//                                    .setPurpose("BLUE CAMP");
-//                        }
-//
-//                        Set<String> types = collectEquipmentTypes(selected);
-//                        configs.stream()
-//                                .filter(cfg -> types.contains(cfg.type.toUpperCase()))
-//                                .forEach(cfg -> {
-//                                    if (isLink(cfg.type)) {
-//                                        builder.addLinkEquipments(EquipmentMapper.toLinkEquipment(cfg));
-//                                    } else {
-//                                        builder.addStationEquipments(EquipmentMapper.toStationEquipment(cfg));
-//                                    }
-//                                });
-
-                    fusionAirPublisher.sendMore("Fusion_AirDomain");
-                    fusionAirPublisher.send(builder.build().toByteArray());
-                }
-
-            }
-
+        if (tgt.getCampValue() == 1) {
+            builder.setReliability(ThreadLocalRandom.current().nextInt(5) + 1)
+                    .setImportance(ThreadLocalRandom.current().nextInt(5) + 1)
+                    .setPurpose("RED CAMP");
+        } else if (tgt.getCampValue() == 2) {
+            builder.setReliability(ThreadLocalRandom.current().nextInt(5) + 1)
+                    .setThrtLvl(levels[ThreadLocalRandom.current().nextInt(levels.length)])
+                    .setPurpose("BLUE CAMP");
         }
 
+        Set<String> types = collectEquipmentTypes(surveys);
+        configs.stream()
+                .filter(cfg -> types.contains(cfg.type.toUpperCase()))
+                .forEach(cfg -> {
+                    if (isLink(cfg.type)) {
+                        builder.addLinkEquipments(EquipmentMapper.toLinkEquipment(cfg));
+                    } else {
+                        builder.addStationEquipments(EquipmentMapper.toStationEquipment(cfg));
+                    }
+                });
+
+        fusionAirPublisher.sendMore("Fusion_AirDomain");
+        fusionAirPublisher.send(builder.build().toByteArray());
+    }
+
+    /**
+     * 获取第一个可用信号
+     */
+    private Any getFirstAvailableSignal(Detection.SignalLayerSurvey survey) {
+        if (survey.getFixSignalListCount() > 0) {
+//            System.out.println("有定频！");
+            Detection.SignalDigest fixSignalList = survey.getFixSignalList(0);
+            return Any.pack(fixSignalList);
+        } else if (survey.getHopSignalListCount() > 0) {
+//            System.out.println("有跳频！");
+            Detection.HopSignalCluster hopSignalList = survey.getHopSignalList(0);
+            return Any.pack(hopSignalList);
+        }
+        return null;
     }
 
 
