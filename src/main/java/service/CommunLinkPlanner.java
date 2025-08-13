@@ -19,6 +19,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @file CommunLinkPlanner.java
+ * @comment 通联关系规划
+ * @date 2025/8/13
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 
 public class CommunLinkPlanner {
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);

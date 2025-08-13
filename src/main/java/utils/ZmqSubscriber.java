@@ -4,6 +4,13 @@ import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 import zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass;
 
+/**
+ * @file ZmqSubscriber.java
+ * @comment 接受 ZeroMQ 发布的消息，并解析为 NetworkCommunLikResult 对象。
+ * @date 2025/8/13
+ * @author 林跃
+ * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
+ */
 public class ZmqSubscriber {
 
     public static void main(String[] args) {
