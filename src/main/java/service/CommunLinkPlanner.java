@@ -27,6 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
+
 public class CommunLinkPlanner {
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
     private final ScheduledExecutorService loopScheduler = Executors.newSingleThreadScheduledExecutor();
@@ -128,7 +129,7 @@ public class CommunLinkPlanner {
         }
     }
 
-    // 循环执行，每隔 2 秒触发一次 runSchedule()
+    // 循环执行，每隔 60 秒触发一次 runSchedule()
     public void startLoop() {
         loopScheduler.scheduleAtFixedRate(() -> {
             try {
@@ -189,8 +190,6 @@ public class CommunLinkPlanner {
                                 comlinkBuilder.setCommunState(CommunLinkOuterClass.ConnectParam.newBuilder().setConnet(1));
                                 break;
                             case 2:
-                                comlinkBuilder.setCommunState(CommunLinkOuterClass.ConnectParam.newBuilder().setConnet(2));
-                                break;
                             case 3:
                                 comlinkBuilder.setCommunState(CommunLinkOuterClass.ConnectParam.newBuilder().setConnet(2));
                                 break;
@@ -220,8 +219,6 @@ public class CommunLinkPlanner {
                     comlinkBuilder.setCommunState(CommunLinkOuterClass.ConnectParam.newBuilder().setConnet(1));
                     break;
                 case 2:
-                    comlinkBuilder.setCommunState(CommunLinkOuterClass.ConnectParam.newBuilder().setConnet(2));
-                    break;
                 case 3:
                     comlinkBuilder.setCommunState(CommunLinkOuterClass.ConnectParam.newBuilder().setConnet(2));
                     break;

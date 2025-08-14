@@ -33,17 +33,17 @@ public class ZmqPublisher {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        ZmqPublisher zmqPublisher = new ZmqPublisher(5560);
-
-        // 模拟实时发布
-        int counter = 1;
-        while (true) {
-            String topic = "NetworkControl";
-            String message = "ControlMessage_" + counter++;
-            zmqPublisher.publish(topic, message.getBytes());
-            System.out.println("Published: [" + topic + "] " + message);
-
-            Thread.sleep(1000); // 每秒发布一次
-        }
+//        ZmqPublisher zmqPublisher = new ZmqPublisher(5560);
+//
+//        // 模拟实时发布
+//        int counter = 1;
+//        while (true) {
+//            String topic = "NetworkControl";
+//            String message = "ControlMessage_" + counter++;
+//            zmqPublisher.publish(topic, message.getBytes());
+//            System.out.println("Published: [" + topic + "] " + message);
+//
+//            Thread.sleep(1000); // 每秒发布一次
+//        }
     }
 }
