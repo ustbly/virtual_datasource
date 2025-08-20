@@ -30,8 +30,7 @@ import java.util.stream.Collectors;
 /**
  * @author 林跃
  * @file FusionDataPublisherByGRPC.java
- * @comment 该类负责从 gRPC 接口订阅总线上的装备目标和频域信号的消息，并按照指定规则进行关联
- * —— 单 channel、多订阅、自动重连、优雅 shutdown
+ * @comment 该类负责从 gRPC 接口订阅总线上的装备目标和频域信号的消息，并按照指定规则进行关联 —— 单 channel、多订阅、自动重连、优雅 shutdown
  * @date 2025/7/22
  */
 public class FusionDataPublisherByGRPC {
