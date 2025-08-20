@@ -10,7 +10,6 @@ import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.scenario.detection.Detection;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
@@ -41,7 +40,7 @@ public class FusionMatcher {
     private ZMQ.Socket subscriber;
     private ZMQ.Socket fusionPublisher;
     private ExecutorService matcherExecutor;
-    List<EquipmentXmlParser.EquipmentConfig> configs = EquipmentXmlParser.parseConfig(new File("src/main/resources/equipment.xml"));
+    List<EquipmentXmlParser.EquipmentConfig> configs = EquipmentXmlParser.parseConfig("equipment.xml");
     private volatile boolean running = false;
 
     // 启动 FusionMatcher，连接 ZMQ、启动线程监听数据并执行匹配

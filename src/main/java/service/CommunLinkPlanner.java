@@ -1,6 +1,5 @@
 package service;
 
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -20,23 +19,29 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * @author 林跃
  * @file CommunLinkPlanner.java
  * @comment 通联关系规划
  * @date 2025/8/13
- * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
-
 public class CommunLinkPlanner {
+    // 定时任务线程池，负责调度各个时刻的网络动作
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
+    // 单线程定时任务池，用于循环调度
     private final ScheduledExecutorService loopScheduler = Executors.newSingleThreadScheduledExecutor();
-    private int roundCounter = 0; // 轮次计数
+    // 轮次计数器
+    private int roundCounter = 0;
 
+    // 网络映射表，网络ID到网络对象
     private static Map<Integer, NetworkDomain.Network> networkMap = null;
+    // 网络列表对象
     private static NetworkDomain.NetworkList networkList = null;
+    // ZeroMQ发布器，端口9999
     private static final ZmqPublisher publisher = new ZmqPublisher(9999);
 
+    // 静态代码块，初始化网络映射和网络列表
     static {
         try {
             networkMap = NetworkDomainBuilder.buildNetworkMap();
@@ -46,10 +51,11 @@ public class CommunLinkPlanner {
         }
     }
 
+    // 网络动作类，表示一次网络状态或通联关系的变更
     static class NetAction {
-        int id;
-        int status;
-        int dstId;
+        int id;      // 网络ID
+        int status;  // 网络状态
+        int dstId;   // 目标网络ID
 
         @Override
         public String toString() {
@@ -61,9 +67,10 @@ public class CommunLinkPlanner {
         }
     }
 
+    // 新时刻类，表示一个调度时刻及其包含的网络动作
     static class NewMoment {
-        int delay;
-        List<NetAction> netAct = new ArrayList<>();
+        int delay;                // 延迟时间（秒）
+        List<NetAction> netAct = new ArrayList<>(); // 本时刻的所有网络动作
 
         @Override
         public String toString() {
@@ -74,26 +81,34 @@ public class CommunLinkPlanner {
         }
     }
 
+    // 所有调度时刻的列表
     private final List<NewMoment> newTimetable = new ArrayList<>();
 
+    /**
+     * 加载网络通联配置XML，解析出所有时刻和动作
+     *
+     * @param xmlPath XML文件路径
+     * @return 是否加载成功
+     */
     public boolean loadCommonNetwork(String xmlPath) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(new File(xmlPath));
 
+            // 获取所有“时刻”节点
             NodeList moments = doc.getElementsByTagName("时刻");
             for (int i = 0; i < moments.getLength(); i++) {
                 Element moment = (Element) moments.item(i);
                 NewMoment newMoment = new NewMoment();
                 newMoment.delay = Integer.parseInt(moment.getAttribute("delay"));
 
+                // 获取本时刻下的所有“网络”节点
                 NodeList nets = moment.getElementsByTagName("网络");
                 for (int j = 0; j < nets.getLength(); j++) {
                     Element net = (Element) nets.item(j);
                     NetAction netAct = new NetAction();
                     netAct.id = Integer.parseInt(net.getAttribute("id"));
-//                    System.out.println(netAct.id);
 
                     // 情况1: 设置网络状态
                     if (net.hasAttribute("网络状态")) {
@@ -118,18 +133,26 @@ public class CommunLinkPlanner {
         }
     }
 
+    /**
+     * 按照调度表执行所有时刻的网络动作
+     */
     public void runSchedule() {
         for (NewMoment moment : newTimetable) {
+            // 按照delay延迟调度每个时刻
             scheduler.schedule(() -> {
                 for (NetAction action : moment.netAct) {
-                    CommunLinkOuterClass.NetworkCommunLikResult.Builder netComnBuilder = CommunLinkOuterClass.NetworkCommunLikResult.newBuilder(); // protobuf对象应用Builder构建，简化写法示意
+                    // 构建protobuf对象
+                    CommunLinkOuterClass.NetworkCommunLikResult.Builder netComnBuilder = CommunLinkOuterClass.NetworkCommunLikResult.newBuilder();
+                    // 生成通联关系并发布
                     generateNetworkCommunLink(networkList, action, netComnBuilder);
                 }
             }, moment.delay, TimeUnit.SECONDS);
         }
     }
 
-    // 循环执行，每隔 60 秒触发一次 runSchedule()
+    /**
+     * 循环执行调度，每隔60秒触发一次runSchedule()
+     */
     public void startLoop() {
         loopScheduler.scheduleAtFixedRate(() -> {
             try {
@@ -142,19 +165,31 @@ public class CommunLinkPlanner {
         }, 0, 60, TimeUnit.SECONDS);
     }
 
-    // 停止所有任务
+    /**
+     * 停止所有调度任务
+     */
     public void stop() {
         loopScheduler.shutdown();
         scheduler.shutdown();
     }
 
+    /**
+     * 生成网络通联关系，并通过ZMQ发布
+     *
+     * @param networkList    网络列表
+     * @param netAct         当前网络动作
+     * @param netComnBuilder protobuf构建器
+     * @return 是否成功
+     */
     private boolean generateNetworkCommunLink(NetworkDomain.NetworkList networkList, NetAction netAct,
                                               CommunLinkOuterClass.NetworkCommunLikResult.Builder netComnBuilder) {
         NetworkDomain.Network network = networkMap.get(netAct.id);
 
+        // 设置网络ID和类型
         netComnBuilder.setId(netAct.id);
         netComnBuilder.setType(network.getType());
 
+        // 如果有目标网络ID，建立点对点通联
         if (netAct.dstId != 0) {
             CommunLinkOuterClass.CommunLink.Builder comlinkBuilder = CommunLinkOuterClass.CommunLink.newBuilder();
             comlinkBuilder.setSrcId(networkMap.get(netAct.id).getRelayTarget().getAeronavalTarget().getId());
@@ -165,14 +200,16 @@ public class CommunLinkPlanner {
 
             System.out.println("netComnBuilder" + netComnBuilder);
 
+            // 发布protobuf消息
             publisher.publish("NetworkCommunLikResult", netComnBuilder.build().toByteArray());
             System.out.printf("建立点对点通联: 网络[%d] -> 网络[%d], 状态=%d%n",
                     netAct.id, netAct.dstId, netAct.status);
         } else {
+            // 如果是中心化拓扑，执行特殊逻辑
             if (network.getTopology().equals("中心化")) {
                 if (netAct.id == 5) {
                     System.out.println("航母机群起飞模拟逻辑");
-                    // 航母机群起飞模拟逻辑
+                    // 航母机群起飞模拟逻辑，依次建立多条通联关系并延迟
                     delayConnectFunc(network, 1, 2, 12000, netAct.status, netComnBuilder);
                     delayConnectFunc(network, 2, 3, 10000, netAct.status, netComnBuilder);
                     delayConnectFunc(network, 4, 1, 10000, netAct.status, netComnBuilder);
@@ -181,10 +218,12 @@ public class CommunLinkPlanner {
                     delayConnectFunc(network, 6, 0, 1000, netAct.status, netComnBuilder);
                     delayConnectFunc(network, 0, 5, 1000, netAct.status, netComnBuilder);
                 } else {
+                    // 其他中心化网络，遍历所有目标，建立通联关系
                     for (int i = network.getTargetsCount(); i > 0; i--) {
                         CommunLinkOuterClass.CommunLink.Builder comlinkBuilder = CommunLinkOuterClass.CommunLink.newBuilder();
 
                         int status = netAct.status;
+                        // 根据状态设置通联参数
                         switch (status) {
                             case 1:
                                 comlinkBuilder.setCommunState(CommunLinkOuterClass.ConnectParam.newBuilder().setConnet(1));
@@ -201,19 +240,32 @@ public class CommunLinkPlanner {
                         comlinkBuilder.setDesId(network.getTargets((i - 1)).getAeronavalTarget().getId());
                         netComnBuilder.addCommunLinkResult(comlinkBuilder.build());
                     }
+                    // 发布所有通联结果
                     publisher.publish("NetworkCommunLikResult", netComnBuilder.build().toByteArray());
                 }
             } else {
+                // 非中心化拓扑暂未实现
             }
         }
         return true;
     }
 
+    /**
+     * 延迟建立通联关系，并发布消息
+     *
+     * @param network        网络对象
+     * @param src            源目标索引
+     * @param dst            目标索引
+     * @param timeMs         延迟时间（毫秒）
+     * @param status         通联状态
+     * @param netComnBuilder protobuf构建器
+     */
     private void delayConnectFunc(NetworkDomain.Network network, int src, int dst, int timeMs, int status,
                                   zb.dcts.fusion.airDomain.communLink.CommunLinkOuterClass.NetworkCommunLikResult.Builder netComnBuilder) {
         try {
             CommunLinkOuterClass.CommunLink.Builder comlinkBuilder = CommunLinkOuterClass.CommunLink.newBuilder();
 
+            // 根据状态设置通联参数
             switch (status) {
                 case 1:
                     comlinkBuilder.setCommunState(CommunLinkOuterClass.ConnectParam.newBuilder().setConnet(1));
@@ -231,13 +283,21 @@ public class CommunLinkPlanner {
             comlinkBuilder.setDesId(network.getTargets(dst).getAeronavalTarget().getId());
 
             netComnBuilder.addCommunLinkResult(comlinkBuilder.build());
+            // 发布消息
             publisher.publish("NetworkCommunLikResult", netComnBuilder.build().toByteArray());
+            // 延迟指定时间
             Thread.sleep(timeMs);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
     }
 
+    /**
+     * 主函数，入口
+     *
+     * @param args 命令行参数
+     * @throws Exception 异常
+     */
     public static void main(String[] args) throws Exception {
 
         CommunLinkPlanner planner = new CommunLinkPlanner();

@@ -42,8 +42,8 @@ public class ListAllSourcesClient {
     public static Source.SourceSetInfo listAllSources() throws InterruptedException {
         Source.SourceSetInfo sources = null;
         // 连接 gRPC 服务器
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6161)
-//        ManagedChannel channel = ManagedChannelBuilder.forAddress("192.168.1.21", 6161)
+//        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6161)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("192.168.1.40", 6161)
                 .usePlaintext()
                 .build();
 
@@ -63,7 +63,8 @@ public class ListAllSourcesClient {
      */
     public static void listAllSourcesPeriodical() {
         // 连接 gRPC 服务器
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6161)
+//        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6161)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("192.168.1.40", 6161)
                 .usePlaintext()
                 .build();
 

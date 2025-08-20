@@ -9,17 +9,18 @@ import zb.dcts.fusion.airDomain.target.Target;
 import zb.dcts.fusion.networkDomain.NetworkDomain;
 
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
+ * @author 林跃
  * @file NetworkDomainBuilder.java
  * @comment 读取配置文件中融合后网域数据，解析后推送至态势显示分系统
  * @date 2025/7/24
- * @author 林跃
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 public class NetworkDomainBuilder {
@@ -28,61 +29,70 @@ public class NetworkDomainBuilder {
         NetworkDomain.NetworkList networkList = buildFromXml("src/main/resources/网络配置.xml");
         Map<Integer, NetworkDomain.Network> networkMap = new HashMap<>();
         for (NetworkDomain.Network network : networkList.getNetworksList()) {
-            networkMap.put(network.getId(),network);
+            networkMap.put(network.getId(), network);
         }
         return networkMap;
     }
 
     public static NetworkDomain.NetworkList buildFromXml(String xmlPath) throws Exception {
-        Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(xmlPath));
-        doc.getDocumentElement().normalize();
-
-        NodeList networkNodes = doc.getElementsByTagName("通信网");
-        NetworkDomain.NetworkList.Builder networkListBuilder = NetworkDomain.NetworkList.newBuilder();
-
-        for (int i = 0; i < networkNodes.getLength(); i++) {
-            Element netElement = (Element) networkNodes.item(i);
-            // 起始频率与终止频率
-            Element freqRangeElem = (Element) netElement.getElementsByTagName("频率范围").item(0);
-
-            NetworkDomain.Network.Builder networkBuilder = NetworkDomain.Network.newBuilder()
-                    .setId(parseInt(netElement, "id"))
-                    .setCamp(parseCamp(netElement, "阵营"))
-                    .setType(getText(netElement, "类型"))
-                    .setModulation(getText(netElement, "调制方式"))
-                    .setWorkMode(getText(netElement, "工作模式"))
-                    .setTopology(parseTopology(getText(netElement, "拓扑结构")))
-                    .setPurposes(getText(netElement, "用途"))
-                    .setThrtLvl(parseThreatLevel(netElement))
-                    .setReliability(parseInt(netElement, "可信度", 80))
-                    .setImportance(parseInt(netElement, "重要性", 0));
-
-            if (freqRangeElem != null) {
-                double freqStart = parseDouble(freqRangeElem, "起始频率", 0);
-                double freqEnd = parseDouble(freqRangeElem, "终止频率", 0);
-                networkBuilder.setStartFreq(freqStart);
-                networkBuilder.setStopFreq(freqEnd);
+        NetworkDomain.NetworkList.Builder networkListBuilder = null;
+        try {
+            InputStream in = EquipmentXmlParser.class.getClassLoader().getResourceAsStream(xmlPath);
+            if (in == null) {
+                throw new FileNotFoundException("配置文件未找到: " + xmlPath);
             }
 
-            // 关键节点
-            Target.FusionTarget keyTarget = parseTarget(netElement, "关键节点");
-            if (keyTarget != null) networkBuilder.setKeyTarget(keyTarget);
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(in);
+            doc.getDocumentElement().normalize();
 
-            // 中继节点
-            Target.FusionTarget relayTarget = parseTarget(netElement, "网关节点");
-            if (relayTarget != null) networkBuilder.setRelayTarget(relayTarget);
+            NodeList networkNodes = doc.getElementsByTagName("通信网");
+            networkListBuilder = NetworkDomain.NetworkList.newBuilder();
 
-            // 一般节点
-            List<Target.FusionTarget> users = parseUsers(netElement);
-            networkBuilder.addAllTargets(users);
+            for (int i = 0; i < networkNodes.getLength(); i++) {
+                Element netElement = (Element) networkNodes.item(i);
+                // 起始频率与终止频率
+                Element freqRangeElem = (Element) netElement.getElementsByTagName("频率范围").item(0);
 
-            // 频率集
-            List<Double> freqList = parseFreqList(netElement);
-            networkBuilder.addAllFreq(freqList);
+                NetworkDomain.Network.Builder networkBuilder = NetworkDomain.Network.newBuilder()
+                        .setId(parseInt(netElement, "id"))
+                        .setCamp(parseCamp(netElement, "阵营"))
+                        .setType(getText(netElement, "类型"))
+                        .setModulation(getText(netElement, "调制方式"))
+                        .setWorkMode(getText(netElement, "工作模式"))
+                        .setTopology(parseTopology(getText(netElement, "拓扑结构")))
+                        .setPurposes(getText(netElement, "用途"))
+                        .setThrtLvl(parseThreatLevel(netElement))
+                        .setReliability(parseInt(netElement, "可信度", 80))
+                        .setImportance(parseInt(netElement, "重要性", 0));
 
-            networkListBuilder.addNetworks(networkBuilder.build());
+                if (freqRangeElem != null) {
+                    double freqStart = parseDouble(freqRangeElem, "起始频率", 0);
+                    double freqEnd = parseDouble(freqRangeElem, "终止频率", 0);
+                    networkBuilder.setStartFreq(freqStart);
+                    networkBuilder.setStopFreq(freqEnd);
+                }
+
+                // 关键节点
+                Target.FusionTarget keyTarget = parseTarget(netElement, "关键节点");
+                if (keyTarget != null) networkBuilder.setKeyTarget(keyTarget);
+
+                // 中继节点
+                Target.FusionTarget relayTarget = parseTarget(netElement, "网关节点");
+                if (relayTarget != null) networkBuilder.setRelayTarget(relayTarget);
+
+                // 一般节点
+                List<Target.FusionTarget> users = parseUsers(netElement);
+                networkBuilder.addAllTargets(users);
+
+                // 频率集
+                List<Double> freqList = parseFreqList(netElement);
+                networkBuilder.addAllFreq(freqList);
+
+                networkListBuilder.addNetworks(networkBuilder.build());
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-
         return networkListBuilder.build();
     }
 
@@ -131,10 +141,14 @@ public class NetworkDomainBuilder {
         if (parent.getElementsByTagName("威胁等级").getLength() == 0) return Dcts.ThreatLevel.NONE;
         int level = parseInt(parent, "威胁等级");
         switch (level) {
-            case 1: return Dcts.ThreatLevel.LOW;
-            case 2: return Dcts.ThreatLevel.MIDDLE;
-            case 3: return Dcts.ThreatLevel.HIGH;
-            default: return Dcts.ThreatLevel.NONE;
+            case 1:
+                return Dcts.ThreatLevel.LOW;
+            case 2:
+                return Dcts.ThreatLevel.MIDDLE;
+            case 3:
+                return Dcts.ThreatLevel.HIGH;
+            default:
+                return Dcts.ThreatLevel.NONE;
         }
     }
 

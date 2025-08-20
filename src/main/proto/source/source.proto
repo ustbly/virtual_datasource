@@ -94,5 +94,5 @@ service SourceControlService
 {
     rpc ListAllSources(google.protobuf.Empty) returns (SourceSetInfo) {} //枚举所有设备
     rpc SendSourceCommand(SourceCommand) returns (SourceCommandReply) {} //发送设备控制命令
-    rpc SubscribeSourceMessage(SubscribeRequest) returns(stream google.protobuf.Any){}  //订阅数据源发布的消息（以主题形式分组消息）
+    rpc SubscribeSourceMessage(SubscribeRequest) returns(stream google.protobuf.Any){} //订阅数据源发布的消息（以主题形式分组消息）
 }

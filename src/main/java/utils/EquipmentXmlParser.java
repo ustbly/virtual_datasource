@@ -5,7 +5,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +30,16 @@ public class EquipmentXmlParser {
         }
     }
 
-    public static List<EquipmentConfig> parseConfig(File xmlFile) {
+    public static List<EquipmentConfig> parseConfig(String resourcePath) {
         List<EquipmentConfig> list = new ArrayList<>();
         try {
-            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile);
+            // 从 classpath 读取资源
+            InputStream in = EquipmentXmlParser.class.getClassLoader().getResourceAsStream(resourcePath);
+            if (in == null) {
+                throw new FileNotFoundException("配置文件未找到: " + resourcePath);
+            }
+
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(in);
             NodeList equipments = doc.getElementsByTagName("Equipment");
             for (int i = 0; i < equipments.getLength(); i++) {
                 Element e = (Element) equipments.item(i);
@@ -49,5 +56,6 @@ public class EquipmentXmlParser {
         }
         return list;
     }
+
 }
 

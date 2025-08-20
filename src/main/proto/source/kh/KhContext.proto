@@ -6,57 +6,57 @@ import "source/source.proto";
 
 enum SourceControlCmd
 {
-  SELT_TEST_STATIC = 0;
-  SELT_TEST_DYNAMIC = 1;
+    SELT_TEST_STATIC = 0;
+    SELT_TEST_DYNAMIC = 1;
 }
 
 //轨迹检波模式
-enum DetectMode	
+enum DetectMode
 {
-  MAXHOLD = 0;
-  MINHOLD = 1;
-  CURRENT = 2;
-  AVERAGE = 3;
+    MAXHOLD = 0;
+    MINHOLD = 1;
+    CURRENT = 2;
+    AVERAGE = 3;
 }
 
 //FFT检波模式
-enum FFTDetectMode	
+enum FFTDetectMode
 {
-  POSITIVE = 0;
-  NEGATIVE = 1;
-  SAMPLED = 2;
-  AVERAGEF = 3;
+    POSITIVE = 0;
+    NEGATIVE = 1;
+    SAMPLED = 2;
+    AVERAGEF = 3;
 }
 
 //通道模式
-enum ChannelMode  
+enum ChannelMode
 {
-  NORMAL = 0;			           
-  LOWNOISE = 1;			        
-  LOWDISTORT = 2;
+    NORMAL = 0;
+    LOWNOISE = 1;
+    LOWDISTORT = 2;
 }
 
-enum WindowType 
+enum WindowType
 {
-  HANNING = 0;     //汉宁窗
-  HAMMING = 1;     //海明窗
-  RECTWIN = 2;     //矩形窗
-  FLATTOP = 3;     //平顶窗
-  GAUSS = 4;       //高斯窗
-  BLACKHARRIS = 5; //Blackman-Harris
+    HANNING = 0;     //汉宁窗
+    HAMMING = 1;     //海明窗
+    RECTWIN = 2;     //矩形窗
+    FLATTOP = 3;     //平顶窗
+    GAUSS = 4;       //高斯窗
+    BLACKHARRIS = 5; //Blackman-Harris
 }
 
 //静态自检状态结果
 message StaticSelfTestResult
 {
-  SourceId source_id = 1;
-  string status = 2; //自检结果，json编码格式
+    SourceId source_id = 1;
+    string status = 2; //自检结果，json编码格式
 }
 
-message WindowParams 
+message WindowParams
 {
-  WindowType type = 1;
-  double param = 2;    //窗口参数，目前高斯窗需要设置alpha值
+    WindowType type = 1;
+    double param = 2;    //窗口参数，目前高斯窗需要设置alpha值
 }
 
 //天线控制方式
@@ -71,20 +71,20 @@ enum AntennaControlMode
 
 enum GainControlMode
 {
-  AGC = 0;  //自动增益
-  MGC = 1;  //手动增益
+    AGC = 0;  //自动增益
+    MGC = 1;  //手动增益
 }
 
 message GainControlParam
 {
-  float hold_time = 1;  //检波功率下降时的AGC保持时间,秒 0~10s
-  float inc = 2;        //AGC步进 dbm 可设1-3dbm
+    float hold_time = 1;  //检波功率下降时的AGC保持时间,秒 0~10s
+    float inc = 2;        //AGC步进 dbm 可设1-3dbm
 }
 
 enum ThresholdMode
 {
-  AUTO = 0; //自动门限
-  MANUAL = 1;
+    AUTO = 0; //自动门限
+    MANUAL = 1;
 }
 
 enum DataType
@@ -101,92 +101,92 @@ message OperationStatus //任务运行状态
 }
 
 //目标方位
-message TargetDirection 
+message TargetDirection
 {
-	double center_frequency = 1;  //频率
-	double direction = 2;	        //目标方向（单位：°）
-	int32	 confidence = 3;	      //置信度
-	float	 amplitude = 4;	        //幅度（单位：dBm）
-  Timestamp time_stamp = 5;     //测向时间戳
-  double pitch_angle = 6;       //俯仰角
+    double center_frequency = 1;  //频率
+    double direction = 2;            //目标方向（单位：°）
+    int32     confidence = 3;          //置信度
+    float     amplitude = 4;            //幅度（单位：dBm）
+    Timestamp time_stamp = 5;     //测向时间戳
+    double pitch_angle = 6;       //俯仰角
 }
 
 //脉冲样本 
 message PulseSample
 {
-	double carrier_freq = 1;   //载频
-	float pulse_width = 2;    //脉宽
-	float repeat_period = 3;  //重复周期
-  uint32 repeat_period_type = 4;//重周类型
-  uint32 freq_type = 5;         //频率类型
-  uint32 pw_type = 6;           //脉宽类型
+    double carrier_freq = 1;   //载频
+    float pulse_width = 2;    //脉宽
+    float repeat_period = 3;  //重复周期
+    uint32 repeat_period_type = 4;//重周类型
+    uint32 freq_type = 5;         //频率类型
+    uint32 pw_type = 6;           //脉宽类型
 }
 
 //脉冲簇
 message PulseCluster
 {
-  float freq = 1;                          //频率
-  float bw = 2;                           //带宽
-  uint32 type = 3;                         //目标调制格式
-	StatisticVal ampt = 4;                   //统计参数
-  repeated PulseSample pulse_samples = 5;  //脉冲样本
-  TimeSpan time_span = 6;                   // 开始和结束时间
+    float freq = 1;                          //频率
+    float bw = 2;                           //带宽
+    uint32 type = 3;                         //目标调制格式
+    StatisticVal ampt = 4;                   //统计参数
+    repeated PulseSample pulse_samples = 5;  //脉冲样本
+    TimeSpan time_span = 6;                   // 开始和结束时间
 }
 
 //数据源
-message DataSource 
+message DataSource
 {
-  uint32 task_id = 1;           //任务Id
-  SourceId source_id = 2;       //节点Id、设备Id
-  Position position = 3;        //设备位置
+    uint32 task_id = 1;           //任务Id
+    SourceId source_id = 2;       //节点Id、设备Id
+    Position position = 3;        //设备位置
 }
 
 //定位数据源
 message PositionDataSource
 {
-  uint32 task_id = 1;                  //侦查任务Id
-  repeated SourceId task_runner = 2;   //节点、设备
+    uint32 task_id = 1;                  //侦查任务Id
+    repeated SourceId task_runner = 2;   //节点、设备
 }
 
 //在线测向任务参数
 message OnLinePositionParam
 {
-  PositionDataSource data_source = 1;
+    PositionDataSource data_source = 1;
 }
 
 //历史测向任务参数，因只有一台设备，故每次定位都需要至少一条历史测向任务
 message OffLinePositionParam
 {
-  repeated PositionDataSource data_source = 1;
+    repeated PositionDataSource data_source = 1;
 }
 
 //定位任务请求
 message StartPositionRequest
 {
-  OnLinePositionParam online_param = 1;
-  OffLinePositionParam offline_param = 2;
-  string task_describe = 3;  //定位任务描述
-  double pos_freq = 4;       //定位频率 (单位：Hz)
+    OnLinePositionParam online_param = 1;
+    OffLinePositionParam offline_param = 2;
+    string task_describe = 3;  //定位任务描述
+    double pos_freq = 4;       //定位频率 (单位：Hz)
 }
 
 
 //目标速度
 message TargetSpeed
 {
-  double ln_speed = 1;
-  double lt_speed = 2;
-  double alt_speed = 3;
+    double ln_speed = 1;
+    double lt_speed = 2;
+    double alt_speed = 3;
 }
 
 //定位目标描述
-message PositionTargetDescriptor 
+message PositionTargetDescriptor
 {
-  uint32 target_id = 1;                //目标编号
-  Position target_position = 2;  	     //目标位置
-  TargetSpeed target_speed = 3;        //目标速度
-  double confidence_interval = 4;      //置信区间
-  Timestamp time = 5;                  //定位时间
-	repeated DataSource data_source = 7; //数据源
+    uint32 target_id = 1;                //目标编号
+    Position target_position = 2;         //目标位置
+    TargetSpeed target_speed = 3;        //目标速度
+    double confidence_interval = 4;      //置信区间
+    Timestamp time = 5;                  //定位时间
+    repeated DataSource data_source = 7; //数据源
 }
 
 //时间触发参数
@@ -201,8 +201,8 @@ message TimeTriggerParam
     }
     TriggerType     trigger_type = 1;   //触发类型
     Timestamp       trigger_time = 2;   //触发时刻
-    uint32		    sweep_interval = 3;     //扫描间隔,单位ms 大于500ms
-    uint32		    segment_interval = 4;   //频点间隔,单位ms 大于100ms
+    uint32            sweep_interval = 3;     //扫描间隔,单位ms 大于500ms
+    uint32            segment_interval = 4;   //频点间隔,单位ms 大于100ms
 }
 
 //频率触发参数
@@ -234,10 +234,10 @@ message LevelTriggerParam
 }
 
 // 数据链类型
-enum LinkType  
+enum LinkType
 {
-  UNKNOWN = 0;			           
-  LINK11 = 1;			        
-  LINK16 = 2;
-  LINK4A = 3;
+    UNKNOWN = 0;
+    LINK11 = 1;
+    LINK16 = 2;
+    LINK4A = 3;
 }

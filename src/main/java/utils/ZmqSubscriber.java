@@ -37,7 +37,7 @@ public class ZmqSubscriber {
                 System.out.println("Network Type: " + result.getType());
 
                 if (result.getCommunLinkResultCount() > 0) {
-                    System.out.println("Commun Link Results:");
+                    System.out.println("CommunLink Results:");
                     for (CommunLinkOuterClass.CommunLink link : result.getCommunLinkResultList()) {
                         System.out.printf("  Src ID: %d, Dest ID: %d%n",
                                 link.getSrcId(), link.getDesId());
@@ -47,7 +47,7 @@ public class ZmqSubscriber {
                                 state.getConnet());
                     }
                 } else {
-                    System.out.println("No Commun Link Results.");
+                    System.out.println("No CommunLink Results.");
                 }
                 System.out.println("-----------------------------------");
 

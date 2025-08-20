@@ -13,7 +13,7 @@ import java.io.IOException;
  * @copyright Copyright (c) 2021  中国电子科技集团公司第四十一研究所
  */
 
-public class FusionDataSever {
+public class FusionDataServer {
     public static void main(String[] args) throws IOException, InterruptedException {
         Server server = ServerBuilder.forPort(50050)
                 .addService(new FusionDataServiceImpl())

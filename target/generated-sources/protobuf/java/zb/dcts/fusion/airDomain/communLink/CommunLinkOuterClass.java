@@ -2984,7 +2984,7 @@ public final class CommunLinkOuterClass {
     private NetworkCommunLikResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    public NetworkCommunLikResult() {
+    private NetworkCommunLikResult() {
       type_ = "";
       communLinkResult_ = java.util.Collections.emptyList();
     }

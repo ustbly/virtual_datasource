@@ -66,11 +66,11 @@
             <artifactId>jedis</artifactId>
             <version>5.2.0</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.apache.arrow</groupId>-->
-<!--            <artifactId>flight-sql-jdbc-core</artifactId>-->
-<!--            <version>${arrow.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.arrow</groupId>-->
+        <!--            <artifactId>flight-sql-jdbc-core</artifactId>-->
+        <!--            <version>${arrow.version}</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -104,6 +104,33 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>1.4</version>
+                <configuration>
+                    <createDependencyReducedPom>true</createDependencyReducedPom>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>source_control.real_server.FusionDataServer</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
         </plugins>
     </build>
 </project>
